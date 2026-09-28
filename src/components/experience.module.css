@@ -74,7 +74,7 @@
   .body { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "stage stage" "desc desc" "left right"; gap: 28px 48px; align-items: start; }
   .list { display: flex; width: 100%; flex-direction: column; gap: 9px; }
   .left { grid-area: left; } .right { grid-area: right; }
-  .panel, .toggle { display: none; }
+  .panel { display: none; }
   .crt { display: block; position: relative; grid-area: stage; width: auto; max-width: 100%; height: min(415px, 42dvh); aspect-ratio: 669 / 415; }
   .description { display: grid; grid-area: desc; width: 100%; max-width: 553px; margin: 0; text-align: center; color: var(--text-grey-1); font-family: var(--font-dm-sans), sans-serif; font-size: 16px; line-height: 25.6px; }
   .description p { grid-area: 1 / 1; visibility: hidden; margin: 0; }

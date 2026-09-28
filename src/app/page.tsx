@@ -3,6 +3,7 @@ import { HeaderNavigation } from "@/components/header-navigation";
 import { ContactFooter } from "@/components/contact-footer";
 import { IdentityHero } from "@/components/identity-hero";
 import { ManifestoScene } from "@/components/manifesto-scene";
+import { StatisticsTools } from "@/components/statistics-tools";
 import { siteContent } from "@/content/site";
 
 export default function Home() {
@@ -12,7 +13,7 @@ export default function Home() {
       <main>
         <IdentityHero />
         <ManifestoScene />
-        <SectionPlaceholder content={siteContent.sections.statistics} />
+        <StatisticsTools />
         <SectionPlaceholder content={siteContent.sections.projects}>
           <ul className="mt-8 grid gap-6 md:grid-cols-2">
             {siteContent.projects.map((project) => (

@@ -43,6 +43,12 @@ export const siteContent = {
       eyebrow: "Statistics and tools",
       title: "In progress",
       description: "[Add personal statistics and tools here]",
+      counters: [
+        { label: "[Projects]", value: "5" },
+        { label: "[Experience]", value: "—" },
+        { label: "[Milestones]", value: "—" },
+      ],
+      tools: ["[Tool 01]", "[Tool 02]", "[Tool 03]", "[Tool 04]"],
     },
     projects: {
       id: "projects",

@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type Re
 export type CanvasKind = "footer" | "portrait" | "glyph" | "experience" | "project";
 
 const OriginalCanvas = dynamic(() => import("./original-canvas").then((module) => module.OriginalCanvas), { ssr: false });
+const NeutralGlyphCanvas = dynamic(() => import("./neutral-glyph-canvas").then((module) => module.NeutralGlyphCanvas), { ssr: false });
 
 function subscribePowerPolicy(notify: () => void) {
   const queries = [window.matchMedia("(max-width: 767.98px)"), window.matchMedia("(prefers-reduced-motion: reduce)")];
@@ -39,7 +40,7 @@ export function DecorativeCanvas({ kind, label = "", children, className = "" }:
   return (
     <div ref={frameRef} aria-hidden="true" data-canvas-kind={kind} data-render-mode={lowPower ? "poster" : "gpu"} data-canvas-ready={ready && visible && !lowPower} className={`relative ${className}`}>
       <div className="canvas-poster absolute inset-0">{children}</div>
-      {!lowPower && visible && <OriginalCanvas kind={kind} label={label} onReady={reportReady} />}
+      {!lowPower && visible && (kind === "glyph" ? <NeutralGlyphCanvas onReady={reportReady} /> : <OriginalCanvas kind={kind} label={label} onReady={reportReady} />)}
     </div>
   );
 }

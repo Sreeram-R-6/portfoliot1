@@ -1,0 +1,202 @@
+.stage {
+  --stat-lead-in: max(8vh, var(--nav-height));
+  position: relative;
+  z-index: 30;
+  height: calc(100dvh + var(--stat-lead-in));
+  overflow: hidden;
+  color: var(--background-bg-0);
+  background: var(--primary-green-neon);
+  font-family: var(--font-rajdhani), sans-serif;
+}
+
+.stage::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  opacity: .35;
+  background: repeating-linear-gradient(90deg, transparent 0, transparent calc(50% - 1px), var(--primary-green-line) calc(50% - 1px), var(--primary-green-line) 50%);
+}
+
+.canvas {
+  position: absolute;
+  top: calc(50% + var(--stat-lead-in) / 2);
+  left: 50%;
+  width: min(100vw, calc(100dvh * .4603));
+  height: min(100dvh, calc(100vw / .4603));
+  transform: translate(-50%, -50%);
+}
+
+.grid {
+  --box-gap: 12px;
+  --box-width: calc((100vw - 32px - var(--box-gap)) / 2);
+  --box-height: calc(var(--box-width) / 1.2201);
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  display: grid;
+  width: calc(100vw - 32px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(4, var(--box-height));
+  gap: var(--box-gap);
+  transform: translateX(-50%);
+}
+
+.box {
+  --chamfer-unit: calc(var(--box-height) / 228);
+  --box-shape: polygon(0 0, 100% 0, 100% calc(100% - 8 * var(--chamfer-unit)), calc(100% - 8 * var(--chamfer-unit)) 100%, 0 100%, 0 calc(125 * var(--chamfer-unit)), calc(11.71 * var(--chamfer-unit)) calc(113 * var(--chamfer-unit)), calc(11.71 * var(--chamfer-unit)) calc(52 * var(--chamfer-unit)), 0 calc(40 * var(--chamfer-unit)));
+  --box-fill: var(--primary-green-box);
+  --box-stroke: var(--primary-green-box-stroke);
+  --box-text: var(--background-bg-0);
+  position: relative;
+  min-width: 0;
+  color: var(--box-text);
+  transition: color .2s;
+}
+
+.boxBackground {
+  position: absolute;
+  inset: 0;
+  background: var(--box-stroke);
+  clip-path: var(--box-shape);
+  transition: background-color .2s;
+}
+
+.boxBackground::after {
+  position: absolute;
+  inset: 2px;
+  content: "";
+  background: var(--box-fill);
+  clip-path: var(--box-shape);
+  transition: background-color .2s;
+}
+
+.label {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  max-width: calc(100% - 32px);
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .13em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.value {
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+  margin: 0;
+  font-size: 56px;
+  font-weight: 500;
+  line-height: .85;
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.toolMark {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  width: 30%;
+  height: auto;
+  aspect-ratio: 1;
+  transition: opacity .15s;
+}
+
+.notch {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 16px;
+  height: 16px;
+  background: var(--primary-green-neon);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  opacity: 0;
+  transition: opacity .15s;
+}
+
+.counter0 { grid-area: 1 / 1; }
+.counter1 { grid-area: 1 / 2; }
+.counter2 { grid-area: 2 / 1; }
+.tool0 { grid-area: 2 / 2; }
+.tool1 { grid-area: 3 / 1; }
+.tool2 { grid-area: 3 / 2; }
+.tool3 { grid-area: 4 / 2; }
+
+.glyphFrame {
+  position: relative;
+  display: grid;
+  grid-area: 4 / 1;
+  place-items: center;
+  color: var(--tertiary-purple-vivid);
+}
+
+.glyphPoster {
+  width: min(80%, 160px);
+  height: min(80%, 160px);
+}
+
+@media (hover: hover) {
+  .box:hover {
+    --box-fill: #620ecc;
+    --box-stroke: #480f91;
+    --box-text: var(--text-white);
+  }
+
+  .box:hover .notch { opacity: 1; }
+  .box:hover .toolMark { opacity: .85; }
+}
+
+@media (min-width: 768px) and (max-width: 1024.98px) {
+  .grid {
+    --box-gap: calc((100vw - 64px) * 16 / 770);
+    --box-width: calc((100vw - 64px - var(--box-gap)) / 2);
+    --box-height: max(calc(var(--box-width) / 2.3711), calc((100dvh - var(--nav-height) - 64px - 3 * var(--box-gap)) / 4));
+    width: calc(100vw - 64px);
+  }
+
+  .value { left: 32px; font-size: 88px; }
+  .toolMark { left: 24px; width: 88px; }
+}
+
+@media (min-width: 1025px) {
+  .stage { height: calc(100dvh - var(--nav-height) + var(--stat-lead-in)); }
+
+  .stage::before {
+    background: repeating-linear-gradient(90deg, transparent 0, transparent calc(20% - 1px), var(--primary-green-line) calc(20% - 1px), var(--primary-green-line) 20%);
+  }
+
+  .canvas {
+    top: var(--stat-lead-in);
+    left: 0;
+    width: 100%;
+    height: calc(100dvh - var(--nav-height));
+    transform: none;
+  }
+
+  .grid {
+    inset: 32px;
+    width: auto;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    transform: none;
+  }
+
+  .box { --chamfer-unit: 1px; }
+  .counter0 { grid-area: 1 / 1; }
+  .counter1 { grid-area: 2 / 2; }
+  .counter2 { grid-area: 3 / 3; }
+  .tool0 { grid-area: 1 / 3; }
+  .tool1 { grid-area: 1 / 5; }
+  .tool2 { grid-area: 2 / 4; }
+  .tool3 { grid-area: 3 / 5; }
+  .glyphFrame { grid-area: 3 / 1; }
+  .label { font-size: 16px; font-weight: 700; }
+  .value { left: 20px; font-size: 100px; }
+  .toolMark { width: 85px; }
+}

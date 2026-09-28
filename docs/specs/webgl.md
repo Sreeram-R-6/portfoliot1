@@ -82,3 +82,9 @@ prefers-reduced-motion: no time-driven rotation, scroll pinning, trails, pixel s
 | UNVERIFIED: source Tailwind version / external functionality | User decisions resolve implementation: installed Tailwind v4 and # destinations in site.ts. |
 
 No remaining gap blocks the approved specs checkpoint. Implementation must preserve these evidence boundaries and report unresolved motion mappings before calling them verified.
+
+## Approved target dependency addition
+
+@types/three 0.185.4 is exact-pinned as a devDependency, approved 2026-09-28. No drei or other optional package is added.
+
+Phase 4 geometry uses Three.js with original hollow-frame geometry and original GLSL. Camera, extrusion, bevel, lighting and dither defaults follow the table. Original postprocessing math and replacement geometry are APPROXIMATED; these implementations are not represented as extracted source. Time and scroll inputs are connected in Phase 5.

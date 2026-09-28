@@ -14,8 +14,9 @@ export function releaseSiteReady() {
 
 export function afterSiteReady(start: () => void | (() => void)) {
   let cleanup: void | (() => void);
-  const run = () => { cleanup = start(); };
+  let frame = 0;
+  const run = () => { frame = requestAnimationFrame(() => { cleanup = start(); }); };
   if (released) run();
   else listeners.add(run);
-  return () => { listeners.delete(run); cleanup?.(); };
+  return () => { listeners.delete(run); cancelAnimationFrame(frame); cleanup?.(); };
 }

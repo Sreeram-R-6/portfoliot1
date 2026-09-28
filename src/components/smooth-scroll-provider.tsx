@@ -71,10 +71,12 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
     configureScrolling();
     preference.addEventListener("change", configureScrolling);
     const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("portfolio:refresh", refresh);
     const nav = content.querySelector("nav");
     const updateNavHeight = () => {
       if (nav) wrapper.style.setProperty("--nav-height", `${nav.getBoundingClientRect().height}px`);
       refresh();
+      window.dispatchEvent(new Event("portfolio:scroll-ready"));
     };
     const observer = new ResizeObserver(updateNavHeight);
     if (nav) observer.observe(nav);
@@ -88,6 +90,7 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
       mounted = false;
       preference.removeEventListener("change", configureScrolling);
       window.removeEventListener("resize", refresh);
+      window.removeEventListener("portfolio:refresh", refresh);
       observer.disconnect();
       stopScrolling?.();
       delete wrapper.dataset.scrollMode;

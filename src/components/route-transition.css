@@ -1,0 +1,15 @@
+.route-transition { position: fixed; inset: 0; z-index: 100001; display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(6, 1fr); pointer-events: all; overflow: hidden; }
+.route-transition[hidden] { display: none; }
+.route-pixel { background: var(--primary-green-neon); transform: scale(0); }
+.route-pixel-0 { --pixel-order: 0; } .route-pixel-1 { --pixel-order: 1; } .route-pixel-2 { --pixel-order: 2; } .route-pixel-3 { --pixel-order: 3; }
+.route-pixel-4 { --pixel-order: 4; } .route-pixel-5 { --pixel-order: 5; } .route-pixel-6 { --pixel-order: 6; } .route-pixel-7 { --pixel-order: 7; }
+.route-transition[data-phase="cover"] .route-pixel { animation: route-cover 250ms cubic-bezier(.22,1,.36,1) calc(var(--pixel-order) * 18ms) both; }
+.route-transition[data-phase="enter"] .route-pixel { animation: route-enter 700ms cubic-bezier(.65,0,.35,1) calc(var(--pixel-order) * 25ms) both; }
+@keyframes route-cover { from { transform: scale(0); } to { transform: scale(1.02); } }
+@keyframes route-enter { from { transform: scale(1.02); } to { transform: scale(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .route-transition { background: var(--primary-green-neon); }
+  .route-transition .route-pixel { display: none; }
+  .route-transition[data-phase="enter"] { animation: route-fade 60ms linear both; }
+  @keyframes route-fade { from { opacity: 1; } to { opacity: 0; } }
+}

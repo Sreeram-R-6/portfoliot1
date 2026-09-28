@@ -78,7 +78,11 @@ export function SoundProvider({ config, children }: { config: SoundConfig; child
     const silence = (immediately: boolean) => {
       playAttempt += 1;
       for (const voice of voices) voice.pause();
-      if (immediately) { stopFade(); ambient?.pause(); }
+      if (immediately) {
+        stopFade();
+        ambient?.pause();
+        if (ambient) ambient.volume = 0;
+      }
       else fade(0, true);
     };
     const playUi = (kind: keyof typeof paths) => {
@@ -123,7 +127,9 @@ export function SoundProvider({ config, children }: { config: SoundConfig; child
     toggleRef.current = (trusted) => {
       if (!trusted) return;
       gesturedRef.current = true;
-      if (enabledRef.current) { silence(false); playUi("toggle"); }
+      // Muting stops every UI voice immediately; do not start a confirmation
+      // chime that could become audible after the control already says Off.
+      if (enabledRef.current) silence(false);
       enabledRef.current = !enabledRef.current;
       setEnabled(enabledRef.current);
       try { localStorage.setItem(STORAGE_KEY, String(enabledRef.current)); } catch { /* Private browsing can disable storage. */ }

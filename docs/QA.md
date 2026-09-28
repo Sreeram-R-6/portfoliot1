@@ -1,4 +1,65 @@
-# Phase 6 QA
+# Populated content QA
+
+## Source and schema
+
+The source is `src/content/site.json`, saved through `/details`. No incoming file was used. All requested sanity checks matched before the content-only commit `04a811e`: Sreeram R; the two requested display lines; counters 11 / 3 / 6; four tools; eleven projects from Thuzhayan to Autonomous Drone GCS; four requested experience IDs; email, GitHub and LinkedIn. No source value was edited during layout or QA work. SHA-256 remains `491FE8D91479D4A971388C0955C113A91C5ED08C306915202BD398292F3E0048`.
+
+| Key | Exists in starting schema | Action |
+| --- | --- | --- |
+| metadata.* | Yes | Keep title, description and siteUrl; wire metadata, canonical and sitemap |
+| name / role / location | Yes | Preserve; fit identity and footer typography |
+| orientation.* | Yes | Keep data-driven orientation hint |
+| navigation.* | Yes | Render labels, links and coordinates with wrapping |
+| sections.identity.* | Yes | Variable display lines and measured one-line fitting |
+| sections.manifesto.* | Yes | Variable display words and readable description |
+| sections.statistics.* | Yes | Variable counters/tools; numeric animation or literal strings |
+| sections.projects.* | Yes | Data-driven heading, labels and more-work link |
+| sections.experience.* | Yes | Variable entries and measured descriptions |
+| projects[].* | Yes | Preserve full description; allow null image; measured N-card rail |
+| projects[].summary | No | Optional; derive a short summary only at render time when absent |
+| projects[].todo / todos[] | Yes | Editor warnings only; strip from public props |
+| footer.* | Yes | Wrap labels; hide placeholder CV action |
+
+The editor supports all populated keys, null images and optional summaries. Recommended character counters are soft limits. Import validation rejects unknown keys and invalid URLs before applying drafts. Current checks cover all 173 scalar/null controls, optional-summary import, null images, Reset, invalid import, disabled Save for bad URLs and invalid PUT, with byte-identical source afterward.
+
+## Layout and stress verification
+
+- Hero lines stay on one line with CSS sizing plus measured fitting. Headings balance, body copy has a readable measure, and flex/grid children can shrink. Text containers grow with content.
+- Manifesto words wrap without glyph clipping. Its accessible description is separate from decorative animated text.
+- Statistics count complete numeric strings; non-numeric values remain literal. Tool strings stay intact and wrap within cells.
+- Project summaries retain full stored descriptions. Native detail dialogs support keyboard opening, Tab trapping, Escape and focus return; long descriptions scroll. Null images use deterministic original glyph posters. Placeholder actions open details; external links have `noopener noreferrer`.
+- Project rail/path/pin travel derives from measured cards. Normal desktop content keeps horizontal travel; tall content uses a grid. Screenshot review widened the desktop introduction so the 1920px rail remains active.
+- Experience wraps long titles/roles and measures descriptions; the canvas mix remains 550ms. Footer email/links wrap and stack, and placeholder Resume is hidden. Navigation uses intrinsic wrapping rather than fixed coordinate slots.
+- Playwright checks 50 configurations: real content and maximum/20/3/0-project fixtures at 320, 375, 768, 1440 and 1920px, each with normal and reduced motion. Every configuration passes root/scroller overflow, visible text clipping, text-block overlap and console checks. The documented upstream Three.Clock deprecation is the only allowed warning.
+- Fixtures include 1224-character descriptions, long unbroken strings, null images, a non-numeric counter, additional counters/tools and empty collections. Normal desktop 3/11/20-card rails are measured rather than hardcoded. At 1440px their measured track widths are 1266 / 4715 / 8596px and pin distances are 4001 / 7308 / 11189px.
+- Captured and reviewed 35 full-section crops (seven sections at five widths), stored under ignored `.cache/qa/content/`. Screenshot-only CSS exposes the native scroller and hides offscreen skip-link capture artifacts; product focus behavior is unchanged.
+- Reduced-motion checks and simulated two-core low-power checks render zero canvases with eleven real projects. Long-dialog checks confirm scrolling, full unchanged text, focus trapping and external-link attributes. Public text contains no editorial TODO reminders.
+- Synthetic fixture routes are development-only, noindex and disallowed by robots. Production returns 404 before reading fixture files; the JSON is excluded from standalone output and public bundles.
+
+## Performance and final checks
+
+Lighthouse 12.8.2 uses headless Chrome against the local production build at localhost:3001 with default simulated mobile throttling. Reports remain ignored under `.cache/lighthouse/`; no dependencies or lockfile changes were made. Scores are individual measured runs.
+
+| Mobile metric | Before | Final |
+| --- | ---: | ---: |
+| Performance | 84 | 92 |
+| Accessibility | 100 | 100 |
+| Best practices | 100 | 100 |
+| SEO | 100 | 100 |
+| Largest contentful paint | 3.5s | 3.25s |
+| Total blocking time | 335ms | 25ms |
+
+The first mobile-flow run reached 92 Performance / 95 Accessibility. Its unsupported paragraph aria-label was then replaced by a separate screen-reader description; the final run reaches 100 Accessibility. All requested mobile targets pass.
+
+Mobile hero/manifesto use ordinary flow below 768px, avoiding character splitting and pin setup after first paint. Desktop motion and the original WebGL/shader implementation remain. Mobile artwork stays static through the existing power policy.
+
+`npm run check` passes lint, strict typecheck and production build. Production `npm start` returns 404 for `/details`, GET/PUT `/api/details`, POST `/api/details/upload` and stress routes. Robots disallows editor/fixture paths; sitemap contains neither. Metadata follows the source values. The existing standalone-output start warning remains documented in README.
+
+Environment: Node 22.17.0 / npm 10.9.2; the repository requests Node 24, so these results do not claim a Node 24 run. No deployment, history rewrite, new dependency or third-party asset was added.
+
+---
+
+# Historical Phase 6 QA
 
 ## IP and secrets audit
 

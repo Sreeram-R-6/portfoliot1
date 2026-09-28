@@ -55,6 +55,9 @@ export const siteContent = {
       eyebrow: "Project showcase",
       title: "Selected projects",
       description: "Software, telemetry, and embedded systems.",
+      cardTag: "[Project]",
+      viewLabel: "[View]",
+      moreWork: { label: "[More work]", href: "#" },
     },
     experience: {
       id: "experience",

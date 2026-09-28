@@ -845,3 +845,11 @@ Source-16.js: total pin distance = trackTravel + handoffTravel + exitLead + exit
 - CTA reveal observes .9 intersection; .7*abs(target-current) seconds, ease none; second observer uses rootMargin 0px -25% 0px 0px and threshold 1.
 
 These are verified formulas. A five-card target changes measured distances; the original path artwork must be replaced with neutral geometry and is APPROXIMATED.
+
+## Phase 4 target geometry and verification notes
+
+Source layout inputs were rechecked via computed custom properties without screenshots. The design height is 786 units; track x is 372 units. First five card (x, y, width, ratio) inputs: (0,412,440,1.3728549141965678), (451,15,440,1.3814756671899528), (712,505,325,1.3333333333333333), (1066,168,325,1.3333333333333333), (1492,301,440,1.3333333333333333). Target width is max(x+width)=1932 units. The source shared vertical lines are invisible in this section; their measured positions are retained as geometry hooks for Phase 5 travel.
+
+APPROXIMATED: neutral diagrams, longer project-name wrapping and five-card extent. Phase 4 uses native desktop horizontal access and fully exposes each focused card. Mobile/tablet and reduced motion use normal-flow grids. A single lazy Fiber canvas renders the original posters as image planes in desktop GPU mode; DOM tags/links remain accessible. Static image display is Phase 4; sweep, band, trails, timed texture zoom, scramble and pin/handoff are Phase 5.
+
+Capture comparison found a parent stacking context preventing the heading difference blend. It was removed and DOM stacking/blend values rechecked without repeating captures. The pinned Fiber 9.7.0 package emits a Three.Clock deprecation warning with Three r185; it is a library warning, not a console error. Retain approved versions and audit again in Phase 6.

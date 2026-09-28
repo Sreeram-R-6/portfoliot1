@@ -1,5 +1,6 @@
-import { FooterSkeleton, SectionPlaceholder } from "@/components/portfolio-shell";
+import { SectionPlaceholder } from "@/components/portfolio-shell";
 import { HeaderNavigation } from "@/components/header-navigation";
+import { ContactFooter } from "@/components/contact-footer";
 import { siteContent } from "@/content/site";
 
 export default function Home() {
@@ -22,7 +23,7 @@ export default function Home() {
         </SectionPlaceholder>
         <SectionPlaceholder content={siteContent.sections.experience} />
       </main>
-      <FooterSkeleton />
+      <ContactFooter />
     </>
   );
 }

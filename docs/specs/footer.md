@@ -10,6 +10,8 @@ Measurements below are source computed values at viewport height 900px, scroll t
 
 Lime background, black text, square corners. Desktop two 50% columns, height 14.875rem=238px, padding 2rem=32px; footer total measured 420px. Headline Rajdhani 600, 40px/32px/-1.6px; desktop buttons 158px by 46px. Link grid auto max-content max-content; gaps 20px 50px. Wordmark text is Sreeram, not source brand.
 
+Phase 4 computed-style addendum: button inner surface rgb(176,255,77), border authored width .5px (computed .666667px on inspection device), border color rgb(111,172,34). Button label is Rajdhani 600, 14px/20px, tracking .28px. Placeholder headline reserves the observed 96px box; shorter user copy naturally occupies fewer lines.
+
 ## States and interactions
 
 Dock exposes footer under preceding scene. Link entrance .6s power2.out, stagger .06s. Wordmark yPercent to 0 over .9s power3.out. Second CTA delayed .15s. Desktop sink scrub spans maxScroll-footer.offsetHeight through maxScroll, transform derived from --footer-sink*(1-progress). Pointer trail uses actual text rasterized to texture, verified GLSL in webgl.md. External links and CV remain #.

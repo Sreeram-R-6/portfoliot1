@@ -1,0 +1,223 @@
+.contact-footer {
+  background: var(--primary-green-neon);
+  color: var(--text-black);
+  position: relative;
+}
+
+.footer-top-row {
+  display: flex;
+}
+
+.footer-contact-column,
+.footer-links-column {
+  width: 50%;
+  height: 238px;
+  padding: 32px;
+}
+
+.footer-contact-column {
+  border-right: 1px solid var(--primary-green-divider);
+}
+
+.footer-contact-heading {
+  font-family: var(--font-rajdhani), sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -1.6px;
+  text-transform: uppercase;
+  width: 277px;
+  max-width: 100%;
+  min-height: 96px;
+}
+
+.footer-contact-actions {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.footer-action {
+  width: 158px;
+  height: 46px;
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--font-rajdhani), sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0.28px;
+  text-transform: uppercase;
+  background: rgb(176 255 77);
+  border: 0.5px solid rgb(111 172 34);
+  color: var(--text-black);
+}
+
+.footer-action-secondary {
+  background: rgb(176 255 77);
+  color: var(--text-black);
+}
+
+.footer-action-corners {
+  position: absolute;
+  inset: 3px;
+  pointer-events: none;
+  background:
+    linear-gradient(currentColor, currentColor) left top / 6px 1px,
+    linear-gradient(currentColor, currentColor) left top / 1px 6px,
+    linear-gradient(currentColor, currentColor) right top / 6px 1px,
+    linear-gradient(currentColor, currentColor) right top / 1px 6px,
+    linear-gradient(currentColor, currentColor) left bottom / 6px 1px,
+    linear-gradient(currentColor, currentColor) left bottom / 1px 6px,
+    linear-gradient(currentColor, currentColor) right bottom / 6px 1px,
+    linear-gradient(currentColor, currentColor) right bottom / 1px 6px;
+  background-repeat: no-repeat;
+}
+
+.footer-action:hover {
+  filter: brightness(0.93);
+}
+
+.footer-action:focus-visible,
+.footer-contact-link:focus-visible {
+  outline: 2px solid var(--text-black);
+  outline-offset: 4px;
+}
+
+.footer-links-column {
+  overflow: hidden;
+}
+
+.footer-link-groups {
+  display: grid;
+  grid-template-columns: auto max-content max-content;
+  justify-content: end;
+  gap: 20px 50px;
+  align-items: center;
+  font-family: var(--font-rajdhani), sans-serif;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 600;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+}
+
+.footer-link-group {
+  display: contents;
+  align-content: start;
+  gap: 20px;
+  font-family: var(--font-rajdhani), sans-serif;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 600;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+}
+
+.footer-group-label {
+  margin: 0;
+  color: var(--tertiary-purple);
+}
+
+.footer-contact-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.footer-contact-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer-wordmark-frame {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--primary-green-divider);
+  font-size: 13.889vw;
+  height: 0.91em;
+}
+
+.footer-wordmark {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-rajdhani), sans-serif;
+  font-weight: 500;
+  font-size: inherit;
+  line-height: 0.8;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 1024.98px) {
+  .footer-contact-column,
+  .footer-links-column {
+    height: 206px;
+    padding: 16px;
+  }
+
+  .footer-action {
+    width: 180px;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .footer-link-groups {
+    grid-template-columns: 1fr max-content max-content;
+    gap: 20px 26.5px;
+    justify-content: stretch;
+  }
+
+  .footer-wordmark-frame {
+    font-size: 13.789vw;
+    height: 0.9565em;
+  }
+
+  .footer-wordmark {
+    bottom: 0.0435em;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .footer-top-row {
+    flex-direction: column;
+  }
+
+  .footer-contact-column {
+    width: 100%;
+    height: 210px;
+    border-right: 0;
+    border-bottom: 1px solid var(--primary-green-divider);
+  }
+
+  .footer-links-column {
+    width: 100%;
+    height: 108px;
+  }
+
+  .footer-action {
+    width: auto;
+  }
+
+  .footer-link-groups {
+    gap: 20px 32px;
+  }
+
+  .footer-wordmark-frame {
+    font-size: 13.409vw;
+    height: 1.068em;
+  }
+
+  .footer-wordmark {
+    bottom: 0.132em;
+  }
+}

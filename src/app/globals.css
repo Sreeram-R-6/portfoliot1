@@ -91,6 +91,16 @@
   section, footer {
     scroll-margin-top: var(--nav-height);
   }
+
+  a, button, summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button { cursor: pointer; }
+}
+
+[data-canvas-ready="true"] > .canvas-poster {
+  visibility: hidden;
 }
 
 @layer components {

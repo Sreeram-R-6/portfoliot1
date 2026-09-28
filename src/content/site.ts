@@ -62,6 +62,8 @@ export const siteContent = {
     id: "contact",
     eyebrow: "Contact footer",
     title: "Let’s connect",
+    groupLabels: ["Contact", "Connections", "Location"],
+    locationHref: "#",
     message: { label: "[email]", href: "#" },
     cv: { label: "[CV]", href: "#" },
     links: [

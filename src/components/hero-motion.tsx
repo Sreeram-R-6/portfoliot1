@@ -77,22 +77,20 @@ export function HeroMotion({ children }: { children: ReactNode }) {
       const apply = (progress: number) => {
         const exit = clamp(progress / (2 / 9));
         latestProgress = progress;
-        if (progress > 0) {
-          titles.forEach((split, index) => split.chars.forEach((char, order) => {
-            const amount = clamp((exit - (.3 + (split.chars.length - 1 - order) / split.chars.length * .2)) / .25);
-            gsap.set(char, { opacity: amount >= 1 ? 0 : 1 });
-            char.textContent = amount > 0 && amount < 1 ? alphabet[Math.floor(Math.random() * alphabet.length)] : titleLabels[index][order];
-          }));
-          lines.forEach((split) => split.lines.forEach((line, order) => {
-            const amount = clamp((exit - order / split.lines.length * .5) / .5);
-            gsap.set(line, { yPercent: -110 * amount, opacity: 1 - amount });
-          }));
-          gsap.set(contact, { yPercent: -110 * exit, opacity: 1 - exit });
-          const width = badgeWidth * (1 - exit);
-          const cutTop = Math.min(4, width), cutBottom = Math.min(10, width);
-          gsap.set(badge, { clipPath: `polygon(0 ${cutTop}px,${cutTop}px 0,${width}px 0,${width}px ${Math.max(0, badgeHeight - cutBottom)}px,${width - cutBottom}px ${badgeHeight}px,0 ${badgeHeight}px)`, visibility: width <= 0 ? "hidden" : "visible" });
-          gsap.set(identity.querySelector(".identity-scroll-cue"), { opacity: 1 - exit });
-        }
+        titles.forEach((split, index) => split.chars.forEach((char, order) => {
+          const amount = clamp((exit - (.3 + (split.chars.length - 1 - order) / split.chars.length * .2)) / .25);
+          gsap.set(char, { opacity: amount >= 1 ? 0 : 1 });
+          char.textContent = amount > 0 && amount < 1 ? alphabet[Math.floor(Math.random() * alphabet.length)] : titleLabels[index][order];
+        }));
+        lines.forEach((split) => split.lines.forEach((line, order) => {
+          const amount = clamp((exit - order / split.lines.length * .5) / .5);
+          gsap.set(line, { yPercent: -110 * amount, opacity: 1 - amount });
+        }));
+        gsap.set(contact, { yPercent: -110 * exit, opacity: 1 - exit });
+        const width = badgeWidth * (1 - exit);
+        const cutTop = Math.min(4, width), cutBottom = Math.min(10, width);
+        gsap.set(badge, { clipPath: `polygon(0 ${cutTop}px,${cutTop}px 0,${width}px 0,${width}px ${Math.max(0, badgeHeight - cutBottom)}px,${width - cutBottom}px ${badgeHeight}px,0 ${badgeHeight}px)`, visibility: width <= 0 ? "hidden" : "visible" });
+        gsap.set(identity.querySelector(".identity-scroll-cue"), { opacity: 1 - exit });
         gsap.set(manifesto, { visibility: progress >= 2 / 9 ? "visible" : "hidden" });
         const outgoing = clamp((progress - 7 / 9) / (2 / 9));
         players.forEach((player, index) => player.to(progress >= 7 / 9 ? +(outgoing < index / players.length * .5) : +(progress >= thresholds[index])));

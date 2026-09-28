@@ -35,6 +35,7 @@ export const siteContent = {
       id: "manifesto",
       eyebrow: "Manifesto",
       title: "Learning by building",
+      displayWords: ["Learning", "by", "building"],
       description: "Exploring software and embedded systems through hands-on projects.",
     },
     statistics: {

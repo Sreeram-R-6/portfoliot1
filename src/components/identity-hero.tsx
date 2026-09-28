@@ -3,26 +3,26 @@ import { DecorativeCanvas } from "./decorative-canvas";
 import "./identity-hero.css";
 
 /** An original geometric poster, used instead of a third-party portrait. */
-export function IdentityPoster() {
+export function IdentityPoster({ idPrefix = "identity-poster" }: { idPrefix?: string }) {
   return (
     <svg viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice" className="identity-poster" aria-hidden="true">
       <defs>
-        <linearGradient id="identity-poster-light" x1="0" y1="0" x2="1" y2="1">
+        <linearGradient id={`${idPrefix}-light`} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="#747785" />
           <stop offset="0.55" stopColor="#292a33" />
           <stop offset="1" stopColor="#09090d" />
         </linearGradient>
-        <pattern id="identity-poster-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+        <pattern id={`${idPrefix}-grid`} width="10" height="10" patternUnits="userSpaceOnUse">
           <circle cx="2" cy="2" r="1" fill="#9df133" opacity="0.18" />
         </pattern>
       </defs>
-      <path d="M90 900 165 640 310 565 480 565 635 655 730 900Z" fill="url(#identity-poster-light)" />
+      <path d="M90 900 165 640 310 565 480 565 635 655 730 900Z" fill={`url(#${idPrefix}-light)`} />
       <path d="m325 520-10 80 75 55 75-55-12-80Z" fill="#30313a" />
-      <ellipse cx="392" cy="351" rx="133" ry="188" fill="url(#identity-poster-light)" />
+      <ellipse cx="392" cy="351" rx="133" ry="188" fill={`url(#${idPrefix}-light)`} />
       <path d="m263 336 18-122 105-63 105 46 30 116-69-98-99 8Z" fill="#14151c" />
       <path d="m392 298 0 168 40-22-35-32Z" fill="#111218" opacity="0.7" />
-      <path d="M90 900 165 640 310 565 480 565 635 655 730 900Z" fill="url(#identity-poster-grid)" />
-      <ellipse cx="392" cy="351" rx="133" ry="188" fill="url(#identity-poster-grid)" />
+      <path d="M90 900 165 640 310 565 480 565 635 655 730 900Z" fill={`url(#${idPrefix}-grid)`} />
+      <ellipse cx="392" cy="351" rx="133" ry="188" fill={`url(#${idPrefix}-grid)`} />
     </svg>
   );
 }

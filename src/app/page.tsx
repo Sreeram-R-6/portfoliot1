@@ -2,6 +2,7 @@ import { SectionPlaceholder } from "@/components/portfolio-shell";
 import { HeaderNavigation } from "@/components/header-navigation";
 import { ContactFooter } from "@/components/contact-footer";
 import { IdentityHero } from "@/components/identity-hero";
+import { ManifestoScene } from "@/components/manifesto-scene";
 import { siteContent } from "@/content/site";
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
       <HeaderNavigation />
       <main>
         <IdentityHero />
-        <SectionPlaceholder content={siteContent.sections.manifesto} />
+        <ManifestoScene />
         <SectionPlaceholder content={siteContent.sections.statistics} />
         <SectionPlaceholder content={siteContent.sections.projects}>
           <ul className="mt-8 grid gap-6 md:grid-cols-2">

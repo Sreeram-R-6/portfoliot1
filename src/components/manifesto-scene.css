@@ -1,0 +1,85 @@
+.manifesto-scene {
+  position: relative;
+  height: calc(100dvh - var(--nav-height));
+  background: var(--background-bg-0);
+  overflow: hidden;
+}
+
+.manifesto-portrait { position: absolute; inset: 0; pointer-events: none; opacity: .5; }
+
+.manifesto-paragraph,
+.manifesto-word {
+  position: absolute;
+  margin: 0;
+  font-family: var(--font-rajdhani), sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--text-white);
+  mix-blend-mode: plus-lighter;
+}
+
+.manifesto-paragraph {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0;
+  width: 553px;
+  left: 28px;
+  bottom: 30px;
+}
+
+.manifesto-word { white-space: nowrap; }
+.manifesto-word-1 { bottom: 30px; right: 364px; }
+.manifesto-word-2 { bottom: 76px; right: 223px; }
+.manifesto-word-3 { bottom: 122px; right: 31px; }
+
+.manifesto-arrow-frame {
+  position: absolute;
+  pointer-events: none;
+  width: 332px;
+  height: 41px;
+  bottom: 38px;
+  right: 32px;
+  overflow: hidden;
+}
+
+.manifesto-arrow {
+  width: 41px;
+  height: 41px;
+  color: var(--primary-green-neon);
+}
+
+@media (min-width: 768px) and (max-width: 1024.98px) {
+  .manifesto-paragraph {
+    left: 32px;
+    width: calc(100% - 64px);
+    bottom: calc(124px + 3 * 54.4px);
+  }
+
+  .manifesto-word-1 { bottom: 32px; right: 365px; }
+  .manifesto-word-2 { bottom: 78px; right: 224px; }
+  .manifesto-word-3 { bottom: 124px; right: 32px; }
+  .manifesto-arrow-frame { width: 333px; bottom: 40px; }
+}
+
+@media (max-width: 767.98px) {
+  .manifesto-paragraph,
+  .manifesto-word { font-size: 40px; letter-spacing: 0; }
+
+  .manifesto-paragraph {
+    left: 16px;
+    top: 24px;
+    bottom: auto;
+    width: calc(100% - 32px);
+    line-height: 0.86;
+  }
+
+  .manifesto-word-1 { bottom: 24px; left: 16px; right: auto; }
+  .manifesto-word-2 { bottom: 53px; right: 155px; }
+  .manifesto-word-3 { bottom: 82px; right: 24px; }
+  .manifesto-arrow-frame { width: auto; height: 26px; bottom: 29px; left: 186px; right: 24px; }
+  .manifesto-arrow { width: 26px; height: 26px; }
+}

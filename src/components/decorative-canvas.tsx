@@ -17,8 +17,12 @@ function prefersPoster() {
   return navigator.hardwareConcurrency <= 4 || window.matchMedia("(max-width: 767.98px), (prefers-reduced-motion: reduce)").matches;
 }
 
+export function useStaticPoster() {
+  return useSyncExternalStore(subscribePowerPolicy, prefersPoster, () => true);
+}
+
 export function DecorativeCanvas({ kind, label = "", children, className = "" }: { kind: CanvasKind; label?: string; children: ReactNode; className?: string }) {
-  const lowPower = useSyncExternalStore(subscribePowerPolicy, prefersPoster, () => true);
+  const lowPower = useStaticPoster();
   const [visible, setVisible] = useState(false);
   const [ready, setReady] = useState(false);
   const frameRef = useRef<HTMLDivElement>(null);

@@ -61,6 +61,17 @@ export const siteContent = {
       eyebrow: "Experience",
       title: "Learning and building",
       description: "[Add experience and milestones here]",
+      expandMark: "+",
+      collapseMark: "−",
+      entries: [
+        { id: "experience-01", index: "01", title: "[Experience 01]", role: "[Role]", description: "[Add experience or milestone here]" },
+        { id: "experience-02", index: "02", title: "[Experience 02]", role: "[Role]", description: "[Add experience or milestone here]" },
+        { id: "experience-03", index: "03", title: "[Experience 03]", role: "[Role]", description: "[Add experience or milestone here]" },
+        { id: "experience-04", index: "04", title: "[Experience 04]", role: "[Role]", description: "[Add experience or milestone here]" },
+        { id: "experience-05", index: "05", title: "[Experience 05]", role: "[Role]", description: "[Add experience or milestone here]" },
+        { id: "experience-06", index: "06", title: "[Experience 06]", role: "[Role]", description: "[Add experience or milestone here]" },
+        { id: "experience-07", index: "07", title: "[Experience 07]", role: "[Role]", description: "[Add experience or milestone here]" },
+      ],
     },
   },
   projects: [

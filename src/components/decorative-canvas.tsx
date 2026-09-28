@@ -32,7 +32,10 @@ export function DecorativeCanvas({ kind, label = "", children, className = "" }:
   useEffect(() => {
     const frame = frameRef.current;
     if (!frame) return;
-    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting));
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) setReady(false);
+      setVisible(entry.isIntersecting);
+    });
     observer.observe(frame);
     return () => observer.disconnect();
   }, []);

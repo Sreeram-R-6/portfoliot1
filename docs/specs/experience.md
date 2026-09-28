@@ -8,7 +8,7 @@ Measurements below are source computed values at viewport height 900px, scroll t
 
 ## Layout
 
-Desktop padding 32px, viewport-height scene. Grid columns at 1440: 257px 750px 257px; gaps 28px 56px. CRT measured 609.354px by 378px. Row button height 68px, padding 0 22px; titles 20px/20px; role 12px/12px/1.56px; descriptions DM Sans 14px/22.4px. Scene dead-scroll 35dvh; source stage margin-top calc(35dvh - 143dvh) where applicable.
+Desktop padding 32px, viewport-height scene. Grid columns at 1440: 257px 750px 257px; gaps 28px 56px. CRT measured 609.354px by 378px. Row button height 68px, padding 0 22px; titles 20px/20px; role 12px/12px/1.56px. Inline mobile descriptions use DM Sans 14px/22.4px; the central desktop/tablet description uses 16px/25.6px, confirmed by the computed tables. Lists align to the top. Scene dead-scroll 35dvh; source stage margin-top calc(35dvh - 143dvh) where applicable.
 
 ## States and interactions
 

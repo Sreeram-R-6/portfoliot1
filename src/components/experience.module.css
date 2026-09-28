@@ -1,0 +1,93 @@
+.stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100dvh;
+  padding: 96px 16px 48px;
+  overflow: hidden;
+  background: var(--background-bg-0);
+  border-bottom: 1px solid var(--background-stroke-2);
+}
+
+.heading { display: flex; flex-direction: column; align-items: center; gap: 24px; margin-bottom: 32px; text-align: center; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 9px;
+  font-family: var(--font-rajdhani), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  color: var(--text-black);
+  background: var(--primary-green-neon);
+  clip-path: polygon(0 4px, 4px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+.title { margin: 0; color: var(--text-white); font-family: var(--font-rajdhani), sans-serif; font-size: 45px; font-weight: 500; line-height: .8; letter-spacing: -.02em; text-transform: uppercase; }
+.body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 9px; justify-items: center; width: 100%; max-width: 1400px; }
+.list { display: contents; }
+.row { position: relative; width: 100%; }
+.button { display: flex; position: relative; align-items: center; width: 100%; height: 68px; padding: 0 22px; border: 0; background: transparent; text-align: left; cursor: pointer; }
+.rowBackground { position: absolute; inset: 0; background: var(--background-stroke-2); clip-path: polygon(0 20px, 20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%); pointer-events: none; }
+.rowBackground::after { content: ""; position: absolute; inset: 1px; background: var(--background-bg-0); clip-path: inherit; transition: background-color .2s ease-out; }
+.index, .rowText, .toggle { position: relative; z-index: 1; }
+.index { right: 8px; width: 36px; flex-shrink: 0; padding-right: 12px; text-align: right; color: var(--text-grey-1); font-family: var(--font-rajdhani), sans-serif; font-size: 12px; font-weight: 600; line-height: 12px; letter-spacing: 1.56px; }
+.rowText { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 6px; }
+.rowTitle { color: var(--text-white); font-family: var(--font-rajdhani), sans-serif; font-size: 20px; font-weight: 500; line-height: 20px; text-transform: uppercase; transition: color .3s ease-out; }
+.role { color: var(--text-grey-1); font-family: var(--font-rajdhani), sans-serif; font-size: 12px; font-weight: 600; line-height: 12px; letter-spacing: 1.56px; text-transform: uppercase; transition: color .3s ease-out; }
+.toggle { flex-shrink: 0; color: var(--primary-green-neon); font-family: var(--font-dm-mono), monospace; font-size: 16px; line-height: 16px; }
+.row[data-selected="true"] .rowBackground::after { background: var(--foreground); }
+.row[data-selected="true"] .index, .row[data-selected="true"] .rowTitle, .row[data-selected="true"] .toggle { color: var(--text-black); }
+.button:focus-visible { outline: 2px solid var(--primary-green-neon); outline-offset: 4px; }
+.panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease-out; }
+.panelInner { min-height: 0; overflow: hidden; }
+.row[data-selected="true"] .panel { grid-template-rows: 1fr; }
+.row[data-selected="true"] .panelInner { background: var(--background-bg-0); border: 1px solid var(--background-stroke-2); border-top: 0; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%); }
+.panelCopy { margin: 0; padding: 22px 24px 24px; font-family: var(--font-dm-sans), sans-serif; font-size: 14px; line-height: 22.4px; color: var(--text-grey-1); }
+.crt, .description { display: none; }
+.mark { display: block; width: 100%; height: 100%; }
+.rule { position: absolute; pointer-events: none; background: var(--background-stroke-1); }
+.ruleTop, .ruleBottom { left: 6px; right: 6px; height: 1px; }
+.ruleTop { top: 0; } .ruleBottom { bottom: 0; }
+.ruleLeft, .ruleRight { top: 6px; bottom: 6px; width: 1px; }
+.ruleLeft { left: 0; } .ruleRight { right: 0; }
+.corner { position: absolute; width: 8px; height: 8px; pointer-events: none; }
+.corner::before, .corner::after { content: ""; position: absolute; background: var(--text-grey-1); }
+.corner::before { width: 8px; height: 1px; top: 3.5px; }
+.corner::after { height: 8px; width: 1px; left: 3.5px; }
+.cornerTopLeft { top: -4px; left: -4px; } .cornerTopRight { top: -4px; right: -4px; }
+.cornerBottomRight { bottom: -4px; right: -4px; } .cornerBottomLeft { bottom: -4px; left: -4px; }
+
+@media (hover: hover) {
+  .button:hover .rowBackground::after { background: var(--primary-green-neon); }
+  .row[data-selected="true"] .button:hover .rowBackground::after { background: var(--foreground); }
+  .button:hover .index, .button:hover .rowTitle, .button:hover .role, .button:hover .toggle { color: var(--text-black); }
+}
+
+@media (min-width: 768px) {
+  .stage { padding: 80px 32px 48px; }
+  .title { font-size: 64px; }
+  .body { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "stage stage" "desc desc" "left right"; gap: 28px 48px; align-items: start; }
+  .list { display: flex; width: 100%; flex-direction: column; gap: 9px; }
+  .left { grid-area: left; } .right { grid-area: right; }
+  .panel, .toggle { display: none; }
+  .crt { display: block; position: relative; grid-area: stage; width: auto; max-width: 100%; height: min(415px, 42dvh); aspect-ratio: 669 / 415; }
+  .description { display: grid; grid-area: desc; width: 100%; max-width: 553px; margin: 0; text-align: center; color: var(--text-grey-1); font-family: var(--font-dm-sans), sans-serif; font-size: 16px; line-height: 25.6px; }
+  .description p { grid-area: 1 / 1; visibility: hidden; margin: 0; }
+  .description p[data-active="true"] { visibility: visible; }
+}
+
+@media (min-width: 1025px) {
+  .stage { padding: 32px; }
+  .title { font-size: 80px; }
+  .body { grid-template-columns: 257px minmax(0, 1fr) 257px; grid-template-areas: "left stage right" "left desc right"; gap: 28px 56px; }
+  .list { align-self: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel, .rowBackground::after, .rowTitle, .role { transition: none; }
+}

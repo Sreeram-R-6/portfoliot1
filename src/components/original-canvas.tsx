@@ -148,7 +148,7 @@ export function OriginalCanvas({ kind, label, onReady }: { kind: CanvasKind; lab
         gl.drawArrays(gl.TRIANGLES, 0, 3);
         onReady(true);
       };
-      const ownPoster = kind === "portrait" ? canvas.parentElement?.querySelector(".canvas-poster svg") : null;
+      const ownPoster = kind === "portrait" || kind === "experience" ? canvas.parentElement?.querySelector(".canvas-poster svg") : null;
       if (ownPoster) {
         const image = new Image();
         image.onload = () => {
@@ -156,7 +156,9 @@ export function OriginalCanvas({ kind, label, onReady }: { kind: CanvasKind; lab
           const art = document.createElement("canvas");
           art.width = canvas.width;
           art.height = canvas.height;
-          art.getContext("2d")?.drawImage(image, 0, 0, art.width, art.height);
+          const bounds = ownPoster.getBoundingClientRect();
+          const frame = canvas.getBoundingClientRect();
+          art.getContext("2d")?.drawImage(image, (bounds.left - frame.left) * dpr, (bounds.top - frame.top) * dpr, bounds.width * dpr, bounds.height * dpr);
           paint(art);
         };
         image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(new XMLSerializer().serializeToString(ownPoster))}`;

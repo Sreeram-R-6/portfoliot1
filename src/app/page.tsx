@@ -4,6 +4,7 @@ import { ContactFooter } from "@/components/contact-footer";
 import { IdentityHero } from "@/components/identity-hero";
 import { ManifestoScene } from "@/components/manifesto-scene";
 import { StatisticsTools } from "@/components/statistics-tools";
+import { Experience } from "@/components/experience";
 import { siteContent } from "@/content/site";
 
 export default function Home() {
@@ -24,7 +25,7 @@ export default function Home() {
             ))}
           </ul>
         </SectionPlaceholder>
-        <SectionPlaceholder content={siteContent.sections.experience} />
+        <Experience />
       </main>
       <ContactFooter />
     </>

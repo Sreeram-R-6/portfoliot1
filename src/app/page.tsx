@@ -6,6 +6,7 @@ import { StatisticsTools } from "@/components/statistics-tools";
 import { Experience } from "@/components/experience";
 import { ProjectShowcase } from "@/components/project-showcase";
 import { HeroMotion } from "@/components/hero-motion";
+import { FooterMotion } from "@/components/footer-motion";
 
 export default function Home() {
   return (
@@ -19,8 +20,8 @@ export default function Home() {
         <StatisticsTools />
         <ProjectShowcase />
         <Experience />
+        <FooterMotion><ContactFooter /></FooterMotion>
       </main>
-      <ContactFooter />
     </>
   );
 }

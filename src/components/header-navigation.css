@@ -21,3 +21,10 @@
 @media (prefers-reduced-motion: reduce) {
   .menu-surface { transition: none; }
 }
+.site-navigation { min-height: 76px; height: auto; gap: clamp(12px, 2vw, 32px); }
+.site-navigation > a, .site-navigation > span { flex: 1 1 0; }
+.site-navigation > a > span { flex-shrink: 0; }
+.site-navigation > button { flex: 0 1 auto; max-width: 35%; }
+.navigation-dialog a.menu-surface { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.2; gap: 12px; }
+.navigation-dialog [data-menu-label] { overflow-wrap: anywhere; }
+.navigation-dialog > div > div:first-child { height: auto; min-height: 40px; gap: 16px; }

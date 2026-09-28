@@ -130,16 +130,16 @@ export function HeaderNavigation() {
         <p className="orientation-title">{siteContent.orientation.title}</p>
         <p className="orientation-hint">{siteContent.orientation.hint}</p>
       </div>
-      <nav aria-label={navigation.label} className="relative flex h-[76px] items-center justify-between px-4 py-5 sm:px-8">
-        <a href={navigation.home.href} className="flex h-9 w-[106px] items-center font-heading text-xs leading-3 font-semibold uppercase focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+      <nav aria-label={navigation.label} className="site-navigation relative flex items-center justify-between px-4 py-5 sm:px-8">
+        <a href={navigation.home.href} className="flex items-center gap-2 font-heading text-xs leading-5 font-semibold uppercase focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
           <span aria-hidden="true" className="mr-1.5 block size-2.5 rotate-45 border border-primary" />
           {navigation.home.label}
         </a>
-        <span className="absolute left-[60%] hidden font-heading text-xs leading-4 tracking-[1.56px] text-muted-foreground uppercase sm:block">{siteContent.location}</span>
-        <span className="absolute left-[80%] hidden font-heading text-xs leading-4 tracking-[1.56px] text-muted-foreground uppercase lg:block">
+        <span className="hidden font-heading text-xs leading-5 tracking-[1.56px] text-muted-foreground uppercase sm:block">{siteContent.location}</span>
+        <span className="hidden font-heading text-xs leading-5 tracking-[1.56px] text-muted-foreground uppercase lg:block">
           {navigation.coordinates.map((coordinate) => <span key={coordinate} className="block">{coordinate}</span>)}
         </span>
-        <button ref={triggerRef} type="button" aria-expanded={isOpen} aria-controls="navigation-dialog" aria-haspopup="dialog" onClick={() => motionRef.current?.open()} className="menu-surface relative h-9 w-20 bg-[#252e20]/80 font-heading text-sm leading-5 font-semibold uppercase hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+        <button ref={triggerRef} type="button" aria-expanded={isOpen} aria-controls="navigation-dialog" aria-haspopup="dialog" onClick={() => motionRef.current?.open()} className="menu-surface relative min-h-9 px-4 py-2 bg-[#252e20]/80 font-heading text-sm leading-5 font-semibold uppercase hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
           <span aria-hidden="true" className="absolute top-0 left-0 size-1 border-t border-l border-primary" />
           <span aria-hidden="true" className="absolute right-0 bottom-0 size-1 border-r border-b border-primary" />
           {navigation.menu}
@@ -163,7 +163,7 @@ export function HeaderNavigation() {
           <div data-menu-item className="border-t border-foreground/25 pt-6">
             <p className="font-heading text-xs leading-4 font-normal uppercase tracking-[1.56px]">{navigation.connections}</p>
             <ul className="mt-4 flex flex-wrap gap-x-8 gap-y-4 font-heading text-lg font-semibold uppercase">
-              {[siteContent.footer.message, siteContent.footer.cv, ...siteContent.footer.links].map((link) => (
+              {[siteContent.footer.message, ...(!siteContent.footer.cv.href.startsWith("#") && !siteContent.footer.cv.href.startsWith("TODO") ? [siteContent.footer.cv] : []), ...siteContent.footer.links].map((link) => (
                 <li key={link.label}><a href={link.href} aria-label={link.label} onClick={close} onPointerEnter={(event) => scramble(event.currentTarget)} onFocus={(event) => scramble(event.currentTarget)} className="underline-offset-4 hover:text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"><span data-menu-label={link.label} aria-hidden="true">{[...link.label].map((char, index) => <span key={index} data-menu-char={char}>{char}</span>)}</span></a></li>
               ))}
             </ul>

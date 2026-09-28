@@ -1,5 +1,6 @@
 import { siteContent } from "@/content/site";
 import { DecorativeCanvas } from "./decorative-canvas";
+import { FitText } from "./fit-text";
 import "./identity-hero.css";
 
 /** An original geometric poster, used instead of a third-party portrait. */
@@ -42,7 +43,7 @@ export function IdentityHero() {
           <div className="identity-contact-bar" />
           <div className="identity-contact-stack">
             <a href={siteContent.footer.message.href}>{siteContent.footer.message.label}<span aria-hidden="true">↗</span></a>
-            <a href={siteContent.footer.cv.href}>{siteContent.footer.cv.label}<span aria-hidden="true">↗</span></a>
+            {!siteContent.footer.cv.href.startsWith("#") && !siteContent.footer.cv.href.startsWith("TODO") && <a href={siteContent.footer.cv.href}>{siteContent.footer.cv.label}<span aria-hidden="true">↗</span></a>}
           </div>
         </div>
         <p className="identity-introduction" data-reveal>{identity.description}</p>
@@ -50,8 +51,7 @@ export function IdentityHero() {
         <div className="identity-bottom-cluster">
           <p className="identity-badge" data-reveal>{identity.badge}</p>
           <p className="identity-location" data-reveal>{identity.locationLabel}</p>
-          <div className="identity-name identity-name-first" aria-hidden="true" data-reveal>{identity.displayLines[0]}</div>
-          <div className="identity-name identity-name-second" aria-hidden="true" data-reveal>{identity.displayLines[1]}</div>
+          {identity.displayLines.map((line, index) => <FitText key={`${index}-${line}`} text={line} className="identity-name" />)}
         </div>
         <div className="identity-scroll-cue" aria-hidden="true">
           <span>{identity.scrollLabel}</span>

@@ -105,3 +105,17 @@
   .identity-poster { width: 78%; right: -12%; }
   .identity-canvas-area { width: 78%; right: -12%; }
 }
+/* Content follows normal flow; decorative layers alone use absolute positioning. */
+.identity-scene { height: auto; min-height: calc(100dvh - var(--nav-height)); overflow: clip; display: flex; flex-direction: column; gap: clamp(24px, 4vh, 56px); padding: clamp(24px, 3vw, 48px) var(--grid-edge-inset); }
+.identity-contact { position: relative; inset: auto; width: min(100%, 45ch); }
+.identity-contact-stack { line-height: 1.5; }
+.identity-contact-stack a { gap: 12px; }
+.identity-introduction { position: relative; inset: auto; width: min(100%, 48ch); max-width: 65ch; font-size: clamp(1rem, 1.35vw, 1.35rem); text-align: left; line-height: 1.6; }
+.identity-bottom-cluster { position: relative; inset: auto; height: auto; margin-top: auto; display: flex; flex-direction: column; gap: 12px; }
+.identity-badge { position: relative; inset: auto; align-self: flex-start; max-width: 100%; line-height: 1.5; }
+.identity-location { position: relative; inset: auto; line-height: 1.5; }
+.identity-name { position: relative; inset: auto; margin: 0; width: 100%; font-size: var(--fit-size, clamp(2.5rem, 12vw, 12rem)); line-height: 1.03; letter-spacing: -.045em; white-space: nowrap; overflow-wrap: normal; hyphens: none; }
+.identity-region { top: 32px; right: 32px; max-width: 20%; font-size: clamp(2rem, 6vw, 7.5rem); line-height: 1.1; }
+.identity-scroll-cue { display: none; }
+@media (min-width: 768px) { .identity-introduction { width: min(48%, 48ch); } }
+.identity-name { line-height: 1.2; }

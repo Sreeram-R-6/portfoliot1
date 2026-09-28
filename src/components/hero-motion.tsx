@@ -19,9 +19,12 @@ export function HeroMotion({ children }: { children: ReactNode }) {
     gsap.registerPlugin(ScrollTrigger, SplitText);
     const media = gsap.matchMedia();
     media.add("(prefers-reduced-motion: no-preference)", () => {
-      hero.dataset.motion = "active";
       const identity = hero.querySelector<HTMLElement>("[data-section=identity]")!;
       const manifesto = hero.querySelector<HTMLElement>("[data-section=manifesto]")!;
+      // Content taller than the viewport stays in normal flow rather than clipping.
+      const available = innerHeight - (scroller.querySelector("nav")?.offsetHeight ?? 76);
+      if (Math.max(identity.scrollHeight, manifesto.scrollHeight) > available + 1) return;
+      hero.dataset.motion = "active";
       const exits = identity.querySelectorAll("[data-reveal]");
       const showIdentityOnFocus = () => {
         scroller.scrollTo({ top: trigger.start, behavior: "instant" });
@@ -31,7 +34,7 @@ export function HeroMotion({ children }: { children: ReactNode }) {
       gsap.fromTo(exits, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .8, stagger: .06, delay: .1, ease: "power3.out" });
       const titles = [...identity.querySelectorAll<HTMLElement>(".identity-name, .identity-region")].map((element) => SplitText.create(element, { type: "chars", aria: "none" }));
       const titleLabels = titles.map((split) => split.chars.map((char) => char.textContent ?? ""));
-      const lines = [...identity.querySelectorAll<HTMLElement>(".identity-introduction, .identity-location")].map((element) => SplitText.create(element, { type: "lines", mask: "lines", aria: "none" }));
+      const lines = [...identity.querySelectorAll<HTMLElement>(".identity-introduction, .identity-location")].map((element) => SplitText.create(element, { type: "lines", aria: "none" }));
       const contact = identity.querySelector<HTMLElement>(".identity-contact-stack")!;
       const badge = identity.querySelector<HTMLElement>(".identity-badge")!;
       const badgeWidth = badge.offsetWidth;
@@ -60,7 +63,7 @@ export function HeroMotion({ children }: { children: ReactNode }) {
           kill: () => tween?.kill(),
         };
       });
-      const thresholds = [2 / 9, .42222222222222217, .5111111111111111, .6];
+      const thresholds = players.map((_, index) => index === 0 ? 2 / 9 : .42222222222222217 + (index - 1) * (.6 - .42222222222222217) / Math.max(1, words.length - 1));
       const arrow = manifesto.querySelector<SVGElement>(".manifesto-arrow")!;
       const arrowFrame = manifesto.querySelector<HTMLElement>(".manifesto-arrow-frame")!;
       const arrowState = { out: 0 };
@@ -68,7 +71,7 @@ export function HeroMotion({ children }: { children: ReactNode }) {
       let arrowTween: gsap.core.Tween | undefined;
       let latestProgress = 0;
       const paintArrow = () => {
-        const start = -words[0].getBoundingClientRect().width;
+        const start = -(words[0]?.getBoundingClientRect().width ?? 0);
         const middle = .875 * parseFloat(getComputedStyle(document.documentElement).fontSize);
         const end = arrowFrame.offsetWidth - arrow.getBoundingClientRect().width;
         const travel = clamp((latestProgress - 2 / 3) / (7 / 9 - 2 / 3));
@@ -94,7 +97,7 @@ export function HeroMotion({ children }: { children: ReactNode }) {
         gsap.set(manifesto, { visibility: progress >= 2 / 9 ? "visible" : "hidden" });
         const outgoing = clamp((progress - 7 / 9) / (2 / 9));
         players.forEach((player, index) => player.to(progress >= 7 / 9 ? +(outgoing < index / players.length * .5) : +(progress >= thresholds[index])));
-        const nextArrow = +(progress >= thresholds[1]);
+        const nextArrow = +(progress >= (thresholds[1] ?? 2 / 9));
         if (nextArrow !== arrowTarget) {
           arrowTarget = nextArrow; arrowTween?.kill();
           arrowTween = gsap.to(arrowState, { out: nextArrow, duration: .7 * Math.abs(nextArrow - arrowState.out), ease: "none", onUpdate: paintArrow });

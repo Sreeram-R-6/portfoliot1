@@ -11,11 +11,25 @@
     "loader": {
       "label": "Preparing portfolio"
     },
+    "sound": {
+      "ambient": "/audio/ambient.wav",
+      "ui": {
+        "hover": "/audio/hover.wav",
+        "click": "/audio/click.wav",
+        "toggle": "/audio/toggle.wav"
+      }
+    },
     "orientation": {
       "title": "Explore in portrait",
       "hint": "Rotate your device"
     },
     "navigation": {
+      "sound": {
+        "label": "Sound",
+        "on": "On",
+        "off": "Off",
+        "pending": "Waiting for interaction"
+      },
       "skip": "Skip to main content",
       "label": "Navigation",
       "menu": "Menu",
@@ -363,11 +377,25 @@
     "loader": {
       "label": "Preparing portfolio"
     },
+    "sound": {
+      "ambient": "/audio/ambient.wav",
+      "ui": {
+        "hover": "/audio/hover.wav",
+        "click": "/audio/click.wav",
+        "toggle": "/audio/toggle.wav"
+      }
+    },
     "orientation": {
       "title": "Explore in portrait",
       "hint": "Rotate your device"
     },
     "navigation": {
+      "sound": {
+        "label": "Sound",
+        "on": "On",
+        "off": "Off",
+        "pending": "Waiting for interaction"
+      },
       "skip": "Skip to main content",
       "label": "Navigation",
       "menu": "Menu",
@@ -709,11 +737,25 @@
     "loader": {
       "label": "Preparing portfolio"
     },
+    "sound": {
+      "ambient": "/audio/ambient.wav",
+      "ui": {
+        "hover": "/audio/hover.wav",
+        "click": "/audio/click.wav",
+        "toggle": "/audio/toggle.wav"
+      }
+    },
     "orientation": {
       "title": "Explore in portrait",
       "hint": "Rotate your device"
     },
     "navigation": {
+      "sound": {
+        "label": "Sound",
+        "on": "On",
+        "off": "Off",
+        "pending": "Waiting for interaction"
+      },
       "skip": "Skip to main content",
       "label": "Navigation",
       "menu": "Menu",
@@ -919,11 +961,25 @@
     "loader": {
       "label": "Preparing portfolio"
     },
+    "sound": {
+      "ambient": "/audio/ambient.wav",
+      "ui": {
+        "hover": "/audio/hover.wav",
+        "click": "/audio/click.wav",
+        "toggle": "/audio/toggle.wav"
+      }
+    },
     "orientation": {
       "title": "Explore in portrait",
       "hint": "Rotate your device"
     },
     "navigation": {
+      "sound": {
+        "label": "Sound",
+        "on": "On",
+        "off": "Off",
+        "pending": "Waiting for interaction"
+      },
       "skip": "Skip to main content",
       "label": "Navigation",
       "menu": "Menu",

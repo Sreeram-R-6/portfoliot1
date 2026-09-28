@@ -3,9 +3,10 @@
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { SiteLoader } from "./site-loader";
+import { SoundProvider, type SoundConfig } from "./sound-provider";
 
-export function PublicRuntime({ children, loaderLabel }: { children: ReactNode; loaderLabel: string }) {
+export function PublicRuntime({ children, loaderLabel, sound }: { children: ReactNode; loaderLabel: string; sound: SoundConfig }) {
   const pathname = usePathname();
   if (pathname.startsWith("/details")) return children;
-  return <><SiteLoader label={loaderLabel} />{children}</>;
+  return <SoundProvider config={sound}><SiteLoader label={loaderLabel} />{children}</SoundProvider>;
 }

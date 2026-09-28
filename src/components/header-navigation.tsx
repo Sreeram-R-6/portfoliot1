@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { gsap } from "gsap";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { siteContent, type PublicSiteContent } from "@/content/site";
+import { SoundToggle } from "./sound-provider";
 import "./header-navigation.css";
 import { CursorProgress } from "./cursor-progress";
 
@@ -135,6 +136,7 @@ export function HeaderNavigation({ site = siteContent }: { site?: PublicSiteCont
           <span aria-hidden="true" className="mr-1.5 block size-2.5 rotate-45 border border-primary" />
           {navigation.home.label}
         </a>
+        <span className="hidden sm:inline-flex"><SoundToggle {...navigation.sound} /></span>
         <span className="hidden font-heading text-xs leading-5 tracking-[1.56px] text-muted-foreground uppercase sm:block">{site.location}</span>
         <span className="hidden font-heading text-xs leading-5 tracking-[1.56px] text-muted-foreground uppercase lg:block">
           {navigation.coordinates.map((coordinate, index) => <span key={`${index}-${coordinate}`} className="block">{coordinate}</span>)}
@@ -168,6 +170,7 @@ export function HeaderNavigation({ site = siteContent }: { site?: PublicSiteCont
               ))}
             </ul>
           </div>
+          <div data-menu-item className="mt-6 border-t border-foreground/25 pt-4"><SoundToggle {...navigation.sound} /></div>
         </div>
       </dialog>
     </header>

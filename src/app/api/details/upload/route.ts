@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     const form = await new Response(bytes, { headers: { "Content-Type": request.headers.get("content-type") ?? "" } }).formData();
     const file = form.get("file");
     const kind = form.get("kind") ?? "image";
-    if (!(file instanceof File) || !["image", "cv"].includes(String(kind)) || form.getAll("file").length !== 1) throw new DetailsRequestError("Choose one file and an image or CV destination.");
+    if (!(file instanceof File) || !["image", "cv", "audio"].includes(String(kind)) || form.getAll("file").length !== 1) throw new DetailsRequestError("Choose one file and an image, CV or audio destination.");
     return Response.json({ path: await saveUpload(file, String(kind)) });
   } catch (error) {
     if (error instanceof DetailsRequestError) return Response.json({ error: error.message }, { status: error.status });

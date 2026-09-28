@@ -15,6 +15,7 @@ const groups = [
   { id: "footer", label: "Footer", paths: ["footer.id", "footer.eyebrow", "footer.title", "footer.groupLabels"] },
   { id: "seo", label: "SEO / meta", paths: ["metadata"] },
   { id: "loader", label: "Loader", paths: ["loader"] },
+  { id: "sound", label: "Sound", paths: ["sound"] },
 ];
 
 function valueAt(root: ContentValue, path: string): ContentValue {
@@ -50,7 +51,7 @@ function ContentField({ value, path, errors, change }: FieldProps) {
     if (file.size > 5 * 1024 * 1024) { setUploadStatus("Error: file exceeds 5 MB."); event.target.value = ""; return; }
     setUploadStatus("Uploading...");
     try {
-      const body = new FormData(); body.set("file", file); body.set("kind", kind === "cv" ? "cv" : "image");
+      const body = new FormData(); body.set("file", file); body.set("kind", kind === "cv" ? "cv" : kind === "audio" ? "audio" : "image");
       const response = await fetch("/api/details/upload", { method: "POST", body });
       const result = await response.json();
       if (!response.ok || typeof result.path !== "string") throw new Error(result.error || "Upload failed.");
@@ -99,8 +100,8 @@ function ContentField({ value, path, errors, change }: FieldProps) {
       )}
       {limit !== undefined && <p className={text.length > limit ? "details-todo" : "details-counter"}>{text.length} / {limit} recommended characters{ text.length > limit ? " — longer text is allowed" : ""}</p>}
       {messages.length > 0 && <div id={`${id}-error`} className="details-error">{messages.map((error) => <p key={error.message}>{error.message}</p>)}</div>}
-      {(kind === "image" || kind === "cv") && <>
-        <label className="details-upload">Upload {kind === "cv" ? "PDF CV" : "image"} (max 5 MB)<input type="file" aria-label={`Upload ${path}`} accept={kind === "cv" ? ".pdf,application/pdf" : ".png,.jpg,.jpeg,.webp,.svg"} onChange={upload} /></label>
+      {(kind === "image" || kind === "cv" || kind === "audio") && <>
+        <label className="details-upload">Upload {kind === "cv" ? "PDF CV" : kind === "audio" ? "audio" : "image"} (max 5 MB)<input type="file" aria-label={`Upload ${path}`} accept={kind === "cv" ? ".pdf,application/pdf" : kind === "audio" ? ".mp3,.ogg,.wav" : ".png,.jpg,.jpeg,.webp,.svg"} onChange={upload} /></label>
         <p role="status">{uploadStatus}</p>
         {kind === "image" && typeof value === "string" && !todo && !messages.length && (
           // Native image previews accept newly uploaded SVGs without an optimization service.

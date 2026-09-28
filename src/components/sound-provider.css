@@ -1,0 +1,17 @@
+.sound-root { display: contents; }
+.sound-toggle {
+  cursor: pointer;
+  border: 0;
+  padding: .5rem 0;
+  color: inherit;
+  background: transparent;
+  font-family: var(--font-rajdhani), sans-serif;
+  font-size: .75rem;
+  line-height: 1.4;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+.sound-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.sound-status { font-size: .72em; opacity: .8; }

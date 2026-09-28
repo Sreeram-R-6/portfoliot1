@@ -62,7 +62,7 @@ export default function RootLayout({
       className={`${dmSans.variable} ${dmMono.variable} ${rajdhani.variable} h-full antialiased`}
     >
       <head><script dangerouslySetInnerHTML={{ __html: "try{if(sessionStorage.getItem('portfolio:loaded')==='1')document.documentElement.dataset.siteLoaded='true'}catch{}" }} /></head>
-      <body><PublicRuntime loaderLabel={siteContent.loader.label}>{children}</PublicRuntime></body>
+      <body><PublicRuntime loaderLabel={siteContent.loader.label} sound={siteContent.sound}>{children}</PublicRuntime></body>
     </html>
   );
 }

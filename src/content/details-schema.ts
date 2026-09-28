@@ -66,6 +66,7 @@ export function validateDetails(payload: unknown): Validation {
     else if (/^(?:todos\.\d+|projects\.\d+\.todo)$/.test(path)) warnings.push({ path, message: value });
     if (/(?:github_pat_[\w]{20,}|ghp_[\w]{20,}|-----BEGIN .*PRIVATE KEY-----|sk-[\w-]{20,})/.test(value)) error(path, "Do not store credentials or private keys here.");
     if (/(?:\.href|Href|\.image|\.siteUrl)$/.test(path) && value.trim() && !isValidLink(value, path === "metadata.siteUrl")) error(path, "Use an http(s) URL, mailto address, site path, anchor or TODO.");
+    if (/^sound\.(?:ambient|ui\.(?:hover|click|toggle))$/.test(path) && !isTodo(value) && (!isValidLink(value) || !/^(?:https?:\/\/|\/)/i.test(value))) error(path, "Use an http(s) audio URL or public site path.");
     if (path.endsWith(".id") && !/^[a-z][a-z0-9-]*$/.test(value)) error(path, "Use a lowercase ID beginning with a letter.");
     if (/sections\.[^.]+\.id$/.test(path)) {
       const section = path.split(".")[1] as keyof typeof template.sections;
@@ -83,6 +84,7 @@ export function isSiteContent(payload: unknown): payload is SiteContent {
 }
 
 export function fieldKind(path: string) {
+  if (/^sound\.(?:ambient|ui\.(?:hover|click|toggle))$/.test(path)) return "audio";
   if (path.endsWith(".image")) return "image";
   if (path === "footer.cv.href") return "cv";
   if (/sections\.statistics\.counters\.\d+\.value$/.test(path)) return "number";

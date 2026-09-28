@@ -73,12 +73,16 @@ export function checkedFilename(filename: string) {
 export async function saveUpload(file: File, kind: string) {
   const name = checkedFilename(file.name);
   const extension = name.split(".").at(-1)?.toLowerCase() ?? "";
-  const types: Record<string, string> = { png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", webp: "image/webp", svg: "image/svg+xml", pdf: "application/pdf" };
-  if (!types[extension] || file.type !== types[extension] || (kind === "cv" ? extension !== "pdf" : !["png", "jpg", "jpeg", "webp", "svg"].includes(extension))) throw new DetailsRequestError("Use PNG, JPG, WebP or SVG images, or a PDF for the CV.");
+  const types: Record<string, string[]> = { png: ["image/png"], jpg: ["image/jpeg"], jpeg: ["image/jpeg"], webp: ["image/webp"], svg: ["image/svg+xml"], pdf: ["application/pdf"], mp3: ["audio/mpeg", "audio/mp3"], ogg: ["audio/ogg", "application/ogg"], wav: ["audio/wav", "audio/x-wav"] };
+  const extensions = kind === "cv" ? ["pdf"] : kind === "audio" ? ["mp3", "ogg", "wav"] : ["png", "jpg", "jpeg", "webp", "svg"];
+  if (!types[extension]?.includes(file.type) || !extensions.includes(extension)) throw new DetailsRequestError("Use an image, PDF CV, or MP3/OGG/WAV audio file with the matching destination.");
   if (!file.size || file.size > maxUploadBytes) throw new DetailsRequestError("Files must be between 1 byte and 5 MB.", 413);
   const bytes = Buffer.from(await file.arrayBuffer());
   const text = bytes.toString("utf8");
   const signatures: Record<string, boolean> = {
+    mp3: bytes.toString("ascii", 0, 3) === "ID3" || (bytes[0] === 255 && (bytes[1] & 224) === 224),
+    ogg: bytes.toString("ascii", 0, 4) === "OggS",
+    wav: bytes.toString("ascii", 0, 4) === "RIFF" && bytes.toString("ascii", 8, 12) === "WAVE",
     png: bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])),
     jpg: bytes[0] === 255 && bytes[1] === 216 && bytes[2] === 255,
     jpeg: bytes[0] === 255 && bytes[1] === 216 && bytes[2] === 255,

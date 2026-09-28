@@ -14,6 +14,7 @@ const groups = [
   { id: "experience", label: "Experience", paths: ["sections.experience"] },
   { id: "footer", label: "Footer", paths: ["footer.id", "footer.eyebrow", "footer.title", "footer.groupLabels"] },
   { id: "seo", label: "SEO / meta", paths: ["metadata"] },
+  { id: "loader", label: "Loader", paths: ["loader"] },
 ];
 
 function valueAt(root: ContentValue, path: string): ContentValue {

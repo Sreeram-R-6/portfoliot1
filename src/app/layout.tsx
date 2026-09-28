@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Mono, DM_Sans, Rajdhani } from "next/font/google";
 import { siteContent } from "@/content/site";
+import { PublicRuntime } from "@/components/public-runtime";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -57,9 +58,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${dmSans.variable} ${dmMono.variable} ${rajdhani.variable} h-full antialiased`}
     >
-      <body>{children}</body>
+      <head><script dangerouslySetInnerHTML={{ __html: "try{if(sessionStorage.getItem('portfolio:loaded')==='1')document.documentElement.dataset.siteLoaded='true'}catch{}" }} /></head>
+      <body><PublicRuntime loaderLabel={siteContent.loader.label}>{children}</PublicRuntime></body>
     </html>
   );
 }

@@ -37,375 +37,679 @@ GSAP + ScrollTrigger + SplitText; custom WebGL2; CSS cue keyframes.
 
 Tailwind source version is UNVERIFIED but explicitly approved to ignore: use installed Tailwind v4. No additional package needed. Reduced-motion and keyboard behavior above are target requirements where the source did not establish equivalent behavior.
 
-## Exact source CSS rules
+## Layout property reference
 
-Rules retain cascade order and media conditions. Tokens map to the verified OKLCH equivalents in globals.css. Source utility classes are additionally represented by the computed tables below.
-
-Context: `base`
-
-```css
-.home-hero {background:#000;width:100%;position:relative}
-```
+Property tables retain cascade order and media conditions; no source implementation is included. Tokens map to the verified OKLCH equivalents in globals.css. Source utility classes are additionally represented by the computed tables below.
 
 Context: `base`
 
-```css
-.home-hero-bg {z-index:0;position:absolute;inset:0}
-```
+Reference element: `.home-hero`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background | #000 |
+| width | 100% |
+| position | relative |
+
 
 Context: `base`
 
-```css
-.home-hero-line-cap {width:var(--scroller-width,100%);height:var(--nav-height,0px);z-index:0;pointer-events:none;visibility:hidden;position:fixed;top:0;left:0}
-```
+Reference element: `.home-hero-bg`.
+
+| Property / input | Specified value |
+| --- | --- |
+| z-index | 0 |
+| position | absolute |
+| inset | 0 |
+
 
 Context: `base`
 
-```css
-.home-hero-pin {height:calc(100dvh - var(--nav-height,5rem));width:100%;position:relative;overflow:hidden}
-```
+Reference element: `.home-hero-line-cap`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | var(--scroller-width,100%) |
+| height | var(--nav-height,0px) |
+| z-index | 0 |
+| pointer-events | none |
+| visibility | hidden |
+| position | fixed |
+| top | 0 |
+| left | 0 |
+
 
 Context: `base`
 
-```css
-.home-hero .shared-v-line:nth-child(3) {left:var(--line3-x,calc(40% + .4rem))}
-```
+Reference element: `.home-hero-pin`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | calc(100dvh - var(--nav-height,5rem)) |
+| width | 100% |
+| position | relative |
+| overflow | hidden |
+
+
+Context: `base`
+
+Reference element: `.home-hero .shared-v-line:nth-child(3)`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | var(--line3-x,calc(40% + .4rem)) |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-hero .shared-v-line:nth-child(3) {left:calc(100% - 16px)}
-```
+Reference element: `.home-hero .shared-v-line:nth-child(3)`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | calc(100% - 16px) |
+
 
 Context: `@media (min-width:768px)`
 
-```css
-.home-hero-bottom-cluster {height:calc(51.6875rem * var(--v-scale,1));position:absolute;inset:auto 0 2rem}
-```
+Reference element: `.home-hero-bottom-cluster`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | calc(51.6875rem * var(--v-scale,1)) |
+| position | absolute |
+| inset | auto 0 2rem |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-hero-bottom-cluster {height:calc(70.465rem * var(--v-scale,1))}
-```
+Reference element: `.home-hero-bottom-cluster`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | calc(70.465rem * var(--v-scale,1)) |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-hero-bottom-cluster {height:calc(42.875rem * var(--v-scale,1));position:absolute;inset:auto 0 1rem}
-```
+Reference element: `.home-hero-bottom-cluster`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | calc(42.875rem * var(--v-scale,1)) |
+| position | absolute |
+| inset | auto 0 1rem |
+
 
 Context: `base`
 
-```css
-.home-contact {left:2rem;top:calc(2rem * var(--v-scale,1));mix-blend-mode:normal;align-items:stretch;gap:.875rem;width:calc(20% - .8rem);display:flex}
-```
+Reference element: `.home-contact`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | 2rem |
+| top | calc(2rem * var(--v-scale,1)) |
+| mix-blend-mode | normal |
+| align-items | stretch |
+| gap | .875rem |
+| width | calc(20% - .8rem) |
+| display | flex |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-contact {top:calc(1.5rem * var(--v-scale,1));width:14.25rem}
-```
+Reference element: `.home-contact`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | calc(1.5rem * var(--v-scale,1)) |
+| width | 14.25rem |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-contact {left:1rem;top:calc(1.5rem * var(--v-scale,1));width:14.25rem}
-```
+Reference element: `.home-contact`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | 1rem |
+| top | calc(1.5rem * var(--v-scale,1)) |
+| width | 14.25rem |
+
 
 Context: `base`
 
-```css
-.home-contact-bar {background:var(--primary-green-neon);flex:none;width:2px}
-```
+Reference element: `.home-contact-bar`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background | var(--primary-green-neon) |
+| flex | none |
+| width | 2px |
+
 
 Context: `base`
 
-```css
-.home-contact-stack {min-width:0;font-family:var(--font-heading);letter-spacing:.0975rem;text-transform:uppercase;color:var(--text-grey-1);white-space:nowrap;flex-direction:column;flex:1;gap:.5rem;font-size:.75rem;font-weight:500;line-height:1;display:flex}
-```
+Reference element: `.home-contact-stack`.
+
+| Property / input | Specified value |
+| --- | --- |
+| min-width | 0 |
+| font-family | var(--font-heading) |
+| letter-spacing | .0975rem |
+| text-transform | uppercase |
+| color | var(--text-grey-1) |
+| white-space | nowrap |
+| flex-direction | column |
+| flex | 1 |
+| gap | .5rem |
+| font-size | .75rem |
+| font-weight | 500 |
+| line-height | 1 |
+| display | flex |
+
 
 Context: `base`
 
-```css
-.home-contact-row-mask {clip-path:inset(0);overflow:hidden}
-```
+Reference element: `.home-contact-row-mask`.
+
+| Property / input | Specified value |
+| --- | --- |
+| clip-path | inset(0) |
+| overflow | hidden |
+
 
 Context: `base`
 
-```css
-.home-contact-row {justify-content:space-between;align-items:center;display:flex}
-```
+Reference element: `.home-contact-row`.
+
+| Property / input | Specified value |
+| --- | --- |
+| justify-content | space-between |
+| align-items | center |
+| display | flex |
+
 
 Context: `base`
 
-```css
-.home-contact-row .home-contact-group {justify-content:space-between;align-items:center;width:6.1875rem;display:flex}
-```
+Reference element: `.home-contact-row .home-contact-group`.
+
+| Property / input | Specified value |
+| --- | --- |
+| justify-content | space-between |
+| align-items | center |
+| width | 6.1875rem |
+| display | flex |
+
 
 Context: `base`
 
-```css
-.home-intro {left:2rem;top:calc(12rem * var(--v-scale,1));width:calc(40% - 1.6rem);font-family:var(--font-sans);letter-spacing:-.03em;color:var(--text-grey-1);mix-blend-mode:plus-lighter;text-align:justify;font-size:1.25rem;font-weight:500;line-height:1.5}
-```
+Reference element: `.home-intro`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | 2rem |
+| top | calc(12rem * var(--v-scale,1)) |
+| width | calc(40% - 1.6rem) |
+| font-family | var(--font-sans) |
+| letter-spacing | -.03em |
+| color | var(--text-grey-1) |
+| mix-blend-mode | plus-lighter |
+| text-align | justify |
+| font-size | 1.25rem |
+| font-weight | 500 |
+| line-height | 1.5 |
+
 
 Context: `base`
 
-```css
-.home-intro .split-line-mask:not(:last-child) .split-line-inner {text-align-last:justify}
-```
+Reference element: `.home-intro .split-line-mask:not(:last-child) .split-line-inner`.
+
+| Property / input | Specified value |
+| --- | --- |
+| text-align-last | justify |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.home-intro {font-size:calc(1.25rem * var(--v-scale,1))}
-```
+Reference element: `.home-intro`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-size | calc(1.25rem * var(--v-scale,1)) |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-intro {top:calc(22.375rem * var(--v-scale,1))}
-```
+Reference element: `.home-intro`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | calc(22.375rem * var(--v-scale,1)) |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-intro {width:18.4375rem;font-size:.875rem;top:17.1875rem;left:1rem}
-```
+Reference element: `.home-intro`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 18.4375rem |
+| font-size | .875rem |
+| top | 17.1875rem |
+| left | 1rem |
+
 
 Context: `base`
 
-```css
-.home-intro-indent {width:50%;display:inline-block}
-```
+Reference element: `.home-intro-indent`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 50% |
+| display | inline-block |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-intro-indent {display:none}
-```
+Reference element: `.home-intro-indent`.
+
+| Property / input | Specified value |
+| --- | --- |
+| display | none |
+
 
 Context: `@media (max-width:767.98px) and (max-height:760px)`
 
-```css
-.home-intro {top:11rem}
-```
+Reference element: `.home-intro`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | 11rem |
+
 
 Context: `base`
 
-```css
-.home-intro-accent-art {color:#f75049;font-style:italic}
-```
+Reference element: `.home-intro-accent-art`.
+
+| Property / input | Specified value |
+| --- | --- |
+| color | #f75049 |
+| font-style | italic |
+
 
 Context: `base`
 
-```css
-.home-intro-accent-tech {color:var(--primary-green-neon)}
-```
+Reference element: `.home-intro-accent-tech`.
+
+| Property / input | Specified value |
+| --- | --- |
+| color | var(--primary-green-neon) |
+
 
 Context: `base`
 
-```css
-.home-badge {left:2rem;top:calc(34.5rem * var(--v-scale,1));background:var(--primary-green-neon);font-family:var(--font-heading);letter-spacing:.0975rem;text-transform:uppercase;color:#070210;white-space:nowrap;align-items:center;padding:.4375rem .5625rem;font-size:.75rem;font-weight:600;line-height:1;display:inline-flex}
-```
+Reference element: `.home-badge`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | 2rem |
+| top | calc(34.5rem * var(--v-scale,1)) |
+| background | var(--primary-green-neon) |
+| font-family | var(--font-heading) |
+| letter-spacing | .0975rem |
+| text-transform | uppercase |
+| color | #070210 |
+| white-space | nowrap |
+| align-items | center |
+| padding | .4375rem .5625rem |
+| font-size | .75rem |
+| font-weight | 600 |
+| line-height | 1 |
+| display | inline-flex |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-badge {top:calc(46.5rem * var(--v-scale,1))}
-```
+Reference element: `.home-badge`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | calc(46.5rem * var(--v-scale,1)) |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-badge {left:1rem;top:calc(29.25rem * var(--v-scale,1))}
-```
+Reference element: `.home-badge`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | 1rem |
+| top | calc(29.25rem * var(--v-scale,1)) |
+
 
 Context: `base`
 
-```css
-.home-badge-char-mask {display:inline-block;overflow:hidden}
-```
+Reference element: `.home-badge-char-mask`.
+
+| Property / input | Specified value |
+| --- | --- |
+| display | inline-block |
+| overflow | hidden |
+
 
 Context: `base`
 
-```css
-.home-badge-char-inner {white-space:pre;display:inline-block}
-```
+Reference element: `.home-badge-char-inner`.
+
+| Property / input | Specified value |
+| --- | --- |
+| white-space | pre |
+| display | inline-block |
+
 
 Context: `base`
 
-```css
-.home-label {font-family:var(--font-heading);letter-spacing:.0975rem;text-transform:uppercase;color:var(--text-grey-1);white-space:nowrap;margin:0;font-size:.75rem;font-weight:500;line-height:1}
-```
+Reference element: `.home-label`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-family | var(--font-heading) |
+| letter-spacing | .0975rem |
+| text-transform | uppercase |
+| color | var(--text-grey-1) |
+| white-space | nowrap |
+| margin | 0 |
+| font-size | .75rem |
+| font-weight | 500 |
+| line-height | 1 |
+
 
 Context: `base`
 
-```css
-.home-label--dad {left:2rem;top:calc(41.0338rem * var(--v-scale,1))}
-```
+Reference element: `.home-label--dad`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | 2rem |
+| top | calc(41.0338rem * var(--v-scale,1)) |
+
 
 Context: `base`
 
-```css
-.home-label--pets {left:auto;right:calc(80% - 1.2rem - 26.9136rem * var(--v-scale,1) - .0853rem);top:calc(49.7841rem * var(--v-scale,1))}
-```
+Reference element: `.home-label--pets`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | auto |
+| right | calc(80% - 1.2rem - 26.9136rem * var(--v-scale,1) - .0853rem) |
+| top | calc(49.7841rem * var(--v-scale,1)) |
+
 
 Context: `base`
 
-```css
-.home-label--age {left:calc(60% - .4rem);top:calc(48.7418rem * var(--v-scale,1));font-family:var(--font-heading);font-weight:500;font-size:calc(2.5rem * var(--v-scale,1));color:var(--text-white);text-transform:none;line-height:.8}
-```
+Reference element: `.home-label--age`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | calc(60% - .4rem) |
+| top | calc(48.7418rem * var(--v-scale,1)) |
+| font-family | var(--font-heading) |
+| font-weight | 500 |
+| font-size | calc(2.5rem * var(--v-scale,1)) |
+| color | var(--text-white) |
+| text-transform | none |
+| line-height | .8 |
+
 
 Context: `base`
 
-```css
-.home-label--from {right:calc(20% + 1.2rem);top:calc(2rem * var(--v-scale,1));text-align:right}
-```
+Reference element: `.home-label--from`.
+
+| Property / input | Specified value |
+| --- | --- |
+| right | calc(20% + 1.2rem) |
+| top | calc(2rem * var(--v-scale,1)) |
+| text-align | right |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-label--dad {top:calc(49.5rem * var(--v-scale,1))}
-```
+Reference element: `.home-label--dad`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | calc(49.5rem * var(--v-scale,1)) |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-label--pets {top:calc(49.5rem * var(--v-scale,1));left:auto;right:calc(100% - 2rem - 28.14rem * var(--v-scale,1) - 1.22px)}
-```
+Reference element: `.home-label--pets`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | calc(49.5rem * var(--v-scale,1)) |
+| left | auto |
+| right | calc(100% - 2rem - 28.14rem * var(--v-scale,1) - 1.22px) |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-label--age {top:calc(52.1125rem * var(--v-scale,1));left:auto;right:2rem}
-```
+Reference element: `.home-label--age`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | calc(52.1125rem * var(--v-scale,1)) |
+| left | auto |
+| right | 2rem |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-label--from {top:calc(1.5rem * var(--v-scale,1))}
-```
+Reference element: `.home-label--from`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | calc(1.5rem * var(--v-scale,1)) |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-label--dad {left:1rem;top:calc(31.6875rem * var(--v-scale,1))}
-```
+Reference element: `.home-label--dad`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | 1rem |
+| top | calc(31.6875rem * var(--v-scale,1)) |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-label--pets {left:auto;right:calc(100% - 1rem - 15.4375rem * var(--v-scale,1));top:calc(31.6875rem * var(--v-scale,1))}
-```
+Reference element: `.home-label--pets`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | auto |
+| right | calc(100% - 1rem - 15.4375rem * var(--v-scale,1)) |
+| top | calc(31.6875rem * var(--v-scale,1)) |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-label--age {left:auto;right:1rem;top:calc(40.7938rem * var(--v-scale,1));font-size:calc(2rem * var(--v-scale,1))}
-```
+Reference element: `.home-label--age`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | auto |
+| right | 1rem |
+| top | calc(40.7938rem * var(--v-scale,1)) |
+| font-size | calc(2rem * var(--v-scale,1)) |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-label--from {display:none}
-```
+Reference element: `.home-label--from`.
+
+| Property / input | Specified value |
+| --- | --- |
+| display | none |
+
 
 Context: `base`
 
-```css
-.home-scroll-cue {right:2rem;bottom:calc(1.1875rem * var(--v-scale,1));color:var(--text-grey-1);mix-blend-mode:normal;flex-direction:column;align-items:center;gap:1.125rem;display:flex;position:absolute}
-```
+Reference element: `.home-scroll-cue`.
+
+| Property / input | Specified value |
+| --- | --- |
+| right | 2rem |
+| bottom | calc(1.1875rem * var(--v-scale,1)) |
+| color | var(--text-grey-1) |
+| mix-blend-mode | normal |
+| flex-direction | column |
+| align-items | center |
+| gap | 1.125rem |
+| display | flex |
+| position | absolute |
+
 
 Context: `base`
 
-```css
-.home-scroll-label {writing-mode:vertical-rl;font-family:var(--font-heading);letter-spacing:.0975rem;text-transform:uppercase;white-space:nowrap;font-size:.75rem;font-weight:500;line-height:1}
-```
+Reference element: `.home-scroll-label`.
+
+| Property / input | Specified value |
+| --- | --- |
+| writing-mode | vertical-rl |
+| font-family | var(--font-heading) |
+| letter-spacing | .0975rem |
+| text-transform | uppercase |
+| white-space | nowrap |
+| font-size | .75rem |
+| font-weight | 500 |
+| line-height | 1 |
+
 
 Context: `base`
 
-```css
-.home-scroll-arrow {flex:none;width:.45rem;height:1.15rem;display:block}
-```
+Reference element: `.home-scroll-arrow`.
+
+| Property / input | Specified value |
+| --- | --- |
+| flex | none |
+| width | .45rem |
+| height | 1.15rem |
+| display | block |
+
 
 Context: `base`
 
-```css
-@keyframes home-scroll-chevron-a {0%{opacity:.5;animation-timing-function:cubic-bezier(.5,0,.5,1)}33.38%{opacity:1;animation-timing-function:cubic-bezier(.5,0,.5,1)}66.15%{opacity:.75;animation-timing-function:cubic-bezier(.5,0,.5,1)}99.27%{opacity:.5;animation-timing-function:linear}to{opacity:.5}}
-```
+Animation reference `@keyframes home-scroll-chevron-a`: At 0%: opacity = .5, animation-timing-function = cubic-bezier(.5,0,.5,1). At 33.38%: opacity = 1, animation-timing-function = cubic-bezier(.5,0,.5,1). At 66.15%: opacity = .75, animation-timing-function = cubic-bezier(.5,0,.5,1). At 99.27%: opacity = .5, animation-timing-function = linear.
+
 
 Context: `base`
 
-```css
-@keyframes home-scroll-chevron-b {0%{opacity:.75;animation-timing-function:cubic-bezier(.5,0,.5,1)}33.38%{opacity:.5;animation-timing-function:cubic-bezier(.5,0,.5,1)}66.15%{opacity:1;animation-timing-function:cubic-bezier(.5,0,.5,1)}99.27%{opacity:.75;animation-timing-function:linear}to{opacity:.75}}
-```
+Animation reference `@keyframes home-scroll-chevron-b`: At 0%: opacity = .75, animation-timing-function = cubic-bezier(.5,0,.5,1). At 33.38%: opacity = .5, animation-timing-function = cubic-bezier(.5,0,.5,1). At 66.15%: opacity = 1, animation-timing-function = cubic-bezier(.5,0,.5,1). At 99.27%: opacity = .75, animation-timing-function = linear.
+
 
 Context: `base`
 
-```css
-@keyframes home-scroll-chevron-c {0%{opacity:1;animation-timing-function:cubic-bezier(.5,0,.5,1)}33.38%{opacity:.75;animation-timing-function:cubic-bezier(.5,0,.5,1)}66.15%{opacity:.5;animation-timing-function:cubic-bezier(.5,0,.5,1)}99.27%{opacity:1;animation-timing-function:linear}to{opacity:1}}
-```
+Animation reference `@keyframes home-scroll-chevron-c`: At 0%: opacity = 1, animation-timing-function = cubic-bezier(.5,0,.5,1). At 33.38%: opacity = .75, animation-timing-function = cubic-bezier(.5,0,.5,1). At 66.15%: opacity = .5, animation-timing-function = cubic-bezier(.5,0,.5,1). At 99.27%: opacity = 1, animation-timing-function = linear.
+
 
 Context: `base`
 
-```css
-.home-scroll-chevron-1 {animation:1.00866s linear infinite home-scroll-chevron-a}
-```
+Reference element: `.home-scroll-chevron-1`.
+
+| Property / input | Specified value |
+| --- | --- |
+| animation | 1.00866s linear infinite home-scroll-chevron-a |
+
 
 Context: `base`
 
-```css
-.home-scroll-chevron-2 {animation:1.00866s linear infinite home-scroll-chevron-b}
-```
+Reference element: `.home-scroll-chevron-2`.
+
+| Property / input | Specified value |
+| --- | --- |
+| animation | 1.00866s linear infinite home-scroll-chevron-b |
+
 
 Context: `base`
 
-```css
-.home-scroll-chevron-3 {animation:1.00866s linear infinite home-scroll-chevron-c}
-```
+Reference element: `.home-scroll-chevron-3`.
+
+| Property / input | Specified value |
+| --- | --- |
+| animation | 1.00866s linear infinite home-scroll-chevron-c |
+
 
 Context: `@media (prefers-reduced-motion:reduce)`
 
-```css
-.home-scroll-chevron-1 {opacity:.5;animation:none}
-```
+Reference element: `.home-scroll-chevron-1`.
+
+| Property / input | Specified value |
+| --- | --- |
+| opacity | .5 |
+| animation | none |
+
 
 Context: `@media (prefers-reduced-motion:reduce)`
 
-```css
-.home-scroll-chevron-2 {opacity:.75;animation:none}
-```
+Reference element: `.home-scroll-chevron-2`.
+
+| Property / input | Specified value |
+| --- | --- |
+| opacity | .75 |
+| animation | none |
+
 
 Context: `@media (prefers-reduced-motion:reduce)`
 
-```css
-.home-scroll-chevron-3 {opacity:1;animation:none}
-```
+Reference element: `.home-scroll-chevron-3`.
+
+| Property / input | Specified value |
+| --- | --- |
+| opacity | 1 |
+| animation | none |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-scroll-cue {bottom:calc(1.254rem * var(--v-scale,1))}
-```
+Reference element: `.home-scroll-cue`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | calc(1.254rem * var(--v-scale,1)) |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-scroll-cue {display:none}
-```
+Reference element: `.home-scroll-cue`.
+
+| Property / input | Specified value |
+| --- | --- |
+| display | none |
+
 
 Context: `base`
 
-```css
-.home-portrait {height:calc(100svh - var(--nav-height,5rem));position:absolute;top:0;left:0;right:0}
-```
+Reference element: `.home-portrait`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | calc(100svh - var(--nav-height,5rem)) |
+| position | absolute |
+| top | 0 |
+| left | 0 |
+| right | 0 |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-portrait {opacity:.5}
-```
+Reference element: `.home-portrait`.
+
+| Property / input | Specified value |
+| --- | --- |
+| opacity | .5 |
+
 
 ## Computed layout at 375px
 

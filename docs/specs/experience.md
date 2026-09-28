@@ -38,351 +38,667 @@ CSS accordion transition; GSAP scene handoff; custom WebGL2 CRT/logo transition.
 
 Tailwind source version is UNVERIFIED but explicitly approved to ignore: use installed Tailwind v4. No additional package needed. Reduced-motion and keyboard behavior above are target requirements where the source did not establish equivalent behavior.
 
-## Exact source CSS rules
+## Layout property reference
 
-Rules retain cascade order and media conditions. Tokens map to the verified OKLCH equivalents in globals.css. Source utility classes are additionally represented by the computed tables below.
+Property tables retain cascade order and media conditions; no source implementation is included. Tokens map to the verified OKLCH equivalents in globals.css. Source utility classes are additionally represented by the computed tables below.
 
 Context: `base`
 
-```css
-.worked-at-stage {z-index:0;position:relative}
-```
+Reference element: `.worked-at-stage`.
+
+| Property / input | Specified value |
+| --- | --- |
+| z-index | 0 |
+| position | relative |
+
 
 Context: `@media (min-width:1025px) and (prefers-reduced-motion:no-preference)`
 
-```css
-.worked-at-stage {--worked-at-dead-scroll:35dvh;margin-top:calc(var(--worked-at-dead-scroll) - 143dvh)}
-```
+Reference element: `.worked-at-stage`.
+
+| Property / input | Specified value |
+| --- | --- |
+| --worked-at-dead-scroll | 35dvh |
+| margin-top | calc(var(--worked-at-dead-scroll) - 143dvh) |
+
 
 Context: `base`
 
-```css
-.worked-at {border-bottom:1px solid var(--background-stroke-2);background:var(--background-bg-0,#000);flex-direction:column;justify-content:center;align-items:center;width:100%;min-height:100dvh;padding:6rem 1rem 3rem;display:flex;position:relative;overflow:hidden}
-```
+Reference element: `.worked-at`.
+
+| Property / input | Specified value |
+| --- | --- |
+| border-bottom | 1px solid var(--background-stroke-2) |
+| background | var(--background-bg-0,#000) |
+| flex-direction | column |
+| justify-content | center |
+| align-items | center |
+| width | 100% |
+| min-height | 100dvh |
+| padding | 6rem 1rem 3rem |
+| display | flex |
+| position | relative |
+| overflow | hidden |
+
 
 Context: `base`
 
-```css
-.worked-at-heading {text-align:center;flex-direction:column;align-items:center;gap:1.5rem;margin-bottom:2rem;display:flex}
-```
+Reference element: `.worked-at-heading`.
+
+| Property / input | Specified value |
+| --- | --- |
+| text-align | center |
+| flex-direction | column |
+| align-items | center |
+| gap | 1.5rem |
+| margin-bottom | 2rem |
+| display | flex |
+
 
 Context: `base`
 
-```css
-.worked-at-badge {background:var(--primary-green-neon);color:var(--text-black,#070210);font-family:var(--font-heading);letter-spacing:.0975rem;text-transform:uppercase;clip-path:polygon(0% 4px,4px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%);align-items:center;padding:.4375rem .5625rem;font-size:.75rem;font-weight:600;line-height:1;display:inline-flex}
-```
+Reference element: `.worked-at-badge`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background | var(--primary-green-neon) |
+| color | var(--text-black,#070210) |
+| font-family | var(--font-heading) |
+| letter-spacing | .0975rem |
+| text-transform | uppercase |
+| clip-path | polygon(0% 4px,4px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%) |
+| align-items | center |
+| padding | .4375rem .5625rem |
+| font-size | .75rem |
+| font-weight | 600 |
+| line-height | 1 |
+| display | inline-flex |
+
 
 Context: `base`
 
-```css
-.worked-at-title {font-family:var(--font-heading);font-weight:var(--section-heading-weight);letter-spacing:-.02em;text-transform:uppercase;color:var(--text-white);margin:0;font-size:5rem;line-height:.8}
-```
+Reference element: `.worked-at-title`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-family | var(--font-heading) |
+| font-weight | var(--section-heading-weight) |
+| letter-spacing | -.02em |
+| text-transform | uppercase |
+| color | var(--text-white) |
+| margin | 0 |
+| font-size | 5rem |
+| line-height | .8 |
+
 
 Context: `base`
 
-```css
-.worked-at-body {grid-template-columns:1fr;grid-template-areas:"stage""desc""left""right";justify-items:center;gap:1.75rem 3rem;width:100%;max-width:87.5rem;display:grid}
-```
+Reference element: `.worked-at-body`.
+
+| Property / input | Specified value |
+| --- | --- |
+| grid-template-columns | 1fr |
+| grid-template-areas | "stage""desc""left""right" |
+| justify-items | center |
+| gap | 1.75rem 3rem |
+| width | 100% |
+| max-width | 87.5rem |
+| display | grid |
+
 
 Context: `base`
 
-```css
-.worked-at-col {flex-direction:column;gap:.5625rem;width:100%;display:flex}
-```
+Reference element: `.worked-at-col`.
+
+| Property / input | Specified value |
+| --- | --- |
+| flex-direction | column |
+| gap | .5625rem |
+| width | 100% |
+| display | flex |
+
 
 Context: `base`
 
-```css
-.worked-at-col--left {grid-area:left}
-```
+Reference element: `.worked-at-col--left`.
+
+| Property / input | Specified value |
+| --- | --- |
+| grid-area | left |
+
 
 Context: `base`
 
-```css
-.worked-at-col--right {grid-area:right}
-```
+Reference element: `.worked-at-col--right`.
+
+| Property / input | Specified value |
+| --- | --- |
+| grid-area | right |
+
 
 Context: `base`
 
-```css
-.worked-at-row {--row-shape:polygon(0% 20px, 20px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%);--row-stroke:1px;width:100%;position:relative}
-```
+Reference element: `.worked-at-row`.
+
+| Property / input | Specified value |
+| --- | --- |
+| --row-shape | polygon(0% 20px, 20px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%) |
+| --row-stroke | 1px |
+| width | 100% |
+| position | relative |
+
 
 Context: `base`
 
-```css
-.worked-at-row-button {cursor:pointer;text-align:left;align-items:center;width:100%;height:4.25rem;padding:0 1.375rem;display:flex;position:relative}
-```
+Reference element: `.worked-at-row-button`.
+
+| Property / input | Specified value |
+| --- | --- |
+| cursor | pointer |
+| text-align | left |
+| align-items | center |
+| width | 100% |
+| height | 4.25rem |
+| padding | 0 1.375rem |
+| display | flex |
+| position | relative |
+
 
 Context: `base`
 
-```css
-.worked-at-row-bg {z-index:0;clip-path:var(--row-shape);background:var(--background-stroke-2);pointer-events:none;position:absolute;inset:0}
-```
+Reference element: `.worked-at-row-bg`.
+
+| Property / input | Specified value |
+| --- | --- |
+| z-index | 0 |
+| clip-path | var(--row-shape) |
+| background | var(--background-stroke-2) |
+| pointer-events | none |
+| position | absolute |
+| inset | 0 |
+
 
 Context: `base`
 
-```css
-.worked-at-row-bg:after {content:"";inset:var(--row-stroke);clip-path:var(--row-shape);background:var(--background-bg-0,#000);transition:background-color .2s ease-out;position:absolute}
-```
+Reference element: `.worked-at-row-bg:after`.
+
+| Property / input | Specified value |
+| --- | --- |
+| content | "" |
+| inset | var(--row-stroke) |
+| clip-path | var(--row-shape) |
+| background | var(--background-bg-0,#000) |
+| transition | background-color .2s ease-out |
+| position | absolute |
+
 
 Context: `base`
 
-```css
-.worked-at-row-index,.worked-at-row-text,.worked-at-row-mark {z-index:1;position:relative}
-```
+Reference element: `.worked-at-row-index,.worked-at-row-text,.worked-at-row-mark`.
+
+| Property / input | Specified value |
+| --- | --- |
+| z-index | 1 |
+| position | relative |
+
 
 Context: `base`
 
-```css
-.worked-at-row-index {width:2.25rem;font-family:var(--font-heading);letter-spacing:.0975rem;text-align:right;text-transform:uppercase;color:var(--text-grey-1);flex-shrink:0;padding-right:.75rem;font-size:.75rem;font-weight:600;line-height:1;right:.5rem}
-```
+Reference element: `.worked-at-row-index`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 2.25rem |
+| font-family | var(--font-heading) |
+| letter-spacing | .0975rem |
+| text-align | right |
+| text-transform | uppercase |
+| color | var(--text-grey-1) |
+| flex-shrink | 0 |
+| padding-right | .75rem |
+| font-size | .75rem |
+| font-weight | 600 |
+| line-height | 1 |
+| right | .5rem |
+
 
 Context: `base`
 
-```css
-.worked-at-row-text {flex-direction:column;flex:1;gap:.375rem;min-width:0;display:flex}
-```
+Reference element: `.worked-at-row-text`.
+
+| Property / input | Specified value |
+| --- | --- |
+| flex-direction | column |
+| flex | 1 |
+| gap | .375rem |
+| min-width | 0 |
+| display | flex |
+
 
 Context: `base`
 
-```css
-.worked-at-row-title {font-family:var(--font-heading);text-transform:uppercase;color:var(--text-white);font-size:1.25rem;font-weight:500;line-height:1;transition:color .3s ease-out}
-```
+Reference element: `.worked-at-row-title`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-family | var(--font-heading) |
+| text-transform | uppercase |
+| color | var(--text-white) |
+| font-size | 1.25rem |
+| font-weight | 500 |
+| line-height | 1 |
+| transition | color .3s ease-out |
+
 
 Context: `base`
 
-```css
-.worked-at-row-role {font-family:var(--font-heading);letter-spacing:.0975rem;text-transform:uppercase;color:var(--text-grey-1);font-size:.75rem;font-weight:600;line-height:1;transition:color .3s ease-out}
-```
+Reference element: `.worked-at-row-role`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-family | var(--font-heading) |
+| letter-spacing | .0975rem |
+| text-transform | uppercase |
+| color | var(--text-grey-1) |
+| font-size | .75rem |
+| font-weight | 600 |
+| line-height | 1 |
+| transition | color .3s ease-out |
+
 
 Context: `base`
 
-```css
-.worked-at-row-mark {font-family:var(--font-mono);color:var(--primary-green-neon);flex-shrink:0;font-size:1rem;line-height:1;transition:color .3s ease-out;display:none}
-```
+Reference element: `.worked-at-row-mark`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-family | var(--font-mono) |
+| color | var(--primary-green-neon) |
+| flex-shrink | 0 |
+| font-size | 1rem |
+| line-height | 1 |
+| transition | color .3s ease-out |
+| display | none |
+
 
 Context: `base`
 
-```css
-.worked-at-row-button:hover .worked-at-row-bg:after {background:var(--primary-green-neon)}
-```
+Reference element: `.worked-at-row-button:hover .worked-at-row-bg:after`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background | var(--primary-green-neon) |
+
 
 Context: `base`
 
-```css
-.worked-at-row[data-selected=true] .worked-at-row-bg:after,.worked-at-row[data-selected=true] .worked-at-row-button:hover .worked-at-row-bg:after {background:var(--foreground,#fff)}
-```
+Reference element: `.worked-at-row[data-selected=true] .worked-at-row-bg:after,.worked-at-row[data-selected=true] .worked-at-row-button:hover .worked-at-row-bg:after`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background | var(--foreground,#fff) |
+
 
 Context: `base`
 
-```css
-.worked-at-row-button:hover .worked-at-row-title,.worked-at-row[data-selected=true] .worked-at-row-title,.worked-at-row-button:hover .worked-at-row-mark,.worked-at-row[data-selected=true] .worked-at-row-mark,.worked-at-row-button:hover .worked-at-row-index,.worked-at-row-button:hover .worked-at-row-role {color:var(--text-black,#070210)}
-```
+Reference element: `.worked-at-row-button:hover .worked-at-row-title,.worked-at-row[data-selected=true] .worked-at-row-title,.worked-at-row-button:hover .worked-at-row-mark,.worked-at-row[data-selected=true] .worked-at-row-mark,.worked-at-row-button:hover .worked-at-row-index,.worked-at-row-button:hover .worked-at-row-role`.
+
+| Property / input | Specified value |
+| --- | --- |
+| color | var(--text-black,#070210) |
+
 
 Context: `base`
 
-```css
-.worked-at-row-panel {grid-template-rows:0fr;transition:grid-template-rows .3s ease-out;display:grid}
-```
+Reference element: `.worked-at-row-panel`.
+
+| Property / input | Specified value |
+| --- | --- |
+| grid-template-rows | 0fr |
+| transition | grid-template-rows .3s ease-out |
+| display | grid |
+
 
 Context: `base`
 
-```css
-.worked-at-row-panel-inner {overflow:hidden}
-```
+Reference element: `.worked-at-row-panel-inner`.
+
+| Property / input | Specified value |
+| --- | --- |
+| overflow | hidden |
+
 
 Context: `base`
 
-```css
-.worked-at-row-description {font-family:var(--font-sans);color:var(--text-grey-1);margin:0;padding:1.375rem 1.5rem 1.5rem;font-size:.875rem;line-height:1.6}
-```
+Reference element: `.worked-at-row-description`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-family | var(--font-sans) |
+| color | var(--text-grey-1) |
+| margin | 0 |
+| padding | 1.375rem 1.5rem 1.5rem |
+| font-size | .875rem |
+| line-height | 1.6 |
+
 
 Context: `base`
 
-```css
-.worked-at-crt {aspect-ratio:669/415;grid-area:stage;width:auto;max-width:100%;height:min(25.9375rem,42dvh);position:relative}
-```
+Reference element: `.worked-at-crt`.
+
+| Property / input | Specified value |
+| --- | --- |
+| aspect-ratio | 669/415 |
+| grid-area | stage |
+| width | auto |
+| max-width | 100% |
+| height | min(25.9375rem,42dvh) |
+| position | relative |
+
 
 Context: `base`
 
-```css
-.worked-at-crt-canvas {position:absolute;inset:0}
-```
+Reference element: `.worked-at-crt-canvas`.
+
+| Property / input | Specified value |
+| --- | --- |
+| position | absolute |
+| inset | 0 |
+
 
 Context: `base`
 
-```css
-.worked-at-crt-rule {background:var(--background-stroke-1);pointer-events:none;position:absolute}
-```
+Reference element: `.worked-at-crt-rule`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background | var(--background-stroke-1) |
+| pointer-events | none |
+| position | absolute |
+
 
 Context: `base`
 
-```css
-.worked-at-crt-rule--t,.worked-at-crt-rule--b {height:1px;left:.375rem;right:.375rem}
-```
+Reference element: `.worked-at-crt-rule--t,.worked-at-crt-rule--b`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | 1px |
+| left | .375rem |
+| right | .375rem |
+
 
 Context: `base`
 
-```css
-.worked-at-crt-rule--t {top:0}
-```
+Reference element: `.worked-at-crt-rule--t`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | 0 |
+
 
 Context: `base`
 
-```css
-.worked-at-crt-rule--b {bottom:0}
-```
+Reference element: `.worked-at-crt-rule--b`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | 0 |
+
 
 Context: `base`
 
-```css
-.worked-at-crt-rule--l,.worked-at-crt-rule--r {width:1px;top:.375rem;bottom:.375rem}
-```
+Reference element: `.worked-at-crt-rule--l,.worked-at-crt-rule--r`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 1px |
+| top | .375rem |
+| bottom | .375rem |
+
 
 Context: `base`
 
-```css
-.worked-at-crt-rule--l {left:0}
-```
+Reference element: `.worked-at-crt-rule--l`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | 0 |
+
 
 Context: `base`
 
-```css
-.worked-at-crt-rule--r {right:0}
-```
+Reference element: `.worked-at-crt-rule--r`.
+
+| Property / input | Specified value |
+| --- | --- |
+| right | 0 |
+
 
 Context: `base`
 
-```css
-.worked-at-crt-plus {width:.5rem;height:.5rem;color:var(--text-grey-1);pointer-events:none;position:absolute}
-```
+Reference element: `.worked-at-crt-plus`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | .5rem |
+| height | .5rem |
+| color | var(--text-grey-1) |
+| pointer-events | none |
+| position | absolute |
+
 
 Context: `base`
 
-```css
-.worked-at-crt-plus--tl {top:-.25rem;left:-.25rem}
-```
+Reference element: `.worked-at-crt-plus--tl`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | -.25rem |
+| left | -.25rem |
+
 
 Context: `base`
 
-```css
-.worked-at-crt-plus--tr {top:-.25rem;right:-.25rem}
-```
+Reference element: `.worked-at-crt-plus--tr`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | -.25rem |
+| right | -.25rem |
+
 
 Context: `base`
 
-```css
-.worked-at-crt-plus--br {bottom:-.25rem;right:-.25rem}
-```
+Reference element: `.worked-at-crt-plus--br`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | -.25rem |
+| right | -.25rem |
+
 
 Context: `base`
 
-```css
-.worked-at-crt-plus--bl {bottom:-.25rem;left:-.25rem}
-```
+Reference element: `.worked-at-crt-plus--bl`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | -.25rem |
+| left | -.25rem |
+
 
 Context: `base`
 
-```css
-.worked-at-description {max-width:34.5625rem;font-family:var(--font-sans);text-align:center;color:var(--text-grey-1);grid-area:desc;margin:0;font-size:1rem;line-height:1.6;display:grid}
-```
+Reference element: `.worked-at-description`.
+
+| Property / input | Specified value |
+| --- | --- |
+| max-width | 34.5625rem |
+| font-family | var(--font-sans) |
+| text-align | center |
+| color | var(--text-grey-1) |
+| grid-area | desc |
+| margin | 0 |
+| font-size | 1rem |
+| line-height | 1.6 |
+| display | grid |
+
 
 Context: `base`
 
-```css
-.worked-at-description-copy {visibility:hidden;grid-area:1/1;margin:0}
-```
+Reference element: `.worked-at-description-copy`.
+
+| Property / input | Specified value |
+| --- | --- |
+| visibility | hidden |
+| grid-area | 1/1 |
+| margin | 0 |
+
 
 Context: `base`
 
-```css
-.worked-at-description-copy[data-active=true] {visibility:visible}
-```
+Reference element: `.worked-at-description-copy[data-active=true]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| visibility | visible |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.worked-at {padding:6rem 1rem 3rem}
-```
+Reference element: `.worked-at`.
+
+| Property / input | Specified value |
+| --- | --- |
+| padding | 6rem 1rem 3rem |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.worked-at-crt,.worked-at-description {display:none}
-```
+Reference element: `.worked-at-crt,.worked-at-description`.
+
+| Property / input | Specified value |
+| --- | --- |
+| display | none |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.worked-at-body {grid-template-areas:"left""right";gap:.5625rem}
-```
+Reference element: `.worked-at-body`.
+
+| Property / input | Specified value |
+| --- | --- |
+| grid-template-areas | "left""right" |
+| gap | .5625rem |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.worked-at-col {display:contents}
-```
+Reference element: `.worked-at-col`.
+
+| Property / input | Specified value |
+| --- | --- |
+| display | contents |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.worked-at-row-mark {display:block}
-```
+Reference element: `.worked-at-row-mark`.
+
+| Property / input | Specified value |
+| --- | --- |
+| display | block |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.worked-at-row[data-selected=true] .worked-at-row-panel {grid-template-rows:1fr}
-```
+Reference element: `.worked-at-row[data-selected=true] .worked-at-row-panel`.
+
+| Property / input | Specified value |
+| --- | --- |
+| grid-template-rows | 1fr |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.worked-at-row[data-selected=true] .worked-at-row-panel-inner {background:var(--background-bg-0,#000);border:var(--row-stroke) solid var(--background-stroke-2);clip-path:polygon(0% 0%,100% 0%,100% calc(100% - 20px),calc(100% - 20px) 100%,0% 100%);border-top:0}
-```
+Reference element: `.worked-at-row[data-selected=true] .worked-at-row-panel-inner`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background | var(--background-bg-0,#000) |
+| border | var(--row-stroke) solid var(--background-stroke-2) |
+| clip-path | polygon(0% 0%,100% 0%,100% calc(100% - 20px),calc(100% - 20px) 100%,0% 100%) |
+| border-top | 0 |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.worked-at-title {font-size:2.8125rem}
-```
+Reference element: `.worked-at-title`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-size | 2.8125rem |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.worked-at {padding:5rem 2rem 3rem}
-```
+Reference element: `.worked-at`.
+
+| Property / input | Specified value |
+| --- | --- |
+| padding | 5rem 2rem 3rem |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.worked-at-body {grid-template-columns:1fr 1fr;grid-template-areas:"stage stage""desc desc""left right";align-items:start}
-```
+Reference element: `.worked-at-body`.
+
+| Property / input | Specified value |
+| --- | --- |
+| grid-template-columns | 1fr 1fr |
+| grid-template-areas | "stage stage""desc desc""left right" |
+| align-items | start |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.worked-at-title {font-size:4rem}
-```
+Reference element: `.worked-at-title`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-size | 4rem |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.worked-at {padding:2rem}
-```
+Reference element: `.worked-at`.
+
+| Property / input | Specified value |
+| --- | --- |
+| padding | 2rem |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.worked-at-body {grid-template-columns:16.0625rem minmax(0,1fr) 16.0625rem;grid-template-areas:"left stage right""left desc right";align-items:start;gap:1.75rem 3.5rem}
-```
+Reference element: `.worked-at-body`.
+
+| Property / input | Specified value |
+| --- | --- |
+| grid-template-columns | 16.0625rem minmax(0,1fr) 16.0625rem |
+| grid-template-areas | "left stage right""left desc right" |
+| align-items | start |
+| gap | 1.75rem 3.5rem |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.worked-at-col,.worked-at-description {align-self:start}
-```
+Reference element: `.worked-at-col,.worked-at-description`.
+
+| Property / input | Specified value |
+| --- | --- |
+| align-self | start |
+
 
 ## Computed layout at 375px
 

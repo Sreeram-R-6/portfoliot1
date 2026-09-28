@@ -38,411 +38,798 @@ GSAP + ScrollTrigger + ScrambleTextPlugin; Three.js custom extruded geometry/mat
 
 Tailwind source version is UNVERIFIED but explicitly approved to ignore: use installed Tailwind v4. No additional package needed. Reduced-motion and keyboard behavior above are target requirements where the source did not establish equivalent behavior.
 
-## Exact source CSS rules
+## Layout property reference
 
-Rules retain cascade order and media conditions. Tokens map to the verified OKLCH equivalents in globals.css. Source utility classes are additionally represented by the computed tables below.
-
-Context: `base`
-
-```css
-.stat-box {--oh:0;--ow:0;clip-path:inset(calc((1 - var(--oh)) * 50%) calc((1 - var(--ow)) * (100% - 1px)) calc((1 - var(--oh)) * 50%) 0)}
-```
+Property tables retain cascade order and media conditions; no source implementation is included. Tokens map to the verified OKLCH equivalents in globals.css. Source utility classes are additionally represented by the computed tables below.
 
 Context: `base`
 
-```css
-.stat-stage {z-index:30;background:var(--primary-green-neon);--grid-line-color:var(--primary-green-line);--grid-line-fade-to:var(--primary-green-neon);--stat-lead-in:max(8vh, var(--nav-height,5rem));--stat-lead-out:0rem;--stat-dead-scroll:250px;will-change:transform;width:100%;position:relative;overflow:hidden}
-```
+Reference element: `.stat-box`.
+
+| Property / input | Specified value |
+| --- | --- |
+| --oh | 0 |
+| --ow | 0 |
+| clip-path | inset(calc((1 - var(--oh)) * 50%) calc((1 - var(--ow)) * (100% - 1px)) calc((1 - var(--oh)) * 50%) 0) |
+
+
+Context: `base`
+
+Reference element: `.stat-stage`.
+
+| Property / input | Specified value |
+| --- | --- |
+| z-index | 30 |
+| background | var(--primary-green-neon) |
+| --grid-line-color | var(--primary-green-line) |
+| --grid-line-fade-to | var(--primary-green-neon) |
+| --stat-lead-in | max(8vh, var(--nav-height,5rem)) |
+| --stat-lead-out | 0rem |
+| --stat-dead-scroll | 250px |
+| will-change | transform |
+| width | 100% |
+| position | relative |
+| overflow | hidden |
+
 
 Context: `@media (min-width:1025px) and (prefers-reduced-motion:no-preference)`
 
-```css
-.stat-stage {margin-bottom:calc(var(--stat-dead-scroll,250px) - 2 * (100dvh - var(--nav-height,5rem)) - var(--stat-lead-in,0px) - var(--stat-lead-out,0px))}
-```
+Reference element: `.stat-stage`.
+
+| Property / input | Specified value |
+| --- | --- |
+| margin-bottom | calc(var(--stat-dead-scroll,250px) - 2 * (100dvh - var(--nav-height,5rem)) - var(--stat-lead-in,0px) - var(--stat-lead-out,0px)) |
+
 
 Context: `base`
 
-```css
-.stat-stage[data-transition=active] {background:0 0}
-```
+Reference element: `.stat-stage[data-transition=active]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background | 0 0 |
+
 
 Context: `base`
 
-```css
-.stat-stage[data-transition=active]~.selected-work-outer {visibility:hidden}
-```
+Reference element: `.stat-stage[data-transition=active]~.selected-work-outer`.
+
+| Property / input | Specified value |
+| --- | --- |
+| visibility | hidden |
+
 
 Context: `base`
 
-```css
-.stat-stage[data-transition=active] .stat-canvas:before {content:"";z-index:-1;background:var(--primary-green-neon);position:absolute;inset:0}
-```
+Reference element: `.stat-stage[data-transition=active] .stat-canvas:before`.
+
+| Property / input | Specified value |
+| --- | --- |
+| content | "" |
+| z-index | -1 |
+| background | var(--primary-green-neon) |
+| position | absolute |
+| inset | 0 |
+
 
 Context: `base`
 
-```css
-.stat-section {width:100%;height:calc(100dvh + var(--stat-lead-in,0px) + var(--stat-lead-out,0px));--canvas-ratio:1.8;font-family:var(--font-heading);position:relative;overflow:hidden}
-```
+Reference element: `.stat-section`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 100% |
+| height | calc(100dvh + var(--stat-lead-in,0px) + var(--stat-lead-out,0px)) |
+| --canvas-ratio | 1.8 |
+| font-family | var(--font-heading) |
+| position | relative |
+| overflow | hidden |
+
 
 Context: `base`
 
-```css
-.stat-stage>.shared-grid-lines {z-index:1}
-```
+Reference element: `.stat-stage>.shared-grid-lines`.
+
+| Property / input | Specified value |
+| --- | --- |
+| z-index | 1 |
+
 
 Context: `base`
 
-```css
-.stat-canvas {top:calc(50% + var(--stat-lead-in,0px) / 2 - var(--stat-lead-out,0px) / 2);width:min(100vw, calc(100dvh * var(--canvas-ratio)));height:min(100dvh, calc(100vw / var(--canvas-ratio)));position:absolute;left:50%;transform:translate(-50%,-50%)}
-```
+Reference element: `.stat-canvas`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | calc(50% + var(--stat-lead-in,0px) / 2 - var(--stat-lead-out,0px) / 2) |
+| width | min(100vw, calc(100dvh * var(--canvas-ratio))) |
+| height | min(100dvh, calc(100vw / var(--canvas-ratio))) |
+| position | absolute |
+| left | 50% |
+| transform | translate(-50%,-50%) |
+
 
 Context: `base`
 
-```css
-.stat-box {will-change:clip-path;--box-fill:var(--primary-green-box);--box-stroke:var(--primary-green-box-stroke);--box-text:var(--background-bg-0);position:absolute}
-```
+Reference element: `.stat-box`.
+
+| Property / input | Specified value |
+| --- | --- |
+| will-change | clip-path |
+| --box-fill | var(--primary-green-box) |
+| --box-stroke | var(--primary-green-box-stroke) |
+| --box-text | var(--background-bg-0) |
+| position | absolute |
+
 
 Context: `base`
 
-```css
-.stat-box-bg {--stat-box-shape:polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 125px, 11.71px 113px, 11.71px 52px, 0 40px);background:var(--box-stroke);clip-path:var(--stat-box-shape);transition:background-color .2s;position:absolute;inset:0}
-```
+Reference element: `.stat-box-bg`.
+
+| Property / input | Specified value |
+| --- | --- |
+| --stat-box-shape | polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 125px, 11.71px 113px, 11.71px 52px, 0 40px) |
+| background | var(--box-stroke) |
+| clip-path | var(--stat-box-shape) |
+| transition | background-color .2s |
+| position | absolute |
+| inset | 0 |
+
 
 Context: `base`
 
-```css
-.stat-box-bg:after {content:"";background:var(--box-fill);clip-path:var(--stat-box-shape);transition:background-color .2s;position:absolute;inset:2px}
-```
+Reference element: `.stat-box-bg:after`.
+
+| Property / input | Specified value |
+| --- | --- |
+| content | "" |
+| background | var(--box-fill) |
+| clip-path | var(--stat-box-shape) |
+| transition | background-color .2s |
+| position | absolute |
+| inset | 2px |
+
 
 Context: `base`
 
-```css
-.stat-box--icon {position:absolute}
-```
+Reference element: `.stat-box--icon`.
+
+| Property / input | Specified value |
+| --- | --- |
+| position | absolute |
+
 
 Context: `base`
 
-```css
-.stat-label {width:11.5rem;font-family:var(--font-heading);letter-spacing:.13em;text-transform:uppercase;text-align:right;color:var(--box-text,var(--background-bg-0));margin:0;font-size:.75rem;font-weight:600;line-height:1;transition:color .2s;position:absolute;top:16px;right:16px}
-```
+Reference element: `.stat-label`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 11.5rem |
+| font-family | var(--font-heading) |
+| letter-spacing | .13em |
+| text-transform | uppercase |
+| text-align | right |
+| color | var(--box-text,var(--background-bg-0)) |
+| margin | 0 |
+| font-size | .75rem |
+| font-weight | 600 |
+| line-height | 1 |
+| transition | color .2s |
+| position | absolute |
+| top | 16px |
+| right | 16px |
+
 
 Context: `base`
 
-```css
-.stat-value {font-family:var(--font-heading);letter-spacing:-.02em;text-align:left;color:var(--box-text,var(--background-bg-0));white-space:nowrap;font-variant-numeric:tabular-nums;--odo-cell-h:1em;--odo-cell-pad:0px;align-items:flex-start;margin:0;font-size:3.5rem;font-weight:500;line-height:.85;transition:color .2s;display:flex;position:absolute;bottom:0;left:20px}
-```
+Reference element: `.stat-value`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-family | var(--font-heading) |
+| letter-spacing | -.02em |
+| text-align | left |
+| color | var(--box-text,var(--background-bg-0)) |
+| white-space | nowrap |
+| font-variant-numeric | tabular-nums |
+| --odo-cell-h | 1em |
+| --odo-cell-pad | 0px |
+| align-items | flex-start |
+| margin | 0 |
+| font-size | 3.5rem |
+| font-weight | 500 |
+| line-height | .85 |
+| transition | color .2s |
+| display | flex |
+| position | absolute |
+| bottom | 0 |
+| left | 20px |
+
 
 Context: `base`
 
-```css
-.odometer-digit {height:var(--odo-cell-h);line-height:1;display:inline-block;overflow:hidden}
-```
+Reference element: `.odometer-digit`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | var(--odo-cell-h) |
+| line-height | 1 |
+| display | inline-block |
+| overflow | hidden |
+
 
 Context: `base`
 
-```css
-.odometer-digit-strip {will-change:transform;flex-direction:column;align-items:center;display:flex}
-```
+Reference element: `.odometer-digit-strip`.
+
+| Property / input | Specified value |
+| --- | --- |
+| will-change | transform |
+| flex-direction | column |
+| align-items | center |
+| display | flex |
+
 
 Context: `base`
 
-```css
-.odometer-digit-strip span {height:var(--odo-cell-h);line-height:1;display:block}
-```
+Reference element: `.odometer-digit-strip span`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | var(--odo-cell-h) |
+| line-height | 1 |
+| display | block |
+
 
 Context: `base`
 
-```css
-.odometer-suffix {display:inline-block}
-```
+Reference element: `.odometer-suffix`.
+
+| Property / input | Specified value |
+| --- | --- |
+| display | inline-block |
+
 
 Context: `base`
 
-```css
-.stat-box--icon img {aspect-ratio:1;object-fit:contain;pointer-events:none;mix-blend-mode:normal;width:30%;height:auto;transition:opacity .15s;position:absolute;bottom:16px;left:16px}
-```
+Reference element: `.stat-box--icon img`.
+
+| Property / input | Specified value |
+| --- | --- |
+| aspect-ratio | 1 |
+| object-fit | contain |
+| pointer-events | none |
+| mix-blend-mode | normal |
+| width | 30% |
+| height | auto |
+| transition | opacity .15s |
+| position | absolute |
+| bottom | 16px |
+| left | 16px |
+
 
 Context: `base`
 
-```css
-.tool-logo--hover,.stat-box:hover .tool-logo--default {opacity:0}
-```
+Reference element: `.tool-logo--hover,.stat-box:hover .tool-logo--default`.
+
+| Property / input | Specified value |
+| --- | --- |
+| opacity | 0 |
+
 
 Context: `base`
 
-```css
-.stat-box:hover .tool-logo--hover {opacity:1}
-```
+Reference element: `.stat-box:hover .tool-logo--hover`.
+
+| Property / input | Specified value |
+| --- | --- |
+| opacity | 1 |
+
 
 Context: `base`
 
-```css
-.stat-box-notch {background:var(--primary-green-neon);clip-path:polygon(0 0,100% 0,0 100%);opacity:0;pointer-events:none;width:16px;height:16px;transition:opacity .15s;position:absolute;top:16px;left:16px}
-```
+Reference element: `.stat-box-notch`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background | var(--primary-green-neon) |
+| clip-path | polygon(0 0,100% 0,0 100%) |
+| opacity | 0 |
+| pointer-events | none |
+| width | 16px |
+| height | 16px |
+| transition | opacity .15s |
+| position | absolute |
+| top | 16px |
+| left | 16px |
+
 
 Context: `base`
 
-```css
-.stat-box:hover .stat-box-notch {opacity:1}
-```
+Reference element: `.stat-box:hover .stat-box-notch`.
+
+| Property / input | Specified value |
+| --- | --- |
+| opacity | 1 |
+
 
 Context: `base`
 
-```css
-.stat-heading {will-change:clip-path;font-family:var(--font-heading);font-weight:var(--section-heading-weight);letter-spacing:-.025em;text-transform:uppercase;color:var(--text-white);mix-blend-mode:difference;margin:0;font-size:5rem;line-height:.8;display:none;position:absolute}
-```
+Reference element: `.stat-heading`.
+
+| Property / input | Specified value |
+| --- | --- |
+| will-change | clip-path |
+| font-family | var(--font-heading) |
+| font-weight | var(--section-heading-weight) |
+| letter-spacing | -.025em |
+| text-transform | uppercase |
+| color | var(--text-white) |
+| mix-blend-mode | difference |
+| margin | 0 |
+| font-size | 5rem |
+| line-height | .8 |
+| display | none |
+| position | absolute |
+
 
 Context: `base`
 
-```css
-.stat-heading-line {display:block}
-```
+Reference element: `.stat-heading-line`.
+
+| Property / input | Specified value |
+| --- | --- |
+| display | block |
+
 
 Context: `base`
 
-```css
-.stat-heading-logo {will-change:transform;width:100%;height:100%;display:block;transform:scale(0)}
-```
+Reference element: `.stat-heading-logo`.
+
+| Property / input | Specified value |
+| --- | --- |
+| will-change | transform |
+| width | 100% |
+| height | 100% |
+| display | block |
+| transform | scale(0) |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.stat-section {height:calc(100dvh - var(--nav-height,5rem) + var(--stat-lead-in,0px) + var(--stat-lead-out,0px));--line-gap:calc(20% - .8rem);--box-w:var(--line-gap);--col-1:2rem;--col-2:calc(20% + 1.2rem);--col-3:calc(40% + .4rem);--col-4:calc(60% - .4rem);--col-5:calc(80% - 1.2rem);--row-h:calc((100% - 4rem) / 3);--row-1:2rem;--row-2:calc(2rem + var(--row-h));--row-3:calc(2rem + var(--row-h) * 2)}
-```
+Reference element: `.stat-section`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | calc(100dvh - var(--nav-height,5rem) + var(--stat-lead-in,0px) + var(--stat-lead-out,0px)) |
+| --line-gap | calc(20% - .8rem) |
+| --box-w | var(--line-gap) |
+| --col-1 | 2rem |
+| --col-2 | calc(20% + 1.2rem) |
+| --col-3 | calc(40% + .4rem) |
+| --col-4 | calc(60% - .4rem) |
+| --col-5 | calc(80% - 1.2rem) |
+| --row-h | calc((100% - 4rem) / 3) |
+| --row-1 | 2rem |
+| --row-2 | calc(2rem + var(--row-h)) |
+| --row-3 | calc(2rem + var(--row-h) * 2) |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.stat-canvas {top:var(--stat-lead-in,0px);width:100%;height:calc(100% - var(--stat-lead-in,0px) - var(--stat-lead-out,0px));bottom:0;left:0;right:0;transform:none}
-```
+Reference element: `.stat-canvas`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | var(--stat-lead-in,0px) |
+| width | 100% |
+| height | calc(100% - var(--stat-lead-in,0px) - var(--stat-lead-out,0px)) |
+| bottom | 0 |
+| left | 0 |
+| right | 0 |
+| transform | none |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.stat-label {font-size:1rem;font-weight:700}
-```
+Reference element: `.stat-label`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-size | 1rem |
+| font-weight | 700 |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.stat-box--icon img {width:5.3125rem}
-```
+Reference element: `.stat-box--icon img`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 5.3125rem |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.stat-value {font-size:6.25rem}
-```
+Reference element: `.stat-value`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-size | 6.25rem |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.stat-box,.stat-heading {top:var(--row-1);left:var(--col-1);width:var(--box-w);height:var(--row-h)}
-```
+Reference element: `.stat-box,.stat-heading`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | var(--row-1) |
+| left | var(--col-1) |
+| width | var(--box-w) |
+| height | var(--row-h) |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.stat-heading {flex-direction:column;justify-content:flex-end;display:flex}
-```
+Reference element: `.stat-heading`.
+
+| Property / input | Specified value |
+| --- | --- |
+| flex-direction | column |
+| justify-content | flex-end |
+| display | flex |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.box-1 {left:var(--col-1)}
-```
+Reference element: `.box-1`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | var(--col-1) |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.box-4 {left:var(--col-3)}
-```
+Reference element: `.box-4`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | var(--col-3) |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.box-5 {left:var(--col-5)}
-```
+Reference element: `.box-5`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | var(--col-5) |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.box-2 {top:var(--row-2);left:var(--col-2)}
-```
+Reference element: `.box-2`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | var(--row-2) |
+| left | var(--col-2) |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.box-7 {top:var(--row-2);left:var(--col-4)}
-```
+Reference element: `.box-7`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | var(--row-2) |
+| left | var(--col-4) |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.stat-heading {top:var(--row-3);left:var(--col-1)}
-```
+Reference element: `.stat-heading`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | var(--row-3) |
+| left | var(--col-1) |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.box-3 {top:var(--row-3);left:var(--col-3)}
-```
+Reference element: `.box-3`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | var(--row-3) |
+| left | var(--col-3) |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.box-8 {top:var(--row-3);left:var(--col-5)}
-```
+Reference element: `.box-8`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | var(--row-3) |
+| left | var(--col-5) |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.stat-box:hover {--box-fill:#620ecc;--box-stroke:#480f91;--box-text:var(--text-white)}
-```
+Reference element: `.stat-box:hover`.
+
+| Property / input | Specified value |
+| --- | --- |
+| --box-fill | #620ecc |
+| --box-stroke | #480f91 |
+| --box-text | var(--text-white) |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.stat-stage {--stat-dock-dead:0px;margin-top:calc(var(--stat-dock-dead) + var(--nav-height,5rem) - 100dvh - var(--stat-lead-in,0px))}
-```
+Reference element: `.stat-stage`.
+
+| Property / input | Specified value |
+| --- | --- |
+| --stat-dock-dead | 0px |
+| margin-top | calc(var(--stat-dock-dead) + var(--nav-height,5rem) - 100dvh - var(--stat-lead-in,0px)) |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.stat-section {--canvas-ratio:.4603;--stat-edge-inset:16px;--canvas-letterbox-inset:calc((100vw - min(100vw, calc(100dvh * var(--canvas-ratio)))) / 2)}
-```
+Reference element: `.stat-section`.
+
+| Property / input | Specified value |
+| --- | --- |
+| --canvas-ratio | .4603 |
+| --stat-edge-inset | 16px |
+| --canvas-letterbox-inset | calc((100vw - min(100vw, calc(100dvh * var(--canvas-ratio)))) / 2) |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.stat-box--stat {gap:1rem}
-```
+Reference element: `.stat-box--stat`.
+
+| Property / input | Specified value |
+| --- | --- |
+| gap | 1rem |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.stat-section {--stat-content-w:calc(100vw - 2 * var(--stat-edge-inset));--stat-gap-x:12px;--stat-gap-y:12px;--stat-box-ratio:1.2201;--stat-box-w:calc((var(--stat-content-w) - var(--stat-gap-x)) / 2);--stat-box-h:calc(var(--stat-box-w) / var(--stat-box-ratio));--stat-col-1:calc(var(--stat-edge-inset) - var(--canvas-letterbox-inset));--stat-col-2:calc(var(--stat-col-1) + var(--stat-box-w) + var(--stat-gap-x));--stat-row-pitch:calc(var(--stat-box-h) + var(--stat-gap-y));--stat-grid-top:2rem}
-```
+Reference element: `.stat-section`.
+
+| Property / input | Specified value |
+| --- | --- |
+| --stat-content-w | calc(100vw - 2 * var(--stat-edge-inset)) |
+| --stat-gap-x | 12px |
+| --stat-gap-y | 12px |
+| --stat-box-ratio | 1.2201 |
+| --stat-box-w | calc((var(--stat-content-w) - var(--stat-gap-x)) / 2) |
+| --stat-box-h | calc(var(--stat-box-w) / var(--stat-box-ratio)) |
+| --stat-col-1 | calc(var(--stat-edge-inset) - var(--canvas-letterbox-inset)) |
+| --stat-col-2 | calc(var(--stat-col-1) + var(--stat-box-w) + var(--stat-gap-x)) |
+| --stat-row-pitch | calc(var(--stat-box-h) + var(--stat-gap-y)) |
+| --stat-grid-top | 2rem |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.stat-box,.stat-heading {top:var(--stat-grid-top);left:var(--stat-col-1);width:var(--stat-box-w);height:var(--stat-box-h);bottom:auto;right:auto}
-```
+Reference element: `.stat-box,.stat-heading`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | var(--stat-grid-top) |
+| left | var(--stat-col-1) |
+| width | var(--stat-box-w) |
+| height | var(--stat-box-h) |
+| bottom | auto |
+| right | auto |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.box-2 {left:var(--stat-col-2)}
-```
+Reference element: `.box-2`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | var(--stat-col-2) |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.box-3 {top:calc(var(--stat-grid-top) + var(--stat-row-pitch))}
-```
+Reference element: `.box-3`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | calc(var(--stat-grid-top) + var(--stat-row-pitch)) |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.box-4 {top:calc(var(--stat-grid-top) + var(--stat-row-pitch));left:var(--stat-col-2)}
-```
+Reference element: `.box-4`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | calc(var(--stat-grid-top) + var(--stat-row-pitch)) |
+| left | var(--stat-col-2) |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.box-5 {top:calc(var(--stat-grid-top) + 2 * var(--stat-row-pitch))}
-```
+Reference element: `.box-5`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | calc(var(--stat-grid-top) + 2 * var(--stat-row-pitch)) |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.box-7 {top:calc(var(--stat-grid-top) + 2 * var(--stat-row-pitch));left:var(--stat-col-2)}
-```
+Reference element: `.box-7`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | calc(var(--stat-grid-top) + 2 * var(--stat-row-pitch)) |
+| left | var(--stat-col-2) |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.box-8 {top:calc(var(--stat-grid-top) + 3 * var(--stat-row-pitch))}
-```
+Reference element: `.box-8`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | calc(var(--stat-grid-top) + 3 * var(--stat-row-pitch)) |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.stat-heading {top:calc(var(--stat-grid-top) + 3 * var(--stat-row-pitch));left:var(--stat-col-2);display:block}
-```
+Reference element: `.stat-heading`.
+
+| Property / input | Specified value |
+| --- | --- |
+| top | calc(var(--stat-grid-top) + 3 * var(--stat-row-pitch)) |
+| left | var(--stat-col-2) |
+| display | block |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.stat-canvas {z-index:2}
-```
+Reference element: `.stat-canvas`.
+
+| Property / input | Specified value |
+| --- | --- |
+| z-index | 2 |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.stat-canvas:before {content:"";top:0;bottom:0;left:0;right:min(0px, calc(100% - var(--stat-col-2) - var(--stat-box-w) + 2px));z-index:-1;background:var(--primary-green-neon);position:absolute}
-```
+Reference element: `.stat-canvas:before`.
+
+| Property / input | Specified value |
+| --- | --- |
+| content | "" |
+| top | 0 |
+| bottom | 0 |
+| left | 0 |
+| right | min(0px, calc(100% - var(--stat-col-2) - var(--stat-box-w) + 2px)) |
+| z-index | -1 |
+| background | var(--primary-green-neon) |
+| position | absolute |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.stat-stage[data-transition=active] .stat-canvas:before {right:min(0px, calc(100% - var(--stat-col-2) - var(--stat-box-w) + 2px))}
-```
+Reference element: `.stat-stage[data-transition=active] .stat-canvas:before`.
+
+| Property / input | Specified value |
+| --- | --- |
+| right | min(0px, calc(100% - var(--stat-col-2) - var(--stat-box-w) + 2px)) |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.stat-box:hover .tool-logo--default {opacity:1}
-```
+Reference element: `.stat-box:hover .tool-logo--default`.
+
+| Property / input | Specified value |
+| --- | --- |
+| opacity | 1 |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.stat-box:hover .tool-logo--hover,.stat-box:hover .stat-box-notch {opacity:0}
-```
+Reference element: `.stat-box:hover .tool-logo--hover,.stat-box:hover .stat-box-notch`.
+
+| Property / input | Specified value |
+| --- | --- |
+| opacity | 0 |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.stat-value {bottom:0;left:1rem}
-```
+Reference element: `.stat-value`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | 0 |
+| left | 1rem |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.stat-box--icon img {width:3.5rem;bottom:.8rem;left:1rem}
-```
+Reference element: `.stat-box--icon img`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 3.5rem |
+| bottom | .8rem |
+| left | 1rem |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.stat-box-bg {--chamfer-unit:calc(var(--stat-box-h) / 228);--stat-box-shape:polygon(0 0, 100% 0, 100% calc(100% - 8 * var(--chamfer-unit)), calc(100% - 8 * var(--chamfer-unit)) 100%, 0 100%, 0 calc(125 * var(--chamfer-unit)), calc(11.71 * var(--chamfer-unit)) calc(113 * var(--chamfer-unit)), calc(11.71 * var(--chamfer-unit)) calc(52 * var(--chamfer-unit)), 0 calc(40 * var(--chamfer-unit)))}
-```
+Reference element: `.stat-box-bg`.
+
+| Property / input | Specified value |
+| --- | --- |
+| --chamfer-unit | calc(var(--stat-box-h) / 228) |
+| --stat-box-shape | polygon(0 0, 100% 0, 100% calc(100% - 8 * var(--chamfer-unit)), calc(100% - 8 * var(--chamfer-unit)) 100%, 0 100%, 0 calc(125 * var(--chamfer-unit)), calc(11.71 * var(--chamfer-unit)) calc(113 * var(--chamfer-unit)), calc(11.71 * var(--chamfer-unit)) calc(52 * var(--chamfer-unit)), 0 calc(40 * var(--chamfer-unit))) |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.stat-section {--stat-edge-inset:2rem;--stat-box-ratio:2.3711;--stat-gap-x:calc(var(--stat-content-w) * 16 / 770);--stat-gap-y:calc(var(--stat-content-w) * 16 / 770);--stat-dock-bottom:2rem;--stat-box-h:max(calc(var(--stat-box-w) / var(--stat-box-ratio)), calc(( 100dvh - var(--nav-height,5rem) - var(--stat-grid-top) - var(--stat-dock-bottom) - 3 * var(--stat-gap-y) ) / 4))}
-```
+Reference element: `.stat-section`.
+
+| Property / input | Specified value |
+| --- | --- |
+| --stat-edge-inset | 2rem |
+| --stat-box-ratio | 2.3711 |
+| --stat-gap-x | calc(var(--stat-content-w) * 16 / 770) |
+| --stat-gap-y | calc(var(--stat-content-w) * 16 / 770) |
+| --stat-dock-bottom | 2rem |
+| --stat-box-h | max(calc(var(--stat-box-w) / var(--stat-box-ratio)), calc(( 100dvh - var(--nav-height,5rem) - var(--stat-grid-top) - var(--stat-dock-bottom) - 3 * var(--stat-gap-y) ) / 4)) |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.stat-value {--odo-cell-h:1.1em;--odo-cell-pad:0x;font-size:5.5rem;bottom:0;left:2rem}
-```
+Reference element: `.stat-value`.
+
+| Property / input | Specified value |
+| --- | --- |
+| --odo-cell-h | 1.1em |
+| --odo-cell-pad | 0x |
+| font-size | 5.5rem |
+| bottom | 0 |
+| left | 2rem |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.stat-box--icon img {width:5.5rem;bottom:1rem;left:1.5rem}
-```
+Reference element: `.stat-box--icon img`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 5.5rem |
+| bottom | 1rem |
+| left | 1.5rem |
+
 
 Context: `@media (prefers-reduced-motion:reduce)`
 
-```css
-.stat-box {opacity:1!important;transition:none!important;transform:none!important}
-```
+Reference element: `.stat-box`.
+
+| Property / input | Specified value |
+| --- | --- |
+| opacity | 1!important |
+| transition | none!important |
+| transform | none!important |
+
 
 ## Computed layout at 375px
 

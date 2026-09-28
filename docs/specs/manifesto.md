@@ -37,225 +37,396 @@ GSAP ScrollTrigger shared timeline; custom 2D pixel-reveal canvas.
 
 Tailwind source version is UNVERIFIED but explicitly approved to ignore: use installed Tailwind v4. No additional package needed. Reduced-motion and keyboard behavior above are target requirements where the source did not establish equivalent behavior.
 
-## Exact source CSS rules
+## Layout property reference
 
-Rules retain cascade order and media conditions. Tokens map to the verified OKLCH equivalents in globals.css. Source utility classes are additionally represented by the computed tables below.
-
-Context: `base`
-
-```css
-.home-hero-extent {visibility:hidden;display:block;position:absolute;inset:0}
-```
+Property tables retain cascade order and media conditions; no source implementation is included. Tokens map to the verified OKLCH equivalents in globals.css. Source utility classes are additionally represented by the computed tables below.
 
 Context: `base`
 
-```css
-.home-hero-extent-v2 {position:absolute;inset:0}
-```
+Reference element: `.home-hero-extent`.
+
+| Property / input | Specified value |
+| --- | --- |
+| visibility | hidden |
+| display | block |
+| position | absolute |
+| inset | 0 |
+
 
 Context: `base`
 
-```css
-.home-hero-extent-v2-para,.home-hero-extent-v2-word {font-family:var(--font-heading);letter-spacing:-.02em;text-transform:uppercase;color:var(--text-white);mix-blend-mode:plus-lighter;margin:0;font-weight:400;line-height:.85;position:absolute}
-```
+Reference element: `.home-hero-extent-v2`.
+
+| Property / input | Specified value |
+| --- | --- |
+| position | absolute |
+| inset | 0 |
+
 
 Context: `base`
 
-```css
-.home-hero-extent-v2-para {flex-wrap:wrap;justify-content:space-between;gap:0;width:34.5625rem;font-size:4rem;display:flex;bottom:1.875rem;left:1.75rem}
-```
+Reference element: `.home-hero-extent-v2-para,.home-hero-extent-v2-word`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-family | var(--font-heading) |
+| letter-spacing | -.02em |
+| text-transform | uppercase |
+| color | var(--text-white) |
+| mix-blend-mode | plus-lighter |
+| margin | 0 |
+| font-weight | 400 |
+| line-height | .85 |
+| position | absolute |
+
 
 Context: `base`
 
-```css
-.home-hero-extent-v2-para>i {display:none}
-```
+Reference element: `.home-hero-extent-v2-para`.
+
+| Property / input | Specified value |
+| --- | --- |
+| flex-wrap | wrap |
+| justify-content | space-between |
+| gap | 0 |
+| width | 34.5625rem |
+| font-size | 4rem |
+| display | flex |
+| bottom | 1.875rem |
+| left | 1.75rem |
+
 
 Context: `base`
 
-```css
-.home-hero-extent-v2-para>i[data-break-after] {height:0}
-```
+Reference element: `.home-hero-extent-v2-para>i`.
+
+| Property / input | Specified value |
+| --- | --- |
+| display | none |
+
 
 Context: `base`
 
-```css
-.home-hero-extent-v2-para>i[data-break-after="2"],.home-hero-extent-v2-para>i[data-break-after="5"],.home-hero-extent-v2-para>i[data-break-after="8"],.home-hero-extent-v2-para>i[data-break-after="11"],.home-hero-extent-v2-para>i[data-break-after="13"],.home-hero-extent-v2-para>i[data-break-after="15"] {flex-basis:100%;display:block}
-```
+Reference element: `.home-hero-extent-v2-para>i[data-break-after]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | 0 |
+
 
 Context: `base`
 
-```css
-.home-hero-extent-v2-para>[data-word="12"],.home-hero-extent-v2-para>[data-word="14"] {margin-left:19.42%}
-```
+Reference element: `.home-hero-extent-v2-para>i[data-break-after="2"],.home-hero-extent-v2-para>i[data-break-after="5"],.home-hero-extent-v2-para>i[data-break-after="8"],.home-hero-extent-v2-para>i[data-break-after="11"],.home-hero-extent-v2-para>i[data-break-after="13"],.home-hero-extent-v2-para>i[data-break-after="15"]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| flex-basis | 100% |
+| display | block |
+
 
 Context: `base`
 
-```css
-.home-hero-extent-v2-para>[data-word="17"] {margin-left:2.76%}
-```
+Reference element: `.home-hero-extent-v2-para>[data-word="12"],.home-hero-extent-v2-para>[data-word="14"]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| margin-left | 19.42% |
+
 
 Context: `base`
 
-```css
-.home-hero-extent-v2-word {white-space:nowrap;font-size:4rem}
-```
+Reference element: `.home-hero-extent-v2-para>[data-word="17"]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| margin-left | 2.76% |
+
 
 Context: `base`
 
-```css
-.home-hero-extent-v2-word--1 {bottom:1.875rem;right:22.75rem}
-```
+Reference element: `.home-hero-extent-v2-word`.
+
+| Property / input | Specified value |
+| --- | --- |
+| white-space | nowrap |
+| font-size | 4rem |
+
 
 Context: `base`
 
-```css
-.home-hero-extent-v2-word--2 {bottom:4.75rem;right:13.9375rem}
-```
+Reference element: `.home-hero-extent-v2-word--1`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | 1.875rem |
+| right | 22.75rem |
+
 
 Context: `base`
 
-```css
-.home-hero-extent-v2-word--3 {bottom:7.625rem;right:1.9375rem}
-```
+Reference element: `.home-hero-extent-v2-word--2`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | 4.75rem |
+| right | 13.9375rem |
+
 
 Context: `base`
 
-```css
-.home-hero-extent-v2-arrow-mask {pointer-events:none;width:20.75rem;height:2.5625rem;position:absolute;bottom:2.375rem;right:2rem;overflow:hidden}
-```
+Reference element: `.home-hero-extent-v2-word--3`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | 7.625rem |
+| right | 1.9375rem |
+
 
 Context: `base`
 
-```css
-.home-hero-extent-v2-arrow {width:2.5625rem;height:2.5625rem;color:var(--primary-green-neon);position:absolute;top:0;left:0;transform:translate(-100%)}
-```
+Reference element: `.home-hero-extent-v2-arrow-mask`.
+
+| Property / input | Specified value |
+| --- | --- |
+| pointer-events | none |
+| width | 20.75rem |
+| height | 2.5625rem |
+| position | absolute |
+| bottom | 2.375rem |
+| right | 2rem |
+| overflow | hidden |
+
+
+Context: `base`
+
+Reference element: `.home-hero-extent-v2-arrow`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 2.5625rem |
+| height | 2.5625rem |
+| color | var(--primary-green-neon) |
+| position | absolute |
+| top | 0 |
+| left | 0 |
+| transform | translate(-100%) |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-hero-extent-v2 {--extent-v2-line:3.4rem}
-```
+Reference element: `.home-hero-extent-v2`.
+
+| Property / input | Specified value |
+| --- | --- |
+| --extent-v2-line | 3.4rem |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-hero-extent-v2-para {left:2rem;bottom:calc(7.75rem + var(--extent-v2-line) + 2 * var(--extent-v2-line));width:calc(100% - 4rem)}
-```
+Reference element: `.home-hero-extent-v2-para`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | 2rem |
+| bottom | calc(7.75rem + var(--extent-v2-line) + 2 * var(--extent-v2-line)) |
+| width | calc(100% - 4rem) |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-hero-extent-v2-para>i[data-break-after] {display:none}
-```
+Reference element: `.home-hero-extent-v2-para>i[data-break-after]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| display | none |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-hero-extent-v2-para>i[data-break-after="3"],.home-hero-extent-v2-para>i[data-break-after="8"],.home-hero-extent-v2-para>i[data-break-after="11"],.home-hero-extent-v2-para>i[data-break-after="15"] {flex-basis:100%;display:block}
-```
+Reference element: `.home-hero-extent-v2-para>i[data-break-after="3"],.home-hero-extent-v2-para>i[data-break-after="8"],.home-hero-extent-v2-para>i[data-break-after="11"],.home-hero-extent-v2-para>i[data-break-after="15"]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| flex-basis | 100% |
+| display | block |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-hero-extent-v2-para>[data-word="12"],.home-hero-extent-v2-para>[data-word="14"],.home-hero-extent-v2-para>[data-word="17"] {margin-left:0}
-```
+Reference element: `.home-hero-extent-v2-para>[data-word="12"],.home-hero-extent-v2-para>[data-word="14"],.home-hero-extent-v2-para>[data-word="17"]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| margin-left | 0 |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-hero-extent-v2-word--1 {bottom:2rem;right:22.8125rem}
-```
+Reference element: `.home-hero-extent-v2-word--1`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | 2rem |
+| right | 22.8125rem |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-hero-extent-v2-word--2 {bottom:4.875rem;right:14rem}
-```
+Reference element: `.home-hero-extent-v2-word--2`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | 4.875rem |
+| right | 14rem |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-hero-extent-v2-word--3 {bottom:7.75rem;right:2rem}
-```
+Reference element: `.home-hero-extent-v2-word--3`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | 7.75rem |
+| right | 2rem |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-hero-extent-v2-arrow-mask {width:20.8125rem;height:2.5625rem;bottom:2.5rem;right:2rem}
-```
+Reference element: `.home-hero-extent-v2-arrow-mask`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 20.8125rem |
+| height | 2.5625rem |
+| bottom | 2.5rem |
+| right | 2rem |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.home-hero-extent-v2-arrow {width:2.5625rem;height:2.5625rem}
-```
+Reference element: `.home-hero-extent-v2-arrow`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 2.5625rem |
+| height | 2.5625rem |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-hero-extent-v2-para {letter-spacing:0;width:calc(100% - 2rem);font-size:2.5rem;line-height:.86;top:1.5rem;bottom:auto;left:1rem}
-```
+Reference element: `.home-hero-extent-v2-para`.
+
+| Property / input | Specified value |
+| --- | --- |
+| letter-spacing | 0 |
+| width | calc(100% - 2rem) |
+| font-size | 2.5rem |
+| line-height | .86 |
+| top | 1.5rem |
+| bottom | auto |
+| left | 1rem |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-hero-extent-v2-para>i[data-break-after] {display:none}
-```
+Reference element: `.home-hero-extent-v2-para>i[data-break-after]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| display | none |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-hero-extent-v2-para>i[data-break-after="3"],.home-hero-extent-v2-para>i[data-break-after="6"],.home-hero-extent-v2-para>i[data-break-after="8"],.home-hero-extent-v2-para>i[data-break-after="11"],.home-hero-extent-v2-para>i[data-break-after="13"],.home-hero-extent-v2-para>i[data-break-after="15"] {flex-basis:100%;display:block}
-```
+Reference element: `.home-hero-extent-v2-para>i[data-break-after="3"],.home-hero-extent-v2-para>i[data-break-after="6"],.home-hero-extent-v2-para>i[data-break-after="8"],.home-hero-extent-v2-para>i[data-break-after="11"],.home-hero-extent-v2-para>i[data-break-after="13"],.home-hero-extent-v2-para>i[data-break-after="15"]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| flex-basis | 100% |
+| display | block |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-hero-extent-v2-para>[data-word="12"],.home-hero-extent-v2-para>[data-word="14"] {margin-left:23.04%}
-```
+Reference element: `.home-hero-extent-v2-para>[data-word="12"],.home-hero-extent-v2-para>[data-word="14"]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| margin-left | 23.04% |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-hero-extent-v2-para>[data-word="17"] {margin-left:clamp(0px,84.94px - 15.44%,100% - 245px)}
-```
+Reference element: `.home-hero-extent-v2-para>[data-word="17"]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| margin-left | clamp(0px,84.94px - 15.44%,100% - 245px) |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-hero-extent-v2-word {letter-spacing:0;font-size:2.5rem}
-```
+Reference element: `.home-hero-extent-v2-word`.
+
+| Property / input | Specified value |
+| --- | --- |
+| letter-spacing | 0 |
+| font-size | 2.5rem |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-hero-extent-v2-word--1 {bottom:1.5rem;left:1rem;right:auto}
-```
+Reference element: `.home-hero-extent-v2-word--1`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | 1.5rem |
+| left | 1rem |
+| right | auto |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-hero-extent-v2-word--2 {bottom:3.3125rem;right:9.6875rem}
-```
+Reference element: `.home-hero-extent-v2-word--2`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | 3.3125rem |
+| right | 9.6875rem |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-hero-extent-v2-word--3 {bottom:5.125rem;right:1.5rem}
-```
+Reference element: `.home-hero-extent-v2-word--3`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | 5.125rem |
+| right | 1.5rem |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-hero-extent-v2-arrow-mask {width:auto;height:1.625rem;bottom:1.8125rem;left:11.625rem;right:1.5rem}
-```
+Reference element: `.home-hero-extent-v2-arrow-mask`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | auto |
+| height | 1.625rem |
+| bottom | 1.8125rem |
+| left | 11.625rem |
+| right | 1.5rem |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.home-hero-extent-v2-arrow {width:1.625rem;height:1.625rem}
-```
+Reference element: `.home-hero-extent-v2-arrow`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 1.625rem |
+| height | 1.625rem |
+
 
 ## Computed layout at 375px
 

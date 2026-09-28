@@ -39,369 +39,670 @@ GSAP ScrollTrigger + ScrambleTextPlugin; Three.js / React Three Fiber custom ima
 
 Tailwind source version is UNVERIFIED but explicitly approved to ignore: use installed Tailwind v4. No additional package needed. Reduced-motion and keyboard behavior above are target requirements where the source did not establish equivalent behavior.
 
-## Exact source CSS rules
+## Layout property reference
 
-Rules retain cascade order and media conditions. Tokens map to the verified OKLCH equivalents in globals.css. Source utility classes are additionally represented by the computed tables below.
-
-Context: `base`
-
-```css
-.stat-stage[data-transition=active]~.selected-work-outer {visibility:hidden}
-```
+Property tables retain cascade order and media conditions; no source implementation is included. Tokens map to the verified OKLCH equivalents in globals.css. Source utility classes are additionally represented by the computed tables below.
 
 Context: `base`
 
-```css
-.selected-work-outer {background:var(--primary-green-neon);width:100%;position:relative}
-```
+Reference element: `.stat-stage[data-transition=active]~.selected-work-outer`.
+
+| Property / input | Specified value |
+| --- | --- |
+| visibility | hidden |
+
 
 Context: `base`
 
-```css
-.selected-work-outer[data-exit=active] {pointer-events:none;background:0 0}
-```
+Reference element: `.selected-work-outer`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background | var(--primary-green-neon) |
+| width | 100% |
+| position | relative |
+
 
 Context: `base`
 
-```css
-.selected-work-outer[data-exit=active] .work-card-thumb--link,.selected-work-outer[data-exit=active] .work-card-visit {pointer-events:auto}
-```
+Reference element: `.selected-work-outer[data-exit=active]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| pointer-events | none |
+| background | 0 0 |
+
 
 Context: `base`
 
-```css
-.selected-work-navband {display:none}
-```
+Reference element: `.selected-work-outer[data-exit=active] .work-card-thumb--link,.selected-work-outer[data-exit=active] .work-card-visit`.
+
+| Property / input | Specified value |
+| --- | --- |
+| pointer-events | auto |
+
 
 Context: `base`
 
-```css
-.selected-work-outer[data-exit=active] .selected-work-navband {height:calc(var(--nav-height,5rem) + 1px);z-index:1;background:var(--primary-green-neon);pointer-events:none;display:block;position:fixed;top:0;left:0;right:0}
-```
+Reference element: `.selected-work-navband`.
+
+| Property / input | Specified value |
+| --- | --- |
+| display | none |
+
 
 Context: `base`
 
-```css
-.selected-work .shared-v-line {visibility:hidden}
-```
+Reference element: `.selected-work-outer[data-exit=active] .selected-work-navband`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | calc(var(--nav-height,5rem) + 1px) |
+| z-index | 1 |
+| background | var(--primary-green-neon) |
+| pointer-events | none |
+| display | block |
+| position | fixed |
+| top | 0 |
+| left | 0 |
+| right | 0 |
+
 
 Context: `base`
 
-```css
-.selected-work {background:var(--primary-green-neon);--grid-line-color:var(--primary-green-line);--grid-line-fade-to:var(--primary-green-neon);--u:.0625rem;width:100%;position:relative}
-```
+Reference element: `.selected-work .shared-v-line`.
+
+| Property / input | Specified value |
+| --- | --- |
+| visibility | hidden |
+
 
 Context: `base`
 
-```css
-.selected-work-heading,.work-viewport {will-change:transform}
-```
+Reference element: `.selected-work`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background | var(--primary-green-neon) |
+| --grid-line-color | var(--primary-green-line) |
+| --grid-line-fade-to | var(--primary-green-neon) |
+| --u | .0625rem |
+| width | 100% |
+| position | relative |
+
 
 Context: `base`
 
-```css
-.selected-work-heading {align-items:flex-start;gap:calc(40 * var(--u));mix-blend-mode:difference;flex-direction:column;display:flex}
-```
+Reference element: `.selected-work-heading,.work-viewport`.
+
+| Property / input | Specified value |
+| --- | --- |
+| will-change | transform |
+
 
 Context: `base`
 
-```css
-.selected-work-cta-wrap {margin-top:calc(40 * var(--u));will-change:transform}
-```
+Reference element: `.selected-work-heading`.
+
+| Property / input | Specified value |
+| --- | --- |
+| align-items | flex-start |
+| gap | calc(40 * var(--u)) |
+| mix-blend-mode | difference |
+| flex-direction | column |
+| display | flex |
+
 
 Context: `base`
 
-```css
-.selected-work-heading-top {align-items:flex-start;gap:calc(32 * var(--u));flex-direction:column;display:flex}
-```
+Reference element: `.selected-work-cta-wrap`.
+
+| Property / input | Specified value |
+| --- | --- |
+| margin-top | calc(40 * var(--u)) |
+| will-change | transform |
+
 
 Context: `base`
 
-```css
-.selected-work-badge {width:fit-content;padding:calc(7 * var(--u)) calc(9 * var(--u));background:var(--primary-green-neon);color:var(--text-black,#070210);font-size:calc(12 * var(--u));letter-spacing:calc(1.56 * var(--u));text-transform:uppercase;white-space:nowrap;align-items:center;font-weight:600;line-height:1;display:inline-flex}
-```
+Reference element: `.selected-work-heading-top`.
+
+| Property / input | Specified value |
+| --- | --- |
+| align-items | flex-start |
+| gap | calc(32 * var(--u)) |
+| flex-direction | column |
+| display | flex |
+
 
 Context: `base`
 
-```css
-.selected-work-title {color:var(--text-white);font-weight:var(--section-heading-weight);letter-spacing:calc(-2 * var(--u));text-transform:uppercase;line-height:.8}
-```
+Reference element: `.selected-work-badge`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | fit-content |
+| padding | calc(7 * var(--u)) calc(9 * var(--u)) |
+| background | var(--primary-green-neon) |
+| color | var(--text-black,#070210) |
+| font-size | calc(12 * var(--u)) |
+| letter-spacing | calc(1.56 * var(--u)) |
+| text-transform | uppercase |
+| white-space | nowrap |
+| align-items | center |
+| font-weight | 600 |
+| line-height | 1 |
+| display | inline-flex |
+
 
 Context: `base`
 
-```css
-.selected-work-description {font-family:var(--font-sans);font-size:calc(13 * var(--u));color:var(--text-grey-1);line-height:1.8}
-```
+Reference element: `.selected-work-title`.
+
+| Property / input | Specified value |
+| --- | --- |
+| color | var(--text-white) |
+| font-weight | var(--section-heading-weight) |
+| letter-spacing | calc(-2 * var(--u)) |
+| text-transform | uppercase |
+| line-height | .8 |
+
 
 Context: `base`
 
-```css
-.selected-work-cta {width:calc(160 * var(--u));height:calc(46 * var(--u))}
-```
+Reference element: `.selected-work-description`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-family | var(--font-sans) |
+| font-size | calc(13 * var(--u)) |
+| color | var(--text-grey-1) |
+| line-height | 1.8 |
+
 
 Context: `base`
 
-```css
-.work-card {align-items:flex-start;gap:calc(12 * var(--u));flex-direction:column;min-width:0;max-width:100%;display:flex}
-```
+Reference element: `.selected-work-cta`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | calc(160 * var(--u)) |
+| height | calc(46 * var(--u)) |
+
 
 Context: `base`
 
-```css
-.work-card-thumb {width:100%;aspect-ratio:var(--ratio,1.236);box-shadow:0 calc(1 * var(--u)) calc(2 * var(--u)) color-mix(in srgb, var(--background-bg-0) 10%, transparent), 0 calc(10 * var(--u)) calc(24 * var(--u)) color-mix(in srgb, var(--background-bg-0) 2%, transparent);flex:none;position:relative}
-```
+Reference element: `.work-card`.
+
+| Property / input | Specified value |
+| --- | --- |
+| align-items | flex-start |
+| gap | calc(12 * var(--u)) |
+| flex-direction | column |
+| min-width | 0 |
+| max-width | 100% |
+| display | flex |
+
 
 Context: `base`
 
-```css
-.work-card-thumb--link {cursor:pointer;display:block}
-```
+Reference element: `.work-card-thumb`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 100% |
+| aspect-ratio | var(--ratio,1.236) |
+| box-shadow | 0 calc(1 * var(--u)) calc(2 * var(--u)) color-mix(in srgb, var(--background-bg-0) 10%, transparent), 0 calc(10 * var(--u)) calc(24 * var(--u)) color-mix(in srgb, var(--background-bg-0) 2%, transparent) |
+| flex | none |
+| position | relative |
+
 
 Context: `base`
 
-```css
-.work-card-frame,.work-card-mask {position:absolute;inset:0;overflow:hidden}
-```
+Reference element: `.work-card-thumb--link`.
+
+| Property / input | Specified value |
+| --- | --- |
+| cursor | pointer |
+| display | block |
+
 
 Context: `base`
 
-```css
-.work-card-img {object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
-```
+Reference element: `.work-card-frame,.work-card-mask`.
+
+| Property / input | Specified value |
+| --- | --- |
+| position | absolute |
+| inset | 0 |
+| overflow | hidden |
+
+
+Context: `base`
+
+Reference element: `.work-card-img`.
+
+| Property / input | Specified value |
+| --- | --- |
+| object-fit | cover |
+| transition | transform .6s cubic-bezier(.16,1,.3,1) |
+
 
 Context: `@media (hover:hover)`
 
-```css
-.work-card-thumb:hover .work-card-img {transform:scale(1.04)}
-```
+Reference element: `.work-card-thumb:hover .work-card-img`.
+
+| Property / input | Specified value |
+| --- | --- |
+| transform | scale(1.04) |
+
 
 Context: `@media (prefers-reduced-motion:reduce)`
 
-```css
-.work-card-img {transition:none}
-```
+Reference element: `.work-card-img`.
+
+| Property / input | Specified value |
+| --- | --- |
+| transition | none |
+
 
 Context: `@media (prefers-reduced-motion:reduce)`
 
-```css
-.work-card-thumb:hover .work-card-img {transform:none}
-```
+Reference element: `.work-card-thumb:hover .work-card-img`.
+
+| Property / input | Specified value |
+| --- | --- |
+| transform | none |
+
 
 Context: `base`
 
-```css
-.work-card-cover {mix-blend-mode:hard-light;background:linear-gradient(to bottom, transparent, var(--work-cover));pointer-events:none;position:absolute;inset:0}
-```
+Reference element: `.work-card-cover`.
+
+| Property / input | Specified value |
+| --- | --- |
+| mix-blend-mode | hard-light |
+| background | linear-gradient(to bottom, transparent, var(--work-cover)) |
+| pointer-events | none |
+| position | absolute |
+| inset | 0 |
+
 
 Context: `base`
 
-```css
-.work-card-tag {left:calc(16 * var(--u));bottom:calc(15 * var(--u));padding:calc(7 * var(--u)) calc(8 * var(--u));font-size:calc(12 * var(--u));letter-spacing:calc(1.56 * var(--u));text-transform:uppercase;white-space:nowrap;background:#202020;align-items:center;font-weight:600;line-height:1;display:inline-flex;position:absolute}
-```
+Reference element: `.work-card-tag`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | calc(16 * var(--u)) |
+| bottom | calc(15 * var(--u)) |
+| padding | calc(7 * var(--u)) calc(8 * var(--u)) |
+| font-size | calc(12 * var(--u)) |
+| letter-spacing | calc(1.56 * var(--u)) |
+| text-transform | uppercase |
+| white-space | nowrap |
+| background | #202020 |
+| align-items | center |
+| font-weight | 600 |
+| line-height | 1 |
+| display | inline-flex |
+| position | absolute |
+
 
 Context: `base`
 
-```css
-.work-card-tag[data-tag=case-study] {color:var(--primary-orange)}
-```
+Reference element: `.work-card-tag[data-tag=case-study]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| color | var(--primary-orange) |
+
 
 Context: `base`
 
-```css
-.work-card-tag[data-tag=web-design],.work-card-tag[data-tag=app-design] {color:var(--primary-green-neon)}
-```
+Reference element: `.work-card-tag[data-tag=web-design],.work-card-tag[data-tag=app-design]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| color | var(--primary-green-neon) |
+
 
 Context: `base`
 
-```css
-.work-card-tag[data-tag=exploration] {color:var(--tertiary-purple-vivid)}
-```
+Reference element: `.work-card-tag[data-tag=exploration]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| color | var(--tertiary-purple-vivid) |
+
 
 Context: `base`
 
-```css
-.work-card-tag[data-tag=for-fun] {color:var(--primary-cyan-neon)}
-```
+Reference element: `.work-card-tag[data-tag=for-fun]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| color | var(--primary-cyan-neon) |
+
 
 Context: `base`
 
-```css
-.work-card-plus {width:calc(8 * var(--u));height:calc(8 * var(--u));color:color-mix(in srgb, var(--background-bg-0) 35%, transparent);pointer-events:none;position:absolute}
-```
+Reference element: `.work-card-plus`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | calc(8 * var(--u)) |
+| height | calc(8 * var(--u)) |
+| color | color-mix(in srgb, var(--background-bg-0) 35%, transparent) |
+| pointer-events | none |
+| position | absolute |
+
 
 Context: `base`
 
-```css
-.work-card-plus-tl {left:calc(-4 * var(--u));top:calc(-4 * var(--u))}
-```
+Reference element: `.work-card-plus-tl`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | calc(-4 * var(--u)) |
+| top | calc(-4 * var(--u)) |
+
 
 Context: `base`
 
-```css
-.work-card-plus-tr {right:calc(-4 * var(--u));top:calc(-4 * var(--u))}
-```
+Reference element: `.work-card-plus-tr`.
+
+| Property / input | Specified value |
+| --- | --- |
+| right | calc(-4 * var(--u)) |
+| top | calc(-4 * var(--u)) |
+
 
 Context: `base`
 
-```css
-.work-card-plus-br {right:calc(-4 * var(--u));bottom:calc(-4 * var(--u))}
-```
+Reference element: `.work-card-plus-br`.
+
+| Property / input | Specified value |
+| --- | --- |
+| right | calc(-4 * var(--u)) |
+| bottom | calc(-4 * var(--u)) |
+
 
 Context: `base`
 
-```css
-.work-card-plus-bl {left:calc(-4 * var(--u));bottom:calc(-4 * var(--u))}
-```
+Reference element: `.work-card-plus-bl`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | calc(-4 * var(--u)) |
+| bottom | calc(-4 * var(--u)) |
+
 
 Context: `base`
 
-```css
-.work-card-label {justify-content:space-between;align-items:baseline;gap:calc(12 * var(--u));flex-shrink:0;width:100%;display:flex}
-```
+Reference element: `.work-card-label`.
+
+| Property / input | Specified value |
+| --- | --- |
+| justify-content | space-between |
+| align-items | baseline |
+| gap | calc(12 * var(--u)) |
+| flex-shrink | 0 |
+| width | 100% |
+| display | flex |
+
 
 Context: `base`
 
-```css
-.work-card-title {font-size:calc(20 * var(--u));color:var(--background-bg-0);text-transform:uppercase;font-weight:500;line-height:1}
-```
+Reference element: `.work-card-title`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-size | calc(20 * var(--u)) |
+| color | var(--background-bg-0) |
+| text-transform | uppercase |
+| font-weight | 500 |
+| line-height | 1 |
+
 
 Context: `base`
 
-```css
-.work-card-visit {font-size:calc(12 * var(--u));letter-spacing:calc(1.56 * var(--u));color:color-mix(in srgb, var(--background-bg-0) 55%, transparent);text-transform:uppercase;white-space:nowrap;flex-shrink:0;font-weight:600;line-height:1}
-```
+Reference element: `.work-card-visit`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-size | calc(12 * var(--u)) |
+| letter-spacing | calc(1.56 * var(--u)) |
+| color | color-mix(in srgb, var(--background-bg-0) 55%, transparent) |
+| text-transform | uppercase |
+| white-space | nowrap |
+| flex-shrink | 0 |
+| font-weight | 600 |
+| line-height | 1 |
+
 
 Context: `base`
 
-```css
-.work-card-visit-icon {color:var(--background-bg-0)}
-```
+Reference element: `.work-card-visit-icon`.
+
+| Property / input | Specified value |
+| --- | --- |
+| color | var(--background-bg-0) |
+
 
 Context: `base`
 
-```css
-.selected-work[data-webgl=on] .work-card-img,.selected-work[data-webgl=on] .work-card-cover {opacity:0}
-```
+Reference element: `.selected-work[data-webgl=on] .work-card-img,.selected-work[data-webgl=on] .work-card-cover`.
+
+| Property / input | Specified value |
+| --- | --- |
+| opacity | 0 |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.selected-work {height:calc(100dvh - var(--nav-height,0px));--u:min(calc((100dvh - var(--nav-height,0px) - 4rem) / var(--box-h)), .0625rem);overflow:hidden}
-```
+Reference element: `.selected-work`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | calc(100dvh - var(--nav-height,0px)) |
+| --u | min(calc((100dvh - var(--nav-height,0px) - 4rem) / var(--box-h)), .0625rem) |
+| overflow | hidden |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.selected-work-cta-wrap {left:var(--grid-edge-inset,2rem);top:calc(48 * var(--u));z-index:2;margin-top:0;position:absolute}
-```
+Reference element: `.selected-work-cta-wrap`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | var(--grid-edge-inset,2rem) |
+| top | calc(48 * var(--u)) |
+| z-index | 2 |
+| margin-top | 0 |
+| position | absolute |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.selected-work-heading {left:var(--grid-edge-inset,2rem);top:calc(48 * var(--u));width:calc(451 * var(--u));z-index:2;position:absolute}
-```
+Reference element: `.selected-work-heading`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | var(--grid-edge-inset,2rem) |
+| top | calc(48 * var(--u)) |
+| width | calc(451 * var(--u)) |
+| z-index | 2 |
+| position | absolute |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.selected-work-title {font-size:5rem}
-```
+Reference element: `.selected-work-title`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-size | 5rem |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.work-viewport {position:absolute;inset:0}
-```
+Reference element: `.work-viewport`.
+
+| Property / input | Specified value |
+| --- | --- |
+| position | absolute |
+| inset | 0 |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.work-track,.work-path-layer {left:calc(var(--box-x) * var(--u));top:calc((100dvh - var(--nav-height,0px) - var(--box-h) * var(--u)) / 2);width:calc(var(--box-w) * var(--u));height:calc(var(--box-h) * var(--u));will-change:transform;position:absolute}
-```
+Reference element: `.work-track,.work-path-layer`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | calc(var(--box-x) * var(--u)) |
+| top | calc((100dvh - var(--nav-height,0px) - var(--box-h) * var(--u)) / 2) |
+| width | calc(var(--box-w) * var(--u)) |
+| height | calc(var(--box-h) * var(--u)) |
+| will-change | transform |
+| position | absolute |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.work-track {z-index:1}
-```
+Reference element: `.work-track`.
+
+| Property / input | Specified value |
+| --- | --- |
+| z-index | 1 |
+
 
 Context: `@media (min-width:1025px)`
 
-```css
-.work-card {left:calc(var(--x) * var(--u));top:calc(var(--y) * var(--u));width:calc(var(--w) * var(--u));position:absolute}
-```
+Reference element: `.work-card`.
+
+| Property / input | Specified value |
+| --- | --- |
+| left | calc(var(--x) * var(--u)) |
+| top | calc(var(--y) * var(--u)) |
+| width | calc(var(--w) * var(--u)) |
+| position | absolute |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.selected-work-title {font-size:calc(48 * var(--u))}
-```
+Reference element: `.selected-work-title`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-size | calc(48 * var(--u)) |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.work-track {grid-template-columns:repeat(2,minmax(0,1fr));display:grid}
-```
+Reference element: `.work-track`.
+
+| Property / input | Specified value |
+| --- | --- |
+| grid-template-columns | repeat(2,minmax(0,1fr)) |
+| display | grid |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.selected-work-heading-top,.selected-work-heading {gap:calc(16 * var(--u))}
-```
+Reference element: `.selected-work-heading-top,.selected-work-heading`.
+
+| Property / input | Specified value |
+| --- | --- |
+| gap | calc(16 * var(--u)) |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.selected-work-cta-wrap {margin-top:calc(16 * var(--u))}
-```
+Reference element: `.selected-work-cta-wrap`.
+
+| Property / input | Specified value |
+| --- | --- |
+| margin-top | calc(16 * var(--u)) |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.selected-work {padding:calc(44 * var(--u)) var(--grid-edge-inset,2rem) calc(112 * var(--u))}
-```
+Reference element: `.selected-work`.
+
+| Property / input | Specified value |
+| --- | --- |
+| padding | calc(44 * var(--u)) var(--grid-edge-inset,2rem) calc(112 * var(--u)) |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.selected-work-cta {width:calc(148 * var(--u))}
-```
+Reference element: `.selected-work-cta`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | calc(148 * var(--u)) |
+
 
 Context: `@media (min-width:768px) and (max-width:1024.98px)`
 
-```css
-.work-track {margin-top:calc(64 * var(--u));column-gap:calc(26 * var(--u));row-gap:calc(24 * var(--u));align-items:start}
-```
+Reference element: `.work-track`.
+
+| Property / input | Specified value |
+| --- | --- |
+| margin-top | calc(64 * var(--u)) |
+| column-gap | calc(26 * var(--u)) |
+| row-gap | calc(24 * var(--u)) |
+| align-items | start |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.selected-work {padding:calc(24 * var(--u)) var(--grid-edge-inset,16px) calc(33 * var(--u))}
-```
+Reference element: `.selected-work`.
+
+| Property / input | Specified value |
+| --- | --- |
+| padding | calc(24 * var(--u)) var(--grid-edge-inset,16px) calc(33 * var(--u)) |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.selected-work-description {font-size:calc(15 * var(--u))}
-```
+Reference element: `.selected-work-description`.
+
+| Property / input | Specified value |
+| --- | --- |
+| font-size | calc(15 * var(--u)) |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.selected-work-cta {width:calc(148 * var(--u))}
-```
+Reference element: `.selected-work-cta`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | calc(148 * var(--u)) |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.work-track {margin-top:calc(48 * var(--u));row-gap:calc(16 * var(--u));grid-template-columns:minmax(0,1fr)}
-```
+Reference element: `.work-track`.
+
+| Property / input | Specified value |
+| --- | --- |
+| margin-top | calc(48 * var(--u)) |
+| row-gap | calc(16 * var(--u)) |
+| grid-template-columns | minmax(0,1fr) |
+
 
 Context: `base`
 
-```css
-.selected-work {z-index:1}
-```
+Reference element: `.selected-work`.
+
+| Property / input | Specified value |
+| --- | --- |
+| z-index | 1 |
+
 
 ## Computed layout at 375px
 

@@ -38,57 +38,88 @@ GSAP core + ScrambleTextPlugin; CSS hover transitions. Global Lenis/ScrollTrigge
 
 Tailwind source version is UNVERIFIED but explicitly approved to ignore: use installed Tailwind v4. No additional package needed. Reduced-motion and keyboard behavior above are target requirements where the source did not establish equivalent behavior.
 
-## Exact source CSS rules
+## Layout property reference
 
-Rules retain cascade order and media conditions. Tokens map to the verified OKLCH equivalents in globals.css. Source utility classes are additionally represented by the computed tables below.
+Property tables retain cascade order and media conditions; no source implementation is included. Tokens map to the verified OKLCH equivalents in globals.css. Source utility classes are additionally represented by the computed tables below.
 
 Context: `@layer base`
 
-```css
-ol,ul,menu {list-style:none}
-```
+Reference element: `ol,ul,menu`.
+
+| Property / input | Specified value |
+| --- | --- |
+| list-style | none |
+
 
 Context: `@layer components;@layer utilities`
 
-```css
-.bg-\[var\(--menu-accent\)\] {background-color:var(--menu-accent)}
-```
+Reference element: `.bg-\[var\(--menu-accent\)\]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background-color | var(--menu-accent) |
+
 
 Context: `@layer components;@layer utilities`
 
-```css
-.bg-\[var\(--menu-text-black\)\] {background-color:var(--menu-text-black)}
-```
+Reference element: `.bg-\[var\(--menu-text-black\)\]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background-color | var(--menu-text-black) |
+
 
 Context: `@layer components;@layer utilities`
 
-```css
-.text-\[var\(--menu-text-white\)\] {color:var(--menu-text-white)}
-```
+Reference element: `.text-\[var\(--menu-text-white\)\]`.
+
+| Property / input | Specified value |
+| --- | --- |
+| color | var(--menu-text-white) |
+
 
 Context: `@layer components;@layer utilities / @media (hover:hover)`
 
-```css
-.group-hover\:text-\[var\(--menu-text-black\)\]:is(:where(.group):hover *) {color:var(--menu-text-black)}
-```
+Reference element: `.group-hover\:text-\[var\(--menu-text-black\)\]:is(:where(.group):hover *)`.
+
+| Property / input | Specified value |
+| --- | --- |
+| color | var(--menu-text-black) |
+
 
 Context: `@layer components;@layer utilities`
 
-```css
-.group-data-\[active\=true\]\:bg-\[var\(--menu-active-bg\)\]:is(:where(.group)[data-active=true] *) {background-color:var(--menu-active-bg)}
-```
+Reference element: `.group-data-\[active\=true\]\:bg-\[var\(--menu-active-bg\)\]:is(:where(.group)[data-active=true] *)`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background-color | var(--menu-active-bg) |
+
 
 Context: `@layer components;@layer utilities`
 
-```css
-.group-data-\[active\=true\]\:text-\[var\(--menu-text-black\)\]:is(:where(.group)[data-active=true] *) {color:var(--menu-text-black)}
-```
+Reference element: `.group-data-\[active\=true\]\:text-\[var\(--menu-text-black\)\]:is(:where(.group)[data-active=true] *)`.
+
+| Property / input | Specified value |
+| --- | --- |
+| color | var(--menu-text-black) |
+
 
 Context: `base`
 
-```css
-.cursor-progress-ring {z-index:60;opacity:0;pointer-events:none;will-change:transform;mix-blend-mode:difference;position:fixed;top:0;left:0}
-```
+Reference element: `.cursor-progress-ring`.
+
+| Property / input | Specified value |
+| --- | --- |
+| z-index | 60 |
+| opacity | 0 |
+| pointer-events | none |
+| will-change | transform |
+| mix-blend-mode | difference |
+| position | fixed |
+| top | 0 |
+| left | 0 |
+
 
 ## Computed layout at 375px
 

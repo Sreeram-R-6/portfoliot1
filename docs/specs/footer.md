@@ -37,201 +37,345 @@ GSAP + ScrollTrigger; WebGL2 trail/composite on GSAP ticker; CSS link affordance
 
 Tailwind source version is UNVERIFIED but explicitly approved to ignore: use installed Tailwind v4. No additional package needed. Reduced-motion and keyboard behavior above are target requirements where the source did not establish equivalent behavior.
 
-## Exact source CSS rules
+## Layout property reference
 
-Rules retain cascade order and media conditions. Tokens map to the verified OKLCH equivalents in globals.css. Source utility classes are additionally represented by the computed tables below.
+Property tables retain cascade order and media conditions; no source implementation is included. Tokens map to the verified OKLCH equivalents in globals.css. Source utility classes are additionally represented by the computed tables below.
 
 Context: `base`
 
-```css
-.footer-dock {z-index:-1;position:sticky;bottom:0}
-```
+Reference element: `.footer-dock`.
+
+| Property / input | Specified value |
+| --- | --- |
+| z-index | -1 |
+| position | sticky |
+| bottom | 0 |
+
 
 Context: `@media (min-width:1025px) and (prefers-reduced-motion:no-preference)`
 
-```css
-.footer-dock {--footer-sink:64px}
-```
+Reference element: `.footer-dock`.
+
+| Property / input | Specified value |
+| --- | --- |
+| --footer-sink | 64px |
+
 
 Context: `base`
 
-```css
-main:has(>.footer-dock) {z-index:0;position:relative}
-```
+Reference element: `main:has(>.footer-dock)`.
+
+| Property / input | Specified value |
+| --- | --- |
+| z-index | 0 |
+| position | relative |
+
 
 Context: `base`
 
-```css
-.site-footer {background:var(--primary-green-neon);color:var(--text-black)}
-```
+Reference element: `.site-footer`.
+
+| Property / input | Specified value |
+| --- | --- |
+| background | var(--primary-green-neon) |
+| color | var(--text-black) |
+
 
 Context: `base`
 
-```css
-.footer-top {width:100%;display:flex}
-```
+Reference element: `.footer-top`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 100% |
+| display | flex |
+
 
 Context: `base`
 
-```css
-.footer-cta,.footer-social {width:50%;height:14.875rem;padding:2rem}
-```
+Reference element: `.footer-cta,.footer-social`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 50% |
+| height | 14.875rem |
+| padding | 2rem |
+
 
 Context: `base`
 
-```css
-.footer-cta {border-right:1px solid var(--primary-green-divider)}
-```
+Reference element: `.footer-cta`.
+
+| Property / input | Specified value |
+| --- | --- |
+| border-right | 1px solid var(--primary-green-divider) |
+
 
 Context: `base`
 
-```css
-.footer-social {overflow:hidden}
-```
+Reference element: `.footer-social`.
+
+| Property / input | Specified value |
+| --- | --- |
+| overflow | hidden |
+
 
 Context: `base`
 
-```css
-.footer-headline {letter-spacing:-.04em;width:17.3125rem;font-size:2.5rem;line-height:.8}
-```
+Reference element: `.footer-headline`.
+
+| Property / input | Specified value |
+| --- | --- |
+| letter-spacing | -.04em |
+| width | 17.3125rem |
+| font-size | 2.5rem |
+| line-height | .8 |
+
 
 Context: `base`
 
-```css
-.footer-buttons {gap:1.5rem;margin-top:2rem;display:flex}
-```
+Reference element: `.footer-buttons`.
+
+| Property / input | Specified value |
+| --- | --- |
+| gap | 1.5rem |
+| margin-top | 2rem |
+| display | flex |
+
 
 Context: `base`
 
-```css
-.footer-button {width:9.875rem;height:2.875rem}
-```
+Reference element: `.footer-button`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 9.875rem |
+| height | 2.875rem |
+
 
 Context: `base`
 
-```css
-.footer-links-grid {grid-template-columns:auto max-content max-content;justify-content:end;align-items:center;gap:1.25rem 3.125rem;display:grid}
-```
+Reference element: `.footer-links-grid`.
+
+| Property / input | Specified value |
+| --- | --- |
+| grid-template-columns | auto max-content max-content |
+| justify-content | end |
+| align-items | center |
+| gap | 1.25rem 3.125rem |
+| display | grid |
+
 
 Context: `base`
 
-```css
-.footer-link {justify-content:space-between}
-```
+Reference element: `.footer-link`.
+
+| Property / input | Specified value |
+| --- | --- |
+| justify-content | space-between |
+
 
 Context: `base`
 
-```css
-.footer-bigtext-box {border-top:1px solid var(--primary-green-divider);height:.91em;font-size:13.889vw;position:relative;overflow:clip}
-```
+Reference element: `.footer-bigtext-box`.
+
+| Property / input | Specified value |
+| --- | --- |
+| border-top | 1px solid var(--primary-green-divider) |
+| height | .91em |
+| font-size | 13.889vw |
+| position | relative |
+| overflow | clip |
+
 
 Context: `base`
 
-```css
-.dot-trail {-webkit-user-select:none;user-select:none;cursor:default;display:block;position:relative}
-```
+Reference element: `.dot-trail`.
+
+| Property / input | Specified value |
+| --- | --- |
+| -webkit-user-select | none |
+| user-select | none |
+| cursor | default |
+| display | block |
+| position | relative |
+
 
 Context: `base`
 
-```css
-.dot-trail-canvas {pointer-events:none;width:100%;height:100%;position:absolute;inset:0}
-```
+Reference element: `.dot-trail-canvas`.
+
+| Property / input | Specified value |
+| --- | --- |
+| pointer-events | none |
+| width | 100% |
+| height | 100% |
+| position | absolute |
+| inset | 0 |
+
 
 Context: `base`
 
-```css
-.dot-trail[data-gl=on] .dot-trail-text {color:#0000}
-```
+Reference element: `.dot-trail[data-gl=on] .dot-trail-text`.
+
+| Property / input | Specified value |
+| --- | --- |
+| color | #0000 |
+
 
 Context: `base`
 
-```css
-.footer-bigtext {letter-spacing:-.03em;text-align:center;white-space:nowrap;font-weight:500;line-height:.8;position:absolute;bottom:0;left:0;right:0}
-```
+Reference element: `.footer-bigtext`.
+
+| Property / input | Specified value |
+| --- | --- |
+| letter-spacing | -.03em |
+| text-align | center |
+| white-space | nowrap |
+| font-weight | 500 |
+| line-height | .8 |
+| position | absolute |
+| bottom | 0 |
+| left | 0 |
+| right | 0 |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.footer-cta,.footer-social {height:12.875rem;padding:1rem}
-```
+Reference element: `.footer-cta,.footer-social`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | 12.875rem |
+| padding | 1rem |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.footer-buttons {gap:1.5rem}
-```
+Reference element: `.footer-buttons`.
+
+| Property / input | Specified value |
+| --- | --- |
+| gap | 1.5rem |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.footer-button {width:11.25rem}
-```
+Reference element: `.footer-button`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 11.25rem |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.footer-links-grid {grid-template-columns:1fr max-content max-content;justify-content:stretch;column-gap:1.65625rem}
-```
+Reference element: `.footer-links-grid`.
+
+| Property / input | Specified value |
+| --- | --- |
+| grid-template-columns | 1fr max-content max-content |
+| justify-content | stretch |
+| column-gap | 1.65625rem |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.footer-bigtext-box {height:.9565em;font-size:13.789vw}
-```
+Reference element: `.footer-bigtext-box`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | .9565em |
+| font-size | 13.789vw |
+
 
 Context: `@media (max-width:1024.98px)`
 
-```css
-.footer-bigtext {bottom:.0435em}
-```
+Reference element: `.footer-bigtext`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | .0435em |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.footer-top {flex-direction:column}
-```
+Reference element: `.footer-top`.
+
+| Property / input | Specified value |
+| --- | --- |
+| flex-direction | column |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.footer-cta {border-right:none;border-bottom:1px solid var(--primary-green-divider);width:100%;height:13.125rem}
-```
+Reference element: `.footer-cta`.
+
+| Property / input | Specified value |
+| --- | --- |
+| border-right | none |
+| border-bottom | 1px solid var(--primary-green-divider) |
+| width | 100% |
+| height | 13.125rem |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.footer-social {width:100%;height:6.75rem}
-```
+Reference element: `.footer-social`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 100% |
+| height | 6.75rem |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.footer-buttons {width:100%}
-```
+Reference element: `.footer-buttons`.
+
+| Property / input | Specified value |
+| --- | --- |
+| width | 100% |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.footer-button {flex:1 1 0;width:auto;min-width:0}
-```
+Reference element: `.footer-button`.
+
+| Property / input | Specified value |
+| --- | --- |
+| flex | 1 1 0 |
+| width | auto |
+| min-width | 0 |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.footer-links-grid {column-gap:2rem}
-```
+Reference element: `.footer-links-grid`.
+
+| Property / input | Specified value |
+| --- | --- |
+| column-gap | 2rem |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.footer-bigtext-box {height:1.068em;font-size:13.409vw}
-```
+Reference element: `.footer-bigtext-box`.
+
+| Property / input | Specified value |
+| --- | --- |
+| height | 1.068em |
+| font-size | 13.409vw |
+
 
 Context: `@media (max-width:767.98px)`
 
-```css
-.footer-bigtext {bottom:.132em}
-```
+Reference element: `.footer-bigtext`.
+
+| Property / input | Specified value |
+| --- | --- |
+| bottom | .132em |
+
 
 ## Computed layout at 375px
 

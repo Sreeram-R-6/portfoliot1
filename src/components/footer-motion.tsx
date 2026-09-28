@@ -57,6 +57,7 @@ export function FooterMotion({ children }: { children: ReactNode }) {
       return () => { stop(); footer.removeEventListener("focusin", revealForKeyboard); };
     });
     media.add("(min-width: 1025px) and (prefers-reduced-motion: no-preference)", () => {
+      if (footer.offsetHeight > innerHeight - (scroller.querySelector("nav")?.offsetHeight ?? 76)) return;
       dock.dataset.motion = "docked";
       ScrollTrigger.create({
         id: "footer-sink", scroller, scrub: true, invalidateOnRefresh: true,

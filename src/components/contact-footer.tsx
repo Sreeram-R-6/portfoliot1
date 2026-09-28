@@ -1,11 +1,13 @@
 import { siteContent } from "@/content/site";
 import { DecorativeCanvas } from "./decorative-canvas";
+import { FitText } from "./fit-text";
 import "./contact-footer.css";
 
 export function ContactFooter() {
   const footer = siteContent.footer;
+  const contactLinks = [footer.message, ...(!footer.cv.href.startsWith("#") && !footer.cv.href.startsWith("TODO") ? [footer.cv] : [])];
   const groups = [
-    [footer.message, footer.cv],
+    contactLinks,
     footer.links,
     [{ label: siteContent.location, href: footer.locationHref }],
   ];
@@ -16,7 +18,7 @@ export function ContactFooter() {
         <div className="footer-contact-column">
           <h2 id="footer-heading" className="footer-contact-heading">{footer.title}</h2>
           <div className="footer-contact-actions">
-            {[footer.message, footer.cv].map((link, index) => (
+            {contactLinks.map((link, index) => (
               <a key={link.label} href={link.href} className={`footer-action ${index === 1 ? "footer-action-secondary" : ""}`}>
                 <span aria-hidden="true" className="footer-action-corners" />
                 <span>{link.label}</span>
@@ -42,7 +44,7 @@ export function ContactFooter() {
       </div>
       <div className="footer-wordmark-frame">
         <DecorativeCanvas kind="footer" label={siteContent.name} className="h-full w-full">
-          <span className="footer-wordmark">{siteContent.name}</span>
+          <FitText text={siteContent.name} className="footer-wordmark" />
         </DecorativeCanvas>
         <span className="sr-only">{siteContent.name}</span>
       </div>

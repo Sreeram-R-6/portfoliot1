@@ -1,6 +1,7 @@
 import { SectionPlaceholder } from "@/components/portfolio-shell";
 import { HeaderNavigation } from "@/components/header-navigation";
 import { ContactFooter } from "@/components/contact-footer";
+import { IdentityHero } from "@/components/identity-hero";
 import { siteContent } from "@/content/site";
 
 export default function Home() {
@@ -8,7 +9,7 @@ export default function Home() {
     <>
       <HeaderNavigation />
       <main>
-        <SectionPlaceholder content={siteContent.sections.identity} />
+        <IdentityHero />
         <SectionPlaceholder content={siteContent.sections.manifesto} />
         <SectionPlaceholder content={siteContent.sections.statistics} />
         <SectionPlaceholder content={siteContent.sections.projects}>

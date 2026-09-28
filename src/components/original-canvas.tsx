@@ -38,7 +38,7 @@ void main() {
   result = vec4(color * alpha, alpha);
 }`;
 
-function makeArtwork(kind: CanvasKind, label: string, width: number, height: number, font: string) {
+function makeArtwork(kind: CanvasKind, label: string, width: number, height: number, font: string, letterSpacing: string) {
   const artwork = document.createElement("canvas");
   artwork.width = width;
   artwork.height = height;
@@ -47,6 +47,7 @@ function makeArtwork(kind: CanvasKind, label: string, width: number, height: num
   context.fillStyle = "#fff";
   if (kind === "footer" || kind === "experience") {
     context.font = font;
+    context.letterSpacing = letterSpacing;
     context.textAlign = "center";
     context.textBaseline = "middle";
     context.fillText(label.toUpperCase(), width / 2, height / 2, width);
@@ -138,13 +139,30 @@ export function OriginalCanvas({ kind, label, onReady }: { kind: CanvasKind; lab
       const poster = canvas.parentElement?.querySelector<HTMLElement>(".canvas-poster")?.firstElementChild;
       const style = getComputedStyle(poster ?? canvas);
       const font = `${style.fontWeight} ${parseFloat(style.fontSize) * dpr}px ${style.fontFamily}`;
-      const art = makeArtwork(kind, label, canvas.width, canvas.height, font);
-      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, art);
-      gl.uniform2f(gl.getUniformLocation(program, "dimensions"), canvas.width, canvas.height);
-      gl.uniform1f(gl.getUniformLocation(program, "cellWidth"), (kind === "footer" ? 9 : 4) * dpr);
-      gl.drawArrays(gl.TRIANGLES, 0, 3);
-      onReady(true);
+      const paint = (art: HTMLCanvasElement) => {
+        if (!mounted || gl.isContextLost()) return;
+        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, art);
+        gl.uniform2f(gl.getUniformLocation(program, "dimensions"), canvas.width, canvas.height);
+        gl.uniform1f(gl.getUniformLocation(program, "cellWidth"), (kind === "footer" ? 9 : kind === "glyph" ? 6 : 4) * dpr);
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
+        onReady(true);
+      };
+      const ownPoster = kind === "portrait" ? canvas.parentElement?.querySelector(".canvas-poster svg") : null;
+      if (ownPoster) {
+        const image = new Image();
+        image.onload = () => {
+          if (!mounted) return;
+          const art = document.createElement("canvas");
+          art.width = canvas.width;
+          art.height = canvas.height;
+          art.getContext("2d")?.drawImage(image, 0, 0, art.width, art.height);
+          paint(art);
+        };
+        image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(new XMLSerializer().serializeToString(ownPoster))}`;
+      } else {
+        paint(makeArtwork(kind, label, canvas.width, canvas.height, font, `${(parseFloat(style.letterSpacing) || 0) * dpr}px`));
+      }
     };
     const lost = (event: Event) => { event.preventDefault(); canvas.hidden = true; onReady(false); };
     const resized = new ResizeObserver(draw);

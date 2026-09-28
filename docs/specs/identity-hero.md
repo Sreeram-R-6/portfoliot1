@@ -10,6 +10,8 @@ Measurements below are source computed values at viewport height 900px, scroll t
 
 Hero pin height calc(100dvh - var(--nav-height)); 824px at height 900/nav 76. Pin travel 4.5 * innerHeight = 4050px at reference height. Contact gap 14px; badge padding 7px 9px. Rajdhani display, DM Sans introduction. Canvas layers remain decorative; semantic text remains DOM.
 
+Phase 4 computed-style addendum: hero responsive scale at height 900px is 1 (375), .837 (768), .996 (1440). The bottom cluster has base height 686px mobile, 1127.44px tablet, 827px desktop, multiplied by scale; bottom offset 16px mobile/32px larger widths. First/second display lines are offset 528/606px mobile, 826/976.72px tablet, 543/683px desktop within that cluster (multiply by scale). Tablet display base font 188.4px; desktop 180px; mobile 100px. Region base font 125.6px tablet/120px desktop, line-height .8. Display tracking -.06em larger widths/-.05em mobile. Target SREE/RAM is intentionally split visual text, with one semantic Sreeram heading.
+
 ## States and interactions
 
 Ready entrance: [data-reveal] .8s power3.out, stagger .06s, delay .1s. ScrollTrigger start top <nav-height>px, end +=4.5*innerHeight, pin true, scrub true; durations are scroll progress, not wall-clock seconds. Pointer drives portrait trail/hover; see webgl.md. Scroll cue CSS period 1.00866s, cubic-bezier(.5,0,.5,1). Split lines reveal .8s power3.out, stagger .08s at intersection threshold .2.

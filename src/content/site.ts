@@ -25,6 +25,11 @@ export const siteContent = {
       eyebrow: "Identity hero",
       title: "Sreeram",
       description: "CS student and builder, CCE Kerala",
+      displayLines: ["SREE", "RAM"],
+      badge: "CS student and builder",
+      region: "IN",
+      locationLabel: "Kerala, India",
+      scrollLabel: "Scroll to explore",
     },
     manifesto: {
       id: "manifesto",

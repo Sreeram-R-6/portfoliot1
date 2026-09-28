@@ -1,0 +1,83 @@
+.identity-hero {
+  background: var(--background-bg-0);
+  position: relative;
+}
+
+.identity-scene {
+  --identity-scale: 1;
+  position: relative;
+  height: calc(100dvh - var(--nav-height));
+  min-height: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.identity-grid { position: absolute; inset: 0; pointer-events: none; }
+.identity-grid i { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--divider-line); }
+.identity-grid i:first-child { left: 16px; }
+.identity-grid i:last-child { right: 16px; }
+.identity-grid i:nth-child(2), .identity-grid i:nth-child(3),
+.identity-grid i:nth-child(4), .identity-grid i:nth-child(5) { display: none; }
+
+.identity-portrait-frame { position: absolute; inset: 0; z-index: -1; opacity: .5; pointer-events: none; }
+.identity-poster { position: absolute; right: -38%; bottom: 0; width: 135%; height: 100%; }
+.identity-canvas-area { position: absolute; right: -38%; top: 0; width: 135%; height: 100%; }
+.identity-canvas-area .identity-poster { right: 0; width: 100%; }
+.identity-bottom-cluster { position: absolute; inset: auto 0 16px; height: 686px; pointer-events: none; }
+.identity-contact { position: absolute; left: 16px; top: 24px; width: 228px; display: flex; gap: 14px; }
+.identity-contact-bar { width: 2px; flex: none; background: var(--primary-green-neon); }
+.identity-contact-stack { display: flex; flex: 1; flex-direction: column; gap: 8px; font-family: var(--font-rajdhani), sans-serif; font-size: 12px; font-weight: 500; line-height: 12px; letter-spacing: 1.56px; text-transform: uppercase; color: var(--text-grey-1); }
+.identity-contact-stack a { display: flex; justify-content: space-between; align-items: center; }
+.identity-contact-stack a:hover { color: var(--primary-green-neon); }
+.identity-contact-stack a:focus-visible { outline: 1px solid var(--primary-green-neon); outline-offset: 4px; }
+.identity-introduction { position: absolute; left: 16px; top: 275px; width: min(295px, calc(100% - 32px)); margin: 0; font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: -.03em; text-align: justify; color: var(--text-grey-1); }
+.identity-region, .identity-scroll-cue { display: none; }
+.identity-badge { position: absolute; left: 16px; top: 468px; margin: 0; padding: 7px 9px; max-width: calc(100% - 32px); background: var(--primary-green-neon); color: var(--text-black); font-family: var(--font-rajdhani), sans-serif; font-size: 12px; font-weight: 600; line-height: 12px; letter-spacing: 1.56px; text-transform: uppercase; clip-path: polygon(0 4px, 4px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%); }
+.identity-location { position: absolute; left: 16px; top: 507px; margin: 0; font-family: var(--font-rajdhani), sans-serif; font-size: 12px; font-weight: 500; line-height: 12px; letter-spacing: 1.56px; color: var(--text-grey-1); text-transform: uppercase; }
+.identity-name { position: absolute; left: 16px; margin-left: -.071em; font-family: var(--font-rajdhani), sans-serif; font-weight: 400; font-size: 100px; line-height: .8; letter-spacing: -.05em; color: var(--text-white); }
+.identity-name-first { top: 528px; }
+.identity-name-second { top: 606px; margin-left: -.082em; }
+
+@media (max-width: 767.98px) and (max-height: 760px) {
+  .identity-introduction { top: 176px; }
+}
+
+@media (min-width: 768px) {
+  .identity-scene { --identity-scale: .996; min-height: 0; }
+  .identity-grid i:first-child { left: 32px; }
+  .identity-grid i:last-child { right: 32px; }
+  .identity-grid i:nth-child(2) { display: block; left: calc(20% + 19.2px); }
+  .identity-grid i:nth-child(3) { display: block; left: calc(40% + 6.4px); }
+  .identity-grid i:nth-child(4) { display: block; left: calc(60% - 6.4px); }
+  .identity-grid i:nth-child(5) { display: block; left: calc(80% - 19.2px); }
+  .identity-portrait-frame { opacity: 1; }
+  .identity-poster { right: 0; width: 60%; }
+  .identity-canvas-area { right: 0; width: 60%; }
+  .identity-bottom-cluster { inset: auto 0 32px; height: calc(827px * var(--identity-scale)); }
+  .identity-contact { left: 32px; top: calc(32px * var(--identity-scale)); width: calc(20% - 12.8px); }
+  .identity-introduction { left: 32px; top: calc(192px * var(--identity-scale)); width: calc(40% - 25.6px); font-size: calc(20px * var(--identity-scale)); }
+  .identity-region { display: block; position: absolute; right: 32px; top: calc(32px * var(--identity-scale) - .0402em); font-family: var(--font-rajdhani), sans-serif; font-size: calc(120px * var(--identity-scale)); line-height: .8; font-weight: 400; letter-spacing: -.06em; color: var(--text-white); }
+  .identity-badge { left: 32px; top: calc(552px * var(--identity-scale)); max-width: calc(20% - 12.8px); }
+  .identity-location { left: 32px; top: calc(656.54px * var(--identity-scale)); }
+  .identity-name { font-size: calc(180px * var(--identity-scale)); letter-spacing: -.06em; }
+  .identity-name-first { left: calc(20% + 19.2px); top: calc(543px * var(--identity-scale)); }
+  .identity-name-second { left: 32px; top: calc(683px * var(--identity-scale)); }
+  .identity-scroll-cue { position: absolute; right: 32px; bottom: 19px; display: flex; flex-direction: column; align-items: center; gap: 18px; color: var(--text-grey-1); }
+  .identity-scroll-cue span { writing-mode: vertical-rl; font-family: var(--font-rajdhani), sans-serif; font-size: 12px; line-height: 12px; letter-spacing: 1.56px; text-transform: uppercase; }
+  .identity-scroll-cue svg { width: 8px; height: 24px; }
+}
+
+@media (min-width: 768px) and (max-width: 1024.98px) {
+  .identity-scene { --identity-scale: .837; }
+  .identity-bottom-cluster { height: calc(1127.44px * var(--identity-scale)); }
+  .identity-contact { top: calc(24px * var(--identity-scale)); width: 228px; }
+  .identity-introduction { top: calc(358px * var(--identity-scale)); font-size: 20px; }
+  .identity-badge { top: calc(744px * var(--identity-scale)); max-width: calc(40% - 25.6px); }
+  .identity-location { top: calc(792px * var(--identity-scale)); }
+  .identity-name { font-size: calc(188.4px * var(--identity-scale)); }
+  .identity-name-first { top: calc(826px * var(--identity-scale)); left: 32px; }
+  .identity-name-second { top: calc(976.72px * var(--identity-scale)); }
+  .identity-region { font-size: calc(125.6px * var(--identity-scale)); }
+  .identity-poster { width: 78%; right: -12%; }
+  .identity-canvas-area { width: 78%; right: -12%; }
+}

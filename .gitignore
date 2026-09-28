@@ -54,3 +54,4 @@ public/_original/
 .playwright-mcp/
 docs/assets/
 docs/design-references/
+.cache/

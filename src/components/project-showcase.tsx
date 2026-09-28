@@ -37,7 +37,7 @@ function Arrow() {
   return <svg aria-hidden="true" viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" strokeWidth="1.5" /></svg>;
 }
 
-function ProjectPoster({ id }: { id: string }) {
+export function ProjectPoster({ id }: { id: string }) {
   const seed = [...id].reduce((value, character) => (value * 31 + character.charCodeAt(0)) >>> 0, 0);
   const variant = seed % 5;
   return (
@@ -102,7 +102,8 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
         const bounds = section.getBoundingClientRect();
         const line = section.querySelectorAll<HTMLElement>("[data-project-grid-line]")[5];
         const edge = line?.getBoundingClientRect().left ?? bounds.right;
-        const travel = Math.max(0, (parseFloat(getComputedStyle(track).left) || 0) + track.offsetWidth - (edge - bounds.left));
+        const trackOrigin = track.getBoundingClientRect().left - bounds.left - Number(gsap.getProperty(track, "x"));
+        const travel = Math.max(0, trackOrigin + track.offsetWidth - (edge - bounds.left));
         const handoff = innerWidth * 1.34 / .94;
         const lead = Math.max(0, edge - .75 * innerWidth);
         const exit = Math.max(innerHeight, .75 * innerWidth);
@@ -120,11 +121,23 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
       measure();
       const clamp = gsap.utils.clamp(0, 1);
       const state = { progress: 0 };
+      const progress = section.querySelector<HTMLElement>("[data-track-progress]");
+      const progressLabel = progress?.querySelector<HTMLElement>("[data-track-progress-label]");
+      let previousPercent = -1;
       const update = () => {
         const scroll = state.progress * distances.total;
         const entry = clamp((scroll / distances.handoff - .06) / .94);
         const handoff = entry < .5 ? 2 * entry * entry : 1 - 2 * (1 - entry) * (1 - entry);
-        const trackProgress = clamp((scroll - distances.handoff) / Math.max(1, distances.track));
+        const trackProgress = distances.track > 0 ? clamp((scroll - distances.handoff) / distances.track) : Number(scroll >= distances.handoff);
+        if (progress) {
+          progress.style.setProperty("--track-progress", String(trackProgress));
+          const percent = Math.round(trackProgress * 100);
+          if (percent !== previousPercent) {
+            previousPercent = percent;
+            progress.setAttribute("aria-valuenow", String(percent));
+            if (progressLabel) progressLabel.textContent = `${percent}%`;
+          }
+        }
         const leadProgress = clamp((scroll - distances.handoff - distances.track) / Math.max(1, distances.lead));
         const exitProgress = clamp((scroll - distances.handoff - distances.track - distances.lead) / distances.exit);
         const x = -(distances.track * trackProgress + distances.lead * leadProgress + .75 * innerWidth * exitProgress);
@@ -165,19 +178,43 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
         },
       });
       update();
-      const focus = (event: FocusEvent) => {
+      const revealCard = (card: HTMLElement) => {
+        const trigger = motion.scrollTrigger;
+        if (!trigger) return;
         reveal.progress(1);
+        // Map the untransformed card center directly into the rail phase. Relative
+        // DOM bounds would produce the wrong target during its entering/exiting phases.
+        const inset = parseFloat(getComputedStyle(track.parentElement!).marginLeft) || 32;
+        const desired = card.offsetLeft + card.offsetWidth / 2 + inset - innerWidth / 2;
+        const travel = Math.max(0, Math.min(distances.track, desired));
+        const top = trigger.start + distances.handoff + travel;
+        const scroller = document.getElementById("scroll-container");
+        if (scroller) scroller.dispatchEvent(new CustomEvent("portfolio:scrollto", { detail: { top }, bubbles: true }));
+        else trigger.scroll(top);
+        ScrollTrigger.update();
+        trigger.getTween()?.progress(1);
+        // Keyboard access is immediate even while smooth wheel scrubbing catches up.
+        motion.progress((distances.handoff + travel) / distances.total);
+      };
+      const focus = (event: FocusEvent) => {
         const card = event.target instanceof Element ? event.target.closest<HTMLElement>("[data-project-card]") : null;
-        if (!card || !motion.scrollTrigger) return;
-        const right = card.getBoundingClientRect().right;
-        const left = card.getBoundingClientRect().left;
-        const shift = right > innerWidth ? right - innerWidth : left < 0 ? left : 0;
-        if (shift) {
-          const target = motion.scrollTrigger.start + distances.total * state.progress + shift;
-          (document.getElementById("scroll-container") || window).scrollTo({ top: target, behavior: "instant" });
-        }
+        if (card) revealCard(card);
+      };
+      const keyboard = (event: KeyboardEvent) => {
+        if (event.altKey || event.ctrlKey || event.metaKey || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+        const card = event.target instanceof Element ? event.target.closest<HTMLElement>("[data-project-card]") : null;
+        if (!card) return;
+        const index = cards.indexOf(card);
+        const next = cards[Math.max(0, Math.min(cards.length - 1, index + (event.key === "ArrowRight" ? 1 : -1)))];
+        const control = next.querySelector<HTMLElement>("[data-project-thumb]");
+        if (!control) return;
+        event.preventDefault();
+        control.focus({ preventScroll: true });
+        // At either end the already-focused card still needs to be exposed.
+        if (next === card) revealCard(next);
       };
       section.addEventListener("focusin", focus);
+      track.addEventListener("keydown", keyboard);
       const cta = section.querySelector<HTMLElement>("[data-project-cta-text]");
       const ctaLink = cta?.closest("a");
       const ctaText = cta?.textContent || "";
@@ -197,6 +234,10 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
         ctaObserver.disconnect(); exitObserver.disconnect(); ctaTween?.kill();
         if (cta) cta.textContent = ctaText;
         section.removeEventListener("focusin", focus);
+        track.removeEventListener("keydown", keyboard);
+        progress?.style.removeProperty("--track-progress");
+        progress?.setAttribute("aria-valuenow", "0");
+        if (progressLabel) progressLabel.textContent = "0%";
         heading.forEach((element, index) => { element.textContent = originals[index]; });
         delete section.dataset.projectProgress;
         delete section.dataset.handoffProgress;
@@ -251,6 +292,9 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
         </div>
       </div>
       {!!site.projects.length && <ProjectCanvasBoundary />}
+      {!!site.projects.length && <div className={styles.progress} data-track-progress role="progressbar" aria-label={`${content.title} progress`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={0}>
+        <span className={styles.progressLine} aria-hidden="true"><i /></span><span data-track-progress-label aria-hidden="true">0%</span>
+      </div>}
       <dialog ref={dialogRef} className={styles.details} aria-labelledby="project-detail-title" data-lenis-prevent onClose={() => openerRef.current?.focus()} onKeyDown={(event) => {
         if (event.key !== "Tab") return;
         const controls = [...event.currentTarget.querySelectorAll<HTMLElement>('button:not(:disabled), a[href]:not([hidden])')];

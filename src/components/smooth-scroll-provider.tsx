@@ -26,8 +26,16 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
       stopScrolling?.();
       if (preference.matches) {
         wrapper.dataset.scrollMode = "native";
+        const scrollTo = (event: Event) => {
+          const top = (event as CustomEvent<{ top: number }>).detail?.top;
+          if (typeof top === "number" && Number.isFinite(top)) wrapper.scrollTo({ top, behavior: "instant" });
+        };
         wrapper.addEventListener("scroll", ScrollTrigger.update, { passive: true });
-        stopScrolling = () => wrapper.removeEventListener("scroll", ScrollTrigger.update);
+        wrapper.addEventListener("portfolio:scrollto", scrollTo);
+        stopScrolling = () => {
+          wrapper.removeEventListener("scroll", ScrollTrigger.update);
+          wrapper.removeEventListener("portfolio:scrollto", scrollTo);
+        };
       } else {
         wrapper.dataset.scrollMode = "smooth";
         const lenis = new Lenis({
@@ -42,11 +50,17 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
           touchMultiplier: 0.85,
           anchors: true,
         });
+        const scrollTo = (event: Event) => {
+          const top = (event as CustomEvent<{ top: number }>).detail?.top;
+          if (typeof top === "number" && Number.isFinite(top)) lenis.scrollTo(top, { immediate: true, force: true });
+        };
+        wrapper.addEventListener("portfolio:scrollto", scrollTo);
         lenis.on("scroll", ScrollTrigger.update);
         gsap.ticker.lagSmoothing(0);
         const stopFrame = subscribeFrame("lenis", undefined, (time) => lenis.raf(time * 1000));
         stopScrolling = () => {
           stopFrame();
+          wrapper.removeEventListener("portfolio:scrollto", scrollTo);
           lenis.off("scroll", ScrollTrigger.update);
           lenis.destroy();
         };

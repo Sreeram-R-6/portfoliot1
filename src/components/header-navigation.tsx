@@ -125,7 +125,7 @@ export function HeaderNavigation() {
 
   return (
     <>
-    <header ref={headerRef} data-section="header-navigation" className="sticky top-0 z-50">
+    <header ref={headerRef} data-section="header-navigation" className="sticky top-0 z-50 bg-background">
       <div className="orientation-guard" role="status">
         <p className="orientation-title">{siteContent.orientation.title}</p>
         <p className="orientation-hint">{siteContent.orientation.hint}</p>

@@ -41,7 +41,7 @@
 .role { color: var(--text-grey-1); font-family: var(--font-rajdhani), sans-serif; font-size: 12px; font-weight: 600; line-height: 12px; letter-spacing: 1.56px; text-transform: uppercase; transition: color .3s ease-out; }
 .toggle { flex-shrink: 0; color: var(--primary-green-neon); font-family: var(--font-dm-mono), monospace; font-size: 16px; line-height: 16px; }
 .row[data-selected="true"] .rowBackground::after { background: var(--foreground); }
-.row[data-selected="true"] .index, .row[data-selected="true"] .rowTitle, .row[data-selected="true"] .toggle { color: var(--text-black); }
+.row[data-selected="true"] .index, .row[data-selected="true"] .rowTitle, .row[data-selected="true"] .role, .row[data-selected="true"] .toggle { color: var(--text-black); }
 .button:focus-visible { outline: 2px solid var(--primary-green-neon); outline-offset: 4px; }
 .panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease-out; }
 .panelInner { min-height: 0; overflow: hidden; }

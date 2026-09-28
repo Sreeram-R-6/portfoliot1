@@ -10,6 +10,7 @@ export const siteContent = {
   location: "Kerala, India",
   orientation: { title: "Explore in portrait", hint: "Rotate your device" },
   navigation: {
+    skip: "Skip to main content",
     label: "Navigation",
     menu: "Menu",
     close: "Close menu",

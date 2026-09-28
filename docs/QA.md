@@ -19,3 +19,11 @@
 
 - English document, explicit zoomable viewport, title/description, Open Graph/Twitter card, original S favicon and own 1200x630 social PNG.
 - Canonical, robots and sitemap share the reserved https://portfolio.example placeholder. TODO: replace metadata.siteUrl before publishing. No deployment took place.
+
+## Accessibility
+
+- Added a first-focus skip link targeting the focusable main landmark; footer now provides a separate contentinfo landmark. Heading structure is one H1, section H2s and project H3s. Decorative SVGs/canvases are aria-hidden; no meaningful image requires an invented alt description.
+- Enlarged hero link targets; preserved the original two anchors instead of splitting/cloning them for animation. Keyboard focus restores the hero and reveals project/footer controls immediately. Menu traps focus, Escape closes it and focus returns to Menu.
+- Production keyboard sweep reached all five projects, education and footer links without empty or invisible stops. Reduced motion uses native scrolling, no pins and no canvas; skip link focuses main.
+- Manual contrast fixes cover selected education text, hero copy over the poster, project heading/description/actions, and a solid navigation background over lime sections. Measured hero copy on black 10.14:1, dark project text on lime 15.06:1 and footer labels 6.44:1.
+- Checked responsive layouts at 375, 768 and 1440 pixels: no horizontal page overflow; original placeholders remain. Screenshots are local and ignored under .cache/qa/.

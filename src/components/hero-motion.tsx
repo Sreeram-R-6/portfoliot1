@@ -23,10 +23,16 @@ export function HeroMotion({ children }: { children: ReactNode }) {
       const identity = hero.querySelector<HTMLElement>("[data-section=identity]")!;
       const manifesto = hero.querySelector<HTMLElement>("[data-section=manifesto]")!;
       const exits = identity.querySelectorAll("[data-reveal]");
+      const showIdentityOnFocus = () => {
+        scroller.scrollTo({ top: trigger.start, behavior: "instant" });
+        ScrollTrigger.update();
+      };
+      identity.addEventListener("focusin", showIdentityOnFocus);
       gsap.fromTo(exits, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .8, stagger: .06, delay: .1, ease: "power3.out" });
       const titles = [...identity.querySelectorAll<HTMLElement>(".identity-name, .identity-region")].map((element) => SplitText.create(element, { type: "chars", aria: "none" }));
       const titleLabels = titles.map((split) => split.chars.map((char) => char.textContent ?? ""));
-      const lines = [...identity.querySelectorAll<HTMLElement>(".identity-introduction, .identity-location, .identity-contact-stack")].map((element) => SplitText.create(element, { type: "lines", mask: "lines", aria: "none" }));
+      const lines = [...identity.querySelectorAll<HTMLElement>(".identity-introduction, .identity-location")].map((element) => SplitText.create(element, { type: "lines", mask: "lines", aria: "none" }));
+      const contact = identity.querySelector<HTMLElement>(".identity-contact-stack")!;
       const badge = identity.querySelector<HTMLElement>(".identity-badge")!;
       const badgeWidth = badge.offsetWidth;
       const badgeHeight = badge.offsetHeight;
@@ -81,6 +87,7 @@ export function HeroMotion({ children }: { children: ReactNode }) {
             const amount = clamp((exit - order / split.lines.length * .5) / .5);
             gsap.set(line, { yPercent: -110 * amount, opacity: 1 - amount });
           }));
+          gsap.set(contact, { yPercent: -110 * exit, opacity: 1 - exit });
           const width = badgeWidth * (1 - exit);
           const cutTop = Math.min(4, width), cutBottom = Math.min(10, width);
           gsap.set(badge, { clipPath: `polygon(0 ${cutTop}px,${cutTop}px 0,${width}px 0,${width}px ${Math.max(0, badgeHeight - cutBottom)}px,${width - cutBottom}px ${badgeHeight}px,0 ${badgeHeight}px)`, visibility: width <= 0 ? "hidden" : "visible" });
@@ -111,6 +118,7 @@ export function HeroMotion({ children }: { children: ReactNode }) {
       });
       apply(trigger.progress);
       return () => {
+        identity.removeEventListener("focusin", showIdentityOnFocus);
         players.forEach((player) => player.kill());
         arrowTween?.kill();
         titles.forEach((split) => split.revert()); lines.forEach((split) => split.revert());

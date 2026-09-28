@@ -7,12 +7,14 @@ import { Experience } from "@/components/experience";
 import { ProjectShowcase } from "@/components/project-showcase";
 import { HeroMotion } from "@/components/hero-motion";
 import { FooterMotion } from "@/components/footer-motion";
+import { siteContent } from "@/content/site";
 
 export default function Home() {
   return (
     <>
+      <a href="#main-content" className="skip-link">{siteContent.navigation.skip}</a>
       <HeaderNavigation />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <HeroMotion>
           <IdentityHero />
           <ManifestoScene />
@@ -20,8 +22,8 @@ export default function Home() {
         <StatisticsTools />
         <ProjectShowcase />
         <Experience />
-        <FooterMotion><ContactFooter /></FooterMotion>
       </main>
+      <FooterMotion><ContactFooter /></FooterMotion>
     </>
   );
 }

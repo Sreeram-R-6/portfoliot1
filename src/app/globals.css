@@ -81,6 +81,7 @@
 
   #scroll-container {
     scrollbar-width: none;
+    scroll-padding-top: var(--nav-height);
   }
 
   #scroll-container::-webkit-scrollbar {
@@ -97,7 +98,12 @@
   }
 
   button { cursor: pointer; }
+
+  :focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
 }
+
+.skip-link { position: fixed; z-index: 100; left: 16px; top: 12px; padding: 12px 16px; color: var(--text-black); background: var(--primary); transform: translateY(-200%); }
+.skip-link:focus { transform: translateY(0); }
 
 [data-canvas-ready="true"] > .canvas-poster {
   visibility: hidden;

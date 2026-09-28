@@ -144,6 +144,7 @@ export function ProjectShowcase() {
       });
       update();
       const focus = (event: FocusEvent) => {
+        reveal.progress(1);
         const card = event.target instanceof Element ? event.target.closest<HTMLElement>("[data-project-card]") : null;
         if (!card || !motion.scrollTrigger) return;
         const right = card.getBoundingClientRect().right;

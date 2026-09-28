@@ -34,6 +34,13 @@ export function FooterMotion({ children }: { children: ReactNode }) {
         { element: wordmark, play: () => textMotion.play() },
         { element: footer.querySelector(".footer-contact-actions"), play: () => cta.play() },
       ];
+      const revealForKeyboard = () => {
+        linkMotion.progress(1);
+        textMotion.progress(1);
+        cta.progress(1);
+        pending.length = 0;
+      };
+      footer.addEventListener("focusin", revealForKeyboard);
       const stop = subscribeFrame("footer-entrance", undefined, () => {
         const bottom = scroller.getBoundingClientRect().bottom;
         const preceding = dock.previousElementSibling?.getBoundingClientRect().bottom ?? bottom;
@@ -47,7 +54,7 @@ export function FooterMotion({ children }: { children: ReactNode }) {
           }
         }
       });
-      return stop;
+      return () => { stop(); footer.removeEventListener("focusin", revealForKeyboard); };
     });
     media.add("(min-width: 1025px) and (prefers-reduced-motion: no-preference)", () => {
       dock.dataset.motion = "docked";

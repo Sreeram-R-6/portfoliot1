@@ -26,14 +26,14 @@
 .identity-bottom-cluster { position: absolute; inset: auto 0 16px; height: 686px; pointer-events: none; }
 .identity-contact { position: absolute; left: 16px; top: 24px; width: 228px; display: flex; gap: 14px; }
 .identity-contact-bar { width: 2px; flex: none; background: var(--primary-green-neon); }
-.identity-contact-stack { display: flex; flex: 1; flex-direction: column; gap: 8px; font-family: var(--font-rajdhani), sans-serif; font-size: 12px; font-weight: 500; line-height: 12px; letter-spacing: 1.56px; text-transform: uppercase; color: var(--text-grey-1); }
-.identity-contact-stack a { display: flex; justify-content: space-between; align-items: center; }
+.identity-contact-stack { display: flex; flex: 1; flex-direction: column; gap: 8px; font-family: var(--font-rajdhani), sans-serif; font-size: 12px; font-weight: 500; line-height: 12px; letter-spacing: 1.56px; text-transform: uppercase; color: var(--text-white-grey); }
+.identity-contact-stack a { display: flex; min-height: 24px; justify-content: space-between; align-items: center; }
 .identity-contact-stack a:hover { color: var(--primary-green-neon); }
 .identity-contact-stack a:focus-visible { outline: 1px solid var(--primary-green-neon); outline-offset: 4px; }
-.identity-introduction { position: absolute; left: 16px; top: 275px; width: min(295px, calc(100% - 32px)); margin: 0; font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: -.03em; text-align: justify; color: var(--text-grey-1); }
+.identity-introduction { position: absolute; left: 16px; top: 275px; width: min(295px, calc(100% - 32px)); margin: 0; font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: -.03em; text-align: justify; color: var(--text-white-grey); }
 .identity-region, .identity-scroll-cue { display: none; }
 .identity-badge { position: absolute; left: 16px; top: 468px; margin: 0; padding: 7px 9px; max-width: calc(100% - 32px); background: var(--primary-green-neon); color: var(--text-black); font-family: var(--font-rajdhani), sans-serif; font-size: 12px; font-weight: 600; line-height: 12px; letter-spacing: 1.56px; text-transform: uppercase; clip-path: polygon(0 4px, 4px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%); }
-.identity-location { position: absolute; left: 16px; top: 507px; margin: 0; font-family: var(--font-rajdhani), sans-serif; font-size: 12px; font-weight: 500; line-height: 12px; letter-spacing: 1.56px; color: var(--text-grey-1); text-transform: uppercase; }
+.identity-location { position: absolute; left: 16px; top: 507px; margin: 0; font-family: var(--font-rajdhani), sans-serif; font-size: 12px; font-weight: 500; line-height: 12px; letter-spacing: 1.56px; color: var(--text-white-grey); text-transform: uppercase; }
 .identity-name { position: absolute; left: 16px; margin-left: -.071em; font-family: var(--font-rajdhani), sans-serif; font-weight: 400; font-size: 100px; line-height: .8; letter-spacing: -.05em; color: var(--text-white); }
 .identity-name-first { top: 528px; }
 .identity-name-second { top: 606px; margin-left: -.082em; }

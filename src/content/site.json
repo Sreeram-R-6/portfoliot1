@@ -1,11 +1,11 @@
 {
   "metadata": {
     "siteUrl": "https://portfolio.example",
-    "title": "Sreeram — Portfolio",
-    "description": "CS student and builder, CCE Kerala. Software, embedded systems, and projects."
+    "title": "Sreeram R — CS, IoT & Research Engineer",
+    "description": "Computer Science engineering student at Christ College of Engineering, Irinjalakuda, building across embedded systems, IoT, drones, robotics, AI, web platforms, telemetry, and research."
   },
-  "name": "Sreeram",
-  "role": "CS student and builder, CCE Kerala",
+  "name": "Sreeram R",
+  "role": "Computer Science Engineer • IoT • Embedded Systems • Drones • Research",
   "location": "Kerala, India",
   "orientation": {
     "title": "Explore in portrait",
@@ -18,11 +18,11 @@
     "close": "Close menu",
     "connections": "Connections",
     "coordinates": [
-      "TODO: latitude",
-      "TODO: longitude"
+      "10.311° N",
+      "76.332° E"
     ],
     "home": {
-      "label": "Sreeram",
+      "label": "Sreeram R",
       "href": "#identity"
     },
     "links": [
@@ -44,13 +44,13 @@
     "identity": {
       "id": "identity",
       "eyebrow": "Identity hero",
-      "title": "Sreeram",
-      "description": "CS student and builder, CCE Kerala",
+      "title": "Sreeram R",
+      "description": "B.Tech Computer Science Engineering student at Christ College of Engineering, Irinjalakuda, focused on embedded systems, IoT, autonomous drones, telemetry, AI-assisted software, and research.",
       "displayLines": [
-        "SREE",
-        "RAM"
+        "Sreeram R",
+        "Ramachandran"
       ],
-      "badge": "CS student and builder",
+      "badge": "CS • IoT • Embedded • Drones • Research",
       "region": "IN",
       "locationLabel": "Kerala, India",
       "scrollLabel": "Scroll to explore"
@@ -64,60 +64,81 @@
         "by",
         "building"
       ],
-      "description": "Exploring software and embedded systems through hands-on projects."
+      "description": "I learn by turning ideas into working systems—combining software, embedded hardware, autonomous vehicles, telemetry, web interfaces, and applied AI."
     },
     "statistics": {
       "id": "statistics",
       "eyebrow": "Statistics and tools",
-      "title": "In progress",
-      "description": "TODO: provide confirmed statistics and tools.",
+      "title": "Building across software and hardware",
+      "description": "A hands-on engineering profile spanning software, embedded systems, drones, IoT, AI, and research.",
       "counters": [
         {
-          "label": "Projects - TODO",
-          "value": "—"
+          "label": "Major projects",
+          "value": "11"
         },
         {
-          "label": "Experience - TODO",
-          "value": "—"
+          "label": "Hackathon / competition wins",
+          "value": "3"
         },
         {
-          "label": "Milestones - TODO",
-          "value": "—"
+          "label": "Engineering domains",
+          "value": "6"
         }
       ],
       "tools": [
-        "TODO: tool",
-        "TODO: tool 2",
-        "TODO: tool 3",
-        "TODO: tool 4"
+        "Python / C / C++",
+        "ESP32 / STM32 / Raspberry Pi",
+        "ArduPilot / ROS 2 / MAVLink",
+        "React / Node.js / Firebase"
       ]
     },
     "projects": {
       "id": "projects",
       "eyebrow": "Project showcase",
       "title": "Selected projects",
-      "description": "Software, telemetry, and embedded systems.",
+      "description": "Selected work across autonomous drones, telemetry, embedded systems, IoT, AI-assisted platforms, and web software.",
       "cardTag": "Project",
-      "viewLabel": "View - TODO",
+      "viewLabel": "View project",
       "moreWork": {
-        "label": "GitHub - TODO",
-        "href": "#contact"
+        "label": "GitHub — Sreeram-R-6",
+        "href": "https://github.com/Sreeram-R-6"
       }
     },
     "experience": {
       "id": "experience",
       "eyebrow": "Education",
-      "title": "Learning and building",
-      "description": "CS student and builder, CCE Kerala",
+      "title": "Education, research and competition work",
+      "description": "B.Tech Computer Science Engineering student at Christ College of Engineering, Irinjalakuda, with project work spanning embedded systems, autonomous drones, AI, IoT, web development and research.",
       "expandMark": "+",
       "collapseMark": "−",
       "entries": [
         {
           "id": "cce-kerala",
           "index": "01",
-          "title": "CCE Kerala",
-          "role": "CS student",
-          "description": "CS student and builder, CCE Kerala."
+          "title": "Christ College of Engineering, Irinjalakuda",
+          "role": "B.Tech Computer Science Engineering — S5",
+          "description": "Undergraduate engineering student working on software, IoT, embedded systems, drones, robotics, telemetry, AI-assisted applications and research-oriented engineering projects."
+        },
+        {
+          "id": "physical-ai-hackathon-2026",
+          "index": "02",
+          "title": "Google Physical AI Hackathon — Kochi Onam Edition",
+          "role": "1st Prize — 2026",
+          "description": "Won first prize with an AI-instrumented Vallamkali / boat-race telemetry project."
+        },
+        {
+          "id": "beach-hack",
+          "index": "03",
+          "title": "Beach Hack",
+          "role": "1st Prize — MedChainX",
+          "description": "Built MedChainX, an electronic medical record concept focused on structured patient data access and sharing."
+        },
+        {
+          "id": "bhumika-2025",
+          "index": "04",
+          "title": "BHUMIKA 2025 — ISRO Space Week",
+          "role": "1st Prize — Space Debate",
+          "description": "Won first prize in the Space Debate event conducted as part of ISRO Space Week."
         }
       ]
     }
@@ -126,49 +147,97 @@
     {
       "id": "thuzhayan",
       "title": "Thuzhayan",
-      "description": "AI-instrumented Vallamkali telemetry",
+      "description": "AI-instrumented Vallamkali telemetry system developed for the Google Physical AI Hackathon Kochi Onam Edition 2026. Focused on real-time race telemetry and physical-AI-assisted analysis.",
       "href": "#contact",
       "image": null,
-      "todo": "TODO: project link and own image"
+      "todo": "TODO: add project link and own project image"
     },
     {
-      "id": "saferoad",
-      "title": "SafeRoad",
-      "description": "ESP32 + Firebase road safety",
+      "id": "nidars-dual-drone",
+      "title": "NIDAR Dual-Drone Disaster Rescue System",
+      "description": "Autonomous disaster-response architecture using a scout quadcopter and delivery hexacopter. Designed for large-area survivor search, real-time video, survivor geotagging, speaker communication, obstacle avoidance and precision delivery of survival kits. The onboard stack used Jetson Nano, ROS 2, MAVROS and ArduPilot.",
       "href": "#contact",
       "image": null,
-      "todo": "TODO: project link and own image"
+      "todo": "TODO: add project link and own project image"
     },
     {
-      "id": "dual-drone",
-      "title": "AICTE dual-drone disaster rescue system",
-      "description": "Dual-drone disaster rescue system",
+      "id": "agri-disaster-drone",
+      "title": "Agricultural Disaster Intelligence Drone",
+      "description": "Agriculture-focused drone system covering four operating states: no-threat crop monitoring, pre-disaster prediction and preparedness, on-disaster rapid mapping, and post-disaster recovery assessment. Designed around aerial scouting, geofencing, GPS, camera data, AI-assisted prediction, crop-health monitoring and pre/post comparison.",
       "href": "#contact",
       "image": null,
-      "todo": "TODO: project link and own image"
+      "todo": "TODO: add project link and own project image"
+    },
+    {
+      "id": "flt4m-solar-uav",
+      "title": "FLT4m Solar UAV Research",
+      "description": "Research-oriented long-endurance UAV project for Kerala coastal operations using a 4 m biplane configuration, NACA 4412 wing profile, dual motors, Pixhawk autopilot, LoRa/telemetry and weather-routing research using IVT and ERA5/GFS data.",
+      "href": "#contact",
+      "image": null,
+      "todo": "TODO: add project link and own project image"
+    },
+    {
+      "id": "weather-station",
+      "title": "ESP32 Weather Station",
+      "description": "ESP32-based environmental monitoring platform using BME680/BME690 sensing, non-blocking firmware, filtering, gas-baseline storage, heuristic IAQ estimation, Wi-Fi state management and Firestore-backed data publishing.",
+      "href": "#contact",
+      "image": null,
+      "todo": "TODO: add project link and own project image"
+    },
+    {
+      "id": "medchainx",
+      "title": "MedChainX",
+      "description": "Electronic medical record platform with patient create/read/update flows and time-limited doctor access tokens. Later simplified to a local JSON-backed implementation for rapid prototyping.",
+      "href": "#contact",
+      "image": null,
+      "todo": "TODO: add project link and own project image"
+    },
+    {
+      "id": "aquachain",
+      "title": "AquaChain",
+      "description": "Fisheries permit and traceability platform featuring zone/GPS context, QR-based public verification and regulator audit workflows.",
+      "href": "#contact",
+      "image": null,
+      "todo": "TODO: add project link and own project image"
+    },
+    {
+      "id": "smart-helmet",
+      "title": "Smart Helmet Accident Detection",
+      "description": "ESP32-based safety system using MPU6050 and GPS data to detect crash-like events such as inversion, rapid deceleration and free-fall, with server-side accident handling.",
+      "href": "#contact",
+      "image": null,
+      "todo": "TODO: add project link and own project image"
+    },
+    {
+      "id": "sih-ufdr",
+      "title": "SIH UFDR Forensics Platform",
+      "description": "Digital-forensics project exploring UFDR ingestion, natural-language querying and investigative workflows, with Autopsy integration and containerized tooling experiments.",
+      "href": "#contact",
+      "image": null,
+      "todo": "TODO: add project link and own project image"
     },
     {
       "id": "cce-judge",
       "title": "CCE Judge",
-      "description": "Competitive programming platform",
+      "description": "Competitive programming and online judge platform for coding practice and evaluation.",
       "href": "#contact",
       "image": null,
-      "todo": "TODO: project link and own image"
+      "todo": "TODO: add project link and own project image"
     },
     {
-      "id": "weather-station",
-      "title": "Weather Station Dashboard",
-      "description": "Weather station dashboard",
+      "id": "drone-gcs",
+      "title": "Autonomous Drone GCS",
+      "description": "A simplified ground-control-station concept for autonomous mission planning and execution, designed to expose the essential workflows of Mission Planner in a cleaner custom interface.",
       "href": "#contact",
       "image": null,
-      "todo": "TODO: project link and own image"
+      "todo": "TODO: add project link and own project image"
     }
   ],
   "todos": [
-    "TODO: email, GitHub and LinkedIn URLs",
-    "TODO: project URLs and own project images",
-    "TODO: confirmed statistics and tools",
-    "TODO: CV file, deployment domain and optional coordinates"
+    "Add final deployed portfolio domain when available",
+    "Add direct project repository/demo URLs",
+    "Add project images owned by Sreeram",
+    "Add downloadable CV file URL"
   ],
   "footer": {
     "id": "contact",
@@ -181,21 +250,21 @@
     ],
     "locationHref": "#contact",
     "message": {
-      "label": "Email - TODO",
-      "href": "#contact"
+      "label": "Email — sreeramr2006@gmail.com",
+      "href": "mailto:sreeramr2006@gmail.com"
     },
     "cv": {
-      "label": "CV - TODO",
+      "label": "Resume",
       "href": "#contact"
     },
     "links": [
       {
-        "label": "GitHub - TODO",
-        "href": "#contact"
+        "label": "GitHub — Sreeram-R-6",
+        "href": "https://github.com/Sreeram-R-6"
       },
       {
-        "label": "LinkedIn - TODO",
-        "href": "#contact"
+        "label": "LinkedIn — srr06",
+        "href": "https://www.linkedin.com/in/srr06"
       }
     ]
   }

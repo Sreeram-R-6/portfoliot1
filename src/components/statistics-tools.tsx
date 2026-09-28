@@ -42,7 +42,10 @@ export function StatisticsTools({ site = siteContent }: { site?: PublicSiteConte
               <span aria-hidden="true" className={styles.boxBackground} />
               <span aria-hidden="true" data-stat-notch className={styles.notch} />
               <p className={styles.label} data-stat-label>{tool}</p>
-              <ToolMark variant={index % 4} />
+              <span className={styles.toolPair} aria-hidden="true">
+                <span className={styles.toolDefault}><ToolMark variant={index % 4} /></span>
+                <span className={styles.toolHover}><ToolMark variant={(index + 1) % 4} /></span>
+              </span>
             </div>
           ))}
           <div className={styles.glyphFrame} aria-hidden="true" data-statistics-glyph>

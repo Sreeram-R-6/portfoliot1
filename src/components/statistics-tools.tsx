@@ -1,6 +1,7 @@
 import { siteContent } from "@/content/site";
 import { DecorativeCanvas } from "./decorative-canvas";
 import styles from "./statistics-tools.module.css";
+import { StatisticsMotion } from "./statistics-motion";
 
 function ToolMark({ variant }: { variant: number }) {
   return (
@@ -21,21 +22,24 @@ export function StatisticsTools() {
   return (
     <section id={content.id} data-section="statistics" className={styles.stage} aria-labelledby="statistics-title">
       <h2 id="statistics-title" className="sr-only">{content.title}</h2>
-      <div className={styles.canvas}>
+      <div className={styles.canvas} data-stat-canvas>
         <div className={styles.grid}>
           {content.counters.map((counter, index) => (
-            <div key={counter.label} className={`${styles.box} ${styles[`counter${index}`]}`}>
+            <div key={counter.label} data-stat-box className={`${styles.box} ${styles[`counter${index}`]}`}>
               <span aria-hidden="true" className={styles.boxBackground} />
-              <span aria-hidden="true" className={styles.notch} />
-              <p className={styles.label} id={`statistics-counter-${index}`}>{counter.label}</p>
-              <p className={styles.value} aria-labelledby={`statistics-counter-${index}`}>{counter.value}</p>
+              <span aria-hidden="true" data-stat-notch className={styles.notch} />
+              <p className={styles.label} data-stat-label id={`statistics-counter-${index}`}>{counter.label}</p>
+              <p className={styles.value} aria-labelledby={`statistics-counter-${index}`}>
+                <span className="sr-only">{counter.value}</span>
+                {counter.value === "5" ? <span aria-hidden="true" data-odometer className={styles.odometer}><span data-odometer-strip>{[0, 1, 2, 3, 4, 5].map((digit) => <span key={digit}>{digit}</span>)}</span></span> : <span aria-hidden="true">{counter.value}</span>}
+              </p>
             </div>
           ))}
           {content.tools.map((tool, index) => (
-            <div key={tool} className={`${styles.box} ${styles[`tool${index}`]}`}>
+            <div key={tool} data-stat-box className={`${styles.box} ${styles[`tool${index}`]}`}>
               <span aria-hidden="true" className={styles.boxBackground} />
-              <span aria-hidden="true" className={styles.notch} />
-              <p className={styles.label}>{tool}</p>
+              <span aria-hidden="true" data-stat-notch className={styles.notch} />
+              <p className={styles.label} data-stat-label>{tool}</p>
               <ToolMark variant={index} />
             </div>
           ))}
@@ -51,6 +55,7 @@ export function StatisticsTools() {
           </div>
         </div>
       </div>
+      <StatisticsMotion />
     </section>
   );
 }

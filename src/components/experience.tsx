@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 import { siteContent } from "@/content/site";
 import { DecorativeCanvas } from "./decorative-canvas";
 import styles from "./experience.module.css";
@@ -22,8 +23,29 @@ export function ExperienceMark({ index }: { index: string }) {
 }
 
 export function Experience() {
+  const ref = useRef<HTMLElement>(null);
   const [selected, setSelected] = useState(0);
   const selectedEntry = content.entries[Math.max(0, selected)];
+
+  useEffect(() => {
+    const media = gsap.matchMedia();
+    media.add("(hover: hover) and (prefers-reduced-motion: no-preference)", () => {
+      const elements = ref.current?.querySelectorAll<HTMLElement>("[data-experience-hover]") ?? [];
+      const cleanups = [...elements].map((element) => {
+        const button = element.closest("button")!;
+        let tween: gsap.core.Timeline | undefined;
+        const enter = () => {
+          tween?.kill();
+          tween = gsap.timeline({ delay: .18 }).to(element, { opacity: .15, duration: .07 }).to(element, { opacity: 1, duration: .07 }).to(element, { opacity: .15, duration: .07 }).to(element, { opacity: 1, duration: .07 });
+        };
+        const leave = () => { tween?.kill(); gsap.set(element, { clearProps: "opacity" }); };
+        button.addEventListener("pointerenter", enter); button.addEventListener("pointerleave", leave);
+        return () => { leave(); button.removeEventListener("pointerenter", enter); button.removeEventListener("pointerleave", leave); };
+      });
+      return () => cleanups.forEach((cleanup) => cleanup());
+    });
+    return () => media.revert();
+  }, []);
 
   function select(index: number) {
     const mobile = window.matchMedia("(max-width: 767.98px)").matches;
@@ -39,7 +61,7 @@ export function Experience() {
           <span className={styles.rowBackground} aria-hidden="true" />
           <span className={styles.index}>{entry.index}</span>
           <span className={styles.rowText}>
-            <span className={styles.rowTitle}>{entry.title}</span>
+            <span data-experience-hover className={styles.rowTitle}>{entry.title}</span>
             <span className={styles.role}>{entry.role}</span>
           </span>
           <span className={styles.toggle} aria-hidden="true">{active ? content.collapseMark : content.expandMark}</span>
@@ -54,7 +76,7 @@ export function Experience() {
   }
 
   return (
-    <section id={content.id} className={styles.stage} data-section="experience" aria-labelledby="experience-heading">
+    <section ref={ref} id={content.id} className={styles.stage} data-section="experience" aria-labelledby="experience-heading">
       <div className={styles.heading}>
         <span className={styles.badge}>{content.eyebrow}</span>
         <h2 id="experience-heading" className={styles.title}>{content.title}</h2>

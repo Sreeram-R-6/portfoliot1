@@ -88,3 +88,10 @@ No remaining gap blocks the approved specs checkpoint. Implementation must prese
 @types/three 0.185.4 is exact-pinned as a devDependency, approved 2026-09-28. No drei or other optional package is added.
 
 Phase 4 geometry uses Three.js with original hollow-frame geometry and original GLSL. Camera, extrusion, bevel, lighting and dither defaults follow the table. Original postprocessing math and replacement geometry are APPROXIMATED; these implementations are not represented as extracted source. Time and scroll inputs are connected in Phase 5.
+
+## Phase 5 authored renderer boundary
+
+- OriginalCanvas implements newly authored CRT/bloom/pointer feedback shaders; project Fiber shader/path and statistics shader remain original approximations. They are not upstream GLSL copies or claims of exact shader output. Verified uniform values and timing are used where documented.
+- OriginalCanvas owns4 textures/2 programs with separate ping-pong attachments; visible scenes subscribe to the shared GSAP clock. Experience texture changes do not recreate the context. Footer text reads computed font/color and uses mipmaps.
+- Runtime diagnostics expose frame counts/resources/triggers for local browser verification. Resize, unmount, preference changes and context loss preserve the DOM fallback; all allocations/listeners are disposed.
+- Unspecified portrait caller mappings and neutral art metrics remain APPROXIMATED. No dependency versions changed.

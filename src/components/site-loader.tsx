@@ -25,7 +25,7 @@ export function SiteLoader({ label = "Loading", contentSelector = "#scroll-conta
     const release = () => {
       if (cancelled) return;
       cover.hidden = true;
-      if (content) content.inert = wasInert;
+      if (content) content.inert = wasInert || content.dataset.orientationBlocked === "true";
       releaseSiteReady();
       try { sessionStorage.setItem(sessionKey, "1"); } catch { /* Private storage must not gate the page. */ }
     };
@@ -101,7 +101,7 @@ export function SiteLoader({ label = "Loading", contentSelector = "#scroll-conta
       cancelAnimationFrame(readinessFrame);
       clearTimeout(timer); clearTimeout(watchdog);
       observer?.disconnect();
-      if (content) content.inert = wasInert;
+      if (content) content.inert = wasInert || content.dataset.orientationBlocked === "true";
     };
   }, [contentSelector]);
 

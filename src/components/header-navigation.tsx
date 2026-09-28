@@ -129,10 +129,6 @@ export function HeaderNavigation({ site = siteContent }: { site?: PublicSiteCont
   return (
     <>
     <header ref={headerRef} data-section="header-navigation" className="sticky top-0 z-50 bg-background">
-      <div className="orientation-guard" role="status">
-        <p className="orientation-title">{site.orientation.title}</p>
-        <p className="orientation-hint">{site.orientation.hint}</p>
-      </div>
       <nav aria-label={navigation.label} className="site-navigation relative flex items-center justify-between px-4 py-5 sm:px-8">
         <a href={pathname !== "/" && navigation.home.href.startsWith("#") ? "/" : navigation.home.href} className="flex items-center gap-2 font-heading text-xs leading-5 font-semibold uppercase focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
           <span aria-hidden="true" className="mr-1.5 block size-2.5 rotate-45 border border-primary" />

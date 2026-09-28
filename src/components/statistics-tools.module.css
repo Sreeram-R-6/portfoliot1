@@ -208,3 +208,15 @@
   .value { left: 20px; font-size: 100px; }
   .toolMark { width: 85px; }
 }
+/* Auto-placement supports arbitrary counter and tool counts. */
+.stage, .stage[data-motion="active"] { height: auto; min-height: calc(100dvh - var(--nav-height)); padding: clamp(40px, 5vw, 80px) var(--grid-edge-inset); margin: 0; overflow: clip; }
+.heading { font-size: clamp(2rem, 4vw, 4.5rem); line-height: 1.15; font-weight: 600; max-width: 24ch; margin-bottom: 20px; }
+.description { font-family: var(--font-dm-sans), sans-serif; font-size: clamp(1rem, 1.2vw, 1.25rem); line-height: 1.6; max-width: 65ch; margin-bottom: 36px; }
+.canvas { position: relative; inset: auto; width: 100%; height: auto; transform: none; }
+.grid { position: relative; inset: auto; width: 100%; height: auto; transform: none; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; gap: 16px; }
+.box { grid-area: auto; display: flex; flex-direction: column; gap: 32px; justify-content: space-between; padding: clamp(16px, 2vw, 28px); --chamfer-unit: 1px; }
+.label { position: relative; inset: auto; max-width: 100%; text-align: left; line-height: 1.5; font-size: clamp(.75rem, 1vw, 1rem); }
+.value { position: relative; inset: auto; line-height: 1.2; font-size: clamp(2.5rem, 5vw, 6rem); }
+.toolMark { position: relative; inset: auto; width: clamp(40px, 5vw, 85px); }
+.glyphFrame { grid-area: auto; min-height: 160px; }
+@media (min-width: 1025px) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }

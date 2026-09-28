@@ -21,7 +21,8 @@ export function StatisticsTools() {
 
   return (
     <section id={content.id} data-section="statistics" className={styles.stage} aria-labelledby="statistics-title">
-      <h2 id="statistics-title" className="sr-only">{content.title}</h2>
+      <h2 id="statistics-title" className={styles.heading}>{content.title}</h2>
+      <p className={styles.description}>{content.description}</p>
       <div className={styles.canvas} data-stat-canvas>
         <div className={styles.grid}>
           {content.counters.map((counter, index) => (
@@ -31,7 +32,7 @@ export function StatisticsTools() {
               <p className={styles.label} data-stat-label id={`statistics-counter-${index}`}>{counter.label}</p>
               <p className={styles.value} aria-labelledby={`statistics-counter-${index}`}>
                 <span className="sr-only">{counter.value}</span>
-                {/^\d$/.test(counter.value) ? <span aria-hidden="true" data-odometer className={styles.odometer}><span data-odometer-strip data-odometer-value={counter.value}>{Array.from({ length: Number(counter.value) + 1 }, (_, digit) => <span key={digit}>{digit}</span>)}</span></span> : <span aria-hidden="true">{counter.value}</span>}
+                <span aria-hidden="true" data-count-value={/^\d+(?:\.\d+)?$/.test(counter.value) ? counter.value : undefined}>{counter.value}</span>
               </p>
             </div>
           ))}
@@ -40,7 +41,7 @@ export function StatisticsTools() {
               <span aria-hidden="true" className={styles.boxBackground} />
               <span aria-hidden="true" data-stat-notch className={styles.notch} />
               <p className={styles.label} data-stat-label>{tool}</p>
-              <ToolMark variant={index} />
+              <ToolMark variant={index % 4} />
             </div>
           ))}
           <div className={styles.glyphFrame} aria-hidden="true" data-statistics-glyph>

@@ -6,7 +6,7 @@
 - Replaced inherited template favicon with an original S monogram; replaced template promotional documentation and package links; removed inherited sponsorship configuration and source branding URL. No source-reference credit is published.
 - Retained required MIT template license attribution and developer workflow/scaffold files. No reference-site images, logos, font binaries, bundle code or complete shader implementations are tracked. Decorative shaders are original authored approximations; source measurement/property records remain specifications.
 - Rajdhani, DM Sans and DM Mono import only from next/font/google; there are no tracked font files.
-- Credential patterns in tracked files and full git patch history produced no credential candidates. github_pat and ghp_ each have zero matches; api_key has 26 historical instruction references to an environment variable name, no values. Generic token/.env history hits are documentation, CSS design tokens, async generation variables and ignore/configuration rules. History remains unchanged.
+- Credential patterns in tracked files and full git patch history produced no credential candidates. Baseline github_pat and ghp_ each had zero matches; api_key had 26 historical instruction references to an environment variable name, no values. Final literal prefix/key matches in this QA report are audit labels. Generic token/.env history hits are documentation, CSS design tokens, async generation variables and ignore/configuration rules. History remains unchanged.
 - .gitignore covers .env*, docs/recon/, .next/, node_modules/ and .playwright-mcp/.
 
 ## Content
@@ -30,14 +30,22 @@
 
 ## Lighthouse and performance
 
-Lighthouse 12.8.2, headless Chrome, local production build at http://localhost:3001, default simulated throttling. Desktop uses --preset=desktop; mobile uses the default mobile profile. Baseline source commit 0cacd76; final source commit 77e5d2f. Scores are individual runs and can vary with machine load.
+Lighthouse 12.8.2, headless Chrome, local production build at http://localhost:3001, default simulated throttling. Desktop uses --preset=desktop; mobile uses the default mobile profile. Baseline source commit 0cacd76; final source commit 91c3c37. Scores are individual runs and can vary with machine load.
 
 | Profile | Performance before / after | Accessibility before / after | Best practices before / after | SEO before / after |
 | --- | --- | --- | --- | --- |
 | Desktop | 94 / 100 | 95 / 100 | 100 / 100 | 100 / 100 |
-| Mobile | 93 / 94 | 95 / 100 | 100 / 100 | 100 / 100 |
+| Mobile | 93 / 93 | 95 / 100 | 100 / 100 | 100 / 100 |
 
-- Final desktop LCP 771 ms, TBT 0 ms; mobile LCP 3148 ms, TBT 64 ms. All requested score targets pass.
+- Final desktop LCP 806 ms, TBT 8 ms; mobile LCP 3154 ms, TBT 73 ms. All requested score targets pass.
 - Existing dynamic WebGL components mount only when intersecting and the power policy permits them. Mobile at 375px uses five poster render modes and zero canvases; reduced motion also has zero canvases. No performance-only source change was needed. Score differences include accessibility changes and normal run variability.
 - Temporary Lighthouse installation and raw JSON reports stay in ignored .cache/lighthouse/; project dependencies and lockfile are unchanged by this tool installation.
 - No browser console errors. Existing Fiber/Three Clock deprecation warning is documented in STACK.md. Local next start emits its existing standalone-output warning; README includes the packaged server entry point.
+
+## Final verification
+
+- npm run check passed: ESLint, TypeScript and production build. A running standalone test server initially locked .next/standalone on Windows; stopping it resolved the lock and the rerun passed.
+- Fresh HTTPS clone outside this repository: npm ci and npm run build passed at c088b7a. Fast-forwarded that clean clone to final source 91c3c37 and repeated npm ci/build successfully. npm reported zero vulnerabilities.
+- Environment: Node 22.17.0 / npm 10.9.2. npm emitted an engine warning because package.json and .nvmrc request Node 24; validation here does not claim a Node 24 test.
+- Verified temporary clone absolute path and expected origin before cleanup. Automatic approval review rejected both guarded and literal-path deletion with "blocked by policy". Cleanup remains outstanding: temporary folder sreeram-portfolio-qa-96582c2ac4114f14bdba76d69049d339 under the Windows local Temp directory.
+- Final tracked branding scan has no original personal/brand strings. Ignore checks pass for .env*, recon, build, dependencies and Playwright artifacts. No history rewrite, dependency upgrade, source credit or deployment.

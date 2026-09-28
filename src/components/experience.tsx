@@ -27,6 +27,17 @@ export function Experience() {
   const [selection, setSelected] = useState(0);
   const selected = selection < 0 ? -1 : Math.min(selection, content.entries.length - 1);
   const selectedEntry = content.entries[Math.max(0, selected)];
+  const split = Math.ceil(content.entries.length / 2);
+
+  useEffect(() => {
+    const description = ref.current?.querySelector<HTMLElement>("#experience-current-description");
+    const active = description?.querySelector<HTMLElement>('p[data-active="true"]');
+    if (!description || !active) return;
+    const measure = () => description.style.setProperty("--description-height", `${active.scrollHeight}px`);
+    const observer = new ResizeObserver(measure);
+    observer.observe(active); measure();
+    return () => observer.disconnect();
+  }, [selected]);
 
   useEffect(() => {
     const media = gsap.matchMedia();
@@ -82,11 +93,12 @@ export function Experience() {
         <span className={styles.badge}>{content.eyebrow}</span>
         <h2 id="experience-heading" className={styles.title}>{content.title}</h2>
       </div>
+      <p className={styles.introduction}>{content.description}</p>
       <div className={styles.body}>
         <div className={`${styles.list} ${styles.left}`}>
-          {content.entries.slice(0, 4).map((entry, index) => renderRow(entry, index))}
+          {content.entries.slice(0, split).map((entry, index) => renderRow(entry, index))}
         </div>
-        <div className={styles.crt} data-experience-crt data-experience-index={selectedEntry.index}>
+        {selectedEntry && <div className={styles.crt} data-experience-crt data-experience-index={selectedEntry.index}>
           <DecorativeCanvas kind="experience" label={selectedEntry.index} className="h-full w-full">
             <ExperienceMark index={selectedEntry.index} />
           </DecorativeCanvas>
@@ -95,12 +107,12 @@ export function Experience() {
           <span className={`${styles.rule} ${styles.ruleLeft}`} />
           <span className={`${styles.rule} ${styles.ruleRight}`} />
           {([styles.cornerTopLeft, styles.cornerTopRight, styles.cornerBottomRight, styles.cornerBottomLeft]).map((corner) => <span key={corner} className={`${styles.corner} ${corner}`} aria-hidden="true" />)}
-        </div>
+        </div>}
         <div id="experience-current-description" className={styles.description} aria-live="polite">
           {content.entries.map((entry, index) => <p key={entry.id} data-active={selected === index} aria-hidden={selected !== index}>{entry.description}</p>)}
         </div>
         <div className={`${styles.list} ${styles.right}`}>
-          {content.entries.slice(4).map((entry, index) => renderRow(entry, index + 4))}
+          {content.entries.slice(split).map((entry, index) => renderRow(entry, index + split))}
         </div>
       </div>
     </section>

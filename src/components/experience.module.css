@@ -91,3 +91,19 @@
 @media (prefers-reduced-motion: reduce) {
   .panel, .rowBackground::after, .rowTitle, .role { transition: none; }
 }
+.stage { overflow: clip; padding: clamp(48px, 6vw, 96px) var(--grid-edge-inset); }
+.heading { width: 100%; max-width: 65ch; }
+.title { font-size: clamp(2rem, 4vw, 4.5rem); line-height: 1.15; }
+.badge { line-height: 1.5; }
+.introduction { max-width: 65ch; margin: 0 auto 40px; color: var(--text-white-grey); text-align: center; font-size: clamp(1rem, 1.2vw, 1.25rem); line-height: 1.7; }
+.button { height: auto; min-height: 68px; padding: 20px; gap: 8px; }
+.rowTitle { line-height: 1.25; font-size: clamp(1.1rem, 1.4vw, 1.5rem); }
+.role { line-height: 1.5; }
+.panel { transition-duration: .55s; }
+.panelCopy { color: var(--text-white-grey); max-width: 65ch; }
+@media (min-width: 768px) {
+  .description { display: block; position: relative; height: var(--description-height, auto); transition: height .55s ease; color: var(--text-white-grey); }
+  .description p { position: absolute; inset: 0 0 auto; }
+}
+@media (min-width: 1025px) { .body { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr); gap: 28px; } }
+@media (prefers-reduced-motion: reduce) { .description { transition: none; } }

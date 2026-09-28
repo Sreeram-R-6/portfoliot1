@@ -1,0 +1,28 @@
+import { readFile, writeFile, mkdir } from "node:fs/promises";
+
+const original = JSON.parse(await readFile("src/content/site.json", "utf8"));
+const copy = () => structuredClone(original);
+const repeated = "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ";
+const maximum = copy();
+maximum.name = "Synthetic fixture identity with an exceptionally long name";
+maximum.sections.identity.title = maximum.name;
+maximum.sections.identity.displayLines = ["A considerably longer identity line", "UnbrokenIdentity".repeat(8)];
+maximum.sections.identity.description = repeated.repeat(8);
+maximum.sections.identity.badge = repeated.repeat(3);
+maximum.sections.identity.locationLabel = "LongLocation".repeat(24);
+maximum.sections.manifesto.description = repeated.repeat(8);
+maximum.sections.manifesto.displayWords = ["A much longer manifesto", "learning through experiments", "UnbrokenManifesto".repeat(12), "and building"];
+maximum.sections.statistics.counters.push({ label: repeated.repeat(2), value: "Research in progress" });
+maximum.sections.statistics.tools.push("UnbrokenTool".repeat(24));
+maximum.projects = Array.from({ length: 20 }, (_, index) => ({ ...original.projects[index % original.projects.length], id: `fixture-project-${index}`, title: index ? repeated : "UnbrokenTitle".repeat(30), description: repeated.repeat(12), image: null, href: index === 1 ? "https://example.com/project" : "#contact" }));
+maximum.sections.experience.entries = maximum.sections.experience.entries.map((entry) => ({ ...entry, title: repeated.repeat(2), role: repeated, description: repeated.repeat(8) }));
+maximum.footer.message.label = "LongEmailLabel".repeat(24);
+maximum.footer.links[0].label = repeated.repeat(3);
+maximum.navigation.home.label = repeated;
+maximum.navigation.links[0].label = repeated;
+const twenty = copy();
+twenty.projects = Array.from({ length: 20 }, (_, index) => ({ ...original.projects[index % original.projects.length], id: `fixture-project-${index}`, image: null }));
+const three = copy(); three.projects = three.projects.slice(0, 3);
+const empty = copy(); empty.projects = []; empty.sections.experience.entries = []; empty.sections.statistics.counters = []; empty.sections.statistics.tools = [];
+await mkdir("src/content/__fixtures__", { recursive: true });
+await writeFile("src/content/__fixtures__/stress.json", `${JSON.stringify({ maximum, twenty, three, empty }, null, 2)}\n`);

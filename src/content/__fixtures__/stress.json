@@ -1,0 +1,1036 @@
+{
+  "maximum": {
+    "metadata": {
+      "siteUrl": "https://portfolio.example",
+      "title": "Sreeram R — CS, IoT & Research Engineer",
+      "description": "Computer Science engineering student at Christ College of Engineering, Irinjalakuda, building across embedded systems, IoT, drones, robotics, AI, web platforms, telemetry, and research."
+    },
+    "name": "Synthetic fixture identity with an exceptionally long name",
+    "role": "Computer Science Engineer • IoT • Embedded Systems • Drones • Research",
+    "location": "Kerala, India",
+    "orientation": {
+      "title": "Explore in portrait",
+      "hint": "Rotate your device"
+    },
+    "navigation": {
+      "skip": "Skip to main content",
+      "label": "Navigation",
+      "menu": "Menu",
+      "close": "Close menu",
+      "connections": "Connections",
+      "coordinates": [
+        "10.311° N",
+        "76.332° E"
+      ],
+      "home": {
+        "label": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#identity"
+      },
+      "links": [
+        {
+          "label": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+          "href": "#identity"
+        },
+        {
+          "label": "Work",
+          "href": "#projects"
+        },
+        {
+          "label": "Contact",
+          "href": "#contact"
+        }
+      ]
+    },
+    "sections": {
+      "identity": {
+        "id": "identity",
+        "eyebrow": "Identity hero",
+        "title": "Synthetic fixture identity with an exceptionally long name",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "displayLines": [
+          "A considerably longer identity line",
+          "UnbrokenIdentityUnbrokenIdentityUnbrokenIdentityUnbrokenIdentityUnbrokenIdentityUnbrokenIdentityUnbrokenIdentityUnbrokenIdentity"
+        ],
+        "badge": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "region": "IN",
+        "locationLabel": "LongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocationLongLocation",
+        "scrollLabel": "Scroll to explore"
+      },
+      "manifesto": {
+        "id": "manifesto",
+        "eyebrow": "Manifesto",
+        "title": "Learning by building",
+        "displayWords": [
+          "A much longer manifesto",
+          "learning through experiments",
+          "UnbrokenManifestoUnbrokenManifestoUnbrokenManifestoUnbrokenManifestoUnbrokenManifestoUnbrokenManifestoUnbrokenManifestoUnbrokenManifestoUnbrokenManifestoUnbrokenManifestoUnbrokenManifestoUnbrokenManifesto",
+          "and building"
+        ],
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. "
+      },
+      "statistics": {
+        "id": "statistics",
+        "eyebrow": "Statistics and tools",
+        "title": "Building across software and hardware",
+        "description": "A hands-on engineering profile spanning software, embedded systems, drones, IoT, AI, and research.",
+        "counters": [
+          {
+            "label": "Major projects",
+            "value": "11"
+          },
+          {
+            "label": "Hackathon / competition wins",
+            "value": "3"
+          },
+          {
+            "label": "Engineering domains",
+            "value": "6"
+          },
+          {
+            "label": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+            "value": "Research in progress"
+          }
+        ],
+        "tools": [
+          "Python / C / C++",
+          "ESP32 / STM32 / Raspberry Pi",
+          "ArduPilot / ROS 2 / MAVLink",
+          "React / Node.js / Firebase",
+          "UnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenToolUnbrokenTool"
+        ]
+      },
+      "projects": {
+        "id": "projects",
+        "eyebrow": "Project showcase",
+        "title": "Selected projects",
+        "description": "Selected work across autonomous drones, telemetry, embedded systems, IoT, AI-assisted platforms, and web software.",
+        "cardTag": "Project",
+        "viewLabel": "View project",
+        "moreWork": {
+          "label": "GitHub — Sreeram-R-6",
+          "href": "https://github.com/Sreeram-R-6"
+        }
+      },
+      "experience": {
+        "id": "experience",
+        "eyebrow": "Education",
+        "title": "Education, research and competition work",
+        "description": "B.Tech Computer Science Engineering student at Christ College of Engineering, Irinjalakuda, with project work spanning embedded systems, autonomous drones, AI, IoT, web development and research.",
+        "expandMark": "+",
+        "collapseMark": "−",
+        "entries": [
+          {
+            "id": "cce-kerala",
+            "index": "01",
+            "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+            "role": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+            "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. "
+          },
+          {
+            "id": "physical-ai-hackathon-2026",
+            "index": "02",
+            "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+            "role": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+            "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. "
+          },
+          {
+            "id": "beach-hack",
+            "index": "03",
+            "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+            "role": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+            "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. "
+          },
+          {
+            "id": "bhumika-2025",
+            "index": "04",
+            "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+            "role": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+            "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. "
+          }
+        ]
+      }
+    },
+    "projects": [
+      {
+        "id": "fixture-project-0",
+        "title": "UnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitleUnbrokenTitle",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-1",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "https://example.com/project",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-2",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-3",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-4",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-5",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-6",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-7",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-8",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-9",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-10",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-11",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-12",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-13",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-14",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-15",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-16",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-17",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-18",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-19",
+        "title": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "description": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      }
+    ],
+    "todos": [
+      "Add final deployed portfolio domain when available",
+      "Add direct project repository/demo URLs",
+      "Add project images owned by Sreeram",
+      "Add downloadable CV file URL"
+    ],
+    "footer": {
+      "id": "contact",
+      "eyebrow": "Contact footer",
+      "title": "Let’s connect",
+      "groupLabels": [
+        "Contact",
+        "Connections",
+        "Location"
+      ],
+      "locationHref": "#contact",
+      "message": {
+        "label": "LongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabelLongEmailLabel",
+        "href": "mailto:sreeramr2006@gmail.com"
+      },
+      "cv": {
+        "label": "Resume",
+        "href": "#contact"
+      },
+      "links": [
+        {
+          "label": "Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. Synthetic fixture text exercises long, variable-length content without changing the portfolio source. ",
+          "href": "https://github.com/Sreeram-R-6"
+        },
+        {
+          "label": "LinkedIn — srr06",
+          "href": "https://www.linkedin.com/in/srr06"
+        }
+      ]
+    }
+  },
+  "twenty": {
+    "metadata": {
+      "siteUrl": "https://portfolio.example",
+      "title": "Sreeram R — CS, IoT & Research Engineer",
+      "description": "Computer Science engineering student at Christ College of Engineering, Irinjalakuda, building across embedded systems, IoT, drones, robotics, AI, web platforms, telemetry, and research."
+    },
+    "name": "Sreeram R",
+    "role": "Computer Science Engineer • IoT • Embedded Systems • Drones • Research",
+    "location": "Kerala, India",
+    "orientation": {
+      "title": "Explore in portrait",
+      "hint": "Rotate your device"
+    },
+    "navigation": {
+      "skip": "Skip to main content",
+      "label": "Navigation",
+      "menu": "Menu",
+      "close": "Close menu",
+      "connections": "Connections",
+      "coordinates": [
+        "10.311° N",
+        "76.332° E"
+      ],
+      "home": {
+        "label": "Sreeram R",
+        "href": "#identity"
+      },
+      "links": [
+        {
+          "label": "About",
+          "href": "#identity"
+        },
+        {
+          "label": "Work",
+          "href": "#projects"
+        },
+        {
+          "label": "Contact",
+          "href": "#contact"
+        }
+      ]
+    },
+    "sections": {
+      "identity": {
+        "id": "identity",
+        "eyebrow": "Identity hero",
+        "title": "Sreeram R",
+        "description": "B.Tech Computer Science Engineering student at Christ College of Engineering, Irinjalakuda, focused on embedded systems, IoT, autonomous drones, telemetry, AI-assisted software, and research.",
+        "displayLines": [
+          "Sreeram R",
+          "Ramachandran"
+        ],
+        "badge": "CS • IoT • Embedded • Drones • Research",
+        "region": "IN",
+        "locationLabel": "Kerala, India",
+        "scrollLabel": "Scroll to explore"
+      },
+      "manifesto": {
+        "id": "manifesto",
+        "eyebrow": "Manifesto",
+        "title": "Learning by building",
+        "displayWords": [
+          "Learning",
+          "by",
+          "building"
+        ],
+        "description": "I learn by turning ideas into working systems—combining software, embedded hardware, autonomous vehicles, telemetry, web interfaces, and applied AI."
+      },
+      "statistics": {
+        "id": "statistics",
+        "eyebrow": "Statistics and tools",
+        "title": "Building across software and hardware",
+        "description": "A hands-on engineering profile spanning software, embedded systems, drones, IoT, AI, and research.",
+        "counters": [
+          {
+            "label": "Major projects",
+            "value": "11"
+          },
+          {
+            "label": "Hackathon / competition wins",
+            "value": "3"
+          },
+          {
+            "label": "Engineering domains",
+            "value": "6"
+          }
+        ],
+        "tools": [
+          "Python / C / C++",
+          "ESP32 / STM32 / Raspberry Pi",
+          "ArduPilot / ROS 2 / MAVLink",
+          "React / Node.js / Firebase"
+        ]
+      },
+      "projects": {
+        "id": "projects",
+        "eyebrow": "Project showcase",
+        "title": "Selected projects",
+        "description": "Selected work across autonomous drones, telemetry, embedded systems, IoT, AI-assisted platforms, and web software.",
+        "cardTag": "Project",
+        "viewLabel": "View project",
+        "moreWork": {
+          "label": "GitHub — Sreeram-R-6",
+          "href": "https://github.com/Sreeram-R-6"
+        }
+      },
+      "experience": {
+        "id": "experience",
+        "eyebrow": "Education",
+        "title": "Education, research and competition work",
+        "description": "B.Tech Computer Science Engineering student at Christ College of Engineering, Irinjalakuda, with project work spanning embedded systems, autonomous drones, AI, IoT, web development and research.",
+        "expandMark": "+",
+        "collapseMark": "−",
+        "entries": [
+          {
+            "id": "cce-kerala",
+            "index": "01",
+            "title": "Christ College of Engineering, Irinjalakuda",
+            "role": "B.Tech Computer Science Engineering — S5",
+            "description": "Undergraduate engineering student working on software, IoT, embedded systems, drones, robotics, telemetry, AI-assisted applications and research-oriented engineering projects."
+          },
+          {
+            "id": "physical-ai-hackathon-2026",
+            "index": "02",
+            "title": "Google Physical AI Hackathon — Kochi Onam Edition",
+            "role": "1st Prize — 2026",
+            "description": "Won first prize with an AI-instrumented Vallamkali / boat-race telemetry project."
+          },
+          {
+            "id": "beach-hack",
+            "index": "03",
+            "title": "Beach Hack",
+            "role": "1st Prize — MedChainX",
+            "description": "Built MedChainX, an electronic medical record concept focused on structured patient data access and sharing."
+          },
+          {
+            "id": "bhumika-2025",
+            "index": "04",
+            "title": "BHUMIKA 2025 — ISRO Space Week",
+            "role": "1st Prize — Space Debate",
+            "description": "Won first prize in the Space Debate event conducted as part of ISRO Space Week."
+          }
+        ]
+      }
+    },
+    "projects": [
+      {
+        "id": "fixture-project-0",
+        "title": "Thuzhayan",
+        "description": "AI-instrumented Vallamkali telemetry system developed for the Google Physical AI Hackathon Kochi Onam Edition 2026. Focused on real-time race telemetry and physical-AI-assisted analysis.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-1",
+        "title": "NIDAR Dual-Drone Disaster Rescue System",
+        "description": "Autonomous disaster-response architecture using a scout quadcopter and delivery hexacopter. Designed for large-area survivor search, real-time video, survivor geotagging, speaker communication, obstacle avoidance and precision delivery of survival kits. The onboard stack used Jetson Nano, ROS 2, MAVROS and ArduPilot.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-2",
+        "title": "Agricultural Disaster Intelligence Drone",
+        "description": "Agriculture-focused drone system covering four operating states: no-threat crop monitoring, pre-disaster prediction and preparedness, on-disaster rapid mapping, and post-disaster recovery assessment. Designed around aerial scouting, geofencing, GPS, camera data, AI-assisted prediction, crop-health monitoring and pre/post comparison.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-3",
+        "title": "FLT4m Solar UAV Research",
+        "description": "Research-oriented long-endurance UAV project for Kerala coastal operations using a 4 m biplane configuration, NACA 4412 wing profile, dual motors, Pixhawk autopilot, LoRa/telemetry and weather-routing research using IVT and ERA5/GFS data.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-4",
+        "title": "ESP32 Weather Station",
+        "description": "ESP32-based environmental monitoring platform using BME680/BME690 sensing, non-blocking firmware, filtering, gas-baseline storage, heuristic IAQ estimation, Wi-Fi state management and Firestore-backed data publishing.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-5",
+        "title": "MedChainX",
+        "description": "Electronic medical record platform with patient create/read/update flows and time-limited doctor access tokens. Later simplified to a local JSON-backed implementation for rapid prototyping.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-6",
+        "title": "AquaChain",
+        "description": "Fisheries permit and traceability platform featuring zone/GPS context, QR-based public verification and regulator audit workflows.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-7",
+        "title": "Smart Helmet Accident Detection",
+        "description": "ESP32-based safety system using MPU6050 and GPS data to detect crash-like events such as inversion, rapid deceleration and free-fall, with server-side accident handling.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-8",
+        "title": "SIH UFDR Forensics Platform",
+        "description": "Digital-forensics project exploring UFDR ingestion, natural-language querying and investigative workflows, with Autopsy integration and containerized tooling experiments.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-9",
+        "title": "CCE Judge",
+        "description": "Competitive programming and online judge platform for coding practice and evaluation.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-10",
+        "title": "Autonomous Drone GCS",
+        "description": "A simplified ground-control-station concept for autonomous mission planning and execution, designed to expose the essential workflows of Mission Planner in a cleaner custom interface.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-11",
+        "title": "Thuzhayan",
+        "description": "AI-instrumented Vallamkali telemetry system developed for the Google Physical AI Hackathon Kochi Onam Edition 2026. Focused on real-time race telemetry and physical-AI-assisted analysis.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-12",
+        "title": "NIDAR Dual-Drone Disaster Rescue System",
+        "description": "Autonomous disaster-response architecture using a scout quadcopter and delivery hexacopter. Designed for large-area survivor search, real-time video, survivor geotagging, speaker communication, obstacle avoidance and precision delivery of survival kits. The onboard stack used Jetson Nano, ROS 2, MAVROS and ArduPilot.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-13",
+        "title": "Agricultural Disaster Intelligence Drone",
+        "description": "Agriculture-focused drone system covering four operating states: no-threat crop monitoring, pre-disaster prediction and preparedness, on-disaster rapid mapping, and post-disaster recovery assessment. Designed around aerial scouting, geofencing, GPS, camera data, AI-assisted prediction, crop-health monitoring and pre/post comparison.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-14",
+        "title": "FLT4m Solar UAV Research",
+        "description": "Research-oriented long-endurance UAV project for Kerala coastal operations using a 4 m biplane configuration, NACA 4412 wing profile, dual motors, Pixhawk autopilot, LoRa/telemetry and weather-routing research using IVT and ERA5/GFS data.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-15",
+        "title": "ESP32 Weather Station",
+        "description": "ESP32-based environmental monitoring platform using BME680/BME690 sensing, non-blocking firmware, filtering, gas-baseline storage, heuristic IAQ estimation, Wi-Fi state management and Firestore-backed data publishing.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-16",
+        "title": "MedChainX",
+        "description": "Electronic medical record platform with patient create/read/update flows and time-limited doctor access tokens. Later simplified to a local JSON-backed implementation for rapid prototyping.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-17",
+        "title": "AquaChain",
+        "description": "Fisheries permit and traceability platform featuring zone/GPS context, QR-based public verification and regulator audit workflows.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-18",
+        "title": "Smart Helmet Accident Detection",
+        "description": "ESP32-based safety system using MPU6050 and GPS data to detect crash-like events such as inversion, rapid deceleration and free-fall, with server-side accident handling.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "fixture-project-19",
+        "title": "SIH UFDR Forensics Platform",
+        "description": "Digital-forensics project exploring UFDR ingestion, natural-language querying and investigative workflows, with Autopsy integration and containerized tooling experiments.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      }
+    ],
+    "todos": [
+      "Add final deployed portfolio domain when available",
+      "Add direct project repository/demo URLs",
+      "Add project images owned by Sreeram",
+      "Add downloadable CV file URL"
+    ],
+    "footer": {
+      "id": "contact",
+      "eyebrow": "Contact footer",
+      "title": "Let’s connect",
+      "groupLabels": [
+        "Contact",
+        "Connections",
+        "Location"
+      ],
+      "locationHref": "#contact",
+      "message": {
+        "label": "Email — sreeramr2006@gmail.com",
+        "href": "mailto:sreeramr2006@gmail.com"
+      },
+      "cv": {
+        "label": "Resume",
+        "href": "#contact"
+      },
+      "links": [
+        {
+          "label": "GitHub — Sreeram-R-6",
+          "href": "https://github.com/Sreeram-R-6"
+        },
+        {
+          "label": "LinkedIn — srr06",
+          "href": "https://www.linkedin.com/in/srr06"
+        }
+      ]
+    }
+  },
+  "three": {
+    "metadata": {
+      "siteUrl": "https://portfolio.example",
+      "title": "Sreeram R — CS, IoT & Research Engineer",
+      "description": "Computer Science engineering student at Christ College of Engineering, Irinjalakuda, building across embedded systems, IoT, drones, robotics, AI, web platforms, telemetry, and research."
+    },
+    "name": "Sreeram R",
+    "role": "Computer Science Engineer • IoT • Embedded Systems • Drones • Research",
+    "location": "Kerala, India",
+    "orientation": {
+      "title": "Explore in portrait",
+      "hint": "Rotate your device"
+    },
+    "navigation": {
+      "skip": "Skip to main content",
+      "label": "Navigation",
+      "menu": "Menu",
+      "close": "Close menu",
+      "connections": "Connections",
+      "coordinates": [
+        "10.311° N",
+        "76.332° E"
+      ],
+      "home": {
+        "label": "Sreeram R",
+        "href": "#identity"
+      },
+      "links": [
+        {
+          "label": "About",
+          "href": "#identity"
+        },
+        {
+          "label": "Work",
+          "href": "#projects"
+        },
+        {
+          "label": "Contact",
+          "href": "#contact"
+        }
+      ]
+    },
+    "sections": {
+      "identity": {
+        "id": "identity",
+        "eyebrow": "Identity hero",
+        "title": "Sreeram R",
+        "description": "B.Tech Computer Science Engineering student at Christ College of Engineering, Irinjalakuda, focused on embedded systems, IoT, autonomous drones, telemetry, AI-assisted software, and research.",
+        "displayLines": [
+          "Sreeram R",
+          "Ramachandran"
+        ],
+        "badge": "CS • IoT • Embedded • Drones • Research",
+        "region": "IN",
+        "locationLabel": "Kerala, India",
+        "scrollLabel": "Scroll to explore"
+      },
+      "manifesto": {
+        "id": "manifesto",
+        "eyebrow": "Manifesto",
+        "title": "Learning by building",
+        "displayWords": [
+          "Learning",
+          "by",
+          "building"
+        ],
+        "description": "I learn by turning ideas into working systems—combining software, embedded hardware, autonomous vehicles, telemetry, web interfaces, and applied AI."
+      },
+      "statistics": {
+        "id": "statistics",
+        "eyebrow": "Statistics and tools",
+        "title": "Building across software and hardware",
+        "description": "A hands-on engineering profile spanning software, embedded systems, drones, IoT, AI, and research.",
+        "counters": [
+          {
+            "label": "Major projects",
+            "value": "11"
+          },
+          {
+            "label": "Hackathon / competition wins",
+            "value": "3"
+          },
+          {
+            "label": "Engineering domains",
+            "value": "6"
+          }
+        ],
+        "tools": [
+          "Python / C / C++",
+          "ESP32 / STM32 / Raspberry Pi",
+          "ArduPilot / ROS 2 / MAVLink",
+          "React / Node.js / Firebase"
+        ]
+      },
+      "projects": {
+        "id": "projects",
+        "eyebrow": "Project showcase",
+        "title": "Selected projects",
+        "description": "Selected work across autonomous drones, telemetry, embedded systems, IoT, AI-assisted platforms, and web software.",
+        "cardTag": "Project",
+        "viewLabel": "View project",
+        "moreWork": {
+          "label": "GitHub — Sreeram-R-6",
+          "href": "https://github.com/Sreeram-R-6"
+        }
+      },
+      "experience": {
+        "id": "experience",
+        "eyebrow": "Education",
+        "title": "Education, research and competition work",
+        "description": "B.Tech Computer Science Engineering student at Christ College of Engineering, Irinjalakuda, with project work spanning embedded systems, autonomous drones, AI, IoT, web development and research.",
+        "expandMark": "+",
+        "collapseMark": "−",
+        "entries": [
+          {
+            "id": "cce-kerala",
+            "index": "01",
+            "title": "Christ College of Engineering, Irinjalakuda",
+            "role": "B.Tech Computer Science Engineering — S5",
+            "description": "Undergraduate engineering student working on software, IoT, embedded systems, drones, robotics, telemetry, AI-assisted applications and research-oriented engineering projects."
+          },
+          {
+            "id": "physical-ai-hackathon-2026",
+            "index": "02",
+            "title": "Google Physical AI Hackathon — Kochi Onam Edition",
+            "role": "1st Prize — 2026",
+            "description": "Won first prize with an AI-instrumented Vallamkali / boat-race telemetry project."
+          },
+          {
+            "id": "beach-hack",
+            "index": "03",
+            "title": "Beach Hack",
+            "role": "1st Prize — MedChainX",
+            "description": "Built MedChainX, an electronic medical record concept focused on structured patient data access and sharing."
+          },
+          {
+            "id": "bhumika-2025",
+            "index": "04",
+            "title": "BHUMIKA 2025 — ISRO Space Week",
+            "role": "1st Prize — Space Debate",
+            "description": "Won first prize in the Space Debate event conducted as part of ISRO Space Week."
+          }
+        ]
+      }
+    },
+    "projects": [
+      {
+        "id": "thuzhayan",
+        "title": "Thuzhayan",
+        "description": "AI-instrumented Vallamkali telemetry system developed for the Google Physical AI Hackathon Kochi Onam Edition 2026. Focused on real-time race telemetry and physical-AI-assisted analysis.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "nidars-dual-drone",
+        "title": "NIDAR Dual-Drone Disaster Rescue System",
+        "description": "Autonomous disaster-response architecture using a scout quadcopter and delivery hexacopter. Designed for large-area survivor search, real-time video, survivor geotagging, speaker communication, obstacle avoidance and precision delivery of survival kits. The onboard stack used Jetson Nano, ROS 2, MAVROS and ArduPilot.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      },
+      {
+        "id": "agri-disaster-drone",
+        "title": "Agricultural Disaster Intelligence Drone",
+        "description": "Agriculture-focused drone system covering four operating states: no-threat crop monitoring, pre-disaster prediction and preparedness, on-disaster rapid mapping, and post-disaster recovery assessment. Designed around aerial scouting, geofencing, GPS, camera data, AI-assisted prediction, crop-health monitoring and pre/post comparison.",
+        "href": "#contact",
+        "image": null,
+        "todo": "TODO: add project link and own project image"
+      }
+    ],
+    "todos": [
+      "Add final deployed portfolio domain when available",
+      "Add direct project repository/demo URLs",
+      "Add project images owned by Sreeram",
+      "Add downloadable CV file URL"
+    ],
+    "footer": {
+      "id": "contact",
+      "eyebrow": "Contact footer",
+      "title": "Let’s connect",
+      "groupLabels": [
+        "Contact",
+        "Connections",
+        "Location"
+      ],
+      "locationHref": "#contact",
+      "message": {
+        "label": "Email — sreeramr2006@gmail.com",
+        "href": "mailto:sreeramr2006@gmail.com"
+      },
+      "cv": {
+        "label": "Resume",
+        "href": "#contact"
+      },
+      "links": [
+        {
+          "label": "GitHub — Sreeram-R-6",
+          "href": "https://github.com/Sreeram-R-6"
+        },
+        {
+          "label": "LinkedIn — srr06",
+          "href": "https://www.linkedin.com/in/srr06"
+        }
+      ]
+    }
+  },
+  "empty": {
+    "metadata": {
+      "siteUrl": "https://portfolio.example",
+      "title": "Sreeram R — CS, IoT & Research Engineer",
+      "description": "Computer Science engineering student at Christ College of Engineering, Irinjalakuda, building across embedded systems, IoT, drones, robotics, AI, web platforms, telemetry, and research."
+    },
+    "name": "Sreeram R",
+    "role": "Computer Science Engineer • IoT • Embedded Systems • Drones • Research",
+    "location": "Kerala, India",
+    "orientation": {
+      "title": "Explore in portrait",
+      "hint": "Rotate your device"
+    },
+    "navigation": {
+      "skip": "Skip to main content",
+      "label": "Navigation",
+      "menu": "Menu",
+      "close": "Close menu",
+      "connections": "Connections",
+      "coordinates": [
+        "10.311° N",
+        "76.332° E"
+      ],
+      "home": {
+        "label": "Sreeram R",
+        "href": "#identity"
+      },
+      "links": [
+        {
+          "label": "About",
+          "href": "#identity"
+        },
+        {
+          "label": "Work",
+          "href": "#projects"
+        },
+        {
+          "label": "Contact",
+          "href": "#contact"
+        }
+      ]
+    },
+    "sections": {
+      "identity": {
+        "id": "identity",
+        "eyebrow": "Identity hero",
+        "title": "Sreeram R",
+        "description": "B.Tech Computer Science Engineering student at Christ College of Engineering, Irinjalakuda, focused on embedded systems, IoT, autonomous drones, telemetry, AI-assisted software, and research.",
+        "displayLines": [
+          "Sreeram R",
+          "Ramachandran"
+        ],
+        "badge": "CS • IoT • Embedded • Drones • Research",
+        "region": "IN",
+        "locationLabel": "Kerala, India",
+        "scrollLabel": "Scroll to explore"
+      },
+      "manifesto": {
+        "id": "manifesto",
+        "eyebrow": "Manifesto",
+        "title": "Learning by building",
+        "displayWords": [
+          "Learning",
+          "by",
+          "building"
+        ],
+        "description": "I learn by turning ideas into working systems—combining software, embedded hardware, autonomous vehicles, telemetry, web interfaces, and applied AI."
+      },
+      "statistics": {
+        "id": "statistics",
+        "eyebrow": "Statistics and tools",
+        "title": "Building across software and hardware",
+        "description": "A hands-on engineering profile spanning software, embedded systems, drones, IoT, AI, and research.",
+        "counters": [],
+        "tools": []
+      },
+      "projects": {
+        "id": "projects",
+        "eyebrow": "Project showcase",
+        "title": "Selected projects",
+        "description": "Selected work across autonomous drones, telemetry, embedded systems, IoT, AI-assisted platforms, and web software.",
+        "cardTag": "Project",
+        "viewLabel": "View project",
+        "moreWork": {
+          "label": "GitHub — Sreeram-R-6",
+          "href": "https://github.com/Sreeram-R-6"
+        }
+      },
+      "experience": {
+        "id": "experience",
+        "eyebrow": "Education",
+        "title": "Education, research and competition work",
+        "description": "B.Tech Computer Science Engineering student at Christ College of Engineering, Irinjalakuda, with project work spanning embedded systems, autonomous drones, AI, IoT, web development and research.",
+        "expandMark": "+",
+        "collapseMark": "−",
+        "entries": []
+      }
+    },
+    "projects": [],
+    "todos": [
+      "Add final deployed portfolio domain when available",
+      "Add direct project repository/demo URLs",
+      "Add project images owned by Sreeram",
+      "Add downloadable CV file URL"
+    ],
+    "footer": {
+      "id": "contact",
+      "eyebrow": "Contact footer",
+      "title": "Let’s connect",
+      "groupLabels": [
+        "Contact",
+        "Connections",
+        "Location"
+      ],
+      "locationHref": "#contact",
+      "message": {
+        "label": "Email — sreeramr2006@gmail.com",
+        "href": "mailto:sreeramr2006@gmail.com"
+      },
+      "cv": {
+        "label": "Resume",
+        "href": "#contact"
+      },
+      "links": [
+        {
+          "label": "GitHub — Sreeram-R-6",
+          "href": "https://github.com/Sreeram-R-6"
+        },
+        {
+          "label": "LinkedIn — srr06",
+          "href": "https://www.linkedin.com/in/srr06"
+        }
+      ]
+    }
+  }
+}

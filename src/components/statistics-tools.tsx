@@ -1,4 +1,4 @@
-import { siteContent } from "@/content/site";
+import { siteContent, type PublicSiteContent } from "@/content/site";
 import { DecorativeCanvas } from "./decorative-canvas";
 import styles from "./statistics-tools.module.css";
 import { StatisticsMotion } from "./statistics-motion";
@@ -16,8 +16,8 @@ function ToolMark({ variant }: { variant: number }) {
   );
 }
 
-export function StatisticsTools() {
-  const content = siteContent.sections.statistics;
+export function StatisticsTools({ site = siteContent }: { site?: PublicSiteContent }) {
+  const content = site.sections.statistics;
 
   return (
     <section id={content.id} data-section="statistics" className={styles.stage} aria-labelledby="statistics-title">
@@ -26,7 +26,7 @@ export function StatisticsTools() {
       <div className={styles.canvas} data-stat-canvas>
         <div className={styles.grid}>
           {content.counters.map((counter, index) => (
-            <div key={counter.label} data-stat-box className={`${styles.box} ${styles[`counter${index}`]}`}>
+            <div key={`${index}-${counter.label}`} data-stat-box className={styles.box}>
               <span aria-hidden="true" className={styles.boxBackground} />
               <span aria-hidden="true" data-stat-notch className={styles.notch} />
               <p className={styles.label} data-stat-label id={`statistics-counter-${index}`}>{counter.label}</p>
@@ -37,7 +37,7 @@ export function StatisticsTools() {
             </div>
           ))}
           {content.tools.map((tool, index) => (
-            <div key={tool} data-stat-box className={`${styles.box} ${styles[`tool${index}`]}`}>
+            <div key={`${index}-${tool}`} data-stat-box className={styles.box}>
               <span aria-hidden="true" className={styles.boxBackground} />
               <span aria-hidden="true" data-stat-notch className={styles.notch} />
               <p className={styles.label} data-stat-label>{tool}</p>

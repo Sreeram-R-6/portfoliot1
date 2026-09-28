@@ -1,15 +1,15 @@
-import { siteContent } from "@/content/site";
+import { siteContent, type PublicSiteContent } from "@/content/site";
 import { DecorativeCanvas } from "./decorative-canvas";
 import { FitText } from "./fit-text";
 import "./contact-footer.css";
 
-export function ContactFooter() {
-  const footer = siteContent.footer;
+export function ContactFooter({ site = siteContent }: { site?: PublicSiteContent }) {
+  const footer = site.footer;
   const contactLinks = [footer.message, ...(!footer.cv.href.startsWith("#") && !footer.cv.href.startsWith("TODO") ? [footer.cv] : [])];
   const groups = [
     contactLinks,
     footer.links,
-    [{ label: siteContent.location, href: footer.locationHref }],
+    [{ label: site.location, href: footer.locationHref }],
   ];
 
   return (
@@ -19,7 +19,7 @@ export function ContactFooter() {
           <h2 id="footer-heading" className="footer-contact-heading">{footer.title}</h2>
           <div className="footer-contact-actions">
             {contactLinks.map((link, index) => (
-              <a key={link.label} href={link.href} className={`footer-action ${index === 1 ? "footer-action-secondary" : ""}`}>
+              <a key={`${index}-${link.label}`} href={link.href} className={`footer-action ${index === 1 ? "footer-action-secondary" : ""}`}>
                 <span aria-hidden="true" className="footer-action-corners" />
                 <span>{link.label}</span>
                 <span aria-hidden="true">↗</span>
@@ -30,10 +30,10 @@ export function ContactFooter() {
         <div className="footer-links-column">
           <div className="footer-link-groups">
             {groups.map((links, index) => (
-              <div className="footer-link-group" key={footer.groupLabels[index]}>
+              <div className="footer-link-group" key={index}>
                 <p className="footer-group-label">{footer.groupLabels[index]}</p>
-                {links.map((link) => (
-                  <a key={link.label} className="footer-contact-link" href={link.href}>
+                {links.map((link, order) => (
+                  <a key={`${order}-${link.label}`} className="footer-contact-link" href={link.href}>
                     <span>{link.label}</span><span aria-hidden="true">↗</span>
                   </a>
                 ))}
@@ -43,10 +43,10 @@ export function ContactFooter() {
         </div>
       </div>
       <div className="footer-wordmark-frame">
-        <DecorativeCanvas kind="footer" label={siteContent.name} className="h-full w-full">
-          <FitText text={siteContent.name} className="footer-wordmark" />
+        <DecorativeCanvas kind="footer" label={site.name} className="h-full w-full">
+          <FitText text={site.name} className="footer-wordmark" />
         </DecorativeCanvas>
-        <span className="sr-only">{siteContent.name}</span>
+        <span className="sr-only">{site.name}</span>
       </div>
     </footer>
   );

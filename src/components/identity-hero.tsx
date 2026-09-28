@@ -1,4 +1,4 @@
-import { siteContent } from "@/content/site";
+import { siteContent, type PublicSiteContent } from "@/content/site";
 import { DecorativeCanvas } from "./decorative-canvas";
 import { FitText } from "./fit-text";
 import "./identity-hero.css";
@@ -28,8 +28,8 @@ export function IdentityPoster({ idPrefix = "identity-poster" }: { idPrefix?: st
   );
 }
 
-export function IdentityHero() {
-  const identity = siteContent.sections.identity;
+export function IdentityHero({ site = siteContent }: { site?: PublicSiteContent }) {
+  const identity = site.sections.identity;
 
   return (
     <section id={identity.id} data-section="identity" className="identity-hero" aria-labelledby="identity-title">
@@ -42,8 +42,8 @@ export function IdentityHero() {
         <div className="identity-contact" data-reveal>
           <div className="identity-contact-bar" />
           <div className="identity-contact-stack">
-            <a href={siteContent.footer.message.href}>{siteContent.footer.message.label}<span aria-hidden="true">↗</span></a>
-            {!siteContent.footer.cv.href.startsWith("#") && !siteContent.footer.cv.href.startsWith("TODO") && <a href={siteContent.footer.cv.href}>{siteContent.footer.cv.label}<span aria-hidden="true">↗</span></a>}
+            <a href={site.footer.message.href}>{site.footer.message.label}<span aria-hidden="true">↗</span></a>
+            {!site.footer.cv.href.startsWith("#") && !site.footer.cv.href.startsWith("TODO") && <a href={site.footer.cv.href}>{site.footer.cv.label}<span aria-hidden="true">↗</span></a>}
           </div>
         </div>
         <p className="identity-introduction" data-reveal>{identity.description}</p>

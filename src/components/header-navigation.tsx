@@ -3,19 +3,19 @@
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { gsap } from "gsap";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
-import { siteContent } from "@/content/site";
+import { siteContent, type PublicSiteContent } from "@/content/site";
 import "./header-navigation.css";
 import { CursorProgress } from "./cursor-progress";
 
 type MenuMotion = { open: () => void; close: () => void; scramble: (element: HTMLElement) => void };
 
-export function HeaderNavigation() {
+export function HeaderNavigation({ site = siteContent }: { site?: PublicSiteContent }) {
   const [isOpen, setIsOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const motionRef = useRef<MenuMotion | null>(null);
-  const navigation = siteContent.navigation;
+  const navigation = site.navigation;
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -127,17 +127,17 @@ export function HeaderNavigation() {
     <>
     <header ref={headerRef} data-section="header-navigation" className="sticky top-0 z-50 bg-background">
       <div className="orientation-guard" role="status">
-        <p className="orientation-title">{siteContent.orientation.title}</p>
-        <p className="orientation-hint">{siteContent.orientation.hint}</p>
+        <p className="orientation-title">{site.orientation.title}</p>
+        <p className="orientation-hint">{site.orientation.hint}</p>
       </div>
       <nav aria-label={navigation.label} className="site-navigation relative flex items-center justify-between px-4 py-5 sm:px-8">
         <a href={navigation.home.href} className="flex items-center gap-2 font-heading text-xs leading-5 font-semibold uppercase focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
           <span aria-hidden="true" className="mr-1.5 block size-2.5 rotate-45 border border-primary" />
           {navigation.home.label}
         </a>
-        <span className="hidden font-heading text-xs leading-5 tracking-[1.56px] text-muted-foreground uppercase sm:block">{siteContent.location}</span>
+        <span className="hidden font-heading text-xs leading-5 tracking-[1.56px] text-muted-foreground uppercase sm:block">{site.location}</span>
         <span className="hidden font-heading text-xs leading-5 tracking-[1.56px] text-muted-foreground uppercase lg:block">
-          {navigation.coordinates.map((coordinate) => <span key={coordinate} className="block">{coordinate}</span>)}
+          {navigation.coordinates.map((coordinate, index) => <span key={`${index}-${coordinate}`} className="block">{coordinate}</span>)}
         </span>
         <button ref={triggerRef} type="button" aria-expanded={isOpen} aria-controls="navigation-dialog" aria-haspopup="dialog" onClick={() => motionRef.current?.open()} className="menu-surface relative min-h-9 px-4 py-2 bg-[#252e20]/80 font-heading text-sm leading-5 font-semibold uppercase hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
           <span aria-hidden="true" className="absolute top-0 left-0 size-1 border-t border-l border-primary" />
@@ -153,7 +153,7 @@ export function HeaderNavigation() {
           </div>
           <ul className="mt-[68px] mb-auto flex flex-col pb-12">
             {navigation.links.map((link, index) => (
-              <li key={link.label} data-menu-item>
+              <li key={`${index}-${link.label}`} data-menu-item>
                 <a href={link.href} aria-label={link.label} onClick={close} onPointerEnter={(event) => scramble(event.currentTarget)} onFocus={(event) => scramble(event.currentTarget)} className="menu-surface group flex items-center justify-between px-2 py-3 font-heading text-[40px] leading-[0.86] font-medium uppercase hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:outline-none sm:text-[56px]">
                   <span data-menu-label={link.label} aria-hidden="true">{[...link.label].map((char, index) => <span key={index} data-menu-char={char}>{char}</span>)}</span><span aria-hidden="true" className="font-mono text-xs tracking-normal">0{index + 1}</span>
                 </a>
@@ -163,8 +163,8 @@ export function HeaderNavigation() {
           <div data-menu-item className="border-t border-foreground/25 pt-6">
             <p className="font-heading text-xs leading-4 font-normal uppercase tracking-[1.56px]">{navigation.connections}</p>
             <ul className="mt-4 flex flex-wrap gap-x-8 gap-y-4 font-heading text-lg font-semibold uppercase">
-              {[siteContent.footer.message, ...(!siteContent.footer.cv.href.startsWith("#") && !siteContent.footer.cv.href.startsWith("TODO") ? [siteContent.footer.cv] : []), ...siteContent.footer.links].map((link) => (
-                <li key={link.label}><a href={link.href} aria-label={link.label} onClick={close} onPointerEnter={(event) => scramble(event.currentTarget)} onFocus={(event) => scramble(event.currentTarget)} className="underline-offset-4 hover:text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"><span data-menu-label={link.label} aria-hidden="true">{[...link.label].map((char, index) => <span key={index} data-menu-char={char}>{char}</span>)}</span></a></li>
+              {[site.footer.message, ...(!site.footer.cv.href.startsWith("#") && !site.footer.cv.href.startsWith("TODO") ? [site.footer.cv] : []), ...site.footer.links].map((link, index) => (
+                <li key={`${index}-${link.label}`}><a href={link.href} aria-label={link.label} onClick={close} onPointerEnter={(event) => scramble(event.currentTarget)} onFocus={(event) => scramble(event.currentTarget)} className="underline-offset-4 hover:text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"><span data-menu-label={link.label} aria-hidden="true">{[...link.label].map((char, index) => <span key={index} data-menu-char={char}>{char}</span>)}</span></a></li>
               ))}
             </ul>
           </div>

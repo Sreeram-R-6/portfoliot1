@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
-import { siteContent } from "@/content/site";
+import { siteContent, type PublicSiteContent } from "@/content/site";
 import { ProjectCanvasBoundary } from "./project-canvas-boundary";
 import styles from "./project-showcase.module.css";
 
@@ -56,8 +56,8 @@ function ProjectPoster({ id }: { id: string }) {
   );
 }
 
-export function ProjectShowcase() {
-  const content = siteContent.sections.projects;
+export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteContent }) {
+  const content = site.sections.projects;
   const ref = useRef<HTMLElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const openerRef = useRef<HTMLElement | null>(null);
@@ -228,7 +228,7 @@ export function ProjectShowcase() {
         <div className={styles.track} data-project-track>
           <svg className={styles.path} aria-hidden="true"><path data-project-path /></svg>
           <span className={styles.diamond} data-project-diamond aria-hidden="true"><i /><b /></span>
-          {siteContent.projects.map((project) => (
+          {site.projects.map((project) => (
             <article key={project.id} data-project-card className={styles.card}>
               <button type="button" className={styles.thumb} onClick={(event) => showDetails(project, event.currentTarget)} aria-haspopup="dialog" aria-labelledby={`${project.id}-title`} aria-describedby={`${project.id}-description`} data-project-thumb>
                 <div className={styles.frame}>
@@ -250,7 +250,7 @@ export function ProjectShowcase() {
           ))}
         </div>
       </div>
-      {!!siteContent.projects.length && <ProjectCanvasBoundary />}
+      {!!site.projects.length && <ProjectCanvasBoundary />}
       <dialog ref={dialogRef} className={styles.details} aria-labelledby="project-detail-title" data-lenis-prevent onClose={() => openerRef.current?.focus()} onKeyDown={(event) => {
         if (event.key !== "Tab") return;
         const controls = [...event.currentTarget.querySelectorAll<HTMLElement>('button:not(:disabled), a[href]:not([hidden])')];

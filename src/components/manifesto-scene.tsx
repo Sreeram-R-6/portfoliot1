@@ -1,10 +1,10 @@
-import { siteContent } from "@/content/site";
+import { siteContent, type PublicSiteContent } from "@/content/site";
 import { LazyPixelReveal } from "./lazy-pixel-reveal";
 import { IdentityPoster } from "./identity-hero";
 import "./manifesto-scene.css";
 
-export function ManifestoScene() {
-  const manifesto = siteContent.sections.manifesto;
+export function ManifestoScene({ site = siteContent }: { site?: PublicSiteContent }) {
+  const manifesto = site.sections.manifesto;
 
   return (
     <section
@@ -16,14 +16,15 @@ export function ManifestoScene() {
       <div className="manifesto-portrait" aria-hidden="true"><IdentityPoster idPrefix="manifesto-poster" /></div>
       <LazyPixelReveal />
       <h2 id="manifesto-title" className="sr-only">{manifesto.title}</h2>
-      <p className="manifesto-paragraph" aria-label={manifesto.description} data-reveal>
+      <p className="sr-only">{manifesto.description}</p>
+      <p className="manifesto-paragraph" aria-hidden="true" data-reveal>
         {manifesto.description.split(/\s+/).map((word, index) => (
           <span key={`${index}-${word}`} data-word={index} aria-hidden="true">{word}{" "}</span>
         ))}
       </p>
       <div className="manifesto-display" aria-hidden="true">
         {manifesto.displayWords.map((word, index) => (
-          <p key={word} className={`manifesto-word manifesto-word-${index + 1}`} data-reveal>{word}</p>
+          <p key={`${index}-${word}`} className="manifesto-word" data-reveal>{word}</p>
         ))}
       </div>
       <div className="manifesto-arrow-frame" aria-hidden="true">

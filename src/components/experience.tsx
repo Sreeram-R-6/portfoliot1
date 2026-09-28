@@ -2,11 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { siteContent } from "@/content/site";
+import { siteContent, type PublicSiteContent } from "@/content/site";
 import { DecorativeCanvas } from "./decorative-canvas";
 import styles from "./experience.module.css";
 
-const content = siteContent.sections.experience;
 
 export function ExperienceMark({ index }: { index: string }) {
   const variant = (Number(index) - 1) % 7;
@@ -22,7 +21,8 @@ export function ExperienceMark({ index }: { index: string }) {
   );
 }
 
-export function Experience() {
+export function Experience({ site = siteContent }: { site?: PublicSiteContent }) {
+  const content = site.sections.experience;
   const ref = useRef<HTMLElement>(null);
   const [selection, setSelected] = useState(0);
   const selected = selection < 0 ? -1 : Math.min(selection, content.entries.length - 1);

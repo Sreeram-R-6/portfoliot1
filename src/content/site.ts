@@ -12,5 +12,6 @@ export function publicContent(source: SiteContent) {
 }
 
 export const siteContent = publicContent(content as SiteContent);
+export type PublicSiteContent = ReturnType<typeof publicContent>;
 
 export type SectionContent = (typeof siteContent.sections)[keyof typeof siteContent.sections];

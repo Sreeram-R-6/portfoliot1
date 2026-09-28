@@ -113,7 +113,7 @@
 .stage { --u: 1px; height: auto; padding: clamp(32px, 4vw, 64px) var(--grid-edge-inset); overflow: clip; }
 .intro { position: relative; inset: auto; width: 100%; pointer-events: auto; }
 .heading, .headingTop { gap: 16px; }
-.heading { max-width: 65ch; }
+.heading { max-width: none; }
 .title { font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1.15; letter-spacing: -.025em; }
 .eyebrow { font-size: .75rem; line-height: 1.5; white-space: normal; padding: 7px 9px; }
 .description { font-size: clamp(1rem, 1.1vw, 1.2rem); line-height: 1.6; max-width: 65ch; }

@@ -27,3 +27,17 @@
 - Production keyboard sweep reached all five projects, education and footer links without empty or invisible stops. Reduced motion uses native scrolling, no pins and no canvas; skip link focuses main.
 - Manual contrast fixes cover selected education text, hero copy over the poster, project heading/description/actions, and a solid navigation background over lime sections. Measured hero copy on black 10.14:1, dark project text on lime 15.06:1 and footer labels 6.44:1.
 - Checked responsive layouts at 375, 768 and 1440 pixels: no horizontal page overflow; original placeholders remain. Screenshots are local and ignored under .cache/qa/.
+
+## Lighthouse and performance
+
+Lighthouse 12.8.2, headless Chrome, local production build at http://localhost:3001, default simulated throttling. Desktop uses --preset=desktop; mobile uses the default mobile profile. Baseline source commit 0cacd76; final source commit 77e5d2f. Scores are individual runs and can vary with machine load.
+
+| Profile | Performance before / after | Accessibility before / after | Best practices before / after | SEO before / after |
+| --- | --- | --- | --- | --- |
+| Desktop | 94 / 100 | 95 / 100 | 100 / 100 | 100 / 100 |
+| Mobile | 93 / 94 | 95 / 100 | 100 / 100 | 100 / 100 |
+
+- Final desktop LCP 771 ms, TBT 0 ms; mobile LCP 3148 ms, TBT 64 ms. All requested score targets pass.
+- Existing dynamic WebGL components mount only when intersecting and the power policy permits them. Mobile at 375px uses five poster render modes and zero canvases; reduced motion also has zero canvases. No performance-only source change was needed. Score differences include accessibility changes and normal run variability.
+- Temporary Lighthouse installation and raw JSON reports stay in ignored .cache/lighthouse/; project dependencies and lockfile are unchanged by this tool installation.
+- No browser console errors. Existing Fiber/Three Clock deprecation warning is documented in STACK.md. Local next start emits its existing standalone-output warning; README includes the packaged server entry point.

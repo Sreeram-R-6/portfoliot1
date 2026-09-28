@@ -4,6 +4,7 @@ import { useEffect, useRef, type ReactNode } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import { subscribeFrame } from "@/lib/motion-runtime";
 
 export function SmoothScrollProvider({ children }: { children: ReactNode }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -41,12 +42,11 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
           touchMultiplier: 0.85,
           anchors: true,
         });
-        const update = (time: number) => lenis.raf(time * 1000);
         lenis.on("scroll", ScrollTrigger.update);
         gsap.ticker.lagSmoothing(0);
-        gsap.ticker.add(update);
+        const stopFrame = subscribeFrame("lenis", undefined, (time) => lenis.raf(time * 1000));
         stopScrolling = () => {
-          gsap.ticker.remove(update);
+          stopFrame();
           lenis.off("scroll", ScrollTrigger.update);
           lenis.destroy();
         };

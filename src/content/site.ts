@@ -6,6 +6,7 @@ export const siteContent = {
   name: "Sreeram",
   role: "CS student and builder, CCE Kerala",
   location: "Kerala, India",
+  orientation: { title: "Explore in portrait", hint: "Rotate your device" },
   navigation: {
     label: "Navigation",
     menu: "Menu",

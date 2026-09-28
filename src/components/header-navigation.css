@@ -1,0 +1,23 @@
+.navigation-dialog {
+  --menu-shade: 0;
+  transform-origin: right center;
+}
+
+.orientation-guard { display: none; }
+.orientation-title { margin: 0; font-family: var(--font-rajdhani), sans-serif; font-size: 1.5rem; font-weight: 500; line-height: 1.1; letter-spacing: -.01em; text-transform: uppercase; text-wrap: balance; }
+.orientation-hint { margin: 0; font-family: var(--font-rajdhani), sans-serif; font-size: .75rem; font-weight: 600; letter-spacing: .0975rem; text-transform: uppercase; opacity: .7; }
+@media (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
+  .orientation-guard { position: fixed; inset: 0; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: .75rem; padding: 2rem; text-align: center; background: var(--primary-green-neon); color: var(--text-black); }
+}
+
+.navigation-dialog::backdrop {
+  background: rgb(0 0 0 / var(--menu-shade));
+}
+
+.menu-surface {
+  transition: background-color 180ms cubic-bezier(.34, 1.56, .64, 1), color 180ms cubic-bezier(.34, 1.56, .64, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-surface { transition: none; }
+}

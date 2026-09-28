@@ -14,6 +14,8 @@ Phase 4 computed-style addendum (Playwright, no capture): menu panel top/bottom 
 
 ## States and interactions
 
+Phase 5 source addendum: source-13.js initializes panel x to viewport width and items y to 28px. Source-14.js hover decode is per character, .35s ease none, stagger .014s, speed .5, revealDelay .05; punctuation alphabet matches the captured GLITCH_CHARS constant.
+
 Closed, opening, open, closing; focus/hover link scramble; Escape closes. Opening: backdrop opacity .75, .4s power2.out; panel x to 0, .175s power2.out; items opacity 1/y 0/scale 1, .7s power2.out, stagger .1s starting .4s. Closing: panel .2s power2.in; backdrop .3s power2.in delayed .1s. Keyboard focus must enter the menu and return to its button (target accessibility requirement).
 
 ## Responsive behavior
@@ -143,3 +145,9 @@ Reference element: `.cursor-progress-ring`.
 | --- | --- | --- |
 | `nav.nav` | width: 1440px; height: 76px; minHeight: 0px; maxWidth: none; position: sticky; top: 0px; right: auto; bottom: auto; left: auto; padding: 20px 32px; margin: 0px; gap: normal; display: flex; gridTemplateColumns: none; gridTemplateRows: none; gridTemplateAreas: none; flexDirection: row; alignItems: center; justifyContent: space-between | fontFamily: "DM Sans", "DM Sans Fallback", ui-sans-serif, system-ui, sans-serif; fontSize: 16px; fontWeight: 400; lineHeight: 24px; letterSpacing: normal; color: rgb(245, 240, 235); backgroundColor: rgba(0, 0, 0, 0); border: 0px solid rgb(245, 240, 235); borderRadius: 0px; boxShadow: none; zIndex: 50; clipPath: none; opacity: 1; visibility: visible; transition: all; aspectRatio: auto; mixBlendMode: normal; transform: none |
 | `div.cursor-progress-ring` | width: 60px; height: 60px; minHeight: 0px; maxWidth: none; position: fixed; top: 0px; right: 1380px; bottom: 840px; left: 0px; padding: 0px; margin: 0px; gap: normal; display: block; gridTemplateColumns: none; gridTemplateRows: none; gridTemplateAreas: none; flexDirection: row; alignItems: normal; justifyContent: normal | fontFamily: "DM Sans", "DM Sans Fallback", ui-sans-serif, system-ui, sans-serif; fontSize: 16px; fontWeight: 400; lineHeight: 24px; letterSpacing: normal; color: rgb(245, 240, 235); backgroundColor: rgba(0, 0, 0, 0); border: 0px solid rgb(245, 240, 235); borderRadius: 0px; boxShadow: none; zIndex: 60; clipPath: none; opacity: 0; visibility: visible; transition: all; aspectRatio: auto; mixBlendMode: difference; transform: none |
+
+## Phase 5 motion verification
+
+- Menu panel uses measured viewport-width travel, y28 item entry and the recorded opening/closing timelines. Per-character hover decode uses source-14 timing. Escape, backdrop dismissal and focus return work at 375/768/1440; live reduced-motion changes finish immediately.
+- Source-13 cursor: 60px circle/r29.5, pointer center offset30, quickTo .2s power3, stroke offset from nested scroll progress. Only fine pointers with no reduced motion activate it.
+- Source-0 CSS landscape guard: landscape + height<=500px + coarse pointer, z99999, .75rem gap, 2rem padding; own orientation copy in site.ts. Loader/audio omissions remain as approved.

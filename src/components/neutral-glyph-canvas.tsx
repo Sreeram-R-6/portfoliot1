@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { registerRenderer, subscribeFrame } from "@/lib/motion-runtime";
 import { ExtrudeGeometry, GLSL3, Mesh, NoBlending, OrthographicCamera, Path, PerspectiveCamera, PlaneGeometry, RawShaderMaterial, Scene, Shape, SRGBColorSpace, Vector2, WebGLRenderer, WebGLRenderTarget } from "three";
 
 const geometryVertex = `in vec3 position;
@@ -54,7 +55,7 @@ void main() {
   color = vec4(separated * stripe, alpha);
 }`;
 
-/** Original neutral geometry and GLSL; Phase 5 connects time/scroll inputs. */
+/** Original geometry and GLSL; visual shader math remains APPROXIMATED. */
 export function NeutralGlyphCanvas({ onReady }: { onReady: (value: boolean) => void }) {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -90,24 +91,38 @@ export function NeutralGlyphCanvas({ onReady }: { onReady: (value: boolean) => v
     const post = new Scene(); post.add(new Mesh(quadGeometry, quadMaterial));
     const postCamera = new OrthographicCamera(-1, 1, 1, -1, .1, 1);
     let mounted = true;
-    const draw = () => {
+    let frames = 0;
+    const draw = (time = 0) => {
       if (!mounted || context.isContextLost()) return;
       const rect = canvas.getBoundingClientRect();
       if (!rect.width || !rect.height) return;
       const dpr = Math.min(devicePixelRatio || 1, 2);
-      renderer.setPixelRatio(dpr); renderer.setSize(rect.width, rect.height, false);
-      target.setSize(Math.round(rect.width * dpr), Math.round(rect.height * dpr));
+      if (canvas.width !== Math.round(rect.width * dpr) || canvas.height !== Math.round(rect.height * dpr)) {
+        renderer.setPixelRatio(dpr); renderer.setSize(rect.width, rect.height, false);
+        target.setSize(Math.round(rect.width * dpr), Math.round(rect.height * dpr));
+      }
+      // Recon exports a rotation-offset setter but contains no caller; retain
+      // the verified time rotation rather than inventing a scroll multiplier.
+      mesh.rotation.y = .52 * time;
+      mesh.rotation.x = .12 * Math.sin(.3 * time);
+      canvas.dataset.rotation = mesh.rotation.y.toFixed(4);
       extent.set(target.width, target.height);
       camera.aspect = rect.width / rect.height; camera.updateProjectionMatrix();
       renderer.setRenderTarget(target); renderer.clear(); renderer.render(scene, camera);
       renderer.setRenderTarget(null); renderer.clear(); renderer.render(post, postCamera);
+      frames++;
       onReady(true);
     };
     const lost = (event: Event) => { event.preventDefault(); canvas.hidden = true; onReady(false); };
-    const observer = new ResizeObserver(draw); observer.observe(canvas);
+    const observer = new ResizeObserver(() => draw()); observer.observe(canvas);
+    const stopFrame = subscribeFrame("statistics-glyph", canvas, draw);
+    const stopInfo = registerRenderer("statistics-glyph", () => ({
+      geometries: renderer.info.memory.geometries, textures: renderer.info.memory.textures,
+      programs: renderer.info.programs?.length ?? 0, frames,
+    }));
     canvas.addEventListener("webglcontextlost", lost); draw();
     return () => {
-      mounted = false; observer.disconnect(); canvas.removeEventListener("webglcontextlost", lost);
+      mounted = false; stopFrame(); stopInfo(); observer.disconnect(); canvas.removeEventListener("webglcontextlost", lost);
       scene.clear(); post.clear(); geometry.dispose(); material.dispose(); quadGeometry.dispose(); quadMaterial.dispose(); target.dispose(); renderer.dispose();
     };
   }, [onReady]);

@@ -1,10 +1,10 @@
 import { readFile, writeFile } from "node:fs/promises";
 
 // Original vector artwork. The browser screenshot step exports its PNG.
-const content = await readFile(new URL("../src/content/site.ts", import.meta.url), "utf8");
+const content = JSON.parse(await readFile(new URL("../src/content/site.json", import.meta.url), "utf8"));
 const read = (key) => {
-  const value = content.match(new RegExp(`${key}: "([^"\\n]+)"`))?.[1];
-  if (!value) throw new Error(`Missing content field: ${key}`);
+  const value = content[key];
+  if (typeof value !== "string" || !value) throw new Error(`Missing content field: ${key}`);
   return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 };
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">

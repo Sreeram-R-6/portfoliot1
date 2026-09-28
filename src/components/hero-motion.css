@@ -1,0 +1,6 @@
+.hero-motion { position: relative; }
+.hero-motion[data-motion="active"] { height: calc(100dvh - var(--nav-height)); }
+.hero-motion[data-motion="active"] .manifesto-scene { position: absolute; inset: 0; visibility: hidden; background: transparent; }
+.hero-motion[data-motion="active"] .manifesto-portrait { display: none; }
+.hero-motion[data-motion="active"] .manifesto-paragraph { display: block; text-align: justify; }
+.hero-motion[data-motion="active"] .manifesto-word { overflow: hidden; }

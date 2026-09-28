@@ -10,7 +10,7 @@ export function PixelReveal() {
     const canvas = canvasRef.current;
     const context = canvas?.getContext("2d");
     if (!canvas || !context) return;
-    let progress = 0;
+    let progress = Number(canvas.closest<HTMLElement>(".hero-motion")?.dataset.revealProgress ?? 0);
     const repaint = () => {
       const bounds = canvas.getBoundingClientRect();
       const columns = 16;

@@ -465,3 +465,9 @@ Reference element: `.home-hero-extent-v2-arrow`.
 ## Decoded pixel reveal
 
 Source-16.js: 16 columns; rows=max(1,ceil(height/width*16)). For column x, row y: noise=fract(43758.5453*sin(12.9898*x+78.233*y)); threshold=noise+( (columns>1 ? (columns-1-x)/(columns-1) : 0)-noise)*.6. A cell is filled when progress>0 and threshold<=progress. Canvas backing size is 16 by rows, enlarged using pixelated rendering; pixel color [157,241,51], alpha 255 when filled else 0. Clip-path uses contiguous open-cell rectangles with coordinates rounded to one decimal; inverse mode uses closed cells. Column progress starts at reveal .5; transition done at .99. Text scramble configuration: letterDelayMs 18, scrambleDurationMs 280.
+
+## Phase 5 implementation
+
+- Shared hero thresholds verified in source-16: paragraph2/9, display words .42222222222222217/.5111111111111111/.6; exit begins7/9. Each manual character player takes .7*absolute delta seconds, ease none.
+- Character reveal phase is (progress-order/count*.5)/.25; original characters are restored when settled. Arrow moves from negative first-word width to .875rem, then to frame width minus arrow width over2/3 through7/9.
+- Pixel backing canvas initializes from current progress even when lazily mounted; reveal maps2/3 through1. Accessible paragraph remains one label.

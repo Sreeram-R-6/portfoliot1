@@ -55,7 +55,9 @@ export function IdentityHero() {
         </div>
         <div className="identity-scroll-cue" aria-hidden="true">
           <span>{identity.scrollLabel}</span>
-          <svg viewBox="0 0 8 24" fill="none"><path d="M4 0v20m-3-3 3 3 3-3" stroke="currentColor" /></svg>
+          <svg viewBox="0 0 8 24" fill="none">
+            {[0, 1, 2].map((index) => <path key={index} className={`identity-chevron identity-chevron-${index + 1}`} d={`M1 ${3 + index * 7}l3 3 3-3`} stroke="currentColor" />)}
+          </svg>
         </div>
       </div>
     </section>

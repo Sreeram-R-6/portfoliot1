@@ -38,6 +38,30 @@
 .identity-name-first { top: 528px; }
 .identity-name-second { top: 606px; margin-left: -.082em; }
 
+.identity-chevron { animation-duration: 1.00866s; animation-iteration-count: infinite; animation-timing-function: linear; }
+.identity-chevron-1 { animation-name: identity-chevron-a; }
+.identity-chevron-2 { animation-name: identity-chevron-b; }
+.identity-chevron-3 { animation-name: identity-chevron-c; }
+@keyframes identity-chevron-a {
+  0% { opacity: .5; animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  33.38% { opacity: 1; animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  66.15% { opacity: .75; animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  99.27%, 100% { opacity: .5; }
+}
+@keyframes identity-chevron-b {
+  0% { opacity: .75; animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  33.38% { opacity: .5; animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  66.15% { opacity: 1; animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  99.27%, 100% { opacity: .75; }
+}
+@keyframes identity-chevron-c {
+  0% { opacity: 1; animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  33.38% { opacity: .75; animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  66.15% { opacity: .5; animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  99.27%, 100% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .identity-chevron { animation: none; } }
+
 @media (max-width: 767.98px) and (max-height: 760px) {
   .identity-introduction { top: 176px; }
 }

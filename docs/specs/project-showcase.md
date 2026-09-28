@@ -839,12 +839,14 @@ Source-16.js: total pin distance = trackTravel + handoffTravel + exitLead + exit
 - handoffTravel = innerWidth*1.34/.94.
 - exitLead = max(0, sixth shared vertical line viewport x - .75*innerWidth); if line absent use innerWidth.
 - exitTravel = max(innerHeight, .75*innerWidth).
-- Normalize these phases by total distance. Handoff local progress remaps (phaseProgress-.06)/.94, clamps 0..1, then quadratic in/out: below .5, (2*t)^2/2; otherwise 1-(2*(1-t))^2/2.
+- Source phase order rechecked during Phase 5: handoffTravel first, then trackTravel, exitLead, exitTravel, final .6*innerHeight hold. Normalize these phases by total distance. Handoff local progress remaps (phaseProgress-.06)/.94, clamps 0..1, then quadratic in/out: below .5, (2*t)^2/2; otherwise 1-(2*(1-t))^2/2.
 - Intro starts once handoff reaches .3. Track x = -(trackTravel*trackPhase + exitLead*leadPhase + .75*innerWidth*exitPhase).
 - Path sampling uses 721 samples (indices 0..720). Diamond scale entrance .35s power2.out when its center reaches .75*innerWidth.
 - CTA reveal observes .9 intersection; .7*abs(target-current) seconds, ease none; second observer uses rootMargin 0px -25% 0px 0px and threshold 1.
 
 These are verified formulas. A five-card target changes measured distances; the original path artwork must be replaced with neutral geometry and is APPROXIMATED.
+
+Phase 5 caller mapping recheck: image reveal progresses by frame delta / .8 while its DOM bounds intersect the viewport and left < .95*innerWidth, resets to zero outside, and latches reverse from scroll direction when reveal begins. GPU zoom targets 1.04/1 using .6s power4.out; DOM fallback retains its verified CSS cubic-bezier. Feedback texture dimension is capped at 512. Target connector geometry joins the five measured card centers with 721 path samples; it is original neutral geometry. Target sweep/feedback GLSL is an original approximation driven by the verified parameter values, not copied source. ScrambleTextPlugin supplies the target intro scramble with verified .7s durations and .18s offsets; its character generation differs from the source custom reveal function.
 
 ## Phase 4 target geometry and verification notes
 

@@ -1,6 +1,37 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { siteContent } from "@/content/site";
 import { ProjectCanvasBoundary } from "./project-canvas-boundary";
 import styles from "./project-showcase.module.css";
+
+function exitMask(progress: number, width: number, height: number, navHeight: number) {
+  const columns = 16;
+  const rows = Math.max(1, Math.ceil(height / width * columns));
+  const cellWidth = width / columns, cellHeight = height / rows;
+  const rectangles: string[] = [];
+  const coordinate = (value: number) => value.toFixed(1);
+  for (let row = 0; row < rows; row++) {
+    const closed = Array.from({ length: columns }, (_, column) => {
+      const signal = 43758.5453 * Math.sin(12.9898 * column + 78.233 * row);
+      const noise = signal - Math.floor(signal);
+      return noise + ((columns - 1 - column) / (columns - 1) - noise) * .6 > progress;
+    });
+    let column = 0;
+    while (column < columns) {
+      if (!closed[column]) { column++; continue; }
+      const left = column * cellWidth;
+      while (column < columns && closed[column]) column++;
+      const right = column * cellWidth;
+      const top = row * cellHeight - navHeight, bottom = (row + 1) * cellHeight - navHeight;
+      rectangles.push(`M${coordinate(left)} ${coordinate(top)}H${coordinate(right)}V${coordinate(bottom)}H${coordinate(left)}Z`);
+    }
+  }
+  return `path('${rectangles.join("") || "M0 0Z"}')`;
+}
 
 function Arrow() {
   return <svg aria-hidden="true" viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" strokeWidth="1.5" /></svg>;
@@ -25,25 +56,154 @@ function ProjectPoster({ variant }: { variant: number }) {
 
 export function ProjectShowcase() {
   const content = siteContent.sections.projects;
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const section = ref.current;
+    const track = section?.querySelector<HTMLElement>("[data-project-track]");
+    const intro = section?.querySelector<HTMLElement>("[data-project-intro]");
+    if (!section || !track || !intro) return;
+    gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
+    const media = gsap.matchMedia();
+    media.add("(min-width: 1025px) and (prefers-reduced-motion: no-preference)", () => {
+      const heading = [...intro.querySelectorAll<HTMLElement>("[data-project-scramble]")];
+      const originals = heading.map((element) => element.textContent || "");
+      const reveal = gsap.timeline({ paused: true });
+      heading.forEach((element, index) => reveal.to(element, { duration: .7, ease: "none", scrambleText: originals[index] }, .18 * index));
+      let revealed = false;
+      const diamond = section.querySelector<HTMLElement>("[data-project-diamond]");
+      let diamondRevealed = false;
+      const path = section.querySelector<SVGPathElement>("[data-project-path]");
+      let pathLength = 0;
+      let pathSamples: number[] = [];
+      let distances = { handoff: 0, track: 0, lead: 0, exit: 0, total: 1 };
+      const measure = () => {
+        const bounds = section.getBoundingClientRect();
+        const line = section.querySelectorAll<HTMLElement>("[data-project-grid-line]")[5];
+        const edge = line?.getBoundingClientRect().left ?? bounds.right;
+        const travel = Math.max(0, (parseFloat(getComputedStyle(track).left) || 0) + track.offsetWidth - (edge - bounds.left));
+        const handoff = innerWidth * 1.34 / .94;
+        const lead = Math.max(0, edge - .75 * innerWidth);
+        const exit = Math.max(innerHeight, .75 * innerWidth);
+        distances = { handoff, track: travel, lead, exit, total: handoff + travel + lead + exit + .6 * innerHeight };
+        if (path) {
+          const cards = [...track.querySelectorAll<HTMLElement>("[data-project-card]")];
+          // Approved neutral path: connect the measured centers of our five cards.
+          const points = cards.map((card) => `${card.offsetLeft + card.offsetWidth / 2},${card.offsetTop + card.offsetHeight / 2}`);
+          path.setAttribute("d", `M${points.join(" L")}`);
+          pathLength = path.getTotalLength();
+          pathSamples = Array.from({ length: 721 }, (_, index) => path.getPointAtLength(index / 720 * pathLength).x);
+          path.style.strokeDasharray = String(pathLength);
+        }
+      };
+      measure();
+      const clamp = gsap.utils.clamp(0, 1);
+      const state = { progress: 0 };
+      const update = () => {
+        const scroll = state.progress * distances.total;
+        const entry = clamp((scroll / distances.handoff - .06) / .94);
+        const handoff = entry < .5 ? 2 * entry * entry : 1 - 2 * (1 - entry) * (1 - entry);
+        const trackProgress = clamp((scroll - distances.handoff) / Math.max(1, distances.track));
+        const leadProgress = clamp((scroll - distances.handoff - distances.track) / Math.max(1, distances.lead));
+        const exitProgress = clamp((scroll - distances.handoff - distances.track - distances.lead) / distances.exit);
+        const x = -(distances.track * trackProgress + distances.lead * leadProgress + .75 * innerWidth * exitProgress);
+        const entrance = Math.round((1 - handoff) * innerWidth * 1.34);
+        gsap.set(track, { x: entrance + x });
+        gsap.set(intro, { x: entrance + x });
+        if (diamond && !diamondRevealed) {
+          const bounds = diamond.getBoundingClientRect();
+          if (bounds.left + bounds.width / 2 <= .75 * innerWidth) {
+            diamondRevealed = true;
+            gsap.fromTo(diamond, { scale: 0 }, { scale: 1, duration: .35, ease: "power2.out" });
+          }
+        }
+        if (path && pathSamples.length) {
+          const localEdge = .75 * innerWidth - track.getBoundingClientRect().left;
+          const sample = pathSamples.findIndex((point) => point >= localEdge);
+          const fraction = sample < 0 ? 1 : sample / 720;
+          path.style.strokeDashoffset = String(pathLength * (1 - fraction));
+        }
+        section.dataset.projectProgress = String(state.progress);
+        section.dataset.handoffProgress = String(handoff);
+        section.dataset.projectExit = String(exitProgress);
+        const navHeight = parseFloat(getComputedStyle(section).getPropertyValue("--nav-height")) || 76;
+        section.style.clipPath = exitProgress > 0 && exitProgress < 1 ? exitMask(exitProgress, innerWidth, innerHeight, navHeight) : "";
+        section.style.visibility = exitProgress >= 1 ? "hidden" : "";
+        document.querySelector('[data-section="statistics"]')?.dispatchEvent(new CustomEvent("portfolio:handoff", { detail: { progress: handoff } }));
+        section.dispatchEvent(new Event("projectmotion"));
+        if (handoff >= .3 && !revealed) { revealed = true; reveal.play(0); }
+      };
+      const motion = gsap.to(state, {
+        progress: 1, ease: "none", onUpdate: update,
+        scrollTrigger: {
+          id: "project-showcase", trigger: section, pin: true,
+          scroller: document.getElementById("scroll-container") || undefined,
+          start: () => `top ${parseFloat(getComputedStyle(section).getPropertyValue("--nav-height")) || 76}px`,
+          end: () => `+=${distances.total}`, scrub: 1, invalidateOnRefresh: true,
+          onRefreshInit: measure,
+        },
+      });
+      update();
+      const focus = (event: FocusEvent) => {
+        const card = event.target instanceof Element ? event.target.closest<HTMLElement>("[data-project-card]") : null;
+        if (!card || !motion.scrollTrigger) return;
+        const right = card.getBoundingClientRect().right;
+        const left = card.getBoundingClientRect().left;
+        const shift = right > innerWidth ? right - innerWidth : left < 0 ? left : 0;
+        if (shift) {
+          const target = motion.scrollTrigger.start + distances.total * state.progress + shift;
+          (document.getElementById("scroll-container") || window).scrollTo({ top: target, behavior: "instant" });
+        }
+      };
+      section.addEventListener("focusin", focus);
+      const cta = section.querySelector<HTMLElement>("[data-project-cta-text]");
+      const ctaLink = cta?.closest("a");
+      const ctaText = cta?.textContent || "";
+      const ctaState = { progress: 0 };
+      let ctaTween: gsap.core.Tween | undefined;
+      let ctaTarget = 0;
+      const revealCta = (target: number) => {
+        if (!cta || ctaTarget === target) return;
+        ctaTarget = target; ctaTween?.kill();
+        ctaTween = gsap.to(ctaState, { progress: target, duration: .7 * Math.abs(target - ctaState.progress), ease: "none", onUpdate: () => { cta.textContent = ctaText.slice(0, Math.round(ctaText.length * ctaState.progress)); } });
+      };
+      const ctaObserver = new IntersectionObserver(([entry]) => { if (entry.intersectionRatio >= .9) revealCta(1); else if (entry.intersectionRatio <= 0) revealCta(0); }, { threshold: [0, .9] });
+      let crossed = false;
+      const exitObserver = new IntersectionObserver(([entry]) => { if (entry.intersectionRatio >= .999) { crossed = true; revealCta(1); } else if (crossed) { crossed = false; revealCta(0); } }, { rootMargin: "0px -25% 0px 0px", threshold: 1 });
+      if (ctaLink) { ctaObserver.observe(ctaLink); exitObserver.observe(ctaLink); }
+      return () => {
+        ctaObserver.disconnect(); exitObserver.disconnect(); ctaTween?.kill();
+        if (cta) cta.textContent = ctaText;
+        section.removeEventListener("focusin", focus);
+        heading.forEach((element, index) => { element.textContent = originals[index]; });
+        delete section.dataset.projectProgress;
+        delete section.dataset.handoffProgress;
+        delete section.dataset.projectExit;
+        section.style.clipPath = ""; section.style.visibility = "";
+      };
+    });
+    return () => media.revert();
+  }, []);
   return (
-    <section id={content.id} data-section={content.id} className={styles.stage} aria-labelledby="projects-heading">
+    <section ref={ref} id={content.id} data-section={content.id} className={styles.stage} aria-labelledby="projects-heading">
       <div className={styles.measurementGrid} aria-hidden="true">
         {Array.from({ length: 6 }, (_, index) => <i key={index} data-project-grid-line />)}
       </div>
       <div className={styles.intro} data-project-intro>
         <div className={styles.heading}>
           <div className={styles.headingTop}>
-            <span className={styles.eyebrow}>{content.eyebrow}</span>
-            <h2 id="projects-heading" className={styles.title}>{content.title}</h2>
+            <span className={styles.eyebrow} data-project-scramble>{content.eyebrow}</span>
+            <h2 id="projects-heading" className={styles.title} data-project-scramble>{content.title}</h2>
           </div>
-          <p className={styles.description}>{content.description}</p>
+          <p className={styles.description} data-project-scramble>{content.description}</p>
         </div>
         <div className={styles.ctaWrap}>
-          <a href={content.moreWork.href} className={styles.cta}><span className={styles.ctaCorners} aria-hidden="true" />{content.moreWork.label}<Arrow /></a>
+          <a href={content.moreWork.href} className={styles.cta} aria-label={content.moreWork.label}><span className={styles.ctaCorners} aria-hidden="true" /><span data-project-cta-text>{content.moreWork.label}</span><Arrow /></a>
         </div>
       </div>
       <div className={styles.viewport} data-project-viewport>
         <div className={styles.track} data-project-track>
+          <svg className={styles.path} aria-hidden="true"><path data-project-path /></svg>
+          <span className={styles.diamond} data-project-diamond aria-hidden="true"><i /><b /></span>
           {siteContent.projects.map((project, index) => (
             <article key={project.id} data-project-card className={styles.card}>
               <a className={styles.thumb} href={project.href} aria-labelledby={`${project.id}-title`} aria-describedby={`${project.id}-description`} data-project-thumb>

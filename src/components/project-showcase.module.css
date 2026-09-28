@@ -9,6 +9,8 @@
 }
 
 .intro { position: relative; }
+.path { display: none; pointer-events: none; }
+.diamond { display: none; pointer-events: none; }
 .measurementGrid { position: absolute; inset: 0; pointer-events: none; visibility: hidden; }
 .measurementGrid i { position: absolute; top: 0; bottom: 0; width: 1px; }
 .measurementGrid i:nth-child(1) { left: 16px; }
@@ -74,6 +76,12 @@
 }
 
 @media (min-width:1025px) {
+  .diamond { display: block; position: absolute; width: calc(70.71067690849304 * var(--u)); height: calc(70.71067690849304 * var(--u)); left: calc((-677.6446615457535 - 70.71067690849304 / 2) * var(--u)); top: calc((408.710685133934 - 70.71067690849304 / 2) * var(--u)); transform: scale(0); }
+  .diamond i, .diamond b { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) rotate(45deg); }
+  .diamond i { width: calc(49.99999914428644 * var(--u)); height: calc(49.99999914428644 * var(--u)); border: 1px solid var(--tertiary-purple); }
+  .diamond b { width: calc(11.313893124546027 * var(--u)); height: calc(11.313893124546027 * var(--u)); background: var(--tertiary-purple); }
+  .path { position: absolute; inset: 0; display: block; width: 100%; height: 100%; overflow: visible; }
+  .path path { fill: none; stroke: #77cd2d; stroke-width: 2px; stroke-linecap: square; }
   .stage { --u: min(calc((100dvh - var(--nav-height) - 64px) / 786),1px); height: calc(100dvh - var(--nav-height)); padding: 0; overflow: hidden; }
   .intro { position: absolute; left: 32px; top: calc(48 * var(--u)); width: calc(451 * var(--u)); pointer-events: none; }
   .heading { gap: calc(40 * var(--u)); }
@@ -95,6 +103,8 @@
 }
 
 @media (min-width:1025px) and (prefers-reduced-motion:reduce) {
+  .path { display: none; }
+  .diamond { display: none; }
   .stage { --u: 1px; height: auto; padding: 44px 32px 112px; overflow: visible; }
   .intro { position: relative; inset: auto; width: auto; }
   .heading, .headingTop { gap: 16px; }

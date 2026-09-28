@@ -28,3 +28,8 @@
 
 - Global behavior: first-session preloader and boot cover; mobile landscape guard; smooth nested scrolling; reduced-motion branches.
 - Target repository baseline is separate from the observed source: Next.js 16.3.5, React 19.2.4, Tailwind v4.
+
+## Known upstream warning
+
+- Three r185 reports `THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.` Fiber 9.7.0 constructs this clock in its internal store (`dist/events-156d8d12.esm.js`); application code does not instantiate it. Do not patch node_modules.
+- Inspected the npm package for Fiber 9.8.1 on 2026-09-28 without installing it: its store still constructs `new THREE.Clock()`. Upgrading does not remove this warning. Retain the approved 9.7.0; any upgrade requires approval.

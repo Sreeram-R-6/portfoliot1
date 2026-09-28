@@ -31,13 +31,6 @@ export function validateDetails(payload: unknown): Validation {
     if (path.endsWith(".image") && value === null) { warnings.push({ path, message: "TODO: provide an image." }); return; }
     if (Array.isArray(shape)) {
       if (!Array.isArray(value)) { error(path, "Expected a list."); return; }
-      const fixed: Record<string, number> = {
-        "navigation.coordinates": 2, "sections.identity.displayLines": 2,
-        "sections.manifesto.displayWords": 3, "sections.statistics.counters": 3,
-        "sections.statistics.tools": 4, "footer.groupLabels": 3,
-      };
-      if (fixed[path] !== undefined && value.length !== fixed[path]) error(path, `This layout requires ${fixed[path]} items.`);
-      if (["projects", "sections.experience.entries"].includes(path) && !value.length) error(path, "Keep at least one item.");
       if (value.length > 100) { error(path, "Use at most 100 items."); return; }
       const itemShape = shape[0] ?? (["navigation.links", "footer.links"].includes(path) ? { label: "", href: "" } : "");
       value.forEach((item, index) => walk(item, itemShape, `${path}.${index}`));
@@ -54,10 +47,15 @@ export function validateDetails(payload: unknown): Validation {
     }
     if (shape !== null && typeof shape === "object") {
       if (!value || typeof value !== "object" || Array.isArray(value)) { error(path, "Expected an object."); return; }
-      const expected = shape as Record<string, unknown>;
+      const expected = { ...shape } as Record<string, unknown>;
+      const project = /^projects\.\d+$/.test(path);
+      if (project) expected.summary = "";
       const actual = value as Record<string, unknown>;
       for (const key of Object.keys(actual)) if (!Object.hasOwn(expected, key)) error(path ? `${path}.${key}` : key, "Unknown field.");
-      for (const key of Object.keys(expected)) walk(actual[key], expected[key], path ? `${path}.${key}` : key);
+      for (const key of Object.keys(expected)) {
+        if (project && key === "summary" && actual[key] === undefined) continue;
+        walk(actual[key], expected[key], path ? `${path}.${key}` : key);
+      }
       return;
     }
     if (shape === null && value === null) { warnings.push({ path, message: "TODO: provide an image." }); return; }
@@ -65,9 +63,9 @@ export function validateDetails(payload: unknown): Validation {
     if (!value.trim()) error(path, "Required. Use TODO if this is not yet provided.");
     if (value.length > 10000) error(path, "Use at most 10,000 characters.");
     if (isTodo(value)) warnings.push({ path, message: "Still TODO." });
+    else if (/^(?:todos\.\d+|projects\.\d+\.todo)$/.test(path)) warnings.push({ path, message: value });
     if (/(?:github_pat_[\w]{20,}|ghp_[\w]{20,}|-----BEGIN .*PRIVATE KEY-----|sk-[\w-]{20,})/.test(value)) error(path, "Do not store credentials or private keys here.");
     if (/(?:\.href|Href|\.image|\.siteUrl)$/.test(path) && value.trim() && !isValidLink(value, path === "metadata.siteUrl")) error(path, "Use an http(s) URL, mailto address, site path, anchor or TODO.");
-    if (/sections\.statistics\.counters\.\d+\.value$/.test(path) && !/^TODO(?:\b|:)/i.test(value.trim()) && value !== "\u2014" && !/^\d+(?:\.\d+)?$/.test(value)) error(path, "Use a non-negative number or TODO.");
     if (path.endsWith(".id") && !/^[a-z][a-z0-9-]*$/.test(value)) error(path, "Use a lowercase ID beginning with a letter.");
     if (/sections\.[^.]+\.id$/.test(path)) {
       const section = path.split(".")[1] as keyof typeof template.sections;
@@ -89,6 +87,17 @@ export function fieldKind(path: string) {
   if (path === "footer.cv.href") return "cv";
   if (/sections\.statistics\.counters\.\d+\.value$/.test(path)) return "number";
   if (/(?:\.href|Href|\.siteUrl)$/.test(path)) return "url";
-  if (/(?:description|\.todo|^todos\.)/i.test(path)) return "textarea";
+  if (/(?:description|summary|\.todo|^todos\.)/i.test(path)) return "textarea";
   return "text";
+}
+
+export function recommendedLimit(path: string): number | undefined {
+  if (path === "sections.identity.description") return 200;
+  if (/^projects\.\d+\.summary$/.test(path)) return 140;
+  if (/^projects\.\d+\.description$/.test(path)) return 500;
+  if (/^sections\.experience\.entries\.\d+\.description$/.test(path)) return 240;
+  if (/^sections\.statistics\.tools\.\d+$/.test(path)) return 40;
+  if (/^footer\..*\.label$/.test(path)) return 40;
+  if (/(?:^role|\.role|\.eyebrow)$/.test(path)) return 60;
+  if (/\.title$/.test(path)) return 48;
 }

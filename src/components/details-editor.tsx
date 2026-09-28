@@ -2,7 +2,7 @@
 
 import { useRef, useState, type ChangeEvent } from "react";
 import type { SiteContent } from "@/content/site";
-import { fieldKind, isSiteContent, isTodo, validateDetails, type ContentValue, type FieldIssue } from "@/content/details-schema";
+import { fieldKind, isSiteContent, isTodo, recommendedLimit, validateDetails, type ContentValue, type FieldIssue } from "@/content/details-schema";
 import "./details-editor.css";
 
 const groups = [
@@ -79,21 +79,24 @@ function ContentField({ value, path, errors, change }: FieldProps) {
     <fieldset className="details-object" id={id}>
       <legend>{path}</legend>
       <div className="details-fields">{Object.entries(value).map(([key, item]) => <ContentField key={key} value={item} path={`${path}.${key}`} errors={errors} change={change} />)}</div>
+      {/^projects\.\d+$/.test(path) && !("summary" in value) && <button type="button" onClick={() => change(`${path}.summary`, "TODO")} aria-label={`${path}: Add optional summary`}>Add optional summary</button>}
     </fieldset>
   );
   const text = value ?? "";
   const todo = isTodo(value);
+  const limit = recommendedLimit(path);
   const describedBy = messages.length ? `${id}-error` : undefined;
   return (
     <div className={`details-field ${kind === "textarea" ? "details-wide" : ""}`}>
       <label htmlFor={id}>{path}{todo && <span className="details-todo"> TODO</span>}</label>
       {kind === "textarea" ? <textarea id={id} aria-label={path} value={text} aria-invalid={!!messages.length} aria-describedby={describedBy} onChange={(event) => change(path, event.target.value)} rows={3} /> : (
         <div className="details-input-row">
-          <input id={id} aria-label={path} type={kind === "number" && !todo ? "number" : "text"} min={kind === "number" ? 0 : undefined} step={kind === "number" ? "any" : undefined} inputMode={kind === "number" ? "decimal" : kind === "url" ? "url" : undefined} value={text} aria-invalid={!!messages.length} aria-describedby={describedBy} onChange={(event) => change(path, event.target.value)} />
+          <input id={id} aria-label={path} type="text" inputMode={kind === "number" ? "decimal" : kind === "url" ? "url" : undefined} value={text} aria-invalid={!!messages.length} aria-describedby={describedBy} onChange={(event) => change(path, event.target.value)} />
           {kind === "number" && <button type="button" onClick={() => change(path, "TODO")} aria-label={`${path}: Mark TODO`}>TODO</button>}
           {kind === "image" && <button type="button" onClick={() => change(path, null)} aria-label={`${path}: Clear image`}>Clear</button>}
         </div>
       )}
+      {limit !== undefined && <p className={text.length > limit ? "details-todo" : "details-counter"}>{text.length} / {limit} recommended characters{ text.length > limit ? " — longer text is allowed" : ""}</p>}
       {messages.length > 0 && <div id={`${id}-error`} className="details-error">{messages.map((error) => <p key={error.message}>{error.message}</p>)}</div>}
       {(kind === "image" || kind === "cv") && <>
         <label className="details-upload">Upload {kind === "cv" ? "PDF CV" : "image"} (max 5 MB)<input type="file" aria-label={`Upload ${path}`} accept={kind === "cv" ? ".pdf,application/pdf" : ".png,.jpg,.jpeg,.webp,.svg"} onChange={upload} /></label>

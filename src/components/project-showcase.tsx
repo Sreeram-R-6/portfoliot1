@@ -37,7 +37,9 @@ function Arrow() {
   return <svg aria-hidden="true" viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" strokeWidth="1.5" /></svg>;
 }
 
-function ProjectPoster({ variant }: { variant: number }) {
+function ProjectPoster({ id }: { id: string }) {
+  const seed = [...id].reduce((value, character) => (value * 31 + character.charCodeAt(0)) >>> 0, 0);
+  const variant = seed % 5;
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 540" preserveAspectRatio="xMidYMid slice" data-project-poster aria-hidden="true" className={styles.poster}>
       <rect width="720" height="540" fill={variant % 2 ? "#25212f" : "#15291b"} />
@@ -57,21 +59,34 @@ function ProjectPoster({ variant }: { variant: number }) {
 export function ProjectShowcase() {
   const content = siteContent.sections.projects;
   const ref = useRef<HTMLElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
+  function showDetails(project: (typeof siteContent.projects)[number], opener: HTMLElement) {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    openerRef.current = opener;
+    dialog.querySelector<HTMLElement>("[data-detail-title]")!.textContent = project.title;
+    dialog.querySelector<HTMLElement>("[data-detail-description]")!.textContent = project.description;
+    const link = dialog.querySelector<HTMLAnchorElement>("[data-detail-link]")!;
+    link.hidden = !/^https?:\/\//i.test(project.href);
+    link.href = link.hidden ? "#" : project.href;
+    dialog.showModal();
+  }
   useEffect(() => {
     const section = ref.current;
     const track = section?.querySelector<HTMLElement>("[data-project-track]");
     const intro = section?.querySelector<HTMLElement>("[data-project-intro]");
     if (!section || !track || !intro) return;
     const cards = [...track.querySelectorAll<HTMLElement>("[data-project-card]")];
-    cards.slice(5).forEach((card, index) => {
-      card.style.setProperty("--x", String(1932 + index * 451));
-      card.style.setProperty("--y", "301");
-      card.style.setProperty("--w", "440");
-    });
-    track.style.setProperty("--track-width", String(1932 + Math.max(0, cards.length - 5) * 451));
     gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
     const media = gsap.matchMedia();
     media.add("(min-width: 1025px) and (prefers-reduced-motion: no-preference)", () => {
+      if (!cards.length) return;
+      section.dataset.projectLayout = "horizontal";
+      // Pin only when the entire heading and tallest card fit. Long copy uses a grid.
+      const available = innerHeight - (document.querySelector("nav")?.offsetHeight ?? 76);
+      const required = intro.offsetHeight + Math.max(...cards.map((card) => card.offsetHeight)) + 96;
+      if (required > available) { delete section.dataset.projectLayout; return; }
       const heading = [...intro.querySelectorAll<HTMLElement>("[data-project-scramble]")];
       const originals = heading.map((element) => element.textContent || "");
       const reveal = gsap.timeline({ paused: true });
@@ -94,9 +109,9 @@ export function ProjectShowcase() {
         distances = { handoff, track: travel, lead, exit, total: handoff + travel + lead + exit + .6 * innerHeight };
         if (path) {
           const cards = [...track.querySelectorAll<HTMLElement>("[data-project-card]")];
-          // Approved neutral path: connect the measured centers of our five cards.
+          // Measured centers work for every project count.
           const points = cards.map((card) => `${card.offsetLeft + card.offsetWidth / 2},${card.offsetTop + card.offsetHeight / 2}`);
-          path.setAttribute("d", `M${points.join(" L")}`);
+          path.setAttribute("d", points.length ? `M${points.join(" L")}` : "M0 0");
           pathLength = path.getTotalLength();
           pathSamples = Array.from({ length: 721 }, (_, index) => path.getPointAtLength(index / 720 * pathLength).x);
           path.style.strokeDasharray = String(pathLength);
@@ -187,6 +202,7 @@ export function ProjectShowcase() {
         delete section.dataset.handoffProgress;
         delete section.dataset.projectExit;
         section.style.clipPath = ""; section.style.visibility = "";
+        delete section.dataset.projectLayout;
       };
     });
     return () => media.revert();
@@ -212,29 +228,48 @@ export function ProjectShowcase() {
         <div className={styles.track} data-project-track>
           <svg className={styles.path} aria-hidden="true"><path data-project-path /></svg>
           <span className={styles.diamond} data-project-diamond aria-hidden="true"><i /><b /></span>
-          {siteContent.projects.map((project, index) => (
+          {siteContent.projects.map((project) => (
             <article key={project.id} data-project-card className={styles.card}>
-              <a className={styles.thumb} href={project.href} aria-labelledby={`${project.id}-title`} aria-describedby={`${project.id}-description`} data-project-thumb>
+              <button type="button" className={styles.thumb} onClick={(event) => showDetails(project, event.currentTarget)} aria-haspopup="dialog" aria-labelledby={`${project.id}-title`} aria-describedby={`${project.id}-description`} data-project-thumb>
                 <div className={styles.frame}>
                   {project.image && !/^TODO\b/i.test(project.image) ? (
                     // Native images also feed the existing canvas texture loader.
                     // eslint-disable-next-line @next/next/no-img-element
                     <img data-project-image className={styles.poster} src={project.image} alt="" />
-                  ) : <ProjectPoster variant={index % 5} />}
+                  ) : <ProjectPoster id={project.id} />}
                 </div>
                 <span className={styles.tag}>{content.cardTag}</span>
                 {Array.from({ length: 4 }, (_, corner) => <span key={corner} aria-hidden="true" className={`${styles.plus} ${styles[`corner${corner}`]}`} />)}
-              </a>
+              </button>
               <div className={styles.label}>
-                <h3 id={`${project.id}-title`} className={styles.cardTitle}><a href={project.href}>{project.title}</a></h3>
-                <a className={styles.visit} href={project.href} aria-labelledby={`${project.id}-title`}><span>{content.viewLabel}</span><Arrow /></a>
+                <h3 id={`${project.id}-title`} className={styles.cardTitle}>{project.title}</h3>
+                {/^https?:\/\//i.test(project.href) ? <a className={styles.visit} href={project.href} target="_blank" rel="noopener noreferrer"><span>{content.viewLabel}</span><Arrow /></a> : <button type="button" className={styles.visit} onClick={(event) => showDetails(project, event.currentTarget)} aria-haspopup="dialog"><span>{content.viewLabel}</span><Arrow /></button>}
               </div>
-              <p id={`${project.id}-description`} className="sr-only">{project.description}</p>
+              <p id={`${project.id}-description`} className={styles.summary}>{project.summary && !/^TODO\b/i.test(project.summary) ? project.summary : projectSummary(project.description)}</p>
             </article>
           ))}
         </div>
       </div>
-      <ProjectCanvasBoundary />
+      {!!siteContent.projects.length && <ProjectCanvasBoundary />}
+      <dialog ref={dialogRef} className={styles.details} aria-labelledby="project-detail-title" data-lenis-prevent onClose={() => openerRef.current?.focus()} onKeyDown={(event) => {
+        if (event.key !== "Tab") return;
+        const controls = [...event.currentTarget.querySelectorAll<HTMLElement>('button:not(:disabled), a[href]:not([hidden])')];
+        const first = controls[0], last = controls.at(-1);
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+      }}>
+        <div className={styles.detailsHeader}><h2 id="project-detail-title" data-detail-title /><button type="button" autoFocus onClick={() => dialogRef.current?.close()}>Close</button></div>
+        <p data-detail-description className={styles.fullDescription} />
+        <a data-detail-link href="#" target="_blank" rel="noopener noreferrer" className={styles.visit}>{content.viewLabel}<Arrow /></a>
+      </dialog>
     </section>
   );
+}
+
+export function projectSummary(description: string) {
+  const sentence = description.match(/^.*?[.!?](?:\s|$)/)?.[0].trim() || description;
+  if (sentence.length <= 140) return sentence;
+  const prefix = sentence.slice(0, 139);
+  const boundary = prefix.lastIndexOf(" ");
+  return `${prefix.slice(0, boundary > 0 ? boundary : 139).trimEnd()}…`;
 }

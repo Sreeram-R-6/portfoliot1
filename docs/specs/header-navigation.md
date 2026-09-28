@@ -10,6 +10,8 @@ Measurements below are source computed values at viewport height 900px, scroll t
 
 Sticky nav inside the nested scroll container; top 0, z-index 50. Height 76px at all three reference widths. Padding 20px 16px at 375; 20px 32px at 768/1440. Fixed menu z-index 90; cursor ring 60. Replace branding with Sreeram text. Keep all destinations in site.ts.
 
+Phase 4 computed-style addendum (Playwright, no capture): menu panel top/bottom 50px, max-height 760px; min-width 640px has width 380px/right 50px; below 640px left/right 24px. Background rgb(37,39,47). Menu text Rajdhani 500, 56px/48.16px desktop, 40px/34.4px mobile. List margin-top 68px. Hover surface transition 180ms cubic-bezier(.34,1.56,.64,1). Audio omitted by user decision. Branded loader omitted; page remains non-blocking.
+
 ## States and interactions
 
 Closed, opening, open, closing; focus/hover link scramble; Escape closes. Opening: backdrop opacity .75, .4s power2.out; panel x to 0, .175s power2.out; items opacity 1/y 0/scale 1, .7s power2.out, stagger .1s starting .4s. Closing: panel .2s power2.in; backdrop .3s power2.in delayed .1s. Keyboard focus must enter the menu and return to its button (target accessibility requirement).

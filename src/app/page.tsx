@@ -1,10 +1,11 @@
-import { FooterSkeleton, HeaderSkeleton, SectionPlaceholder } from "@/components/portfolio-shell";
+import { FooterSkeleton, SectionPlaceholder } from "@/components/portfolio-shell";
+import { HeaderNavigation } from "@/components/header-navigation";
 import { siteContent } from "@/content/site";
 
 export default function Home() {
   return (
     <>
-      <HeaderSkeleton />
+      <HeaderNavigation />
       <main>
         <SectionPlaceholder content={siteContent.sections.identity} />
         <SectionPlaceholder content={siteContent.sections.manifesto} />

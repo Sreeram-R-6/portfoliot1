@@ -9,6 +9,9 @@ export const siteContent = {
   navigation: {
     label: "Navigation",
     menu: "Menu",
+    close: "Close menu",
+    connections: "Connections",
+    coordinates: ["[latitude]", "[longitude]"],
     home: { label: "Sreeram", href: "#identity" },
     links: [
       { label: "About", href: "#identity" },

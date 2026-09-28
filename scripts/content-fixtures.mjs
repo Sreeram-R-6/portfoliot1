@@ -15,6 +15,11 @@ maximum.sections.manifesto.displayWords = ["A much longer manifesto", "learning 
 maximum.sections.statistics.counters.push({ label: repeated.repeat(2), value: "Research in progress" });
 maximum.sections.statistics.tools.push("UnbrokenTool".repeat(24));
 maximum.projects = Array.from({ length: 20 }, (_, index) => ({ ...original.projects[index % original.projects.length], id: `fixture-project-${index}`, title: index ? repeated : "UnbrokenTitle".repeat(30), description: repeated.repeat(12), image: null, href: index === 1 ? "https://example.com/project" : "#contact" }));
+maximum.projects[0].role = repeated.repeat(3);
+maximum.projects[0].year = "SyntheticYear".repeat(20);
+maximum.projects[0].tags = [repeated, "UnbrokenTag".repeat(30)];
+maximum.projects[0].gallery = [null, "/seo/og.png"];
+maximum.projects[0].caseStudy = [repeated.repeat(12), "UnbrokenParagraph".repeat(40)];
 maximum.sections.experience.entries = maximum.sections.experience.entries.map((entry) => ({ ...entry, title: repeated.repeat(2), role: repeated, description: repeated.repeat(8) }));
 maximum.footer.message.label = "LongEmailLabel".repeat(24);
 maximum.footer.links[0].label = repeated.repeat(3);

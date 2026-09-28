@@ -23,6 +23,7 @@ try {
     });
     await page.goto(`${base}${path}`);
     await page.evaluate(() => document.fonts.ready);
+    await page.locator(".site-loader").waitFor({ state: "hidden" });
     await page.waitForTimeout(1100);
     assert.equal(await page.locator("[data-project-card]").count(), count);
     const measurements = [];
@@ -31,9 +32,11 @@ try {
         const element = document.querySelector(`[data-section="${name}"]`);
         const scroller = document.getElementById("scroll-container");
         const trigger = window.__portfolioMotion?.read().triggers.find((entry) => entry.id === (name === "projects" ? "project-showcase" : "portfolio-hero"));
-        if (name === "manifesto" && trigger) scroller.scrollTop = trigger.start + (trigger.end - trigger.start) * .68;
-        else if (name === "projects" && trigger) scroller.scrollTop = trigger.start + (trigger.end - trigger.start) * .29;
-        else scroller.scrollTop += element.getBoundingClientRect().top - (document.querySelector("nav")?.offsetHeight || 76);
+        let top;
+        if (name === "manifesto" && trigger) top = trigger.start + (trigger.end - trigger.start) * .68;
+        else if (name === "projects" && trigger) top = trigger.start + (trigger.end - trigger.start) * .29;
+        else top = scroller.scrollTop + element.getBoundingClientRect().top - (document.querySelector("nav")?.offsetHeight || 76);
+        scroller.dispatchEvent(new CustomEvent("portfolio:scrollto", { detail: { top } }));
       }, section);
       await page.waitForTimeout(section === "statistics" && reducedMotion === "no-preference" ? 2400 : 300);
       const measured = await page.evaluate((name) => {
@@ -81,8 +84,8 @@ try {
         const section = document.querySelector('[data-section="projects"]');
         const scroller = document.getElementById("scroll-container");
         const trigger = window.__portfolioMotion?.read().triggers.find((entry) => entry.id === "project-showcase");
-        if (trigger) scroller.scrollTop = trigger.start + (trigger.end - trigger.start) * .29;
-        else scroller.scrollTop += section.getBoundingClientRect().top - document.querySelector("nav").offsetHeight;
+        const top = trigger ? trigger.start + (trigger.end - trigger.start) * .29 : scroller.scrollTop + section.getBoundingClientRect().top - document.querySelector("nav").offsetHeight;
+        scroller.dispatchEvent(new CustomEvent("portfolio:scrollto", { detail: { top } }));
       });
       await page.waitForTimeout(reducedMotion === "no-preference" ? 1500 : 100);
       const button = page.locator("[data-project-thumb]").first();

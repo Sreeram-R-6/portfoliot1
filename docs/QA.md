@@ -1,4 +1,32 @@
-# Populated content QA
+# Behavioral parity QA — 2026-09-29
+
+The complete audit and per-row final status are in [PARITY.md](PARITY.md). All pre-parity content values and array counts remain equal to the saved source; only authorized loader/sound/route-link configuration was added. Editorial `todo`/`todos` stay out of public props. Optional case-study fields add no facts until entered in `/details`.
+
+| Check | Result |
+| --- | --- |
+| Home / content fixtures | 50 configurations; 320/375/768/1440/1920; normal + reduced motion; no overflow, clipped/overlapping visible text or unexpected console messages |
+| Work routes / fixtures | 30 configurations at the five widths; no pins or layout/console failures; public routes also checked through Playwright MCP at 1440/768/375 |
+| Project rail | 3/11/20 cards; desktop pin, wheel travel, progress, last-card focus/arrow reveal, end release; tablet/mobile audited vertical grid |
+| Navigation lifecycle | New-push top reset; back/forward/reload position restoration; three route cycles, unique triggers and stable subscribers; rapid-click handling |
+| Loader | Monotonic percentage; real font/visible-image/renderer readiness; session repeat suppressed; hero waits; <=300ms added exit delay |
+| Sound | Zero players/requests/play before trusted gesture; pointer/keyboard activation; .3 ambient loop/.5 UI; mute/persist/hidden pause/fades; reduced motion does not mute |
+| Editor / upload | 186 current scalar fields plus optional role/year/tags/gallery/caseStudy; null gallery/import validation; audio upload works; invalid format/destination, traversal and oversized files reject |
+| Counters/tools/experience/orientation | 11+/3+/6+ digit rolls, nonnumeric literal strings, own hover-pair swap, measured variable heights/+/- and 550ms mix; coarse landscape inert/portrait release |
+| Visual review | 35 real-content section crops and desktop work index reviewed; existing adaptive layout retained |
+| Reduced motion / low power | No canvas in reduced or low-power checks; native reduced scrolling/no pins; mobile static artwork |
+| Production editor / fixtures | GET/PUT `/api/details`, POST upload, `/details` and stress routes all 404; fixture JSON excluded from standalone; sitemap omits editor/fixtures |
+| Build | Lint, strict typecheck and production build pass |
+| IP | Four own synthesized WAVs (197,696 bytes); own favicon/social SVG/PNG/posters; no source-site assets, font binaries or verbatim bundle/shader code; MIT scaffold attribution retained |
+
+Lighthouse 12.8.2, local production on localhost:3001, headless Chrome, default simulated mobile: **Performance 92 / Accessibility 100 / Best practices 100 / SEO 100**, LCP **3.38s**, TBT **21ms**. Previous populated-content QA was 92/100/100/100. Audio loads only after a gesture; the loader waits only for initially needed assets. Scores describe measured runs, not guarantees across devices.
+
+Deliberate differences: loader holds are compressed to honor the requested 300ms limit; audio uses own synthesized tracks, strict gesture gating, requested persistence/fades; pixel transitions and procedural art are original approximations; adaptive typography/tall-content fallbacks remain. No unprovided case-study facts or categories were invented.
+
+Environment remains Node 22.17.0/npm 10.9.2 rather than the recommended Node 24. No dependencies, lockfile changes, history rewrite or deployment. The existing standalone-output warning from `npm start` remains documented in README. The permitted upstream Three.Clock deprecation is the only excluded console warning.
+
+---
+
+# Historical populated content QA (before parity work)
 
 ## Source and schema
 

@@ -1,5 +1,7 @@
 export const siteContent = {
   metadata: {
+    // TODO: replace this reserved placeholder before publishing.
+    siteUrl: "https://portfolio.example",
     title: "Sreeram — Portfolio",
     description: "CS student and builder, CCE Kerala. Software, embedded systems, and projects.",
   },

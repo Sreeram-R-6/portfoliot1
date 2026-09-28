@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Mono, DM_Sans, Rajdhani } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { siteContent } from "@/content/site";
@@ -25,9 +25,30 @@ const rajdhani = Rajdhani({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteContent.metadata.siteUrl),
   title: siteContent.metadata.title,
   description: siteContent.metadata.description,
+  alternates: { canonical: "/" },
+  authors: [{ name: siteContent.name }],
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "/",
+    siteName: siteContent.name,
+    title: siteContent.metadata.title,
+    description: siteContent.metadata.description,
+    images: [{ url: "/seo/og.png", width: 1200, height: 630, alt: siteContent.role }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteContent.metadata.title,
+    description: siteContent.metadata.description,
+    images: ["/seo/og.png"],
+  },
+  robots: { index: true, follow: true },
 };
+
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#000000" };
 
 export default function RootLayout({
   children,

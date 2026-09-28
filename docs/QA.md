@@ -14,3 +14,8 @@
 - Uses supplied name, role, CCE Kerala and five named projects only. Removed seven fabricated experience slots; education shows the supplied CS student role.
 - All achievement counters remain em dashes marked TODO, including project count: no unconfirmed number is published.
 - Contact, CV, tool, coordinate, project URL/image and domain gaps are explicit TODOs. Unprovided links lead to the contact section; no external URL or job history was invented.
+
+## Metadata
+
+- English document, explicit zoomable viewport, title/description, Open Graph/Twitter card, original S favicon and own 1200x630 social PNG.
+- Canonical, robots and sitemap share the reserved https://portfolio.example placeholder. TODO: replace metadata.siteUrl before publishing. No deployment took place.

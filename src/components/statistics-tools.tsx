@@ -31,7 +31,7 @@ export function StatisticsTools() {
               <p className={styles.label} data-stat-label id={`statistics-counter-${index}`}>{counter.label}</p>
               <p className={styles.value} aria-labelledby={`statistics-counter-${index}`}>
                 <span className="sr-only">{counter.value}</span>
-                {counter.value === "5" ? <span aria-hidden="true" data-odometer className={styles.odometer}><span data-odometer-strip>{[0, 1, 2, 3, 4, 5].map((digit) => <span key={digit}>{digit}</span>)}</span></span> : <span aria-hidden="true">{counter.value}</span>}
+                {/^\d$/.test(counter.value) ? <span aria-hidden="true" data-odometer className={styles.odometer}><span data-odometer-strip data-odometer-value={counter.value}>{Array.from({ length: Number(counter.value) + 1 }, (_, digit) => <span key={digit}>{digit}</span>)}</span></span> : <span aria-hidden="true">{counter.value}</span>}
               </p>
             </div>
           ))}

@@ -34,7 +34,7 @@ export function StatisticsMotion() {
           const height = strip.firstElementChild!.getBoundingClientRect().height;
           const rest = strip.lastElementChild!.getBoundingClientRect().width;
           const wide = Math.max(...[...strip.children].map((child) => child.getBoundingClientRect().width));
-          timeline.fromTo(strip, { y: 0 }, { y: -5 * height, duration: .7, ease: "power2.out" }, start + .4)
+          timeline.fromTo(strip, { y: 0 }, { y: -Number(strip.dataset.odometerValue) * height, duration: .7, ease: "power2.out" }, start + .4)
             .fromTo(digit, { width: wide }, { width: rest, duration: .7, ease: "power2.out" }, start + .4);
         }
       });

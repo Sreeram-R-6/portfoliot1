@@ -18,7 +18,7 @@ export function HeroMotion({ children }: { children: ReactNode }) {
     if (!hero || !scroller) return;
     gsap.registerPlugin(ScrollTrigger, SplitText);
     const media = gsap.matchMedia();
-    media.add("(prefers-reduced-motion: no-preference)", () => {
+    media.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
       const identity = hero.querySelector<HTMLElement>("[data-section=identity]")!;
       const manifesto = hero.querySelector<HTMLElement>("[data-section=manifesto]")!;
       // Content taller than the viewport stays in normal flow rather than clipping.

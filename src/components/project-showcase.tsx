@@ -7,6 +7,12 @@ import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { siteContent, type PublicSiteContent } from "@/content/site";
 import { ProjectCanvasBoundary } from "./project-canvas-boundary";
 import styles from "./project-showcase.module.css";
+import Link from "next/link";
+
+export function hasCaseStudy(project: (typeof siteContent.projects)[number]) {
+  return !!project.caseStudy?.some((paragraph) => paragraph.trim() && !/^TODO\b/i.test(paragraph))
+    || !!project.gallery?.some((image) => image && !/^TODO\b/i.test(image));
+}
 
 function exitMask(progress: number, width: number, height: number, navHeight: number) {
   const columns = 16;
@@ -271,7 +277,15 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
           <span className={styles.diamond} data-project-diamond aria-hidden="true"><i /><b /></span>
           {site.projects.map((project) => (
             <article key={project.id} data-project-card className={styles.card}>
-              <button type="button" className={styles.thumb} onClick={(event) => showDetails(project, event.currentTarget)} aria-haspopup="dialog" aria-labelledby={`${project.id}-title`} aria-describedby={`${project.id}-description`} data-project-thumb>
+              {hasCaseStudy(project) ? <Link href={`/work/${project.id}`} className={styles.thumb} aria-labelledby={`${project.id}-title`} aria-describedby={`${project.id}-description`} data-project-thumb>
+                <div className={styles.frame}>
+                  {project.image && !/^TODO\b/i.test(project.image) ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img data-project-image className={styles.poster} src={project.image} alt="" />
+                  ) : <ProjectPoster id={project.id} />}
+                </div>
+                <span className={styles.tag}>{content.cardTag}</span>
+              </Link> : <button type="button" className={styles.thumb} onClick={(event) => showDetails(project, event.currentTarget)} aria-haspopup="dialog" aria-labelledby={`${project.id}-title`} aria-describedby={`${project.id}-description`} data-project-thumb>
                 <div className={styles.frame}>
                   {project.image && !/^TODO\b/i.test(project.image) ? (
                     // Native images also feed the existing canvas texture loader.
@@ -281,10 +295,10 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
                 </div>
                 <span className={styles.tag}>{content.cardTag}</span>
                 {Array.from({ length: 4 }, (_, corner) => <span key={corner} aria-hidden="true" className={`${styles.plus} ${styles[`corner${corner}`]}`} />)}
-              </button>
+              </button>}
               <div className={styles.label}>
                 <h3 id={`${project.id}-title`} className={styles.cardTitle}>{project.title}</h3>
-                {/^https?:\/\//i.test(project.href) ? <a className={styles.visit} href={project.href} target="_blank" rel="noopener noreferrer"><span>{content.viewLabel}</span><Arrow /></a> : <button type="button" className={styles.visit} onClick={(event) => showDetails(project, event.currentTarget)} aria-haspopup="dialog"><span>{content.viewLabel}</span><Arrow /></button>}
+                {hasCaseStudy(project) ? <Link className={styles.visit} href={`/work/${project.id}`}><span>{content.viewLabel}</span><Arrow /></Link> : /^https?:\/\//i.test(project.href) ? <a className={styles.visit} href={project.href} target="_blank" rel="noopener noreferrer"><span>{content.viewLabel}</span><Arrow /></a> : <button type="button" className={styles.visit} onClick={(event) => showDetails(project, event.currentTarget)} aria-haspopup="dialog"><span>{content.viewLabel}</span><Arrow /></button>}
               </div>
               <p id={`${project.id}-description`} className={styles.summary}>{project.summary && !/^TODO\b/i.test(project.summary) ? project.summary : projectSummary(project.description)}</p>
             </article>

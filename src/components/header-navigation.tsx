@@ -5,12 +5,14 @@ import { gsap } from "gsap";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { siteContent, type PublicSiteContent } from "@/content/site";
 import { SoundToggle } from "./sound-provider";
+import { usePathname } from "next/navigation";
 import "./header-navigation.css";
 import { CursorProgress } from "./cursor-progress";
 
 type MenuMotion = { open: () => void; close: () => void; scramble: (element: HTMLElement) => void };
 
 export function HeaderNavigation({ site = siteContent }: { site?: PublicSiteContent }) {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -132,7 +134,7 @@ export function HeaderNavigation({ site = siteContent }: { site?: PublicSiteCont
         <p className="orientation-hint">{site.orientation.hint}</p>
       </div>
       <nav aria-label={navigation.label} className="site-navigation relative flex items-center justify-between px-4 py-5 sm:px-8">
-        <a href={navigation.home.href} className="flex items-center gap-2 font-heading text-xs leading-5 font-semibold uppercase focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+        <a href={pathname !== "/" && navigation.home.href.startsWith("#") ? "/" : navigation.home.href} className="flex items-center gap-2 font-heading text-xs leading-5 font-semibold uppercase focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
           <span aria-hidden="true" className="mr-1.5 block size-2.5 rotate-45 border border-primary" />
           {navigation.home.label}
         </a>
@@ -154,7 +156,7 @@ export function HeaderNavigation({ site = siteContent }: { site?: PublicSiteCont
             <button type="button" autoFocus onClick={close} className="h-10 px-2 font-heading text-sm leading-5 font-semibold uppercase hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">{navigation.close}</button>
           </div>
           <ul className="mt-[68px] mb-auto flex flex-col pb-12">
-            {navigation.links.map((link, index) => (
+            {navigation.routeLinks.map((link, index) => (
               <li key={`${index}-${link.label}`} data-menu-item>
                 <a href={link.href} aria-label={link.label} onClick={close} onPointerEnter={(event) => scramble(event.currentTarget)} onFocus={(event) => scramble(event.currentTarget)} className="menu-surface group flex items-center justify-between px-2 py-3 font-heading text-[40px] leading-[0.86] font-medium uppercase hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:outline-none sm:text-[56px]">
                   <span data-menu-label={link.label} aria-hidden="true">{[...link.label].map((char, index) => <span key={index} data-menu-char={char}>{char}</span>)}</span><span aria-hidden="true" className="font-mono text-xs tracking-normal">0{index + 1}</span>
@@ -164,13 +166,14 @@ export function HeaderNavigation({ site = siteContent }: { site?: PublicSiteCont
           </ul>
           <div data-menu-item className="border-t border-foreground/25 pt-6">
             <p className="font-heading text-xs leading-4 font-normal uppercase tracking-[1.56px]">{navigation.connections}</p>
-            <ul className="mt-4 flex flex-wrap gap-x-8 gap-y-4 font-heading text-lg font-semibold uppercase">
-              {[site.footer.message, ...(!site.footer.cv.href.startsWith("#") && !site.footer.cv.href.startsWith("TODO") ? [site.footer.cv] : []), ...site.footer.links].map((link, index) => (
-                <li key={`${index}-${link.label}`}><a href={link.href} aria-label={link.label} onClick={close} onPointerEnter={(event) => scramble(event.currentTarget)} onFocus={(event) => scramble(event.currentTarget)} className="underline-offset-4 hover:text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"><span data-menu-label={link.label} aria-hidden="true">{[...link.label].map((char, index) => <span key={index} data-menu-char={char}>{char}</span>)}</span></a></li>
+            <ul className="mt-4 flex flex-col gap-4 font-heading text-lg font-semibold uppercase">
+              {site.footer.links.map((link, index) => (
+                <li key={`${index}-${link.label}`}><a href={link.href} aria-label={link.label} onClick={close} onPointerEnter={(event) => scramble(event.currentTarget)} onFocus={(event) => scramble(event.currentTarget)} className="flex items-start justify-between gap-4 underline-offset-4 hover:text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"><span data-menu-label={link.label} aria-hidden="true">{[...link.label].map((char, index) => <span key={index} data-menu-char={char}>{char}</span>)}</span><span aria-hidden="true" className="font-mono text-xs">{String(index + 1).padStart(2, "0")}</span></a></li>
               ))}
             </ul>
           </div>
           <div data-menu-item className="mt-6 border-t border-foreground/25 pt-4"><SoundToggle {...navigation.sound} /></div>
+          <p data-menu-item className="mt-4 font-heading text-xs tracking-wide text-muted-foreground">{site.name} · {site.location}</p>
         </div>
       </dialog>
     </header>

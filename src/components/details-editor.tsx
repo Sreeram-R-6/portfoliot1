@@ -34,7 +34,7 @@ function newListItem(path: string, values: ContentValue[]): ContentValue {
   const id = `item-${crypto.randomUUID()}`;
   if (path === "projects") return { id, title: "TODO", description: "TODO", href: "TODO", image: null, todo: "TODO: project link and own image" };
   if (path === "sections.experience.entries") return { id, index: String(values.length + 1).padStart(2, "0"), title: "TODO", role: "TODO", description: "TODO" };
-  if (["footer.links", "navigation.links"].includes(path)) return { label: "TODO", href: "TODO" };
+  if (["footer.links", "navigation.links", "navigation.routeLinks"].includes(path)) return { label: "TODO", href: "TODO" };
   return "TODO";
 }
 
@@ -81,7 +81,7 @@ function ContentField({ value, path, errors, change }: FieldProps) {
     <fieldset className="details-object" id={id}>
       <legend>{path}</legend>
       <div className="details-fields">{Object.entries(value).map(([key, item]) => <ContentField key={key} value={item} path={`${path}.${key}`} errors={errors} change={change} />)}</div>
-      {/^projects\.\d+$/.test(path) && !("summary" in value) && <button type="button" onClick={() => change(`${path}.summary`, "TODO")} aria-label={`${path}: Add optional summary`}>Add optional summary</button>}
+      {/^projects\.\d+$/.test(path) && ["summary", "role", "year", "tags", "gallery", "caseStudy"].filter((key) => !(key in value)).map((key) => <button key={key} type="button" onClick={() => change(`${path}.${key}`, ["tags", "gallery", "caseStudy"].includes(key) ? [] : "TODO")} aria-label={`${path}: Add optional ${key}`}>Add optional {key}</button>)}
     </fieldset>
   );
   const text = value ?? "";

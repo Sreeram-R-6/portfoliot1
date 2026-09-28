@@ -1,0 +1,33 @@
+.work-main { background: var(--background-bg-0); color: var(--foreground); padding: clamp(32px, 5vw, 80px) var(--grid-edge-inset) clamp(64px, 8vw, 144px); }
+.work-main * { min-width: 0; overflow-wrap: anywhere; hyphens: auto; }
+.work-main h1, .work-main h2 { font-family: var(--font-rajdhani), sans-serif; font-weight: 500; line-height: 1.15; text-wrap: balance; text-transform: uppercase; }
+.work-main h1 { font-size: clamp(2.5rem, 5.5vw, 5.5rem); letter-spacing: -.025em; }
+.work-main h2 { font-size: clamp(1.25rem, 1.65vw, 1.75rem); }
+.work-index { display: grid; gap: clamp(40px, 5vw, 72px); max-width: 1856px; margin-inline: auto; }
+.work-sidebar { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+.work-eyebrow { font-family: var(--font-dm-mono), monospace; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--primary-green-neon); }
+.work-copy { font-family: var(--font-dm-sans), sans-serif; font-size: clamp(1rem, 1.05vw, 1.125rem); line-height: 1.75; max-width: 65ch; white-space: pre-line; text-wrap: pretty; }
+.work-count { color: var(--primary-green-neon); font-family: var(--font-rajdhani), sans-serif; font-size: clamp(3rem, 5vw, 5rem); line-height: 1.15; }
+.work-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px 40px; align-items: start; }
+.work-card { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.work-card-art { position: relative; width: 100%; display: block; }
+.work-artwork { position: relative; width: 100%; aspect-ratio: 4 / 3; background: var(--background-bg-2); overflow: hidden; }
+.work-artwork img, .work-artwork > svg { display: block; width: 100%; height: 100%; object-fit: cover; }
+.work-card-art .work-artwork > svg, .work-card-art .work-artwork img { transition: transform .6s cubic-bezier(.16, 1, .3, 1); }
+.work-card-tag { position: absolute; bottom: 16px; left: 16px; max-width: calc(100% - 32px); padding: 6px 8px; font-family: var(--font-rajdhani), sans-serif; font-weight: 600; font-size: .75rem; line-height: 1.5; background: var(--background-bg-0); color: var(--primary-green-neon); text-transform: uppercase; }
+.work-link { display: inline-flex; align-items: baseline; gap: 12px; font-family: var(--font-rajdhani), sans-serif; font-size: 1rem; line-height: 1.5; text-decoration: underline; text-underline-offset: 4px; color: var(--primary-green-neon); }
+.work-main a:focus-visible { outline: 2px solid var(--primary-green-neon); outline-offset: 5px; }
+.work-detail { max-width: 1376px; margin-inline: auto; display: flex; flex-direction: column; gap: clamp(32px, 4vw, 64px); }
+.work-detail-header { display: flex; flex-direction: column; gap: 24px; }
+.work-detail > .work-artwork { aspect-ratio: 16 / 9; }
+.work-facts { display: flex; flex-wrap: wrap; gap: 24px 48px; font-family: var(--font-dm-sans), sans-serif; line-height: 1.6; }
+.work-facts > div { flex: 1 1 160px; max-width: 65ch; }
+.work-facts dt { font-family: var(--font-dm-mono), monospace; font-size: .75rem; text-transform: uppercase; margin-bottom: 8px; color: var(--primary-green-neon); }
+.work-tags { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; padding: 0; }
+.work-tags li { border: 1px solid var(--primary-green-neon); padding: 8px 12px; line-height: 1.5; }
+.work-description { display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 65ch; margin-inline: auto; }
+.work-gallery { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
+@media (min-width: 768px) { .work-grid, .work-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1025px) { .work-index { grid-template-columns: minmax(220px, .339fr) minmax(0, 1fr); gap: 40px; } .work-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .work-sidebar { position: sticky; top: calc(var(--nav-height, 76px) + 32px); align-self: start; } }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) { .work-card-art:hover .work-artwork > svg, .work-card-art:hover .work-artwork img { transform: scale(1.04); } }
+@media (prefers-reduced-motion: reduce) { .work-card-art .work-artwork > svg, .work-card-art .work-artwork img { transition: none; } }

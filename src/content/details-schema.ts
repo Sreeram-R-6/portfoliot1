@@ -28,7 +28,7 @@ export function validateDetails(payload: unknown): Validation {
   const warnings: FieldIssue[] = [];
   const error = (path: string, message: string) => errors.push({ path, message });
   function walk(value: unknown, shape: unknown, path: string) {
-    if (path.endsWith(".image") && value === null) { warnings.push({ path, message: "TODO: provide an image." }); return; }
+    if ((path.endsWith(".image") || /^projects\.\d+\.gallery\.\d+$/.test(path)) && value === null) { warnings.push({ path, message: "TODO: provide an image." }); return; }
     if (Array.isArray(shape)) {
       if (!Array.isArray(value)) { error(path, "Expected a list."); return; }
       if (value.length > 100) { error(path, "Use at most 100 items."); return; }
@@ -49,11 +49,12 @@ export function validateDetails(payload: unknown): Validation {
       if (!value || typeof value !== "object" || Array.isArray(value)) { error(path, "Expected an object."); return; }
       const expected = { ...shape } as Record<string, unknown>;
       const project = /^projects\.\d+$/.test(path);
-      if (project) expected.summary = "";
+      const optionalProjectFields: Record<string, unknown> = { summary: "", role: "", year: "", tags: [""], gallery: [null], caseStudy: [""] };
+      if (project) Object.assign(expected, optionalProjectFields);
       const actual = value as Record<string, unknown>;
       for (const key of Object.keys(actual)) if (!Object.hasOwn(expected, key)) error(path ? `${path}.${key}` : key, "Unknown field.");
       for (const key of Object.keys(expected)) {
-        if (project && key === "summary" && actual[key] === undefined) continue;
+        if (project && Object.hasOwn(optionalProjectFields, key) && actual[key] === undefined) continue;
         walk(actual[key], expected[key], path ? `${path}.${key}` : key);
       }
       return;
@@ -67,6 +68,7 @@ export function validateDetails(payload: unknown): Validation {
     if (/(?:github_pat_[\w]{20,}|ghp_[\w]{20,}|-----BEGIN .*PRIVATE KEY-----|sk-[\w-]{20,})/.test(value)) error(path, "Do not store credentials or private keys here.");
     if (/(?:\.href|Href|\.image|\.siteUrl)$/.test(path) && value.trim() && !isValidLink(value, path === "metadata.siteUrl")) error(path, "Use an http(s) URL, mailto address, site path, anchor or TODO.");
     if (/^sound\.(?:ambient|ui\.(?:hover|click|toggle))$/.test(path) && !isTodo(value) && (!isValidLink(value) || !/^(?:https?:\/\/|\/)/i.test(value))) error(path, "Use an http(s) audio URL or public site path.");
+    if (/^projects\.\d+\.gallery\.\d+$/.test(path) && !isTodo(value) && (!isValidLink(value) || !/^(?:https?:\/\/|\/)/i.test(value))) error(path, "Use an http(s) image URL or public site path.");
     if (path.endsWith(".id") && !/^[a-z][a-z0-9-]*$/.test(value)) error(path, "Use a lowercase ID beginning with a letter.");
     if (/sections\.[^.]+\.id$/.test(path)) {
       const section = path.split(".")[1] as keyof typeof template.sections;
@@ -85,11 +87,11 @@ export function isSiteContent(payload: unknown): payload is SiteContent {
 
 export function fieldKind(path: string) {
   if (/^sound\.(?:ambient|ui\.(?:hover|click|toggle))$/.test(path)) return "audio";
-  if (path.endsWith(".image")) return "image";
+  if (path.endsWith(".image") || /^projects\.\d+\.gallery\.\d+$/.test(path)) return "image";
   if (path === "footer.cv.href") return "cv";
   if (/sections\.statistics\.counters\.\d+\.value$/.test(path)) return "number";
   if (/(?:\.href|Href|\.siteUrl)$/.test(path)) return "url";
-  if (/(?:description|summary|\.todo|^todos\.)/i.test(path)) return "textarea";
+  if (/(?:description|summary|caseStudy|\.todo|^todos\.)/i.test(path)) return "textarea";
   return "text";
 }
 

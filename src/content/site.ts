@@ -1,7 +1,10 @@
 import content from "./site.json";
 
 export type SiteContent = Omit<typeof content, "projects"> & {
-  projects: Array<Omit<(typeof content.projects)[number], "image"> & { image: string | null; summary?: string }>;
+  projects: Array<Omit<(typeof content.projects)[number], "image"> & {
+    image: string | null; summary?: string; role?: string; year?: string;
+    tags?: string[]; gallery?: Array<string | null>; caseStudy?: string[];
+  }>;
 };
 
 // Editorial reminders never enter public component props.

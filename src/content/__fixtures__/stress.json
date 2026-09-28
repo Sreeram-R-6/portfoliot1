@@ -24,6 +24,16 @@
       "hint": "Rotate your device"
     },
     "navigation": {
+      "routeLinks": [
+        {
+          "label": "About",
+          "href": "/"
+        },
+        {
+          "label": "Work",
+          "href": "/work"
+        }
+      ],
       "sound": {
         "label": "Sound",
         "on": "On",
@@ -390,6 +400,16 @@
       "hint": "Rotate your device"
     },
     "navigation": {
+      "routeLinks": [
+        {
+          "label": "About",
+          "href": "/"
+        },
+        {
+          "label": "Work",
+          "href": "/work"
+        }
+      ],
       "sound": {
         "label": "Sound",
         "on": "On",
@@ -750,6 +770,16 @@
       "hint": "Rotate your device"
     },
     "navigation": {
+      "routeLinks": [
+        {
+          "label": "About",
+          "href": "/"
+        },
+        {
+          "label": "Work",
+          "href": "/work"
+        }
+      ],
       "sound": {
         "label": "Sound",
         "on": "On",
@@ -974,6 +1004,16 @@
       "hint": "Rotate your device"
     },
     "navigation": {
+      "routeLinks": [
+        {
+          "label": "About",
+          "href": "/"
+        },
+        {
+          "label": "Work",
+          "href": "/work"
+        }
+      ],
       "sound": {
         "label": "Sound",
         "on": "On",

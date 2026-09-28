@@ -2,6 +2,7 @@ import { siteContent, type PublicSiteContent } from "@/content/site";
 import { DecorativeCanvas } from "./decorative-canvas";
 import styles from "./statistics-tools.module.css";
 import { StatisticsMotion } from "./statistics-motion";
+import { DigitCounter } from "./digit-counter";
 
 function ToolMark({ variant }: { variant: number }) {
   return (
@@ -32,7 +33,7 @@ export function StatisticsTools({ site = siteContent }: { site?: PublicSiteConte
               <p className={styles.label} data-stat-label id={`statistics-counter-${index}`}>{counter.label}</p>
               <p className={styles.value} aria-labelledby={`statistics-counter-${index}`}>
                 <span className="sr-only">{counter.value}</span>
-                <span aria-hidden="true" data-count-value={/^\d+(?:\.\d+)?$/.test(counter.value) ? counter.value : undefined}>{counter.value}</span>
+                <DigitCounter value={counter.value} />
               </p>
             </div>
           ))}

@@ -16,24 +16,25 @@ export function StatisticsMotion() {
     media.add("(prefers-reduced-motion: no-preference)", () => {
       stage.dataset.motion = "active";
       const timeline = gsap.timeline({ scrollTrigger: { id: "statistics-entry", trigger: stage, scroller, start: "top 75%", once: true } });
-      const counts: { element: HTMLElement; original: string }[] = [];
+      const counts: HTMLElement[] = [];
       [...stage.querySelectorAll<HTMLElement>("[data-stat-box]")].forEach((box, index) => {
         const start = index * .16;
         const label = box.querySelector<HTMLElement>("[data-stat-label]");
         timeline.fromTo(box, { "--oh": 0, "--ow": 0 }, { "--oh": 1, duration: .26, ease: "power2.out" }, start)
           .to(box, { "--ow": 1, duration: .4, ease: "power3.out" }, start + .26);
         if (label) timeline.fromTo(label, { opacity: 0 }, { opacity: 1, duration: .55, ease: "none", scrambleText: { text: label.textContent } }, start + .4);
-        const element = box.querySelector<HTMLElement>("[data-count-value]");
+        const element = box.querySelector<HTMLElement>("[data-counter-value]");
         if (element) {
-          const original = element.dataset.countValue!;
-          const precision = original.split(".")[1]?.length ?? 0;
-          const state = { value: 0 };
-          counts.push({ element, original });
-          timeline.to(state, { value: Number(original), duration: .7, ease: "power2.out", onUpdate: () => { element.textContent = state.value.toFixed(precision); }, onComplete: () => { element.textContent = original; } }, start + .4);
+          counts.push(element);
+          timeline.add(() => { element.dataset.rolling = "true"; }, start + .4);
+          element.querySelectorAll<HTMLElement>("[data-counter-strip]").forEach((strip) => {
+            const target = Number(strip.dataset.counterTarget);
+            timeline.fromTo(strip, { yPercent: 0 }, { yPercent: -100 * target / (target + 1), duration: .7, ease: "power2.out" }, start + .4);
+          });
         }
       });
       timeline.fromTo(stage.querySelector("[data-statistics-glyph]"), { scale: 0 }, { scale: 1, duration: .66, ease: "back.out(1.6)" }, .16);
-      return () => { counts.forEach(({ element, original }) => { element.textContent = original; }); delete stage.dataset.motion; };
+      return () => { counts.forEach((element) => { delete element.dataset.rolling; }); delete stage.dataset.motion; };
     });
     return () => media.revert();
   }, []);

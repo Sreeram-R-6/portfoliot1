@@ -49,3 +49,13 @@ Lighthouse 12.8.2, headless Chrome, local production build at http://localhost:3
 - Environment: Node 22.17.0 / npm 10.9.2. npm emitted an engine warning because package.json and .nvmrc request Node 24; validation here does not claim a Node 24 test.
 - Verified temporary clone absolute path and expected origin before cleanup. Automatic approval review rejected both guarded and literal-path deletion with "blocked by policy". Cleanup remains outstanding: temporary folder sreeram-portfolio-qa-96582c2ac4114f14bdba76d69049d339 under the Windows local Temp directory.
 - Final tracked branding scan has no original personal/brand strings. Ignore checks pass for .env*, recon, build, dependencies and Playwright artifacts. No history rewrite, dependency upgrade, source credit or deployment.
+
+## Local details editor verification
+
+- Clean starting tree at 79e61e7. JSON refactor preserves content and existing exports; the social-card generator now reads JSON.
+- All 122 current scalar/null fields match generated editor controls, with no missing or extra fields. Desktop and 375px layouts checked; mobile has no horizontal overflow. Keyboard controls have visible focus. Editor loads zero canvases and no animation-library resources.
+- Dev UI Save changed a contact mailto link and numeric statistic, added a sixth project, added/reordered two experience entries and uploaded a PNG. Disk GET and refreshed home reflected each change. Valid import/save restored the original JSON; test uploads were moved into ignored .cache/qa/. No invented QA content or test upload is committed.
+- Reset reloaded disk; Export downloaded JSON; invalid import was rejected before applying. Inline empty-field validation disabled Save.
+- APIs rejected invalid/masked URLs, unknown keys, wrong types, invalid statistics and empty required text with 400. Oversized image returned 413; traversal filename and active/namespaced SVG returned 400. Invalid requests left disk content unchanged. Static SVG and CV PDF upload paths were also exercised.
+- npm run check passed lint, typecheck and build. npm start on temporary production PORT=3001 returned 404 for GET /details, GET/PUT /api/details and POST /api/details/upload. Editor header is noindex; robots disallows details; sitemap excludes it. Dev host was unchanged.
+- Restored homepage has all five sections, five original projects, active smooth scrolling and WebGL with zero browser console errors. The existing Three Clock warning remains. No deployment or new dependencies.

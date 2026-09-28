@@ -24,7 +24,8 @@ export function ExperienceMark({ index }: { index: string }) {
 
 export function Experience() {
   const ref = useRef<HTMLElement>(null);
-  const [selected, setSelected] = useState(0);
+  const [selection, setSelected] = useState(0);
+  const selected = selection < 0 ? -1 : Math.min(selection, content.entries.length - 1);
   const selectedEntry = content.entries[Math.max(0, selected)];
 
   useEffect(() => {

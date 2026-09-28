@@ -62,6 +62,13 @@ export function ProjectShowcase() {
     const track = section?.querySelector<HTMLElement>("[data-project-track]");
     const intro = section?.querySelector<HTMLElement>("[data-project-intro]");
     if (!section || !track || !intro) return;
+    const cards = [...track.querySelectorAll<HTMLElement>("[data-project-card]")];
+    cards.slice(5).forEach((card, index) => {
+      card.style.setProperty("--x", String(1932 + index * 451));
+      card.style.setProperty("--y", "301");
+      card.style.setProperty("--w", "440");
+    });
+    track.style.setProperty("--track-width", String(1932 + Math.max(0, cards.length - 5) * 451));
     gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
     const media = gsap.matchMedia();
     media.add("(min-width: 1025px) and (prefers-reduced-motion: no-preference)", () => {
@@ -208,7 +215,13 @@ export function ProjectShowcase() {
           {siteContent.projects.map((project, index) => (
             <article key={project.id} data-project-card className={styles.card}>
               <a className={styles.thumb} href={project.href} aria-labelledby={`${project.id}-title`} aria-describedby={`${project.id}-description`} data-project-thumb>
-                <div className={styles.frame}><ProjectPoster variant={index} /></div>
+                <div className={styles.frame}>
+                  {project.image && !/^TODO\b/i.test(project.image) ? (
+                    // Native images also feed the existing canvas texture loader.
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img data-project-image className={styles.poster} src={project.image} alt="" />
+                  ) : <ProjectPoster variant={index % 5} />}
+                </div>
                 <span className={styles.tag}>{content.cardTag}</span>
                 {Array.from({ length: 4 }, (_, corner) => <span key={corner} aria-hidden="true" className={`${styles.plus} ${styles[`corner${corner}`]}`} />)}
               </a>

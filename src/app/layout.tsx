@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Mono, DM_Sans, Rajdhani } from "next/font/google";
-import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { siteContent } from "@/content/site";
 import "./globals.css";
 
@@ -60,7 +59,7 @@ export default function RootLayout({
       lang="en"
       className={`${dmSans.variable} ${dmMono.variable} ${rajdhani.variable} h-full antialiased`}
     >
-      <body><SmoothScrollProvider>{children}</SmoothScrollProvider></body>
+      <body>{children}</body>
     </html>
   );
 }

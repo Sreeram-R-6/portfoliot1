@@ -8,10 +8,11 @@ import { ProjectShowcase } from "@/components/project-showcase";
 import { HeroMotion } from "@/components/hero-motion";
 import { FooterMotion } from "@/components/footer-motion";
 import { siteContent } from "@/content/site";
+import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 
 export default function Home() {
   return (
-    <>
+    <SmoothScrollProvider>
       <a href="#main-content" className="skip-link">{siteContent.navigation.skip}</a>
       <HeaderNavigation />
       <main id="main-content" tabIndex={-1}>
@@ -24,6 +25,6 @@ export default function Home() {
         <Experience />
       </main>
       <FooterMotion><ContactFooter /></FooterMotion>
-    </>
+    </SmoothScrollProvider>
   );
 }

@@ -171,17 +171,24 @@ function ProjectPlanes({ canvas, section, onReady }: { canvas: HTMLCanvasElement
     const thumbs = [...section.querySelectorAll<HTMLElement>("[data-project-thumb]")];
     const load = async (element: HTMLElement): Promise<ImagePlane> => {
       const svg = element.querySelector<SVGSVGElement>("[data-project-poster]");
-      if (!svg) throw new Error("Missing original project poster");
+      const uploaded = element.querySelector<HTMLImageElement>("[data-project-image]");
+      if (!svg && !uploaded) throw new Error("Missing project artwork");
       const image = new Image();
       await new Promise<void>((resolve, reject) => {
         image.onload = () => resolve(); image.onerror = () => reject(new Error("Original poster could not be rasterized"));
-        image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(new XMLSerializer().serializeToString(svg))}`;
+        if (uploaded) { image.crossOrigin = "anonymous"; image.src = uploaded.src; }
+        else image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(new XMLSerializer().serializeToString(svg!))}`;
       });
       const art = document.createElement("canvas");
       const bounds = element.getBoundingClientRect();
       const dpr = Math.min(devicePixelRatio || 1, 2);
       art.width = Math.max(1, Math.round(bounds.width * dpr)); art.height = Math.max(1, Math.round(bounds.height * dpr));
-      art.getContext("2d")?.drawImage(image, 0, 0, art.width, art.height);
+      const context = art.getContext("2d");
+      if (uploaded) {
+        const scale = Math.max(art.width / image.width, art.height / image.height);
+        const width = art.width / scale, height = art.height / scale;
+        context?.drawImage(image, (image.width - width) / 2, (image.height - height) / 2, width, height, 0, 0, art.width, art.height);
+      } else context?.drawImage(image, 0, 0, art.width, art.height);
       const texture = new CanvasTexture(art); texture.colorSpace = SRGBColorSpace;
       if (!mounted) texture.dispose(); else textures.push(texture);
       return { element, texture };

@@ -93,7 +93,7 @@
   .cta { pointer-events: auto; width: calc(160 * var(--u)); height: calc(46 * var(--u)); }
   .viewport { position: absolute; inset: 0; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
   .viewport::-webkit-scrollbar { height: 0; }
-  .track { position: absolute; left: calc(372 * var(--u)); top: calc((100dvh - var(--nav-height) - 786 * var(--u)) / 2); width: calc(1932 * var(--u)); height: calc(786 * var(--u)); display: block; margin: 0; }
+  .track { position: absolute; left: calc(372 * var(--u)); top: calc((100dvh - var(--nav-height) - 786 * var(--u)) / 2); width: calc(var(--track-width, 1932) * var(--u)); height: calc(786 * var(--u)); display: block; margin: 0; }
   .card { position: absolute; left: calc(var(--x) * var(--u)); top: calc(var(--y) * var(--u)); width: calc(var(--w) * var(--u)); }
 }
 

@@ -129,7 +129,7 @@ function makeArtwork(kind: CanvasKind, label: string, width: number, height: num
 }
 
 export function OriginalCanvas({ kind, label, onReady }: { kind: CanvasKind; label: string; onReady: (ready: boolean) => void }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const hostRef = useRef<HTMLDivElement>(null);
   const updateArtwork = useRef<((label: string) => void) | null>(null);
   const labelRef = useRef(label);
 
@@ -139,10 +139,17 @@ export function OriginalCanvas({ kind, label, onReady }: { kind: CanvasKind; lab
   }, [label]);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const host = hostRef.current;
+    if (!host) return;
+    // Each effect owns its canvas. Development cleanup can release its context
+    // without invalidating the next setup on React's retained host element.
+    const canvas = document.createElement("canvas");
+    canvas.className = "pointer-events-none absolute inset-0 h-full w-full";
+    canvas.setAttribute("aria-hidden", "true");
+    host.appendChild(canvas);
+    const frame = host.parentElement;
     const gl = canvas.getContext("webgl2", { alpha: true, premultipliedAlpha: true, antialias: false });
-    if (!gl) return;
+    if (!gl) { canvas.remove(); onReady(false); return; }
     const shaders: WebGLShader[] = [];
     const programs: WebGLProgram[] = [];
     const textures: WebGLTexture[] = [];
@@ -195,6 +202,8 @@ export function OriginalCanvas({ kind, label, onReady }: { kind: CanvasKind; lab
       textures.forEach((value) => gl.deleteTexture(value));
       framebuffers.forEach((value) => gl.deleteFramebuffer(value));
       gl.deleteVertexArray(vao);
+      gl.getExtension("WEBGL_lose_context")?.loseContext();
+      canvas.remove();
     };
     if (!program || !feedbackProgram || !buffer || !vao || artworkTextures.some((value) => !value) || targets.some(({ texture, framebuffer }) => !texture || !framebuffer)) { dispose(); return; }
     gl.useProgram(program);
@@ -282,13 +291,13 @@ export function OriginalCanvas({ kind, label, onReady }: { kind: CanvasKind; lab
         gl.bindFramebuffer(gl.FRAMEBUFFER, null);
         if (!complete) { onReady(false); return; }
       }
-      const poster = canvas.parentElement?.querySelector<HTMLElement>(".canvas-poster")?.firstElementChild;
+      const poster = frame?.querySelector<HTMLElement>(".canvas-poster")?.firstElementChild;
       const style = getComputedStyle(poster ?? canvas);
       const font = `${style.fontWeight} ${parseFloat(style.fontSize) * dpr}px ${style.fontFamily}`;
       const color = style.color.match(/[\d.]+/g)?.map(Number);
       gl.useProgram(program);
       gl.uniform3f(gl.getUniformLocation(program, "ink"), (color?.[0] ?? 144) / 255, (color?.[1] ?? 92) / 255, (color?.[2] ?? 255) / 255);
-      const ownPoster = kind === "portrait" || kind === "experience" ? canvas.parentElement?.querySelector(".canvas-poster svg") : null;
+      const ownPoster = kind === "portrait" || kind === "experience" ? frame?.querySelector(".canvas-poster svg") : null;
       if (ownPoster) {
         const image = new Image();
         image.onload = () => {
@@ -307,7 +316,7 @@ export function OriginalCanvas({ kind, label, onReady }: { kind: CanvasKind; lab
       }
     };
     updateArtwork.current = rebuild;
-    const parent = kind === "portrait" ? canvas.closest<HTMLElement>("[data-section]") : canvas.parentElement;
+    const parent = kind === "portrait" ? canvas.closest<HTMLElement>("[data-section]") : frame;
     const pointer = (event: PointerEvent) => {
       if (!window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 1025px)").matches) return;
       const bounds = canvas.getBoundingClientRect();
@@ -391,10 +400,8 @@ export function OriginalCanvas({ kind, label, onReady }: { kind: CanvasKind; lab
       parent?.removeEventListener("pointerleave", leave);
       canvas.removeEventListener("webglcontextlost", lost);
       dispose();
-      // Release allocations explicitly. Forcing context loss here would also
-      // invalidate the canvas React reuses during its development effect check.
     };
   }, [kind, onReady]);
 
-  return <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" />;
+  return <div ref={hostRef} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" />;
 }

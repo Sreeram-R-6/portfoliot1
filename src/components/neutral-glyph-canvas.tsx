@@ -57,12 +57,16 @@ void main() {
 
 /** Original geometry and GLSL; visual shader math remains APPROXIMATED. */
 export function NeutralGlyphCanvas({ onReady }: { onReady: (value: boolean) => void }) {
-  const ref = useRef<HTMLCanvasElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const canvas = ref.current;
-    if (!canvas) return;
+    const host = ref.current;
+    if (!host) return;
+    const canvas = document.createElement("canvas");
+    canvas.className = "pointer-events-none absolute inset-0 h-full w-full";
+    canvas.setAttribute("aria-hidden", "true");
+    host.appendChild(canvas);
     const context = canvas.getContext("webgl2", { alpha: true, premultipliedAlpha: false, antialias: true });
-    if (!context) return;
+    if (!context) { canvas.remove(); onReady(false); return; }
     const renderer = new WebGLRenderer({ canvas, context, alpha: true, premultipliedAlpha: false, antialias: true });
     renderer.outputColorSpace = SRGBColorSpace;
     renderer.setClearColor(0, 0);
@@ -124,7 +128,8 @@ export function NeutralGlyphCanvas({ onReady }: { onReady: (value: boolean) => v
     return () => {
       mounted = false; stopFrame(); stopInfo(); observer.disconnect(); canvas.removeEventListener("webglcontextlost", lost);
       scene.clear(); post.clear(); geometry.dispose(); material.dispose(); quadGeometry.dispose(); quadMaterial.dispose(); target.dispose(); renderer.dispose();
+      renderer.forceContextLoss(); canvas.remove();
     };
   }, [onReady]);
-  return <canvas ref={ref} aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" />;
+  return <div ref={ref} aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" />;
 }

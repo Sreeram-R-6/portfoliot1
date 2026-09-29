@@ -176,7 +176,7 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
       const motion = gsap.to(state, {
         progress: 1, ease: "none", onUpdate: update,
         scrollTrigger: {
-          id: "project-showcase", trigger: section, pin: true,
+          id: "project-showcase", trigger: section, pin: true, refreshPriority: 50,
           scroller: document.getElementById("scroll-container") || undefined,
           start: () => `top ${parseFloat(getComputedStyle(section).getPropertyValue("--nav-height")) || 76}px`,
           end: () => `+=${distances.total}`, scrub: 1, invalidateOnRefresh: true,

@@ -15,7 +15,7 @@ export function StatisticsMotion() {
     const media = gsap.matchMedia();
     media.add("(prefers-reduced-motion: no-preference)", () => {
       stage.dataset.motion = "active";
-      const timeline = gsap.timeline({ scrollTrigger: { id: "statistics-entry", trigger: stage, scroller, start: "top 75%", once: true } });
+      const timeline = gsap.timeline({ scrollTrigger: { id: "statistics-entry", trigger: stage, scroller, refreshPriority: 75, start: "top 75%", once: true } });
       const counts: HTMLElement[] = [];
       [...stage.querySelectorAll<HTMLElement>("[data-stat-box]")].forEach((box, index) => {
         const start = index * .16;

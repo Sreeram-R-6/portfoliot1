@@ -60,7 +60,7 @@ export function FooterMotion({ children }: { children: ReactNode }) {
       if (footer.offsetHeight > innerHeight - (scroller.querySelector("nav")?.offsetHeight ?? 76)) return;
       dock.dataset.motion = "docked";
       ScrollTrigger.create({
-        id: "footer-sink", scroller, scrub: true, invalidateOnRefresh: true,
+        id: "footer-sink", scroller, scrub: true, invalidateOnRefresh: true, refreshPriority: -100,
         start: () => ScrollTrigger.maxScroll(scroller) - footer.offsetHeight,
         end: () => ScrollTrigger.maxScroll(scroller),
         onUpdate: (self) => { gsap.set(footer, { y: 64 * (1 - self.progress) }); },

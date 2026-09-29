@@ -40,7 +40,7 @@ export function HeroMotion({ children }: { children: ReactNode }) {
         manifesto.querySelector<HTMLElement>("[data-pixel-reveal]")?.dispatchEvent(new CustomEvent("portfolio:reveal", { detail: { progress: reveal } }));
       };
       const trigger = ScrollTrigger.create({
-        id: "portfolio-hero", trigger: hero, scroller,
+        id: "portfolio-hero", trigger: hero, scroller, refreshPriority: 100,
         start: () => `top ${scroller.querySelector("nav")?.offsetHeight ?? 76}px`,
         end: () => `+=${4.5 * innerHeight}`, pin: true, scrub: true,
         onUpdate: (self) => apply(self.progress), onRefresh: (self) => apply(self.progress),
@@ -149,7 +149,7 @@ export function HeroMotion({ children }: { children: ReactNode }) {
         stats?.dispatchEvent(new CustomEvent("portfolio:column", { detail: { progress: clamp((reveal - .5) * 2), reveal } }));
       };
       const trigger = ScrollTrigger.create({
-        id: "portfolio-hero", trigger: hero, scroller,
+        id: "portfolio-hero", trigger: hero, scroller, refreshPriority: 100,
         start: () => `top ${scroller.querySelector("nav")?.offsetHeight ?? 76}px`,
         end: () => `+=${4.5 * innerHeight}`, pin: true, scrub: true,
         onUpdate: (self) => apply(self.progress), onRefresh: (self) => apply(self.progress),
@@ -164,6 +164,9 @@ export function HeroMotion({ children }: { children: ReactNode }) {
         delete hero.dataset.motion; delete hero.dataset.motionProgress; delete hero.dataset.revealProgress;
       };
     });
+    // Readiness creates this upstream pin after the other scene effects. Recompute
+    // downstream offsets with its spacing included before accepting scroll input.
+    ScrollTrigger.refresh();
     return () => { media.revert(); entrance.revert(); };
     });
   }, []);

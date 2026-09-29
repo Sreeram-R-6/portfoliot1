@@ -48,3 +48,7 @@ Severity: P0 broken, P1 visibly different, P2 polish. OPEN is not fixed. A passe
 - Only the upstream Three.Clock deprecation is excluded from app console checks. The documented next start/standalone CLI warning is separate from browser console output.
 - Final six-width fixture, navigation and Lighthouse results are recorded in QA.md. Historical QA claims have been replaced, not inherited as current proof.
 - Still UNVERIFIED: seven section-relative positions in every section/state; complete hover/focus/transition timestamp matrix; original loader completion and orientation selector identification; WebGL context-loss recovery and texture DPR; exact original route/restoration comparisons; and the complete final regression sweep. All twenty recorded bugs have scoped fixes; full requested completion remains UNVERIFIED.
+
+## User stop checkpoint
+
+Stopped further testing at the user's request. Recorded bugs: P0 2, P1 15, P2 3; fixed 20, intentional bug IDs 0, open recorded IDs none. Outstanding comparisons remain UNVERIFIED and may expose additional bugs. Serial development content 60, work 36, navigation 18 and lifetime on both builds pass. The production content repeat passed ten cases through 1440px and was stopped before 1920px. Latest Lighthouse 90 Performance / 100 Accessibility predates B016; no new score run or deployment.

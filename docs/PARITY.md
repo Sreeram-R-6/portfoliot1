@@ -1,6 +1,6 @@
 # Parity status - 2026-09-29
 
-This report replaces every prior MATCHED claim. A label applies only to the measured property named in its row, not to the whole section. The audit is **incomplete**: the outstanding sweep below is UNVERIFIED. B016 now has bounded local page-node/listener evidence. See [BUGS.md](BUGS.md) for baseline values, repro steps and per-fix evidence.
+Verification stopped at the user's request. This report replaces every prior MATCHED claim. A label applies only to the measured property named in its row, not to the whole section. The audit is **incomplete**: the outstanding sweep below is UNVERIFIED. B016 now has bounded local page-node/listener evidence. See [BUGS.md](BUGS.md) for baseline values, repro steps and per-fix evidence.
 
 Evidence is local-only under `docs/recon/compare/` (gitignored). Reference and local pages used 1440x900, 1280x720, 768x1024 and 390x844. Tolerances: positions within 2 CSS px, sampled transition durations within 50 ms, matching text/background colors in sRGB. Supplied text, numbers, counts and optional data determine intrinsic heights.
 
@@ -30,3 +30,5 @@ Evidence is local-only under `docs/recon/compare/` (gitignored). Reference and l
 Seven optimized licensed placeholder WebPs and installed Lucide icons are inventoried in [ASSETS.md](ASSETS.md). Image replacement labels appear in the development editor. Reference assets are ignored, blocked by build/pre-commit checks, and never imported by shipped code. No original-site assets were downloaded.
 
 The remaining sweep is not waived: seven section-relative positions in every section/state; complete original loader/orientation identification; all interaction and transition timestamp comparisons; WebGL DPR/context-loss recovery; and the complete final regression sweep. The twenty recorded bugs have scoped fixes; the complete requested audit gate has **not** passed.
+
+Checkpoint: all twenty recorded bugs have scoped fixes, with no open recorded bug IDs. This does not establish that the uncompleted comparison matrix contains no additional bugs. Latest completed Lighthouse was 90 Performance / 100 Accessibility before B016; current-build Lighthouse and the production 1920px repeat remain UNVERIFIED. No deployment.

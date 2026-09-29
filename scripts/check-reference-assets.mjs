@@ -27,6 +27,16 @@ for (const path of files("src")) {
     violations.push(`Reference used by source: ${relative(".", path)}`);
   }
 }
+// Public files ship even before they are staged; source assets may be imported
+// under a renamed path. Check both trees rather than trusting index membership.
+if (references.size) {
+  for (const path of [...files("src"), ...files("public")]) {
+    const normalized = path.replaceAll("\\", "/");
+    if (!normalized.startsWith("public/_reference/") && references.has(hash(readFileSync(path)))) {
+      violations.push(`Reference hash in build input: ${normalized}`);
+    }
+  }
+}
 if (violations.length) {
   console.error(violations.join("\n"));
   process.exit(1);

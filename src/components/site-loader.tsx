@@ -85,11 +85,13 @@ export function SiteLoader({ label = "Loading", contentSelector = "#scroll-conta
     addTask(new Promise<void>((resolve) => {
       readinessFrame = requestAnimationFrame(() => {
         const renderers = [...document.querySelectorAll<HTMLElement>('[data-canvas-kind][data-render-mode="gpu"]')].filter(visible);
+        const motion = [...document.querySelectorAll<HTMLElement>('[data-motion-ready="false"]')].filter(visible);
         const check = () => {
-          if (renderers.every((renderer) => renderer.dataset.renderMode !== "gpu" || renderer.dataset.canvasReady === "true")) resolve();
+          if (motion.every((scene) => scene.dataset.motionReady === "true") && renderers.every((renderer) => renderer.dataset.renderMode !== "gpu" || renderer.dataset.canvasReady === "true")) resolve();
         };
         observer = new MutationObserver(check);
         renderers.forEach((renderer) => observer?.observe(renderer, { attributes: true, attributeFilter: ["data-canvas-ready", "data-render-mode"] }));
+        motion.forEach((scene) => observer?.observe(scene, { attributes: true, attributeFilter: ["data-motion-ready"] }));
         check();
       });
     }));

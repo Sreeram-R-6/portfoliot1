@@ -568,7 +568,7 @@
         "title": "Thuzhayan",
         "description": "AI-instrumented Vallamkali telemetry system developed for the Google Physical AI Hackathon Kochi Onam Edition 2026. Focused on real-time race telemetry and physical-AI-assisted analysis.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/boat.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -576,7 +576,7 @@
         "title": "NIDAR Dual-Drone Disaster Rescue System",
         "description": "Autonomous disaster-response architecture using a scout quadcopter and delivery hexacopter. Designed for large-area survivor search, real-time video, survivor geotagging, speaker communication, obstacle avoidance and precision delivery of survival kits. The onboard stack used Jetson Nano, ROS 2, MAVROS and ArduPilot.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/drone.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -584,7 +584,7 @@
         "title": "Agricultural Disaster Intelligence Drone",
         "description": "Agriculture-focused drone system covering four operating states: no-threat crop monitoring, pre-disaster prediction and preparedness, on-disaster rapid mapping, and post-disaster recovery assessment. Designed around aerial scouting, geofencing, GPS, camera data, AI-assisted prediction, crop-health monitoring and pre/post comparison.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/drone.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -592,7 +592,7 @@
         "title": "FLT4m Solar UAV Research",
         "description": "Research-oriented long-endurance UAV project for Kerala coastal operations using a 4 m biplane configuration, NACA 4412 wing profile, dual motors, Pixhawk autopilot, LoRa/telemetry and weather-routing research using IVT and ERA5/GFS data.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/drone.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -600,7 +600,7 @@
         "title": "ESP32 Weather Station",
         "description": "ESP32-based environmental monitoring platform using BME680/BME690 sensing, non-blocking firmware, filtering, gas-baseline storage, heuristic IAQ estimation, Wi-Fi state management and Firestore-backed data publishing.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/weather.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -608,7 +608,7 @@
         "title": "MedChainX",
         "description": "Electronic medical record platform with patient create/read/update flows and time-limited doctor access tokens. Later simplified to a local JSON-backed implementation for rapid prototyping.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/radiograph.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -616,7 +616,7 @@
         "title": "AquaChain",
         "description": "Fisheries permit and traceability platform featuring zone/GPS context, QR-based public verification and regulator audit workflows.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/fish.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -624,7 +624,7 @@
         "title": "Smart Helmet Accident Detection",
         "description": "ESP32-based safety system using MPU6050 and GPS data to detect crash-like events such as inversion, rapid deceleration and free-fall, with server-side accident handling.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/board.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -632,7 +632,7 @@
         "title": "SIH UFDR Forensics Platform",
         "description": "Digital-forensics project exploring UFDR ingestion, natural-language querying and investigative workflows, with Autopsy integration and containerized tooling experiments.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/code.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -640,7 +640,7 @@
         "title": "CCE Judge",
         "description": "Competitive programming and online judge platform for coding practice and evaluation.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/code.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -648,7 +648,7 @@
         "title": "Autonomous Drone GCS",
         "description": "A simplified ground-control-station concept for autonomous mission planning and execution, designed to expose the essential workflows of Mission Planner in a cleaner custom interface.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/code.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -656,7 +656,7 @@
         "title": "Thuzhayan",
         "description": "AI-instrumented Vallamkali telemetry system developed for the Google Physical AI Hackathon Kochi Onam Edition 2026. Focused on real-time race telemetry and physical-AI-assisted analysis.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/boat.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -664,7 +664,7 @@
         "title": "NIDAR Dual-Drone Disaster Rescue System",
         "description": "Autonomous disaster-response architecture using a scout quadcopter and delivery hexacopter. Designed for large-area survivor search, real-time video, survivor geotagging, speaker communication, obstacle avoidance and precision delivery of survival kits. The onboard stack used Jetson Nano, ROS 2, MAVROS and ArduPilot.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/drone.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -672,7 +672,7 @@
         "title": "Agricultural Disaster Intelligence Drone",
         "description": "Agriculture-focused drone system covering four operating states: no-threat crop monitoring, pre-disaster prediction and preparedness, on-disaster rapid mapping, and post-disaster recovery assessment. Designed around aerial scouting, geofencing, GPS, camera data, AI-assisted prediction, crop-health monitoring and pre/post comparison.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/drone.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -680,7 +680,7 @@
         "title": "FLT4m Solar UAV Research",
         "description": "Research-oriented long-endurance UAV project for Kerala coastal operations using a 4 m biplane configuration, NACA 4412 wing profile, dual motors, Pixhawk autopilot, LoRa/telemetry and weather-routing research using IVT and ERA5/GFS data.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/drone.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -688,7 +688,7 @@
         "title": "ESP32 Weather Station",
         "description": "ESP32-based environmental monitoring platform using BME680/BME690 sensing, non-blocking firmware, filtering, gas-baseline storage, heuristic IAQ estimation, Wi-Fi state management and Firestore-backed data publishing.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/weather.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -696,7 +696,7 @@
         "title": "MedChainX",
         "description": "Electronic medical record platform with patient create/read/update flows and time-limited doctor access tokens. Later simplified to a local JSON-backed implementation for rapid prototyping.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/radiograph.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -704,7 +704,7 @@
         "title": "AquaChain",
         "description": "Fisheries permit and traceability platform featuring zone/GPS context, QR-based public verification and regulator audit workflows.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/fish.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -712,7 +712,7 @@
         "title": "Smart Helmet Accident Detection",
         "description": "ESP32-based safety system using MPU6050 and GPS data to detect crash-like events such as inversion, rapid deceleration and free-fall, with server-side accident handling.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/board.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -720,7 +720,7 @@
         "title": "SIH UFDR Forensics Platform",
         "description": "Digital-forensics project exploring UFDR ingestion, natural-language querying and investigative workflows, with Autopsy integration and containerized tooling experiments.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/code.webp",
         "todo": "TODO: add project link and own project image"
       }
     ],

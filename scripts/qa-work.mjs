@@ -7,7 +7,7 @@ const browser = await chromium.launch({ channel: "chrome", headless: true });
 const results = [];
 try {
   for (const path of ["/work", "/work/thuzhayan", "/work/drone-gcs", "/qa-stress/maximum?view=work", "/qa-stress/maximum?view=detail", "/qa-stress/empty?view=work"])
-    for (const width of [320, 375, 768, 1440, 1920]) {
+    for (const width of [320, 375, 768, 1280, 1440, 1920]) {
       const context = await browser.newContext({ viewport: { width, height: 900 } });
       const page = await context.newPage();
       const errors = [];
@@ -18,6 +18,7 @@ try {
       const response = await page.goto(base + path);
       assert.equal(response.status(), 200);
       await page.locator(".site-loader").waitFor({ state: "hidden" });
+      await page.keyboard.press("Tab");
       await page.evaluate(() => document.fonts.ready);
       for (const landmark of [".work-main", "[data-section=footer]"]) {
         await page.locator(landmark).evaluate((element) => {

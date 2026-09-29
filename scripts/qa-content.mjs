@@ -5,9 +5,9 @@ import sharp from "sharp";
 
 const base = process.env.QA_URL || "http://localhost:3000";
 const output = ".cache/qa/content";
-const widths = [320, 375, 768, 1440, 1920];
+const widths = [320, 375, 768, 1280, 1440, 1920];
 const sections = ["header-navigation", "identity", "manifesto", "statistics", "projects", "experience", "footer"];
-const cases = [["real", "/", 11], ["maximum", "/qa-stress/maximum", 20], ["twenty", "/qa-stress/twenty", 20], ["three", "/qa-stress/three", 3], ["empty", "/qa-stress/empty", 0]];
+const cases = [["real", "/", 11], ["maximum", "/qa-stress/maximum", 20], ["twenty", "/qa-stress/twenty", 20], ["three", "/qa-stress/three", 3], ["empty", "/qa-stress/empty", 0]].filter(([name]) => !process.env.QA_CASE || process.env.QA_CASE === name);
 const source = await readFile("src/content/site.json", "utf8");
 await mkdir(output, { recursive: true });
 const results = [];
@@ -25,7 +25,40 @@ try {
     await page.evaluate(() => document.fonts.ready);
     await page.locator(".site-loader").waitFor({ state: "hidden" });
     await page.waitForTimeout(1100);
+    // Start the interaction sweep with a real user input. Programmatic focusing
+    // before any input keeps the LCP observer open while below-fold images enter.
+    await page.keyboard.press("Tab");
     assert.equal(await page.locator("[data-project-card]").count(), count);
+    const pin = await page.evaluate(() => window.__portfolioMotion?.read().triggers.find((entry) => entry.id === "project-showcase"));
+    const pinChecks = [];
+    if (pin) {
+      for (const fraction of [.1, .25, .5, .75, .9]) {
+        await page.evaluate((top) => document.getElementById("scroll-container").dispatchEvent(new CustomEvent("portfolio:scrollto", { detail: { top } })), pin.start + (pin.end - pin.start) * fraction);
+        await page.waitForTimeout(1200);
+        const position = await page.evaluate(() => ({ top: document.querySelector('[data-section="projects"]').getBoundingClientRect().top, nav: document.querySelector("nav").offsetHeight }));
+        assert.ok(Math.abs(position.top - position.nav) <= 2, `${name}/${width}: pin detached at ${fraction}`);
+        pinChecks.push({ fraction, ...position });
+      }
+    }
+    if (count) {
+      if (pin) {
+        // Re-enter the visible pin before testing keyboard navigation. The exit
+        // mask intentionally hides the whole scene, so native focus skips it.
+        await page.evaluate((top) => document.getElementById("scroll-container").dispatchEvent(new CustomEvent("portfolio:scrollto", { detail: { top } })), pin.start + (pin.end - pin.start) * .1);
+        await page.waitForTimeout(1200);
+      }
+      const last = page.locator("[data-project-thumb]").last();
+      await last.focus();
+      await page.waitForTimeout(1200);
+      const box = await last.boundingBox();
+      assert.ok(box && box.x >= -2 && box.x + box.width <= width + 2 && box.y >= -2 && box.y + box.height <= 902, `${name}/${width}: last project unreachable`);
+      if (pin) {
+        await page.evaluate((top) => document.getElementById("scroll-container").dispatchEvent(new CustomEvent("portfolio:scrollto", { detail: { top } })), pin.end + 200);
+        await page.waitForTimeout(1200);
+        const top = await page.locator('[data-section="projects"]').evaluate((element) => element.getBoundingClientRect().top);
+        assert.ok(top < -100, `${name}/${width}: pin failed to release`);
+      }
+    }
     const measurements = [];
     for (const section of sections) {
       await page.evaluate((name) => {
@@ -102,7 +135,7 @@ try {
     const rail = await page.locator('[data-section="projects"]').evaluate((element) => ({ layout: element.dataset.projectLayout || "grid", width: element.querySelector("[data-project-track]").offsetWidth, trigger: window.__portfolioMotion?.read().triggers.find((entry) => entry.id === "project-showcase") }));
     if (["real", "twenty", "three"].includes(name) && width >= 1440 && reducedMotion === "no-preference") assert.equal(rail.layout, "horizontal", "Regular-length content should retain the horizontal pin");
     assert.deepEqual(messages, [], `${name}/${width}/${reducedMotion}: console output`);
-    results.push({ name, width, reducedMotion, rail, sections: measurements.length, consoleMessages: messages.length });
+    results.push({ name, width, reducedMotion, rail, pinChecks, sections: measurements.length, consoleMessages: messages.length });
     await writeFile(`${output}/results.json`, `${JSON.stringify(results, null, 2)}\n`);
     console.log(`PASS ${name} ${width} ${reducedMotion}: ${count} projects; ${rail.layout}`);
     await context.close();
@@ -117,11 +150,11 @@ try {
   await context.close();
   assert.equal(await readFile("src/content/site.json", "utf8"), source, "Source content changed");
   await writeFile(`${output}/results.json`, `${JSON.stringify(results, null, 2)}\n`);
-  for (const section of sections) {
+  if (!process.env.QA_CASE) for (const section of sections) {
     const panels = await Promise.all(widths.map(async (width, index) => ({ input: await sharp(`${output}/${section}-${width}.png`).resize({ width: 320, height: 900, fit: "contain", background: "#222" }).toBuffer(), left: index * 320, top: 0 })));
-    await sharp({ create: { width: 1600, height: 900, channels: 3, background: "#222" } }).composite(panels).png().toFile(`${output}/${section}-review.png`);
+    await sharp({ create: { width: widths.length * 320, height: 900, channels: 3, background: "#222" } }).composite(panels).png().toFile(`${output}/${section}-review.png`);
   }
-  console.log(`PASS ${results.length} page configurations; 35 section crops; low-power fallback; source unchanged`);
+  console.log(`PASS ${results.length} page configurations; ${sections.length * widths.length} section crops; low-power fallback; source unchanged`);
 } finally {
   await browser.close();
 }

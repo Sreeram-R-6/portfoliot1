@@ -26,7 +26,7 @@ maximum.footer.links[0].label = repeated.repeat(3);
 maximum.navigation.home.label = repeated;
 maximum.navigation.links[0].label = repeated;
 const twenty = copy();
-twenty.projects = Array.from({ length: 20 }, (_, index) => ({ ...original.projects[index % original.projects.length], id: `fixture-project-${index}`, image: null }));
+twenty.projects = Array.from({ length: 20 }, (_, index) => ({ ...original.projects[index % original.projects.length], id: `fixture-project-${index}` }));
 const three = copy(); three.projects = three.projects.slice(0, 3);
 const empty = copy(); empty.projects = []; empty.sections.experience.entries = []; empty.sections.statistics.counters = []; empty.sections.statistics.tools = [];
 await mkdir("src/content/__fixtures__", { recursive: true });

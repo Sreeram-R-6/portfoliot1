@@ -51,6 +51,7 @@ next-env.d.ts
 temp/
 docs/recon/
 public/_original/
+public/_reference/
 .playwright-mcp/
 docs/assets/
 docs/design-references/

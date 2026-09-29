@@ -386,7 +386,8 @@
           "label": "LinkedIn — srr06",
           "href": "https://www.linkedin.com/in/srr06"
         }
-      ]
+      ],
+      "credits": "Placeholder photography: Pexels contributors and Mikael Haggstrom (CC0)."
     }
   },
   "twenty": {
@@ -756,7 +757,8 @@
           "label": "LinkedIn — srr06",
           "href": "https://www.linkedin.com/in/srr06"
         }
-      ]
+      ],
+      "credits": "Placeholder photography: Pexels contributors and Mikael Haggstrom (CC0)."
     }
   },
   "three": {
@@ -937,7 +939,7 @@
         "title": "Thuzhayan",
         "description": "AI-instrumented Vallamkali telemetry system developed for the Google Physical AI Hackathon Kochi Onam Edition 2026. Focused on real-time race telemetry and physical-AI-assisted analysis.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/boat.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -945,7 +947,7 @@
         "title": "NIDAR Dual-Drone Disaster Rescue System",
         "description": "Autonomous disaster-response architecture using a scout quadcopter and delivery hexacopter. Designed for large-area survivor search, real-time video, survivor geotagging, speaker communication, obstacle avoidance and precision delivery of survival kits. The onboard stack used Jetson Nano, ROS 2, MAVROS and ArduPilot.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/drone.webp",
         "todo": "TODO: add project link and own project image"
       },
       {
@@ -953,7 +955,7 @@
         "title": "Agricultural Disaster Intelligence Drone",
         "description": "Agriculture-focused drone system covering four operating states: no-threat crop monitoring, pre-disaster prediction and preparedness, on-disaster rapid mapping, and post-disaster recovery assessment. Designed around aerial scouting, geofencing, GPS, camera data, AI-assisted prediction, crop-health monitoring and pre/post comparison.",
         "href": "#contact",
-        "image": null,
+        "image": "/images/placeholders/drone.webp",
         "todo": "TODO: add project link and own project image"
       }
     ],
@@ -990,7 +992,8 @@
           "label": "LinkedIn — srr06",
           "href": "https://www.linkedin.com/in/srr06"
         }
-      ]
+      ],
+      "credits": "Placeholder photography: Pexels contributors and Mikael Haggstrom (CC0)."
     }
   },
   "empty": {
@@ -1152,7 +1155,8 @@
           "label": "LinkedIn — srr06",
           "href": "https://www.linkedin.com/in/srr06"
         }
-      ]
+      ],
+      "credits": "Placeholder photography: Pexels contributors and Mikael Haggstrom (CC0)."
     }
   }
 }

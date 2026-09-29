@@ -176,7 +176,7 @@ function ProjectPlanes({ canvas, section, onReady }: { canvas: HTMLCanvasElement
       const image = new Image();
       await new Promise<void>((resolve, reject) => {
         image.onload = () => resolve(); image.onerror = () => reject(new Error("Original poster could not be rasterized"));
-        if (uploaded) { image.crossOrigin = "anonymous"; image.src = uploaded.src; }
+        if (uploaded) { image.crossOrigin = "anonymous"; image.src = uploaded.currentSrc || uploaded.src; }
         else image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(new XMLSerializer().serializeToString(svg!))}`;
       });
       const art = document.createElement("canvas");

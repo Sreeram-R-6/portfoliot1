@@ -93,3 +93,8 @@ With the dev server running, `node scripts/qa-content.mjs` checks real content a
 `src/content/__fixtures__/stress.json` is separate synthetic QA data; `node scripts/content-fixtures.mjs` regenerates it from the current schema without writing `site.json`. Fixture routes return 404 in production, have noindex headers, are excluded from the sitemap and are disallowed by robots. Fixture JSON is excluded from standalone output and is not imported into public bundles.
 
 `node scripts/qa-work.mjs` checks public index/detail routes and maximum/empty fixtures at the same five widths. Fixture views use `?view=work` or `?view=detail`. Reports stay in `.cache/qa/work/`. Behavioral audit and deliberate differences are recorded in [docs/PARITY.md](docs/PARITY.md).
+# Placeholder credits
+
+Project images are illustrative placeholders from Pexels contributors and Mikael Haggstrom (CC0). Sources, authors, licenses and attribution requirements are recorded in [docs/ASSETS.md](docs/ASSETS.md). Replace them with your own in the development-only `/details` editor.
+
+Enable the reference-asset pre-commit guard after cloning: `git config core.hooksPath .githooks`. The production build always runs the same guard.

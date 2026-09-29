@@ -1,4 +1,5 @@
 "use client";
+import { ProjectImage } from "./project-image";
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -307,17 +308,14 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
               {hasCaseStudy(project) ? <Link href={`/work/${project.id}`} className={styles.thumb} aria-labelledby={`${project.id}-title`} aria-describedby={`${project.id}-description`} data-project-thumb>
                 <div className={styles.frame}>
                   {project.image && !/^TODO\b/i.test(project.image) ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img data-project-image className={styles.poster} src={project.image} alt="" />
+                    <ProjectImage className={styles.poster} src={project.image} alt="" />
                   ) : <ProjectPoster id={project.id} />}
                 </div>
                 <span className={styles.tag}>{content.cardTag}</span>
               </Link> : <button type="button" className={styles.thumb} onClick={(event) => showDetails(project, event.currentTarget)} aria-haspopup="dialog" aria-labelledby={`${project.id}-title`} aria-describedby={`${project.id}-description`} data-project-thumb>
                 <div className={styles.frame}>
                   {project.image && !/^TODO\b/i.test(project.image) ? (
-                    // Native images also feed the existing canvas texture loader.
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img data-project-image className={styles.poster} src={project.image} alt="" />
+                    <ProjectImage className={styles.poster} src={project.image} alt="" />
                   ) : <ProjectPoster id={project.id} />}
                 </div>
                 <span className={styles.tag}>{content.cardTag}</span>

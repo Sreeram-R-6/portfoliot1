@@ -103,6 +103,7 @@ function ContentField({ value, path, errors, change }: FieldProps) {
       {(kind === "image" || kind === "cv" || kind === "audio") && <>
         <label className="details-upload">Upload {kind === "cv" ? "PDF CV" : kind === "audio" ? "audio" : "image"} (max 5 MB)<input type="file" aria-label={`Upload ${path}`} accept={kind === "cv" ? ".pdf,application/pdf" : kind === "audio" ? ".mp3,.ogg,.wav" : ".png,.jpg,.jpeg,.webp,.svg"} onChange={upload} /></label>
         <p role="status">{uploadStatus}</p>
+        {kind === "image" && typeof value === "string" && value.startsWith("/images/placeholders/") && <p>placeholder: replace with my own</p>}
         {kind === "image" && typeof value === "string" && !todo && !messages.length && (
           // Native image previews accept newly uploaded SVGs without an optimization service.
           // eslint-disable-next-line @next/next/no-img-element

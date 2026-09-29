@@ -48,6 +48,7 @@ export function ContactFooter({ site = siteContent }: { site?: PublicSiteContent
         </DecorativeCanvas>
         <span className="sr-only">{site.name}</span>
       </div>
+      {footer.credits && <p className="footer-credits">{footer.credits}</p>}
     </footer>
   );
 }

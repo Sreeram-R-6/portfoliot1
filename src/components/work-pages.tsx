@@ -1,4 +1,5 @@
 "use client";
+import { ProjectImage } from "./project-image";
 
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -23,12 +24,10 @@ function WorkChrome({ site, children }: { site: PublicSiteContent; children: Rea
   </SmoothScrollProvider>;
 }
 
-function Artwork({ project, image = project.image }: { project: Project; image?: string | null }) {
+function Artwork({ project, image = project.image, eager = false }: { project: Project; image?: string | null; eager?: boolean }) {
   return <div className="work-artwork">
     {meaningful(image) ? (
-      // User-supplied files are also supported without requiring remote image config.
-      // eslint-disable-next-line @next/next/no-img-element
-      <img src={image} alt={project.title} loading="lazy" decoding="async" />
+      <ProjectImage src={image} alt={project.title} eager={eager} />
     ) : <ProjectPoster id={project.id} />}
   </div>;
 }
@@ -44,9 +43,9 @@ export function WorkIndex({ site }: { site: PublicSiteContent }) {
         <span className="work-count" aria-label={`${section.title}: ${site.projects.length}`}>{String(site.projects.length).padStart(2, "0")}</span>
       </header>
       <div className="work-grid">
-        {site.projects.map((project) => <article key={project.id} className="work-card">
+        {site.projects.map((project, index) => <article key={project.id} className="work-card">
           <Link className="work-card-art" href={`/work/${encodeURIComponent(project.id)}`} scroll={false} aria-labelledby={`work-${project.id}-title`}>
-            <Artwork project={project} />
+            <Artwork project={project} eager={index === 0} />
             <span className="work-card-tag">{section.cardTag}</span>
           </Link>
           <h2 id={`work-${project.id}-title`}><Link href={`/work/${encodeURIComponent(project.id)}`} scroll={false}>{project.title}</Link></h2>
@@ -74,7 +73,7 @@ export function WorkDetail({ site, project }: { site: PublicSiteContent; project
         </dl>}
         {!!tags.length && <ul className="work-tags" aria-label={`${project.title} tags`}>{tags.map((tag, index) => <li key={`${index}-${tag}`}>{tag}</li>)}</ul>}
       </header>
-      <Artwork project={project} />
+      <Artwork project={project} eager />
       <div className="work-description"><p className="work-copy">{project.description}</p>
         {paragraphs.map((paragraph, index) => <p className="work-copy" key={index}>{paragraph}</p>)}
         {/^https?:\/\//i.test(project.href) && <a className="work-link" href={project.href} target="_blank" rel="noopener noreferrer">{site.sections.projects.viewLabel}<span aria-hidden="true">↗</span></a>}

@@ -149,12 +149,12 @@ export function HeaderNavigation({ site = siteContent }: { site?: PublicSiteCont
         <div className="flex min-h-full flex-col p-6">
           <div className="flex h-10 items-center justify-between">
             <h2 id="navigation-dialog-title" className="font-heading text-xs leading-4 font-normal uppercase tracking-[1.56px]">{navigation.label}</h2>
-            <button type="button" autoFocus onClick={close} className="h-10 px-2 font-heading text-sm leading-5 font-semibold uppercase hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">{navigation.close}</button>
+            <button type="button" autoFocus onClick={close} className="menu-close h-10 px-2 font-heading text-sm leading-5 font-semibold uppercase hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">{navigation.close}</button>
           </div>
           <ul className="mt-[68px] mb-auto flex flex-col pb-12">
             {navigation.routeLinks.map((link, index) => (
               <li key={`${index}-${link.label}`} data-menu-item>
-                <a href={link.href} aria-label={link.label} onClick={close} onPointerEnter={(event) => scramble(event.currentTarget)} onFocus={(event) => scramble(event.currentTarget)} className="menu-surface group flex items-center justify-between px-2 py-3 font-heading text-[40px] leading-[0.86] font-medium uppercase hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:outline-none sm:text-[56px]">
+                <a href={link.href} aria-label={link.label} aria-current={pathname === link.href ? "page" : undefined} onClick={close} onPointerEnter={(event) => scramble(event.currentTarget)} onFocus={(event) => scramble(event.currentTarget)} className="menu-surface group flex items-center justify-between px-2 py-3 font-heading text-[40px] leading-[0.86] font-medium uppercase hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:outline-none sm:text-[56px]">
                   <span data-menu-label={link.label} aria-hidden="true">{[...link.label].map((char, index) => <span key={index} data-menu-char={char}>{char}</span>)}</span><span aria-hidden="true" className="font-mono text-xs tracking-normal">0{index + 1}</span>
                 </a>
               </li>

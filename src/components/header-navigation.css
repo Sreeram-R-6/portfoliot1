@@ -7,6 +7,7 @@
 .navigation-dialog::before { content: ""; position: absolute; inset: .5px; z-index: -1; background: var(--background-bg-1); clip-path: inherit; }
 .navigation-dialog > div { padding: 22.5px; }
 .navigation-dialog [data-menu-item] { position: relative; }
+.navigation-dialog > div > ul { gap: 16px; }
 .navigation-dialog a.menu-surface { width: fit-content; max-width: calc(100% - 36px); padding: 8.5px 12.5px 5px 8px; }
 .navigation-dialog a.menu-surface[aria-current="page"], .navigation-dialog a.menu-surface:hover, .navigation-dialog a.menu-surface:focus-visible { background: var(--background-bg-3); color: var(--text-black); clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%, 0 4px); }
 .menu-close { background: var(--background-bg-hover-green); }

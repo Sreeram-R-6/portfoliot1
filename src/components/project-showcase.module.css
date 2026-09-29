@@ -114,7 +114,7 @@
 .intro { position: relative; inset: auto; width: 100%; pointer-events: auto; }
 .heading, .headingTop { gap: 16px; }
 .heading { max-width: none; }
-.title { font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1.15; letter-spacing: -.025em; }
+.title { font-size: 48px; line-height: .8; letter-spacing: -2px; max-width: 451px; color: #620ecc; }
 .eyebrow { font-size: .75rem; line-height: 1.5; white-space: normal; padding: 7px 9px; }
 .description { font-size: clamp(1rem, 1.1vw, 1.2rem); line-height: 1.6; max-width: 65ch; }
 .ctaWrap { margin-top: 20px; }
@@ -131,6 +131,7 @@
 .diamond, .path { display: none; }
 @media (min-width: 768px) { .track { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1025px) and (prefers-reduced-motion: no-preference) {
+  .title { font-size: 80px; }
   .stage[data-project-layout="horizontal"] { height: calc(100dvh - var(--nav-height)); padding: 32px; }
   .stage[data-project-layout="horizontal"] .track { display: flex; width: max-content; max-width: none; gap: 28px; align-items: flex-start; }
   .stage[data-project-layout="horizontal"] .card { flex: 0 0 clamp(280px, 28vw, 420px); width: clamp(280px, 28vw, 420px); max-width: none; }

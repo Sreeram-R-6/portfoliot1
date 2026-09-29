@@ -1,20 +1,13 @@
+import { CodeXml, Cpu, RadioTower, Globe } from "lucide-react";
 import { siteContent, type PublicSiteContent } from "@/content/site";
 import { DecorativeCanvas } from "./decorative-canvas";
 import styles from "./statistics-tools.module.css";
 import { StatisticsMotion } from "./statistics-motion";
 import { DigitCounter } from "./digit-counter";
 
-function ToolMark({ variant }: { variant: number }) {
-  return (
-    <svg viewBox="0 0 85 85" fill="none" aria-hidden="true" className={styles.toolMark}>
-      <g stroke="currentColor" strokeWidth="5" strokeLinecap="square">
-        {variant === 0 && <><path d="M15 25 42 10 70 25v35L42 75 15 60Z" /><path d="m15 25 27 16 28-16M42 41v34" /></>}
-        {variant === 1 && <><path d="m30 18-21 24 21 25M55 18l21 24-21 25M48 10 37 75" /></>}
-        {variant === 2 && <><rect x="22" y="22" width="41" height="41" /><path d="M32 8v14M53 8v14M32 63v14M53 63v14M8 32h14M8 53h14M63 32h14M63 53h14" /></>}
-        {variant === 3 && <><circle cx="42.5" cy="42.5" r="12" /><circle cx="42.5" cy="42.5" r="31" /><path d="M42.5 3v14M42.5 68v14M3 42.5h14M68 42.5h14" /></>}
-      </g>
-    </svg>
-  );
+function ToolMark({ variant, hover = false }: { variant: number; hover?: boolean }) {
+  const Icon = [CodeXml, Cpu, RadioTower, Globe][variant];
+  return <Icon aria-hidden="true" className={styles.toolMark} strokeWidth={hover ? 2.5 : 1.5} />;
 }
 
 export function StatisticsTools({ site = siteContent }: { site?: PublicSiteContent }) {
@@ -44,7 +37,7 @@ export function StatisticsTools({ site = siteContent }: { site?: PublicSiteConte
               <p className={styles.label} data-stat-label>{tool}</p>
               <span className={styles.toolPair} aria-hidden="true">
                 <span className={styles.toolDefault}><ToolMark variant={index % 4} /></span>
-                <span className={styles.toolHover}><ToolMark variant={(index + 1) % 4} /></span>
+                <span className={styles.toolHover}><ToolMark variant={index % 4} hover /></span>
               </span>
             </div>
           ))}

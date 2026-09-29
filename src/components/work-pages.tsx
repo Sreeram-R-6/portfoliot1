@@ -2,7 +2,7 @@
 import { ProjectImage } from "./project-image";
 
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useSyncExternalStore, type ReactNode } from "react";
 import type { PublicSiteContent } from "@/content/site";
 import { HeaderNavigation } from "./header-navigation";
 import { ContactFooter } from "./contact-footer";
@@ -32,7 +32,20 @@ function Artwork({ project, image = project.image, eager = false }: { project: P
   </div>;
 }
 
+
+function subscribeColumns(notify: () => void) {
+  const queries = [matchMedia("(min-width: 768px)"), matchMedia("(min-width: 1025px)")];
+  queries.forEach((query) => query.addEventListener("change", notify));
+  return () => queries.forEach((query) => query.removeEventListener("change", notify));
+}
+const readColumns = () => matchMedia("(min-width: 1025px)").matches ? 3 : matchMedia("(min-width: 768px)").matches ? 2 : 1;
+const serverColumns = () => 1;
+
 export function WorkIndex({ site }: { site: PublicSiteContent }) {
+  const columns = useSyncExternalStore(subscribeColumns, readColumns, serverColumns);
+  // Repeated cards sharing a first-row asset reuse its one eager request. This
+  // also keeps Next's development LCP registry from reclassifying that URL lazy.
+  const eagerImages = new Set(site.projects.slice(0, columns).map((project) => project.image));
   const section = site.sections.projects;
   return <WorkChrome site={site}>
     <div className="work-index">
@@ -45,7 +58,7 @@ export function WorkIndex({ site }: { site: PublicSiteContent }) {
       <div className="work-grid">
         {site.projects.map((project, index) => <article key={project.id} className="work-card">
           <Link className="work-card-art" href={`/work/${encodeURIComponent(project.id)}`} scroll={false} aria-labelledby={`work-${project.id}-title`}>
-            <Artwork project={project} eager={index === 0} />
+            <Artwork project={project} eager={index < columns || (!!project.image && eagerImages.has(project.image))} />
             <span className="work-card-tag">{section.cardTag}</span>
           </Link>
           <h2 id={`work-${project.id}-title`}><Link href={`/work/${encodeURIComponent(project.id)}`} scroll={false}>{project.title}</Link></h2>

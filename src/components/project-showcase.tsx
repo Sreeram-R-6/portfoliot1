@@ -95,6 +95,21 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
       const available = innerHeight - (document.querySelector("nav")?.offsetHeight ?? 76);
       const required = intro.offsetHeight + Math.max(...cards.map((card) => card.offsetHeight)) + 96;
       if (required > available) { delete section.dataset.projectLayout; return; }
+      const statistics = section.parentElement?.querySelector<HTMLElement>('[data-section="statistics"]');
+      const sharedStage = section.parentElement;
+      const sharedHandoff = statistics && sharedStage?.classList.contains("statistics-projects") && statistics.scrollHeight <= available + 1;
+      const handoff = (event: Event) => {
+        const progress = (event as CustomEvent<{ progress: number }>).detail.progress;
+        sharedStage?.style.setProperty("--handoff-progress", String(progress));
+        section.style.setProperty("--handoff-x", `${Math.round((1 - progress) * innerWidth * 1.34)}px`);
+        if (sharedStage) sharedStage.style.backgroundColor = progress >= 1 ? "var(--background-bg-0)" : "var(--primary-green-neon)";
+      };
+      if (sharedHandoff && sharedStage) {
+        sharedStage.dataset.handoff = "active";
+        sharedStage.style.setProperty("--statistics-height", `${statistics.offsetHeight}px`);
+        section.dataset.handoff = "active";
+        statistics.addEventListener("portfolio:handoff", handoff);
+      }
       const heading = [...intro.querySelectorAll<HTMLElement>("[data-project-scramble]")];
       const originals = heading.map((element) => element.textContent || "");
       const reveal = gsap.timeline({ paused: true });
@@ -171,7 +186,7 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
         const navHeight = parseFloat(getComputedStyle(section).getPropertyValue("--nav-height")) || 76;
         section.style.clipPath = exitProgress > 0 && exitProgress < 1 ? exitMask(exitProgress, innerWidth, innerHeight, navHeight) : "";
         section.style.visibility = exitProgress >= 1 ? "hidden" : "";
-        document.querySelector('[data-section="statistics"]')?.dispatchEvent(new CustomEvent("portfolio:handoff", { detail: { progress: handoff } }));
+        statistics?.dispatchEvent(new CustomEvent("portfolio:handoff", { detail: { progress: handoff } }));
         section.dispatchEvent(new Event("projectmotion"));
         if (handoff >= .3 && !revealed) { revealed = true; reveal.play(0); }
       };
@@ -239,6 +254,15 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
       const exitObserver = new IntersectionObserver(([entry]) => { if (entry.intersectionRatio >= .999) { crossed = true; revealCta(1); } else if (crossed) { crossed = false; revealCta(0); } }, { rootMargin: "0px -25% 0px 0px", threshold: 1 });
       if (ctaLink) { ctaObserver.observe(ctaLink); exitObserver.observe(ctaLink); }
       return () => {
+        if (sharedHandoff && sharedStage) {
+          statistics.removeEventListener("portfolio:handoff", handoff);
+          delete sharedStage.dataset.handoff;
+          sharedStage.style.removeProperty("--handoff-progress");
+          sharedStage.style.removeProperty("--statistics-height");
+          sharedStage.style.removeProperty("background-color");
+          delete section.dataset.handoff;
+          section.style.removeProperty("--handoff-x");
+        }
         ctaObserver.disconnect(); exitObserver.disconnect(); ctaTween?.kill();
         if (cta) cta.textContent = ctaText;
         section.removeEventListener("focusin", focus);

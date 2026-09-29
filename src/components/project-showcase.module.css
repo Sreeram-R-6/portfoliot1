@@ -152,3 +152,14 @@
 .progressLine { flex: 1; min-width: 0; height: 2px; background: rgb(0 0 0 / .2); }
 .progressLine i { display: block; height: 100%; background: var(--text-black); transform: scaleX(var(--track-progress, 0)); transform-origin: left; }
 .stage[data-project-layout="horizontal"] .viewport { overflow: clip; }
+.stage[data-handoff="active"] { background: transparent; isolation: isolate; z-index: 1; margin-top: var(--nav-height); }
+.stage[data-handoff="active"]::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--primary-green-neon); transform: translateX(var(--handoff-x, 134vw)); }
+:global(.statistics-projects[data-handoff="active"]) { position: relative; }
+:global(.statistics-projects[data-handoff="active"] [data-section="statistics"]) {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  margin-top: calc(250px - 100dvh);
+  margin-bottom: calc(-1 * var(--statistics-height));
+  transform: translateX(calc(-134% * var(--handoff-progress, 0)));
+}

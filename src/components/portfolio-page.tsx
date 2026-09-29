@@ -16,8 +16,10 @@ export function PortfolioPage({ site = siteContent }: { site?: PublicSiteContent
     <HeaderNavigation site={site} />
     <main id="main-content" tabIndex={-1}>
       <HeroMotion><IdentityHero site={site} /><ManifestoScene site={site} /></HeroMotion>
-      <StatisticsTools site={site} />
-      <ProjectShowcase site={site} />
+      <div className="statistics-projects">
+        <StatisticsTools site={site} />
+        <ProjectShowcase site={site} />
+      </div>
       <Experience site={site} />
     </main>
     <FooterMotion><ContactFooter site={site} /></FooterMotion>

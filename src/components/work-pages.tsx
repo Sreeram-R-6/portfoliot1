@@ -10,6 +10,11 @@ import { SmoothScrollProvider } from "./smooth-scroll-provider";
 import { ProjectPoster, projectSummary } from "./project-showcase";
 import "./work-pages.css";
 
+// These slot widths follow work-pages.css, including grid gaps and max widths.
+const cardSizes = "(min-width: 1920px) 426px, (min-width: 1025px) calc(24.895vw - 52.56px), (min-width: 768px) calc(50vw - 52px), calc(100vw - 32px)";
+const detailSizes = "(min-width: 1440px) 1376px, (min-width: 768px) calc(100vw - 64px), calc(100vw - 32px)";
+const gallerySizes = "(min-width: 1440px) 676px, (min-width: 768px) calc(50vw - 44px), calc(100vw - 32px)";
+
 type Project = PublicSiteContent["projects"][number];
 function meaningful(value: string | null | undefined): value is string {
   return typeof value === "string" && !!value.trim() && !/^TODO\b/i.test(value.trim());
@@ -24,10 +29,10 @@ function WorkChrome({ site, children }: { site: PublicSiteContent; children: Rea
   </SmoothScrollProvider>;
 }
 
-function Artwork({ project, image = project.image, eager = false }: { project: Project; image?: string | null; eager?: boolean }) {
+function Artwork({ project, image = project.image, eager = false, sizes = cardSizes }: { project: Project; image?: string | null; eager?: boolean; sizes?: string }) {
   return <div className="work-artwork">
     {meaningful(image) ? (
-      <ProjectImage src={image} alt={project.title} eager={eager} />
+      <ProjectImage src={image} alt={project.title} eager={eager} sizes={sizes} />
     ) : <ProjectPoster id={project.id} />}
   </div>;
 }
@@ -86,12 +91,12 @@ export function WorkDetail({ site, project }: { site: PublicSiteContent; project
         </dl>}
         {!!tags.length && <ul className="work-tags" aria-label={`${project.title} tags`}>{tags.map((tag, index) => <li key={`${index}-${tag}`}>{tag}</li>)}</ul>}
       </header>
-      <Artwork project={project} eager />
+      <Artwork project={project} eager sizes={detailSizes} />
       <div className="work-description"><p className="work-copy">{project.description}</p>
         {paragraphs.map((paragraph, index) => <p className="work-copy" key={index}>{paragraph}</p>)}
         {/^https?:\/\//i.test(project.href) && <a className="work-link" href={project.href} target="_blank" rel="noopener noreferrer">{site.sections.projects.viewLabel}<span aria-hidden="true">↗</span></a>}
       </div>
-      {!!gallery.length && <div className="work-gallery" aria-label={`${project.title} gallery`}>{gallery.map((image, index) => <Artwork key={`${index}-${image}`} project={project} image={image} />)}</div>}
+      {!!gallery.length && <div className="work-gallery" aria-label={`${project.title} gallery`}>{gallery.map((image, index) => <Artwork key={`${index}-${image}`} project={project} image={image} sizes={gallerySizes} />)}</div>}
     </article>
   </WorkChrome>;
 }

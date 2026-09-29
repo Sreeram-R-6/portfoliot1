@@ -92,9 +92,29 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
     media.add("(min-width: 1025px) and (prefers-reduced-motion: no-preference)", () => {
       if (!cards.length) return;
       section.dataset.projectLayout = "horizontal";
-      // Pin only when the entire heading and tallest card fit. Long copy uses a grid.
+      // Repeat the measured nine-card composition for any project count.
+      const slots = [
+        [0, 412, 440, 1.3728549142], [451, 15, 440, 1.3814756672],
+        [712, 505, 325, 4 / 3], [1066, 168, 325, 4 / 3],
+        [1492, 301, 440, 4 / 3], [1974, 83, 325, 1.364548495],
+        [2321, 416, 440, 4 / 3], [2686, 0, 440, 4 / 3],
+        [3148, 509, 325, 1.364548495],
+      ];
+      let extent = 0;
+      cards.forEach((card, index) => {
+        const [offset, y, width, ratio] = slots[index % slots.length];
+        const x = offset + Math.floor(index / slots.length) * 3633;
+        card.style.setProperty("--x", String(x));
+        card.style.setProperty("--y", String(y));
+        card.style.setProperty("--w", String(width));
+        card.style.setProperty("--ratio", String(ratio));
+        extent = Math.max(extent, x + width);
+      });
+      track.style.setProperty("--track-width", String(extent));
+      // Pin only if every intrinsic label and the heading fit their frame.
       const available = innerHeight - (document.querySelector("nav")?.offsetHeight ?? 76);
-      const required = intro.offsetHeight + Math.max(...cards.map((card) => card.offsetHeight)) + 96;
+      const required = Math.max(intro.offsetTop + intro.offsetHeight + 32,
+        ...cards.map((card) => track.offsetTop + card.offsetTop + card.offsetHeight + 16));
       if (required > available) { delete section.dataset.projectLayout; return; }
       const statistics = section.parentElement?.querySelector<HTMLElement>('[data-section="statistics"]');
       const sharedStage = section.parentElement;
@@ -208,7 +228,7 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
         reveal.progress(1);
         // Map the untransformed card center directly into the rail phase. Relative
         // DOM bounds would produce the wrong target during its entering/exiting phases.
-        const inset = parseFloat(getComputedStyle(track.parentElement!).marginLeft) || 32;
+        const inset = track.offsetLeft;
         const desired = card.offsetLeft + card.offsetWidth / 2 + inset - innerWidth / 2;
         const travel = Math.max(0, Math.min(distances.track, desired));
         const top = trigger.start + distances.handoff + travel;

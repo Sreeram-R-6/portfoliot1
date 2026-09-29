@@ -136,7 +136,7 @@ export function HeaderNavigation({ site = siteContent }: { site?: PublicSiteCont
         </a>
         <span className="hidden sm:inline-flex"><SoundToggle {...navigation.sound} /></span>
         <span className="hidden font-heading text-xs leading-5 tracking-[1.56px] text-muted-foreground uppercase sm:block">{site.location}</span>
-        <span className="hidden font-heading text-xs leading-5 tracking-[1.56px] text-muted-foreground uppercase lg:block">
+        <span className="hidden font-heading text-xs leading-3 tracking-[1.56px] text-muted-foreground uppercase lg:block">
           {navigation.coordinates.map((coordinate, index) => <span key={`${index}-${coordinate}`} className="block">{coordinate}</span>)}
         </span>
         <button ref={triggerRef} type="button" aria-expanded={isOpen} aria-controls="navigation-dialog" aria-haspopup="dialog" onClick={() => motionRef.current?.open()} className="menu-surface relative min-h-9 px-4 py-2 bg-[#252e20]/80 font-heading text-sm leading-5 font-semibold uppercase hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">

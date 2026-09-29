@@ -1,8 +1,9 @@
 "use client";
 import { ProjectImage } from "./project-image";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { createMotionMedia } from "@/lib/motion-media";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { siteContent, type PublicSiteContent } from "@/content/site";
@@ -80,7 +81,7 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
     link.href = link.hidden ? "#" : project.href;
     dialog.showModal();
   }
-  useEffect(() => {
+  useLayoutEffect(() => {
     const section = ref.current;
     const track = section?.querySelector<HTMLElement>("[data-project-track]");
     const intro = section?.querySelector<HTMLElement>("[data-project-intro]");
@@ -88,7 +89,7 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
     return afterSiteReady(() => {
     const cards = [...track.querySelectorAll<HTMLElement>("[data-project-card]")];
     gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
-    const media = gsap.matchMedia();
+    const media = createMotionMedia();
     media.add("(min-width: 1025px) and (prefers-reduced-motion: no-preference)", () => {
       if (!cards.length) return;
       section.dataset.projectLayout = "horizontal";

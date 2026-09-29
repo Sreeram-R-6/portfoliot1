@@ -1,18 +1,19 @@
 ﻿"use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { createMotionMedia } from "@/lib/motion-media";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 
 export function StatisticsMotion() {
   const ref = useRef<HTMLSpanElement>(null);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const stage = ref.current?.closest<HTMLElement>("[data-section=statistics]");
     const scroller = document.getElementById("scroll-container");
     if (!stage || !scroller) return;
     gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
-    const media = gsap.matchMedia();
+    const media = createMotionMedia();
     media.add("(prefers-reduced-motion: no-preference)", () => {
       stage.dataset.motion = "active";
       const timeline = gsap.timeline({ scrollTrigger: { id: "statistics-entry", trigger: stage, scroller, refreshPriority: 75, start: "top 75%", once: true } });

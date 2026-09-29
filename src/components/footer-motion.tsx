@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useLayoutEffect, useRef, type ReactNode } from "react";
 import { gsap } from "gsap";
+import { createMotionMedia } from "@/lib/motion-media";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { subscribeFrame } from "@/lib/motion-runtime";
 import "./footer-motion.css";
@@ -9,14 +10,14 @@ import { afterSiteReady } from "./site-readiness";
 
 export function FooterMotion({ children }: { children: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const dock = ref.current;
     const footer = dock?.querySelector<HTMLElement>("footer");
     const scroller = document.getElementById("scroll-container");
     if (!dock || !footer || !scroller) return;
     return afterSiteReady(() => {
     gsap.registerPlugin(ScrollTrigger);
-    const media = gsap.matchMedia();
+    const media = createMotionMedia();
     media.add("(prefers-reduced-motion: no-preference)", () => {
       const links = footer.querySelectorAll(".footer-contact-link, .footer-group-label");
       const wordmark = footer.querySelector(".footer-wordmark-frame");

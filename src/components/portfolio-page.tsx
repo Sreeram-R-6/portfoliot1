@@ -8,10 +8,9 @@ import { ProjectShowcase } from "./project-showcase";
 import { HeroMotion } from "./hero-motion";
 import { FooterMotion } from "./footer-motion";
 import { siteContent, type PublicSiteContent } from "@/content/site";
-import { SmoothScrollProvider } from "./smooth-scroll-provider";
 
 export function PortfolioPage({ site = siteContent }: { site?: PublicSiteContent }) {
-  return <SmoothScrollProvider>
+  return <>
     <a href="#main-content" className="skip-link">{site.navigation.skip}</a>
     <HeaderNavigation site={site} />
     <main id="main-content" tabIndex={-1}>
@@ -23,5 +22,5 @@ export function PortfolioPage({ site = siteContent }: { site?: PublicSiteContent
       <Experience site={site} />
     </main>
     <FooterMotion><ContactFooter site={site} /></FooterMotion>
-  </SmoothScrollProvider>;
+  </>;
 }

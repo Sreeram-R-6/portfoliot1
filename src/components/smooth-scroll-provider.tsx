@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useLayoutEffect, useRef, type ReactNode } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -10,7 +10,7 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const wrapper = wrapperRef.current;
     const content = contentRef.current;
     if (!wrapper || !content) return;
@@ -19,11 +19,13 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
     const previousScroller = ScrollTrigger.defaults({}).scroller;
     ScrollTrigger.defaults({ scroller: wrapper });
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let resizeScrolling: (() => void) | undefined;
     let stopScrolling: (() => void) | undefined;
     let mounted = true;
 
     const configureScrolling = () => {
       stopScrolling?.();
+      resizeScrolling = undefined;
       if (preference.matches) {
         wrapper.dataset.scrollMode = "native";
         const scrollTo = (event: Event) => {
@@ -50,6 +52,7 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
           touchMultiplier: 0.85,
           anchors: true,
         });
+        resizeScrolling = () => lenis.resize();
         const scrollTo = (event: Event) => {
           const top = (event as CustomEvent<{ top: number }>).detail?.top;
           if (typeof top === "number" && Number.isFinite(top)) lenis.scrollTo(top, { immediate: true, force: true });
@@ -70,10 +73,15 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
 
     configureScrolling();
     preference.addEventListener("change", configureScrolling);
-    const refresh = () => ScrollTrigger.refresh();
+    const refresh = () => {
+      if (!mounted || !wrapper.isConnected) return;
+      ScrollTrigger.refresh();
+      resizeScrolling?.();
+    };
     window.addEventListener("portfolio:refresh", refresh);
-    const nav = content.querySelector("nav");
+    let nav = content.querySelector("nav");
     const updateNavHeight = () => {
+      if (!mounted || !wrapper.isConnected) return;
       if (nav) wrapper.style.setProperty("--nav-height", `${nav.getBoundingClientRect().height}px`);
       refresh();
       window.dispatchEvent(new Event("portfolio:scroll-ready"));
@@ -81,6 +89,18 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
     const observer = new ResizeObserver(updateNavHeight);
     if (nav) observer.observe(nav);
     updateNavHeight();
+    // Routes replace these siblings while the scroll container stays mounted.
+    // Watch direct children only: text scrambling and pin refreshes must not
+    // trigger a recursive subtree refresh loop.
+    const routes = new MutationObserver(() => {
+      const next = content.querySelector("nav");
+      if (next === nav || !mounted) return;
+      if (nav) observer.unobserve(nav);
+      nav = next;
+      if (nav) observer.observe(nav);
+      updateNavHeight();
+    });
+    routes.observe(content, { childList: true });
     window.addEventListener("resize", refresh);
     document.fonts.ready.then(() => {
       if (mounted) updateNavHeight();
@@ -92,6 +112,7 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
       window.removeEventListener("resize", refresh);
       window.removeEventListener("portfolio:refresh", refresh);
       observer.disconnect();
+      routes.disconnect();
       stopScrolling?.();
       delete wrapper.dataset.scrollMode;
       ScrollTrigger.defaults({ scroller: previousScroller });

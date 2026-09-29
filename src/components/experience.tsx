@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { createMotionMedia } from "@/lib/motion-media";
 import { siteContent, type PublicSiteContent } from "@/content/site";
 import { DecorativeCanvas } from "./decorative-canvas";
 import styles from "./experience.module.css";
@@ -40,7 +41,7 @@ export function Experience({ site = siteContent }: { site?: PublicSiteContent })
   }, [selected]);
 
   useEffect(() => {
-    const media = gsap.matchMedia();
+    const media = createMotionMedia();
     media.add("(hover: hover) and (prefers-reduced-motion: no-preference)", () => {
       const elements = ref.current?.querySelectorAll<HTMLElement>("[data-experience-hover]") ?? [];
       const cleanups = [...elements].map((element) => {

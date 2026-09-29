@@ -6,7 +6,6 @@ import { useSyncExternalStore, type ReactNode } from "react";
 import type { PublicSiteContent } from "@/content/site";
 import { HeaderNavigation } from "./header-navigation";
 import { ContactFooter } from "./contact-footer";
-import { SmoothScrollProvider } from "./smooth-scroll-provider";
 import { ProjectPoster, projectSummary } from "./project-showcase";
 import "./work-pages.css";
 
@@ -21,12 +20,12 @@ function meaningful(value: string | null | undefined): value is string {
 }
 
 function WorkChrome({ site, children }: { site: PublicSiteContent; children: ReactNode }) {
-  return <SmoothScrollProvider>
+  return <>
     <a href="#main-content" className="skip-link">{site.navigation.skip}</a>
     <HeaderNavigation site={site} />
     <main id="main-content" tabIndex={-1} className="work-main">{children}</main>
     <ContactFooter site={site} />
-  </SmoothScrollProvider>;
+  </>;
 }
 
 function Artwork({ project, image = project.image, eager = false, sizes = cardSizes }: { project: Project; image?: string | null; eager?: boolean; sizes?: string }) {

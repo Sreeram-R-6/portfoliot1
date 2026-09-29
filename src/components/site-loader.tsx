@@ -47,6 +47,7 @@ export function SiteLoader({ label = "Loading", contentSelector = "#scroll-conta
       completed = true;
       clearTimeout(watchdog);
       observer?.disconnect();
+      observer = undefined;
       cancelAnimationFrame(frame);
       target = 100;
       const initial = shown;

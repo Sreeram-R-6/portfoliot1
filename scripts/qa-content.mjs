@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import sharp from "sharp";
 
 const base = process.env.QA_URL || "http://localhost:3000";
-const output = ".cache/qa/content";
+const output = process.env.QA_OUTPUT || ".cache/qa/content";
 const widths = [320, 375, 768, 1280, 1440, 1920];
 const sections = ["header-navigation", "identity", "manifesto", "statistics", "projects", "experience", "footer"];
 const cases = [["real", "/", 11], ["maximum", "/qa-stress/maximum", 20], ["twenty", "/qa-stress/twenty", 20], ["three", "/qa-stress/three", 3], ["empty", "/qa-stress/empty", 0]].filter(([name]) => !process.env.QA_CASE || process.env.QA_CASE === name);

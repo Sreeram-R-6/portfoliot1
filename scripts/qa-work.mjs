@@ -5,6 +5,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 const base = process.env.QA_URL || "http://localhost:3000";
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const results = [];
+const output = process.env.QA_OUTPUT || ".cache/qa/work";
 try {
   for (const path of ["/work", "/work/thuzhayan", "/work/drone-gcs", "/qa-stress/maximum?view=work", "/qa-stress/maximum?view=detail", "/qa-stress/empty?view=work"])
     for (const width of [320, 375, 768, 1280, 1440, 1920]) {
@@ -49,7 +50,7 @@ try {
       console.log(`PASS ${path} ${width}`);
       await context.close();
     }
-  await mkdir(".cache/qa/work", { recursive: true });
-  await writeFile(".cache/qa/work/results.json", JSON.stringify(results, null, 2));
+  await mkdir(output, { recursive: true });
+  await writeFile(`${output}/results.json`, JSON.stringify(results, null, 2));
   console.log(`PASS ${results.length} work route configurations`);
 } finally { await browser.close(); }

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { createMotionMedia } from "@/lib/motion-media";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { subscribeFrame } from "@/lib/motion-runtime";
 import "./cursor-progress.css";
@@ -15,7 +16,7 @@ export function CursorProgress() {
     const scroller = document.getElementById("scroll-container");
     if (!element || !circle || !scroller) return;
     gsap.registerPlugin(ScrollTrigger);
-    const media = gsap.matchMedia();
+    const media = createMotionMedia();
     media.add("(pointer: fine) and (prefers-reduced-motion: no-preference)", () => {
       const circumference = Math.PI * 2 * 29.5;
       gsap.set(circle, { strokeDasharray: circumference, strokeDashoffset: circumference });

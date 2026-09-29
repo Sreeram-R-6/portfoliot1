@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useLayoutEffect, useRef, type ReactNode } from "react";
 import { gsap } from "gsap";
+import { createMotionMedia } from "@/lib/motion-media";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./hero-motion.css";
 import { afterSiteReady } from "./site-readiness";
@@ -11,7 +12,7 @@ const clamp = gsap.utils.clamp(0, 1);
 /** One pin owns both scenes. All progress thresholds come from recon. */
 export function HeroMotion({ children }: { children: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const hero = ref.current;
     const scroller = document.getElementById("scroll-container");
     if (!hero || !scroller) return;
@@ -26,7 +27,7 @@ export function HeroMotion({ children }: { children: ReactNode }) {
     } else hero.dataset.motionReady = "true";
     const stop = afterSiteReady(() => {
       gsap.registerPlugin(ScrollTrigger);
-      const media = gsap.matchMedia();
+      const media = createMotionMedia();
       const entrance = gsap.context(() => {
         if (!entered) gsap.fromTo(hero.querySelectorAll('[data-section="identity"] [data-reveal]'), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: matchMedia("(prefers-reduced-motion: reduce)").matches ? .12 : .8, stagger: .06, ease: "power3.out" });
         entered = true;

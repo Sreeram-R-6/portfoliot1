@@ -147,3 +147,6 @@
     scroll-behavior: auto;
   }
 }
+
+/* Lenis and route restoration own offsets; native anchoring must not add pin travel. */
+#scroll-container { overflow-anchor: none; }

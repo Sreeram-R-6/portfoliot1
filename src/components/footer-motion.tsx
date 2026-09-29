@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { subscribeFrame } from "@/lib/motion-runtime";
 import "./footer-motion.css";
+import { afterSiteReady } from "./site-readiness";
 
 export function FooterMotion({ children }: { children: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -13,6 +14,7 @@ export function FooterMotion({ children }: { children: ReactNode }) {
     const footer = dock?.querySelector<HTMLElement>("footer");
     const scroller = document.getElementById("scroll-container");
     if (!dock || !footer || !scroller) return;
+    return afterSiteReady(() => {
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia();
     media.add("(prefers-reduced-motion: no-preference)", () => {
@@ -68,6 +70,7 @@ export function FooterMotion({ children }: { children: ReactNode }) {
       return () => { delete dock.dataset.motion; };
     });
     return () => media.revert();
+    }, { resize: true });
   }, []);
   return <div ref={ref} className="footer-motion">{children}</div>;
 }

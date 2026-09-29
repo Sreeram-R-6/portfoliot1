@@ -17,11 +17,13 @@ export function HeroMotion({ children }: { children: ReactNode }) {
     const hero = ref.current;
     const scroller = document.getElementById("scroll-container");
     if (!hero || !scroller) return;
+    let entered = false;
     return afterSiteReady(() => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
     const media = gsap.matchMedia();
     const entrance = gsap.context(() => {
-      gsap.fromTo(hero.querySelectorAll('[data-section="identity"] [data-reveal]'), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: matchMedia("(prefers-reduced-motion: reduce)").matches ? .12 : .8, stagger: .06, ease: "power3.out" });
+      if (!entered) gsap.fromTo(hero.querySelectorAll('[data-section="identity"] [data-reveal]'), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: matchMedia("(prefers-reduced-motion: reduce)").matches ? .12 : .8, stagger: .06, ease: "power3.out" });
+      entered = true;
     }, hero);
     media.add("(max-width: 767.98px) and (prefers-reduced-motion: no-preference)", () => {
       const identity = hero.querySelector<HTMLElement>("[data-section=identity]")!;
@@ -168,7 +170,7 @@ export function HeroMotion({ children }: { children: ReactNode }) {
     // downstream offsets with its spacing included before accepting scroll input.
     ScrollTrigger.refresh();
     return () => { media.revert(); entrance.revert(); };
-    });
+    }, { resize: true });
   }, []);
   return <div ref={ref} className="hero-motion">{children}</div>;
 }

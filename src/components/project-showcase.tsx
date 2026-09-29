@@ -8,6 +8,7 @@ import { siteContent, type PublicSiteContent } from "@/content/site";
 import { ProjectCanvasBoundary } from "./project-canvas-boundary";
 import styles from "./project-showcase.module.css";
 import Link from "next/link";
+import { afterSiteReady } from "./site-readiness";
 
 export function hasCaseStudy(project: (typeof siteContent.projects)[number]) {
   return !!project.caseStudy?.some((paragraph) => paragraph.trim() && !/^TODO\b/i.test(paragraph))
@@ -83,6 +84,7 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
     const track = section?.querySelector<HTMLElement>("[data-project-track]");
     const intro = section?.querySelector<HTMLElement>("[data-project-intro]");
     if (!section || !track || !intro) return;
+    return afterSiteReady(() => {
     const cards = [...track.querySelectorAll<HTMLElement>("[data-project-card]")];
     gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
     const media = gsap.matchMedia();
@@ -253,6 +255,7 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
       };
     });
     return () => media.revert();
+    }, { resize: true });
   }, []);
   return (
     <section ref={ref} id={content.id} data-section={content.id} className={styles.stage} aria-labelledby="projects-heading">

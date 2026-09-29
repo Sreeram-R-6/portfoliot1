@@ -1,4 +1,8 @@
-﻿# Behavioral parity audit
+# Current audit status
+
+All previous match claims are withdrawn pending the measured bug audit in docs/BUGS.md. Historical QA below is not proof for this task.
+
+# Behavioral parity audit
 
 Audited live with Playwright MCP on 2026-09-28 at 1440, 768 and 375px (900px height). Home, work index and both linked case-study routes were inspected. Local baseline: clean/synced `4d38519`. This document contains original observation notes only; no copied source code, artwork, audio or reference copy.
 
@@ -42,28 +46,28 @@ Audited live with Playwright MCP on 2026-09-28 at 1440, 768 and 375px (900px hei
 
 ## Final status — 2026-09-29
 
-MATCHED means observed behavior was reproduced, not that the original artwork or content was copied. APPROXIMATED identifies authored visuals/timing. INTENTIONALLY DIFFERENT identifies requested adaptive, accessibility or performance behavior.
+UNVERIFIED (previously MATCHED) means observed behavior was reproduced, not that the original artwork or content was copied. APPROXIMATED identifies authored visuals/timing. INTENTIONALLY DIFFERENT identifies requested adaptive, accessibility or performance behavior.
 
 | Priority / item | Final status | Verification / difference |
 | --- | --- | --- |
-| P0 Nested scroll / hero / manifesto | MATCHED; adaptive exception | One Lenis ticker; shared scrubbed pin at all audited widths when scenes fit. Tall content and reduced motion use flow; mobile avoids SplitText. |
-| P0 Projects / progress / release | MATCHED | Desktop measured horizontal rail; tablet 2-column/mobile 1-column grid; no forced snap. Actual wheel, last-card focus, arrow keys and release passed for 3/11/20 projects at 1440/768/375. WebGL shares measured progress. |
-| P0 Touch model | MATCHED | Vertical grid below desktop; shared hero uses vertical touch scrolling. No page-level wheel hijack. |
-| P0 Loader session / readiness / percentage | MATCHED | Once per session; real readiness, monotonic 0–100%, hero waits. No reload/route loader. |
+| P0 Nested scroll / hero / manifesto | UNVERIFIED (previously MATCHED); adaptive exception | One Lenis ticker; shared scrubbed pin at all audited widths when scenes fit. Tall content and reduced motion use flow; mobile avoids SplitText. |
+| P0 Projects / progress / release | UNVERIFIED (previously MATCHED) | Desktop measured horizontal rail; tablet 2-column/mobile 1-column grid; no forced snap. Actual wheel, last-card focus, arrow keys and release passed for 3/11/20 projects at 1440/768/375. WebGL shares measured progress. |
+| P0 Touch model | UNVERIFIED (previously MATCHED) | Vertical grid below desktop; shared hero uses vertical touch scrolling. No page-level wheel hijack. |
+| P0 Loader session / readiness / percentage | UNVERIFIED (previously MATCHED) | Once per session; real readiness, monotonic 0–100%, hero waits. No reload/route loader. |
 | P0 Loader choreography / duration | APPROXIMATED | Original geometry and compressed count/exit; about 280ms extra rather than the source's artificial multi-second holds, honoring the explicit 300ms cap. |
-| P0 Sound engine / loop / UI voices | MATCHED behavior; APPROXIMATED assets | Native HTMLAudio, ambient .3/UI .5, own ambient/hover/click/toggle tones. Zero audio requests or play calls before trusted gesture. |
+| P0 Sound engine / loop / UI voices | UNVERIFIED (previously MATCHED) behavior; APPROXIMATED assets | Native HTMLAudio, ambient .3/UI .5, own ambient/hover/click/toggle tones. Zero audio requests or play calls before trusted gesture. |
 | P0 Sound persistence / fade / gesture | INTENTIONALLY DIFFERENT | Requested localStorage persistence, 150ms fade and strict gesture gating; source attempted autoplay and lacked persistence/fade. Hidden tabs pause all voices; Off silences all voices. |
-| P0 Home route | MATCHED | All supplied sections and 11 projects preserved. |
-| P0 Work index | MATCHED structure; adaptive exception | Sidebar and 3/2/1 columns; every project rendered without fabricated categories. |
-| P0 Work detail routes | MATCHED routing; APPROXIMATED layout | All 11 IDs build; unknown ID 404. User description is verbatim. Optional facts/tags/gallery/paragraphs hide cleanly; no invented case-study blocks. |
-| P1 Route transition / restoration | APPROXIMATED visual; MATCHED behavior | Own 400ms pixel cover +900ms reveal; reduced 30/60ms fade. New routes start at top; back/forward/reload restore positions. Three cycles produced no duplicate triggers or subscriber growth. |
-| P1 Menu | MATCHED | Audited right-panel/stagger timings retained; About/Work, numbered user connections, Sound and own footer identity. |
-| P1 Experience | MATCHED | Four variable entries; per-entry +/-; measured mobile/central description heights and 550ms canvas mix. Mobile same-entry closes; desktop selects. |
-| P1 Counters | MATCHED | .7s digit roll finishes at 11+,3+,6+; nonnumeric fixture strings remain literal. Stored numbers unchanged. |
-| P1 Tools | MATCHED interaction; APPROXIMATED artwork | Original geometric default/hover pair swaps opacity over .15s; complete user strings remain single items. |
-| P2 Cursor / typography effects | MATCHED behavior; APPROXIMATED visuals | Existing fine-pointer progress cursor, decode/reveal and authored WebGL trails retained; reduced/low-power fallback preserved. |
-| P2 Orientation | MATCHED | Coarse-pointer landscape <=500px height shows user's hint and inert page; portrait releases it. |
-| P2 Footer | MATCHED behavior; adaptive exception | Measured reveal/dock and wordmark trails retained; long contacts wrap; placeholder CV remains hidden. |
+| P0 Home route | UNVERIFIED (previously MATCHED) | All supplied sections and 11 projects preserved. |
+| P0 Work index | UNVERIFIED (previously MATCHED) structure; adaptive exception | Sidebar and 3/2/1 columns; every project rendered without fabricated categories. |
+| P0 Work detail routes | UNVERIFIED (previously MATCHED) routing; APPROXIMATED layout | All 11 IDs build; unknown ID 404. User description is verbatim. Optional facts/tags/gallery/paragraphs hide cleanly; no invented case-study blocks. |
+| P1 Route transition / restoration | APPROXIMATED visual; UNVERIFIED (previously MATCHED) behavior | Own 400ms pixel cover +900ms reveal; reduced 30/60ms fade. New routes start at top; back/forward/reload restore positions. Three cycles produced no duplicate triggers or subscriber growth. |
+| P1 Menu | UNVERIFIED (previously MATCHED) | Audited right-panel/stagger timings retained; About/Work, numbered user connections, Sound and own footer identity. |
+| P1 Experience | UNVERIFIED (previously MATCHED) | Four variable entries; per-entry +/-; measured mobile/central description heights and 550ms canvas mix. Mobile same-entry closes; desktop selects. |
+| P1 Counters | UNVERIFIED (previously MATCHED) | .7s digit roll finishes at 11+,3+,6+; nonnumeric fixture strings remain literal. Stored numbers unchanged. |
+| P1 Tools | UNVERIFIED (previously MATCHED) interaction; APPROXIMATED artwork | Original geometric default/hover pair swaps opacity over .15s; complete user strings remain single items. |
+| P2 Cursor / typography effects | UNVERIFIED (previously MATCHED) behavior; APPROXIMATED visuals | Existing fine-pointer progress cursor, decode/reveal and authored WebGL trails retained; reduced/low-power fallback preserved. |
+| P2 Orientation | UNVERIFIED (previously MATCHED) | Coarse-pointer landscape <=500px height shows user's hint and inert page; portrait releases it. |
+| P2 Footer | UNVERIFIED (previously MATCHED) behavior; adaptive exception | Measured reveal/dock and wordmark trails retained; long contacts wrap; placeholder CV remains hidden. |
 | P2 Typography / spacing / colors | INTENTIONALLY DIFFERENT where adaptive | Same font families and dark/lime/purple tokens; fluid fit/measure retained for user's longer text. Own glyphs/posters replace all source art. |
 
 ## Final QA evidence

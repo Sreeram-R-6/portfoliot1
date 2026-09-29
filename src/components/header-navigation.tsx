@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent, type KeyboardEvent } from "react";
 import { gsap } from "gsap";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { siteContent, type PublicSiteContent } from "@/content/site";
@@ -19,6 +19,16 @@ export function HeaderNavigation({ site = siteContent }: { site?: PublicSiteCont
   const triggerRef = useRef<HTMLButtonElement>(null);
   const motionRef = useRef<MenuMotion | null>(null);
   const navigation = site.navigation;
+  function trapFocus(event: KeyboardEvent<HTMLDialogElement>) {
+    if (event.key !== "Tab") return;
+    const controls = [...event.currentTarget.querySelectorAll<HTMLElement>("a[href],button:not(:disabled),input:not(:disabled),select:not(:disabled),textarea:not(:disabled),[tabindex]")]
+      .filter((element) => element.tabIndex >= 0 && element.getClientRects().length > 0);
+    const first = controls[0], last = controls.at(-1);
+    if (first && last && (event.shiftKey ? document.activeElement === first : document.activeElement === last)) {
+      event.preventDefault();
+      (event.shiftKey ? last : first).focus();
+    }
+  }
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -145,7 +155,7 @@ export function HeaderNavigation({ site = siteContent }: { site?: PublicSiteCont
           {navigation.menu}
         </button>
       </nav>
-      <dialog ref={dialogRef} id="navigation-dialog" aria-labelledby="navigation-dialog-title" onCancel={(event) => { event.preventDefault(); close(); }} onClose={() => setIsOpen(false)} onClick={closeOnBackdrop} data-lenis-prevent data-motion-state="closed" className="navigation-dialog fixed inset-x-6 top-[50px] bottom-[50px] z-[90] m-0 h-[calc(100dvh-100px)] max-h-[760px] w-auto max-w-none overflow-y-auto border-0 bg-[var(--background-stroke-1)] p-0 text-foreground sm:right-[50px] sm:left-auto sm:w-[380px]">
+      <dialog ref={dialogRef} id="navigation-dialog" aria-labelledby="navigation-dialog-title" onKeyDown={trapFocus} onCancel={(event) => { event.preventDefault(); close(); }} onClose={() => setIsOpen(false)} onClick={closeOnBackdrop} data-lenis-prevent data-motion-state="closed" className="navigation-dialog fixed inset-x-6 top-[50px] bottom-[50px] z-[90] m-0 h-[calc(100dvh-100px)] max-h-[760px] w-auto max-w-none overflow-y-auto border-0 bg-[var(--background-stroke-1)] p-0 text-foreground sm:right-[50px] sm:left-auto sm:w-[380px]">
         <div className="flex min-h-full flex-col p-6">
           <div className="flex h-10 items-center justify-between">
             <h2 id="navigation-dialog-title" className="font-heading text-xs leading-4 font-normal uppercase tracking-[1.56px]">{navigation.label}</h2>

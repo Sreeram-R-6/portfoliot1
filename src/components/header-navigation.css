@@ -25,6 +25,7 @@
 .site-navigation > a, .site-navigation > span { flex: 1 1 0; }
 .site-navigation > a > span { flex-shrink: 0; }
 .site-navigation > button { flex: 0 1 auto; max-width: 35%; }
-.navigation-dialog a.menu-surface { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.2; gap: 12px; }
+.navigation-dialog a.menu-surface { font-size: 40px; line-height: .86; gap: 12px; }
+@media (min-width: 640px) { .navigation-dialog a.menu-surface { font-size: 56px; } }
 .navigation-dialog [data-menu-label] { overflow-wrap: anywhere; }
 .navigation-dialog > div > div:first-child { height: auto; min-height: 40px; gap: 16px; }

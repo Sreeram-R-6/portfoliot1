@@ -136,12 +136,13 @@
   .stage[data-project-layout="horizontal"] .track { display: flex; width: max-content; max-width: none; gap: 28px; align-items: flex-start; }
   .stage[data-project-layout="horizontal"] .card { flex: 0 0 clamp(280px, 28vw, 420px); width: clamp(280px, 28vw, 420px); max-width: none; }
   .stage[data-project-layout="horizontal"] .path { display: block; }
-  .stage[data-project-layout="horizontal"] { --u: min(calc((100dvh - var(--nav-height) - 64px) / 786), 1px); padding: 0; }
+  .stage[data-project-layout="horizontal"] { --u: min(calc((100dvh - var(--nav-height) - 64px) / 786), 1px); padding: 0; pointer-events: none; }
   .stage[data-project-layout="horizontal"] .intro { position: absolute; left: 32px; top: calc(48 * var(--u)); width: calc(451 * var(--u)); }
   .stage[data-project-layout="horizontal"] .viewport { position: absolute; inset: 0; margin: 0; }
   .stage[data-project-layout="horizontal"] .track { display: block; position: absolute; left: calc(372 * var(--u)); top: calc((100dvh - var(--nav-height) - 786 * var(--u)) / 2); width: calc(var(--track-width) * var(--u)); height: calc(786 * var(--u)); }
   .stage[data-project-layout="horizontal"] .card { position: absolute; left: calc(var(--x) * var(--u)); top: calc(var(--y) * var(--u)); width: calc(var(--w) * var(--u)); gap: calc(12 * var(--u)); }
   .stage[data-project-layout="horizontal"] .diamond { display: block; }
+  .stage[data-project-layout="horizontal"] .thumb, .stage[data-project-layout="horizontal"] .visit { pointer-events: auto; }
   .stage[data-project-layout="horizontal"] .label { flex-direction: row; align-items: baseline; gap: 12px; }
   .stage[data-project-layout="horizontal"] .summary { display: none; }
 }
@@ -165,6 +166,7 @@
 .stage[data-handoff="active"] { background: transparent; isolation: isolate; z-index: 1; margin-top: var(--nav-height); }
 .stage[data-handoff="active"]::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--primary-green-neon); transform: translateX(var(--handoff-x, 134vw)); }
 :global(.statistics-projects[data-handoff="active"]) { position: relative; }
+:global(.pin-spacer-project-showcase) { pointer-events: none; }
 :global(.statistics-projects[data-handoff="active"] [data-section="statistics"]) {
   position: sticky;
   top: 0;

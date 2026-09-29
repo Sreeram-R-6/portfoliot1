@@ -44,7 +44,9 @@ function subscribeColumns(notify: () => void) {
   return () => queries.forEach((query) => query.removeEventListener("change", notify));
 }
 const readColumns = () => matchMedia("(min-width: 1025px)").matches ? 3 : matchMedia("(min-width: 768px)").matches ? 2 : 1;
-const serverColumns = () => 1;
+// First paint can precede hydration. Cover every first-row LCP candidate in
+// initial HTML, then narrow priority to the measured grid after hydration.
+const serverColumns = () => 3;
 
 export function WorkIndex({ site }: { site: PublicSiteContent }) {
   const columns = useSyncExternalStore(subscribeColumns, readColumns, serverColumns);

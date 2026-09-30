@@ -7,11 +7,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Sreeram-R-6/portfoliot1.git"
+    "url": "https://github.com/Sreeram-R-6/sreeram-r-6.github.io.git"
   },
-  "homepage": "https://github.com/Sreeram-R-6/portfoliot1",
+  "homepage": "https://sreeram-r-6.github.io",
   "bugs": {
-    "url": "https://github.com/Sreeram-R-6/portfoliot1/issues"
+    "url": "https://github.com/Sreeram-R-6/sreeram-r-6.github.io/issues"
   },
   "keywords": [
     "portfolio",
@@ -25,6 +25,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "node scripts/check-reference-assets.mjs && next build",
+    "build:pages": "node scripts/build-pages.mjs",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",

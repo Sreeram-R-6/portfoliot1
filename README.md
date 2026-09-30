@@ -101,12 +101,14 @@ Enable the reference-asset pre-commit guard after cloning: `git config core.hook
 
 # GitHub Pages deployment
 
-This repository is configured as a static Next.js export for the user site
-`https://sreeram-r-6.github.io`. Pushes to `main` build `out/` and deploy it
-through `.github/workflows/deploy-pages.yml`.
+This repository serves the user site at `https://sreeram-r-6.github.io`.
+Pushes to `main` run `npm run build:pages`, export `out/`, and deploy it through
+`.github/workflows/deploy-pages.yml`. For local editing, run `npm run dev` and
+open `http://localhost:3000/details`; the editor's read, save, and upload
+endpoints remain available in development.
 
-In the repository settings, open **Pages**, choose **GitHub Actions** as the
-source, and rename the repository to `sreeram-r-6.github.io` under
-**Settings → General**. The public portfolio works on Pages; the local
-`/details` editor and its `/api/details` upload/save endpoints require a server
-and are intentionally unavailable in the static deployment.
+The repository is named `sreeram-r-6.github.io` and Pages uses **GitHub
+Actions** as its source. The public portfolio works on Pages. The editor needs
+a local development server and is unavailable in the static deployment.
+`npm run build` produces the standalone production server, where the editor
+and API return 404.

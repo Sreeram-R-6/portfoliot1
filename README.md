@@ -98,3 +98,15 @@ With the dev server running, `node scripts/qa-content.mjs` checks real content a
 Project images are illustrative placeholders from Pexels contributors and Mikael Haggstrom (CC0). Sources, authors, licenses and attribution requirements are recorded in [docs/ASSETS.md](docs/ASSETS.md). Replace them with your own in the development-only `/details` editor.
 
 Enable the reference-asset pre-commit guard after cloning: `git config core.hooksPath .githooks`. The production build always runs the same guard.
+
+# GitHub Pages deployment
+
+This repository is configured as a static Next.js export for the user site
+`https://sreeram-r-6.github.io`. Pushes to `main` build `out/` and deploy it
+through `.github/workflows/deploy-pages.yml`.
+
+In the repository settings, open **Pages**, choose **GitHub Actions** as the
+source, and rename the repository to `sreeram-r-6.github.io` under
+**Settings → General**. The public portfolio works on Pages; the local
+`/details` editor and its `/api/details` upload/save endpoints require a server
+and are intentionally unavailable in the static deployment.

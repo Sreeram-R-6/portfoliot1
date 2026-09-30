@@ -8,6 +8,10 @@ import { isSiteContent } from "@/content/details-schema";
 
 export const metadata = { robots: { index: false, follow: false } };
 
+export function generateStaticParams() {
+  return ["maximum", "twenty", "three", "empty"].map((scenario) => ({ scenario }));
+}
+
 export default async function StressPage({ params, searchParams }: { params: Promise<{ scenario: string }>; searchParams: Promise<{ view?: string }> }) {
   if (process.env.NODE_ENV === "production") notFound();
   const { scenario } = await params;

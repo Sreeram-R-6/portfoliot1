@@ -2,6 +2,7 @@ import { siteContent, type PublicSiteContent } from "@/content/site";
 import { DecorativeCanvas } from "./decorative-canvas";
 import { FitText } from "./fit-text";
 import "./contact-footer.css";
+import { GlyphPoster } from "./glyph-poster";
 
 export function ContactFooter({ site = siteContent }: { site?: PublicSiteContent }) {
   const footer = site.footer;
@@ -14,6 +15,7 @@ export function ContactFooter({ site = siteContent }: { site?: PublicSiteContent
 
   return (
     <footer id={footer.id} data-section="footer" className="contact-footer" aria-labelledby="footer-heading">
+      <GlyphPoster variant="bracket" className="footer-glyph" />
       <div className="footer-top-row">
         <div className="footer-contact-column">
           <h2 id="footer-heading" className="footer-contact-heading">{footer.title}</h2>

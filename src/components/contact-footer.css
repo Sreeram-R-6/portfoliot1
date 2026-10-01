@@ -4,6 +4,8 @@
   position: relative;
 }
 
+.footer-glyph { position: absolute; top: 20px; right: 24px; width: clamp(56px, 8vw, 120px); height: auto; color: var(--tertiary-purple); opacity: .28; pointer-events: none; }
+
 .footer-top-row {
   display: flex;
 }

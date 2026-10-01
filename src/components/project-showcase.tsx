@@ -11,6 +11,7 @@ import { ProjectCanvasBoundary } from "./project-canvas-boundary";
 import styles from "./project-showcase.module.css";
 import Link from "next/link";
 import { afterSiteReady } from "./site-readiness";
+import { GlyphPoster } from "./glyph-poster";
 
 export function hasCaseStudy(project: (typeof siteContent.projects)[number]) {
   return !!project.caseStudy?.some((paragraph) => paragraph.trim() && !/^TODO\b/i.test(paragraph))
@@ -309,6 +310,7 @@ export function ProjectShowcase({ site = siteContent }: { site?: PublicSiteConte
         {Array.from({ length: 6 }, (_, index) => <i key={index} data-project-grid-line />)}
       </div>
       <div className={styles.intro} data-project-intro>
+        <GlyphPoster variant="cross" className={styles.introGlyph} />
         <div className={styles.heading}>
           <div className={styles.headingTop}>
             <span className={styles.eyebrow} data-project-scramble>{content.eyebrow}</span>

@@ -112,6 +112,7 @@
 /* Intrinsic cards; a horizontal rail is enabled only after measuring available space. */
 .stage { --u: 1px; height: auto; padding: clamp(32px, 4vw, 64px) var(--grid-edge-inset); overflow: clip; }
 .intro { position: relative; inset: auto; width: 100%; pointer-events: auto; }
+.introGlyph { position: absolute; top: 0; right: 0; width: clamp(64px, 9vw, 132px); height: auto; color: var(--tertiary-purple); opacity: .28; pointer-events: none; }
 .heading, .headingTop { gap: 16px; }
 .heading { max-width: none; }
 .title { font-size: 48px; line-height: .8; letter-spacing: -2px; max-width: 451px; color: #620ecc; }

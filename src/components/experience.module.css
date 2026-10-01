@@ -12,6 +12,8 @@
   border-bottom: 1px solid var(--background-stroke-2);
 }
 
+.sectionGlyph { position: absolute; top: 24px; right: 24px; width: clamp(64px, 9vw, 132px); height: auto; color: var(--tertiary-purple); opacity: .24; pointer-events: none; }
+
 .heading { display: flex; flex-direction: column; align-items: center; gap: 24px; margin-bottom: 32px; text-align: center; }
 .badge {
   display: inline-flex;

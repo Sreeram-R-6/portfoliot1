@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { createMotionMedia } from "@/lib/motion-media";
 import { siteContent, type PublicSiteContent } from "@/content/site";
 import { DecorativeCanvas } from "./decorative-canvas";
+import { GlyphPoster } from "./glyph-poster";
 import styles from "./experience.module.css";
 
 
@@ -90,6 +91,7 @@ export function Experience({ site = siteContent }: { site?: PublicSiteContent })
 
   return (
     <section ref={ref} id={content.id} className={styles.stage} data-section="experience" aria-labelledby="experience-heading">
+      <GlyphPoster variant="orbit" className={styles.sectionGlyph} />
       <div className={styles.heading}>
         <span className={styles.badge}>{content.eyebrow}</span>
         <h2 id="experience-heading" className={styles.title}>{content.title}</h2>

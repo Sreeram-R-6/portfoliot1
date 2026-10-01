@@ -6,6 +6,7 @@
 }
 
 .manifesto-portrait { position: absolute; inset: 0; pointer-events: none; opacity: .5; }
+.manifesto-glyph { position: absolute; top: clamp(32px, 9vw, 120px); right: var(--grid-edge-inset); width: clamp(72px, 12vw, 180px); height: auto; color: var(--primary-green-neon); opacity: .3; pointer-events: none; }
 
 .manifesto-paragraph,
 .manifesto-word {

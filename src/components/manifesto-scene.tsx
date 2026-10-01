@@ -1,6 +1,7 @@
 import { siteContent, type PublicSiteContent } from "@/content/site";
 import { LazyPixelReveal } from "./lazy-pixel-reveal";
 import { IdentityPoster } from "./identity-hero";
+import { GlyphPoster } from "./glyph-poster";
 import "./manifesto-scene.css";
 
 export function ManifestoScene({ site = siteContent }: { site?: PublicSiteContent }) {
@@ -14,6 +15,7 @@ export function ManifestoScene({ site = siteContent }: { site?: PublicSiteConten
       aria-labelledby="manifesto-title"
     >
       <div className="manifesto-portrait" aria-hidden="true"><IdentityPoster idPrefix="manifesto-poster" /></div>
+      <GlyphPoster variant="signal" className="manifesto-glyph" />
       <LazyPixelReveal />
       <h2 id="manifesto-title" className="sr-only">{manifesto.title}</h2>
       <p className="sr-only">{manifesto.description}</p>

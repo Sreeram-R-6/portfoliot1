@@ -114,6 +114,20 @@
   transition: opacity .15s;
 }
 
+.boxGlyph {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: clamp(38px, 24%, 92px);
+  aspect-ratio: 1;
+  color: var(--box-text);
+  opacity: .2;
+  pointer-events: none;
+  transition: opacity .2s, color .2s;
+}
+
+.boxGlyphPoster { display: block; width: 100%; height: 100%; }
+
 .notch {
   position: absolute;
   top: 16px;
@@ -156,6 +170,7 @@
 
   .box:hover .notch { opacity: 1; }
   .box:hover .toolMark { opacity: .85; }
+  .box:hover .boxGlyph { opacity: .42; }
 }
 
 @media (min-width: 768px) and (max-width: 1024.98px) {

@@ -19,7 +19,7 @@ export function ManifestoScene({ site = siteContent }: { site?: PublicSiteConten
       <p className="sr-only">{manifesto.description}</p>
       <p className="manifesto-paragraph" aria-hidden="true" data-reveal>
         {manifesto.description.split(/\s+/).map((word, index) => (
-          <span key={`${index}-${word}`} data-word={index} aria-hidden="true">{word}{" "}</span>
+          <span key={`${index}-${word}`} data-word={index} aria-hidden="true">{word}</span>
         ))}
       </p>
       <div className="manifesto-display" aria-hidden="true">

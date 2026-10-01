@@ -1,6 +1,15 @@
 import content from "./site.json";
 
-export type SiteContent = Omit<typeof content, "projects"> & {
+type IdentityContent = Omit<(typeof content.sections)["identity"], "portraitImage"> & {
+  portraitImage: string | null;
+};
+
+type SiteSections = Omit<typeof content.sections, "identity"> & {
+  identity: IdentityContent;
+};
+
+export type SiteContent = Omit<typeof content, "projects" | "sections"> & {
+  sections: SiteSections;
   projects: Array<Omit<(typeof content.projects)[number], "image"> & {
     image: string | null; summary?: string; role?: string; year?: string;
     tags?: string[]; gallery?: Array<string | null>; caseStudy?: string[];

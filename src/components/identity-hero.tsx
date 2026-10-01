@@ -30,13 +30,20 @@ export function IdentityPoster({ idPrefix = "identity-poster" }: { idPrefix?: st
 
 export function IdentityHero({ site = siteContent }: { site?: PublicSiteContent }) {
   const identity = site.sections.identity;
+  const portraitImage = typeof identity.portraitImage === "string" && identity.portraitImage.trim() && !identity.portraitImage.startsWith("TODO") ? identity.portraitImage : null;
 
   return (
     <section id={identity.id} data-section="identity" className="identity-hero" aria-labelledby="identity-title">
       <div className="identity-scene">
         <div className="identity-grid" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
         <div className="identity-portrait-frame" data-portrait-frame>
-          <DecorativeCanvas kind="portrait" className="identity-canvas-area"><IdentityPoster /></DecorativeCanvas>
+          <DecorativeCanvas kind="portrait" className="identity-canvas-area">
+            {portraitImage ? (
+              // The canvas reads this same-origin source directly before applying its distortion pass.
+              // eslint-disable-next-line @next/next/no-img-element
+              <img className="identity-portrait-image" data-portrait-image src={portraitImage} alt="" decoding="async" />
+            ) : <IdentityPoster />}
+          </DecorativeCanvas>
         </div>
         <h1 id="identity-title" className="sr-only">{identity.title}</h1>
         <div className="identity-contact" data-reveal>

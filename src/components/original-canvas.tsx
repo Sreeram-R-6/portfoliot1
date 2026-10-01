@@ -297,20 +297,35 @@ export function OriginalCanvas({ kind, label, onReady }: { kind: CanvasKind; lab
       const color = style.color.match(/[\d.]+/g)?.map(Number);
       gl.useProgram(program);
       gl.uniform3f(gl.getUniformLocation(program, "ink"), (color?.[0] ?? 144) / 255, (color?.[1] ?? 92) / 255, (color?.[2] ?? 255) / 255);
+      const portraitImage = kind === "portrait" ? frame?.querySelector<HTMLImageElement>(".canvas-poster [data-portrait-image]") : null;
       const ownPoster = kind === "portrait" || kind === "experience" ? frame?.querySelector(".canvas-poster svg") : null;
-      if (ownPoster) {
+      if (portraitImage || ownPoster) {
         const image = new Image();
         image.onload = () => {
           if (!mounted || token !== generation) return;
           const art = document.createElement("canvas");
           art.width = canvas.width;
           art.height = canvas.height;
-          const bounds = ownPoster.getBoundingClientRect();
+          const bounds = (portraitImage ?? ownPoster)!.getBoundingClientRect();
           const frame = canvas.getBoundingClientRect();
-          art.getContext("2d")?.drawImage(image, (bounds.left - frame.left) * dpr, (bounds.top - frame.top) * dpr, bounds.width * dpr, bounds.height * dpr);
+          const context = art.getContext("2d");
+          const x = (bounds.left - frame.left) * dpr;
+          const y = (bounds.top - frame.top) * dpr;
+          const width = bounds.width * dpr;
+          const height = bounds.height * dpr;
+          if (portraitImage) {
+            const sourceWidth = image.naturalWidth || image.width;
+            const sourceHeight = image.naturalHeight || image.height;
+            const scale = Math.max(width / sourceWidth, height / sourceHeight);
+            const cropWidth = width / scale;
+            const cropHeight = height / scale;
+            context?.drawImage(image, (sourceWidth - cropWidth) / 2, (sourceHeight - cropHeight) / 2, cropWidth, cropHeight, x, y, width, height);
+          } else {
+            context?.drawImage(image, x, y, width, height);
+          }
           paint(art, token);
         };
-        image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(new XMLSerializer().serializeToString(ownPoster))}`;
+        image.src = portraitImage?.currentSrc || portraitImage?.src || `data:image/svg+xml;charset=utf-8,${encodeURIComponent(new XMLSerializer().serializeToString(ownPoster!))}`;
       } else {
         paint(makeArtwork(kind, nextLabel, canvas.width, canvas.height, font, `${(parseFloat(style.letterSpacing) || 0) * dpr}px`), token);
       }

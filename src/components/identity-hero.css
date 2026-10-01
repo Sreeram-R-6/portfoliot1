@@ -21,7 +21,7 @@
 
 .identity-portrait-frame { position: absolute; inset: 0; z-index: -1; opacity: .5; pointer-events: none; }
 .identity-poster { position: absolute; right: -38%; bottom: 0; width: 135%; height: 100%; }
-.identity-portrait-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.identity-portrait-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(1) contrast(1.12); }
 .identity-canvas-area { position: absolute; right: -38%; top: 0; width: 135%; height: 100%; }
 .identity-canvas-area .identity-poster { right: 0; width: 100%; }
 .identity-bottom-cluster { position: absolute; inset: auto 0 16px; height: 686px; pointer-events: none; }

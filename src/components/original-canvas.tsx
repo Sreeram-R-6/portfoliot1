@@ -28,6 +28,7 @@ uniform float displace;
 uniform float fringe;
 uniform float lod;
 uniform vec3 ink;
+uniform float monochrome;
 in vec2 coordinate;
 out vec4 result;
 void main() {
@@ -62,6 +63,8 @@ void main() {
   vec3 color = mix(ink, sampleColor.rgb, crt) * scanMask * edge * pulse;
   color = mix(color, color * 0.3 + bloom.rgb, crt);
   color = mix(color, vec3(144.0 / 255.0, 92.0 / 255.0, 1.0), feedback.x);
+  float luminance = dot(color, vec3(0.2126, 0.7152, 0.0722));
+  color = mix(color, vec3(luminance), monochrome);
   float alpha = max(sampleColor.a, bloom.a) * mix(dotMask, 1.0, crt);
   result = vec4(color * alpha, alpha);
 }`;
@@ -389,6 +392,7 @@ export function OriginalCanvas({ kind, label, onReady }: { kind: CanvasKind; lab
       gl.uniform1f(gl.getUniformLocation(program, "displace"), kind === "footer" ? .5 : 18 * dpr);
       gl.uniform1f(gl.getUniformLocation(program, "fringe"), kind === "footer" ? 0 : 2.2);
       gl.uniform1f(gl.getUniformLocation(program, "lod"), kind === "footer" ? Math.max(0, Math.log2(Math.max(1, .7 * 9 * dpr))) : 0);
+      gl.uniform1f(gl.getUniformLocation(program, "monochrome"), kind === "portrait" ? 1 : 0);
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
